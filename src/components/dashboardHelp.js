@@ -165,6 +165,7 @@ export class dashboardHelp extends Component {
                 </div>
 
                 </footer>
+               
             
         </div>
         </div>

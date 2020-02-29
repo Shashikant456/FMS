@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import logo from './Images/Mainlogo.png'
 import { Form,FormControl } from 'react-bootstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import axios from 'axios'
@@ -106,7 +105,7 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
         this.setState({
             jobs : res.data.data,
             mob:this.props.location.state.mobileNumber.mob
-            //mobileNumber:this.state.mob
+
            
         })  
        
@@ -153,7 +152,7 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
   // }
   //clear form
  
-  //  if(this.state.check===true){
+   if(this.state.check===true){
   axios.post('http://stskfacilities.com:8081/stskFmsApi/jobseeker/createJS',{
     name:this.state.name,
     email: this.state.email,
@@ -198,10 +197,12 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
     // } else {
     //   console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     // }
-  //}
-    // else{
-    //   alert("terms")
-    // }
+  }
+    else{
+      this.setState({
+          checkBoxerror:'Accept Terms & Conditions'
+      })
+    }
   
 };
   handleChange = e => {
@@ -209,7 +210,6 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
       this.setState({update : e.target.value});
     //this.setState({value:e.target.value});
      this.setState({value:e.target.value});
-    e.preventDefault();
      const { name, value } = e.target;
      let formErrors = { ...this.state.formErrors };
      this.setState({ formErrors, [name]: value }, () => console.log(this.state));
@@ -261,7 +261,6 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
         <div className="form-wrapper4">
          
           <div className="text-center">
-            <img src={logo} className="img" alt="" className="img4"></img>
             <h3 className="text-center4">JobSeeker</h3>
             {/* <h2>{this.props.match.params.name}</h2> */}
           </div>
@@ -367,11 +366,13 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
             
                
                <Form.Control as="select"  onChange={this.handleChange1Arg}  id="demo" >
-               <option>Please Select</option>
+               
+               <option value="" disabled selected>Choose your option</option>
                 {/* {this.state.jobs.map(job =>(
                     <option key={job.id} value={job.name}  >
                      </option>
                   ))} */}
+                
                   {this.state.jobs.map(function(job,i){
                    return( <option key={job.id} value={job.id}>
                       {job.name}
@@ -380,7 +381,7 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
                       // console.log(job.name)
                       // console.log(job.id)
                    ) })}
-                   
+                  
               </Form.Control> 
               
              
@@ -423,8 +424,9 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
 
 <label>
                 <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
-                <span>Terms and Condition</span>
+                <span>Terms and Conditions</span>
               </label>
+              <p className="center red-text">{this.state.checkBoxerror}</p>
  </div> 
         
  <div className="createAccount">

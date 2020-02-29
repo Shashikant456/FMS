@@ -22,6 +22,7 @@ class ChangePwd extends Component {
             })
         }
         
+
         handleChange2 = (e) => {
             this.setState({
                 confirmPassword : e.target.value
