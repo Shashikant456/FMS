@@ -1,0 +1,81 @@
+
+
+*{
+  padding: 0px; margin: 0px; 
+  font-family: lato;
+  box-sizing: border-box;
+}
+
+.row{
+    margin-top: 10px;
+}
+
+#profile{
+    height: 500px;
+}
+
+/* 
+#upper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }  */
+
+
+/* #profile,
+#container,
+#container2
+{
+  border:0px solid #dcdedf;
+   margin-top:10px;
+} */
+.nav-wrapper .brand-logo img {
+    height: 55px;
+    width: 10%;
+}
+#container{
+    height:500px; 
+    overflow:hidden;
+    overflow-y:scroll;
+  }
+  
+  #container {
+    overflow-y:scroll
+  }
+
+  #container2{
+    height:500px; 
+    width: 90%;
+    overflow:hidden;
+    overflow-y:scroll;
+  }
+  
+  #container2{
+    overflow-y:scroll
+  }
+  
+  
+  #details{
+      margin-bottom: 50px;
+  }
+  nav ul li a{
+    color: #90a4ae ;
+  }  
+  #footer{
+    background: darkgray;
+  }
+  
+  #mail{
+    height: 80px;
+  }
+  #address{
+    background-color: #F9FFFF;
+  }
+  #textcolor{
+    color: #7c7f7f;
+    font-family: lato;
+  }
+  #locicon{
+    color: #3FB2AA;
+  }
+  

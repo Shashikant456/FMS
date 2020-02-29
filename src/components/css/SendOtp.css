@@ -1,0 +1,230 @@
+/* #main{
+    margin-top: 10%;
+}
+  #login{
+    max-width: 300px;
+    height: 500px;
+    background-color: azure;
+    
+}
+#button{
+    width: 100%;
+    border-radius: 10px;
+    margin: 12px auto;
+}
+#icon{
+    background-color: blue;
+    width: 80px;
+    height: 45px;
+    border-radius: 8px;
+}
+#image{
+    background-image: url("/src/components/Images/Background.png");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: 100% 100%;
+} */
+
+
+*{
+    padding: 0px; margin: 0px; 
+    font-family: lato;
+    box-sizing: border-box;
+}
+body{
+    /* background-image: url("../Images/Background.png"); */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+     }
+.main{
+    background-image: url("../Images/Background.png");
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: initial;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    /* background-image: url("../Images/Background.png"); */
+    width: 500px;
+    height: 520px;
+    background-color:white;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);   
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(230, 219, 219, 0.733);
+}
+.form1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);   
+    padding-bottom: 20%;
+    font-family: lato;
+}
+#input1{
+    border:1.5px solid #8ED6D2;
+    padding: 22px ;
+    width: 72%;
+    height: 45px;
+    border-radius: 10px;
+    outline: none;
+    font-family: lato;
+    font-weight: 300;
+    font-size: 27px; 
+    float:right; 
+   
+}
+#mobile{
+    font-size: 18px;
+}
+/* .form button:enabled{
+    width: 350px;
+    height: 45px;
+    border-radius: 10px;
+    background-image: linear-gradient(#97DBD7, #3FB2AA);
+    outline: none; 
+    color: white;
+    font-size: 18px;
+    margin: 30px auto;
+    cursor: pointer;
+    border: none;
+} */
+.form1 h2{
+    text-align: center;
+    padding-top: 42%;
+    padding-bottom: 30px;
+    font-size: 35px;
+    color: #707070;
+}
+.form1 h3{
+    text-align: center;
+    padding-bottom: 25px;
+    margin-top: 10px;
+    font-size: medium;
+    letter-spacing: 1.5px;
+    font-family: lato;
+    margin-left: 100px;
+}
+.fa-facebook {
+  background:#3B5998 ;
+  color: white;
+  font-size: 0;
+  background-image: url("../Images/facebook.png"); 
+  background-size: 28% 50%;  
+}
+.fa-google {    
+background: #F2F2F2;
+color:  #F2F2F2 ;
+font-size: 0;
+background-image: url("../Images/google.png"); 
+background-size: 35% 68%;  
+
+}
+.fa-user {
+ background:  #3FB2AA;
+ color: white;
+ font-size: 0;
+ background-image: url("../Images/user.png"); 
+ background-size: 30% 55%;  
+}
+.fa-facebook,.fa-google,.fa-user{
+    width: 95px;
+    height: 48px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 11px;   
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;        
+}
+#img1{
+    margin: 10px auto;
+    vertical-align: middle;
+    border-style: none;
+    width: 70px;
+    height: 70px;
+    margin-left: 195px;
+    margin-top: 15px;
+}
+
+.inputIcon .placeicon{                        
+    font-family: fontawesome ;
+    font-size: 5px;
+}
+.logo {
+    display: flex;
+    justify-content: space-between;   
+}
+.inputIcon{
+     /* position: relative; */
+     width: 72%;
+     float: right;
+     margin-bottom: 3px; 
+    
+}
+.placeicon{
+    font-size: 10px; 
+}
+.inputIcon i{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 9px 8px;
+    font-size: 10px;
+    color: rgb(226, 222, 222);
+    
+} 
+button:disabled{
+    width: 350px;
+    height: 45px;
+    border-radius: 10px;
+    
+    outline: none; 
+    color: white;
+    font-size: 18px;
+    margin: 30px auto;
+    border: none;
+}
+button:enabled{
+    width: 350px;
+    height: 45px;
+    border-radius: 10px;
+     background-image: linear-gradient(#97DBD7, #3FB2AA); 
+    outline: none; 
+    color: #fff;
+    font-size: 18px;
+    margin: 30px auto;
+    cursor: pointer;
+    border: none;
+}
+.form-control{
+    position: relative;
+    top: -40px;
+    border: 2px solid #3fb2aa;
+    margin-left: -100px;
+    height: calc(2em + 0.75rem + -3px);
+    width:0%;
+    z-index: 10;
+   
+}
+.form-group{
+    width: 40%;
+}
+#country{
+    width:93%;
+}
+#button1{
+    margin-top: -3%;
+}

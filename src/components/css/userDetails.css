@@ -1,0 +1,261 @@
+body{
+  background-color: #111;
+}
+.text-center{
+    margin-left: 130px;
+  }
+  .wrapper5 {
+    margin-top: 10px;
+    /* height: 100vh; */
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url(image/FMS_Bac.png); */
+    /* background-color: #258ea6; */
+    /* background-image: url("image/FMS_Bac.png"); */
+  }
+  
+  /* .form-wrapper1 {
+     width: 400px; 
+    display: flex;
+    flex-direction: column;
+     padding: 20px 40px; 
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+  } */
+  
+  form {
+    margin-top: -26px;
+    color: #555;
+    display: flex;
+    margin-left: 1%;
+  }
+  
+  h1 {
+    text-align: center;
+    width: 100%;
+    color: #111;
+    font-weight: lighter;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  
+  label {
+    font-size: 0.8em;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: lighter;
+  }
+  
+  input {
+    padding: 8px 5px 8px 2px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 10px;
+     border: 1px solid #3fb2aa;
+     font-size: 12px;
+    
+  }
+  
+  input::placeholder {
+    /* font-size: 1.2em; */
+    font-size: 12px;
+    font-weight: lighter;
+    color: #999;
+  }
+  
+  input.error {
+    border: 1px solid red;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 0.75em;
+    display: relative;
+  }
+  
+  .firstName {
+    margin-right: 1%;
+  }
+  
+  .lastName {
+    margin-left: 1%;
+  }
+  
+  .firstName,
+  .lastName,
+  .email,
+  .password {
+    display: flex;
+    flex-direction: column;
+    /* margin-bottom: 15px; */
+  }
+  
+  .firstName,
+  .lastName {
+    width: 49%;
+  }
+  
+  .email,
+  .password {
+    width: 100%;
+  }
+  
+  .createAccount {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .createAccount button {
+    background-color: #519e8a;
+    color: #fff;
+    border: 2px solid #fff;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
+  
+  .createAccount button:hover {
+    color: #519e8a;
+    background-color: #fff;
+    border: 2px solid #519e8a;
+  }
+  
+  .createAccount small {
+    color: #999;
+    font-weight: lighter;
+  }
+  
+  .fullName
+  {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 49%;
+     margin-right: 1%; 
+     /* margin-right: 2%;  */
+  }
+  .mobileNumber,
+  .years,
+  .panNumber,
+  .jobOpening{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 49%;
+    margin-left: 1%;
+  }
+  .Email,
+  .aadhar,
+  .education,
+  .applied{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 49%;
+    margin-right: 1%;
+  }
+  /* .text-center{
+    margin-left: 178px;
+  } */
+  /* .text-center h3{
+    margin-right: 96px;
+  } */
+  h3{
+    margin-right: 96px;
+  }
+  .img{
+    width: 50px;
+    height: 50px;
+  }
+  .checkbox{
+    margin-top: -22px;
+    margin-left: 183px;
+  }
+  .text-center h3{
+    text-align: center;
+    padding-top: 0%;
+    /* padding-bottom: 10px; */
+    font-size: 27px;
+    color: #707070;
+    margin-left: -11px;
+    margin-bottom: 25px;
+  
+  }
+  .years{
+    position: inherit;
+  }
+  #demo{ 
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 1%;
+    float: left;
+    border: none;
+   border-bottom: 1px solid #9e9e9e;
+   border-radius: inherit;
+   font-size: 16px;
+   color: #9e9e9e;
+   padding: 1px 0px 6px 1px;
+  }
+  #update{
+    width: 100%;
+    margin-top: 5px;
+    margin-left: -3%;
+    float: left;
+    border: none;
+   border-bottom: 1px solid #9e9e9e;
+   border-radius: inherit;
+   font-size: 16px;
+   color: #9e9e9e;
+   padding: 1px 0px 6px 1px;
+  }
+   
+  .choose{
+    margin-top: -27px;
+    display: flex;
+    margin-left: 1%;
+    }
+  .img4{
+    margin-top: -9px;
+    width: 70px;
+    height: 70px;
+    margin-left: -110px;
+  }
+  .text-center4{
+    text-align: center;
+    padding-top: 4%;
+    padding-bottom: 0px;
+    font-size: 35px;
+    color: #707070;
+    margin-left: 33px;
+  }
+  .form-wrapper4{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+    height: 565px;
+  }
+  /* #yes{
+    color: green;
+  } */
+  /* #year{
+    
+  } */
+  /* .demo{
+    position: initial;
+    margin-left: 16%;
+    width: 268%;
+  } */
