@@ -22,16 +22,16 @@ export class dashboardHelp extends Component {
             
             <div>
             <nav >
-            <div className="nav-wrapper white ">
-            <a className="brand-logo left" id="img"> 
-                <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
-            </a>
-                <ul id="nav-mobile" className="right">
-                <li><Link to="/dashboard">Home</Link></li>
-                <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
-                <li><a href="">Profile</a></li>
-            </ul>
-            </div>
+              <div className="nav-wrapper white ">
+                  <a className="brand-logo left" id="img"> 
+                      <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
+                  </a>
+                  <ul id="nav-mobile" className="right">
+                  <li><Link to="/dashboard">Home</Link></li>
+                  <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
+                  <li><a href="">Profile</a></li>
+              </ul>
+              </div>
         </nav>
 
      

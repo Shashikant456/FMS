@@ -8,10 +8,10 @@
     height:500px; 
     overflow:hidden;
     overflow-y:scroll;
+    margin-left: 15px;
   }
   #container2{
     height:500px; 
-
     overflow:hidden;
     overflow-y:scroll;
     margin-left: 5%;
@@ -48,6 +48,7 @@
 #src1{
   margin-top: -12px;
   text-transform: initial;
+  border-radius: 8px;
 }
 #dashicn{
   color:#1de9b6;
@@ -61,7 +62,7 @@
 }
 #dashbtn{
   width: 120px;
-  margin-top: 18px;
+  margin-top: 8px;
   border-radius: 10px;
   background: #3FB2AA; 
   color: white;

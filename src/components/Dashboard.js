@@ -54,21 +54,22 @@ class Dashboard extends Component {
             posts.map(post => {
                 return(
                     <div className="row post card" key={post.id}>
-                        <div >
+                        <div className="card-content" >
+
                             <div className="col s3 m3 l3">
-                                <p className="">{post.jobType}</p>
+                                <strong className="text-bold">{post.jobType}</strong>
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s3 m3 l3">
-                                <p className="">{post.jobType}</p>
+                                <strong className="text-bold">{post.jobType}</strong>
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s3 m3 l3">
-                                <p className="">{post.jobType}</p>
+                                <strong className="text-bold">{post.jobType}</strong>
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s3 m3 l3 right-align">
-                             <a className="btn" id="dashbtn">Apply</a>
+                                <a className="btn" id="dashbtn">Apply</a>
                             </div>
                            
                          </div>
@@ -97,13 +98,15 @@ class Dashboard extends Component {
            
 
                 <div className="row">
-                <img className="center" id="dashboard" src={dashboard} ></img>
-
+                <div className="">
+                     <img className="center" id="dashboard" src={dashboard} ></img>
+                     
+                </div>
 
                 <nav className="container white" id="search">
                 <div className="nav-wrapper">
                         <div className="input-field">
-                        <input type="search" placeholder="Search jobs" required ></input>
+                        <input type="search" placeholder="Search jobs"></input>
                         <i className="material-icons right">
                     
                         <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
