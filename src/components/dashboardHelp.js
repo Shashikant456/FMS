@@ -28,7 +28,7 @@ export class dashboardHelp extends Component {
             </a>
                 <ul id="nav-mobile" className="right">
                 <li><Link to="/dashboard">Home</Link></li>
-                <li><a href="" className="waves-effect waves-light btn-small" >Help</a></li>
+                <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
                 <li><a href="">Profile</a></li>
             </ul>
             </div>

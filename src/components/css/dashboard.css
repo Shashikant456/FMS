@@ -46,7 +46,7 @@
   text-transform: lowercase;
 }
 #src1{
-
+  margin-top: -12px;
   text-transform: initial;
 }
 #dashicn{
@@ -58,5 +58,20 @@
 #editicn{
   cursor: pointer;
   color:gray;
+}
+#dashbtn{
+  width: 120px;
+  margin-top: 18px;
+  border-radius: 10px;
+  background: #3FB2AA; 
+  color: white;
+  text-transform: initial;
+}
+#btnnav{
+  width: 75px;
+  text-decoration: none;
+  background: #3FB2AA; 
+  color: white;
+  text-transform: initial;
 }
 

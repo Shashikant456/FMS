@@ -201,7 +201,7 @@ button:enabled{
     width: 350px;
     height: 45px;
     border-radius: 10px;
-     background-image: linear-gradient(#97DBD7, #3FB2AA); 
+    background-image: linear-gradient(#97DBD7, #3FB2AA); 
     outline: none; 
     color: #fff;
     font-size: 18px;

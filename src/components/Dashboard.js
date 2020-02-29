@@ -7,7 +7,7 @@ import { withRouter,Link,NavLink } from 'react-router-dom'
 
 class Dashboard extends Component {
     state = {
-        posts :[ ],
+        posts :[],
         details:[]
     }
     componentDidMount(){
@@ -53,13 +53,25 @@ class Dashboard extends Component {
         const postList = posts.length ? (
             posts.map(post => {
                 return(
-                    <div className="post card" key={post.id}>
-                        <div className="card-content">
-                          
-                            <span className="card-title">{post.jobType}</span>
-                          
-                            <p>{post.serviceArea}</p>
-                        </div>
+                    <div className="row post card" key={post.id}>
+                        <div >
+                            <div className="col s3 m3 l3">
+                                <p className="">{post.jobType}</p>
+                                <p>{post.serviceArea}</p>
+                            </div>
+                             <div className="col s3 m3 l3">
+                                <p className="">{post.jobType}</p>
+                                <p>{post.serviceArea}</p>
+                            </div>
+                             <div className="col s3 m3 l3">
+                                <p className="">{post.jobType}</p>
+                                <p>{post.serviceArea}</p>
+                            </div>
+                             <div className="col s3 m3 l3 right-align">
+                             <a className="btn" id="dashbtn">Apply</a>
+                            </div>
+                           
+                         </div>
                     </div>
                 )
             })
@@ -75,10 +87,10 @@ class Dashboard extends Component {
                         <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
                     </a>
                         <ul id="nav-mobile" className="right">
-                        <li><Link to="/dashboard" className="waves-effect waves-light btn-small">Home</Link></li>
-                        <li><Link to="/help">Help</Link></li>
-                        <li><a href="">Profile</a></li>
-                    </ul>
+                            <li><Link to="/dashboard" className="waves-effect waves-light btn-small" id="btnnav">Home</Link></li>
+                            <li><Link to="/help">Help</Link></li>
+                            <li><a href="">Profile</a></li>
+                        </ul>
                     </div>
                 </nav>
 
