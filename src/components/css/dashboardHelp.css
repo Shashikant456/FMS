@@ -2,7 +2,7 @@
 
 *{
   padding: 0px; margin: 0px; 
-  font-family: lato;
+    font-family: 'Lato', ;
   box-sizing: border-box;
 }
 
@@ -30,8 +30,9 @@
    margin-top:10px;
 } */
 .nav-wrapper .brand-logo img {
-    height: 55px;
-    width: 10%;
+    height: 47px;
+    width: 130px;
+    padding-left: 81px;
 }
 #container{
     height:500px; 
@@ -78,4 +79,16 @@
   #locicon{
     color: #3FB2AA;
   }
-  
+  #collpsible{
+    width: 90%;
+    
+  }
+  #colli{
+    height: 389px;
+    width: 991px;
+  }
+  #ques{
+    margin: 80px auto;
+  }
+ 
+ 

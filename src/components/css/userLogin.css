@@ -1,3 +1,7 @@
+*{
+  font-family: 'Lato', ;
+}
+
 #main1{
     width: 390px;
     height: 480px;
@@ -32,6 +36,12 @@
 #input-type3{
   width: 288px;
 }
+#input-type4{
+  width: 288px;
+  margin-top: -7px;
+}
+
+
 #iconn{
   color: gray;
   margin-top: 8px;
@@ -49,7 +59,9 @@
 }
 #otp{
   color: gray;
-  margin-left: 35px;
+  margin-left: 85px;
+  margin: 20px auto;
+  margin-bottom: 46px;
 }
 #main2{
   position: absolute;

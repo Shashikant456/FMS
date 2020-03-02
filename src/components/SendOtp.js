@@ -89,7 +89,7 @@ class SendOtp extends Component{
                 <h2>Login</h2>
 
              <div className="inputIcon">
-            <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required maxLength="12" className="placeicon" placeholder="Enter Your Mobile Number "></input><span id="message"></span>
+            <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required maxLength="10" className="placeicon" placeholder="Enter Your Mobile Number "></input><span id="message"></span>
             <Form.Group  onChange={this.handleChange1}>
                     
                     <Form.Control as="select" value={this.state.countryCode} onChange={this.handleChange1} id="country">

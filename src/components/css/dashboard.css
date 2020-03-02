@@ -1,3 +1,7 @@
+*{
+  font-family: 'Lato', ;
+}
+
 #back{
   background-color: white;
 } 
@@ -43,7 +47,7 @@
   }
 #src{
   margin-top: -20px;
-  text-transform: lowercase;
+  
 }
 #src1{
   margin-top: -12px;

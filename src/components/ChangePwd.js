@@ -7,7 +7,8 @@ class ChangePwd extends Component {
         state = {
         mob:'',
         password:'',
-        confirmPassword:''
+        confirmPassword:'',
+        error:''
     }
 
         componentDidMount(){
@@ -33,10 +34,11 @@ class ChangePwd extends Component {
         const { password, confirmPassword } = this.state;
 
         if (password !== confirmPassword) {
-            alert("Passwords don't match");
+            
             this.setState({
                 password:'',
-                confirmPassword:''
+                confirmPassword:'',
+                error:"Password and Confirmpassword miss-match"
             })
         } else {
             axios.put('http://stskfacilities.com:8081/stskFmsApi/userLogin/resetpassword', 
@@ -44,12 +46,9 @@ class ChangePwd extends Component {
                 mob:this.state.mob,
                 password:this.state.password})
            .then(Response => {
-            if (Response.data.success==="1"){
+        
                 this.props.history.push('./userLogin')
-            }
-            else{
-                console.log("try")
-            }
+            
                 console.log(Response)
                 console.log(Response.data)
             })
@@ -92,11 +91,12 @@ class ChangePwd extends Component {
                 </div>
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
-                    <input id="icon_prefix" type="password" required value={this.state.conformPassword} onChange={this.handleChange2}
-                     placeholder="Conform password" onChange={this.handleChange2}/>
-                
+                    <input id="icon_prefix" type="password" required value={this.state.confirmPassword} onChange={this.handleChange2}
+                     placeholder="Confirm password" onChange={this.handleChange2}/>
+                     <p className="red-text">{this.state.error}</p>
                 </div>
-            <button id="input-type3">Save</button>
+                
+            <button id="input-type4">Save</button>
              </form>
             
              </center>

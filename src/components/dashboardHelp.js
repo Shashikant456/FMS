@@ -3,15 +3,16 @@ import './css/dashboardHelp.css'
 import  mainLogo from './Images/Mainlogo.png'
 import dashboard from './Images/dashboard.png'
 import {  withRouter, Link} from 'react-router-dom'
-import jobseeker from './Images/jobseeker.png'
-import vendor from './Images/vendor.png'
-import association from './Images/association.png'
-import recident from './Images/resident.png'
+// import jobseeker from './Images/jobseeker.png'
+// import vendor from './Images/vendor.png'
+// import association from './Images/association.png'
+// import recident from './Images/resident.png'
+import axios from 'axios'
 import * as $ from 'jquery'
 
 
 export class dashboardHelp extends Component {
-  
+
     render() {
       // $(document).ready(function(){
       //   $('.collapsible').collapsible();
@@ -46,7 +47,7 @@ export class dashboardHelp extends Component {
                 <input type="search" placeholder="Search jobs" required ></input>
                 <i className="material-icons right">
             
-                <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
+                <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i></a></i>
                 
                 <label className="label-icon"><i className="material-icons">search</i>
             </label>
@@ -59,11 +60,11 @@ export class dashboardHelp extends Component {
         <h4 className="center">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
-        <div className="row container">
+        <div className="row container" style={{marginLeft:"100px"}}>
           <div className="col s3 m3 l3">
             <div className="card hoverable">
               <div className="card-image">
-                <img src={jobseeker} width="30" height="50"/>
+                 
               </div>
               <div className="card-content">
                 <p>Job seeker</p>
@@ -74,7 +75,7 @@ export class dashboardHelp extends Component {
             <div className="col s3 m3 l3 ">
             <div className="card hoverable">
               <div className="card-image">
-                <img src={vendor}/>
+                
               </div>
               <div className="card-content">
                 <p>Vendor</p>
@@ -85,7 +86,7 @@ export class dashboardHelp extends Component {
             <div className="col s3 m3 l3">
             <div className="card hoverable">
               <div className="card-image">
-                <img src={association}/>
+                
               </div>
               <div className="card-content">
                 <p>Association</p>
@@ -96,7 +97,7 @@ export class dashboardHelp extends Component {
             <div className="col s3 m3 l3">
             <div className="card hoverable">
               <div className="card-image">
-                <img src={recident}/>
+                
               </div>
               <div className="card-content">
                 <p>Recident</p>
@@ -105,24 +106,53 @@ export class dashboardHelp extends Component {
             </div>
           </div>
 
-          
-            <div className="row">
-              <div className="container"> 
-                <ul className="col s8 m8 l8 offset-s2 offset-l2 offset-m2 collapsible" id="toggle">
-                <li>
-                  <div className="collapsible-header"><i className="material-icons">expand_more</i>First</div>
-                  <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
+          <div className="container z-depth-1" id="colli">
+          <h5 className="center-align" id="coll">Job Seeker</h5>
+              <ul class = "collapsible container" data-collapsible ="accordion" id="collpsible">
+              <li>
+                <div class = "collapsible-header">
+                    <i class = "material-icons"></i>Is there a cost for the service?</div>
+                <div class = "collapsible-body"><p>This is first section.</p></div>
+              </li>
               </ul>
-              </div>
-            </div> 
+              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <li>
+                <div class = "collapsible-header">
+                    <i class = "material-icons"></i>How do I apply for a position?</div>
+                <div class = "collapsible-body"><p>This is first section.</p></div>
+              </li>
+              </ul>
+              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <li>
+                <div class = "collapsible-header">
+                    <i class = "material-icons"></i>What are the next steps after I apply for a position?</div>
+                <div class = "collapsible-body"><p>This is first section.</p></div>
+              </li>
+              </ul>
+              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <li>
+                <div class = "collapsible-header">
+                    <i class = "material-icons"></i>How should I prepare for my Interview?</div>
+                <div class = "collapsible-body"><p>This is first section.</p></div>
+              </li>
+              </ul>
+              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <li>
+                <div class = "collapsible-header">
+                    <i class = "material-icons"></i>How to edit my information in the portal?</div>
+                <div class = "collapsible-body"><p>This is first section.</p></div>
+              </li>
+              </ul>
+             
+            
+            </div>
               
 
 
-
-              <h5 className="center">You still have a questions?</h5>
+            <div id="ques">
+              <h4  className="center">You still have a questions?</h4>
               <p className="center gray-text" id="textcolor">Lets talk about everything!</p>
-
+              </div>
 
               <div className="row container">
               <div className="col s6 m5 l5 offset-m3 offset-l3 z-depth-1 center " id="mail">
@@ -138,7 +168,7 @@ export class dashboardHelp extends Component {
 
             <div className="container z-depth-1">
               <ul className="">
-                <div className="collapsible-header">System info: <p>Its </p></div>
+                <div className="collapsible-header">System info:</div>
               </ul>
             </div>
 
@@ -159,7 +189,7 @@ export class dashboardHelp extends Component {
                     </div>
                   </div>
                   <div className="footer-copyright center" id="footer">
-                    <div>
+                    <div class="text-center"  style={{marginLeft:"470px"}}>
                     Copyright @2020 All rights reserved | This tamplate is made with STSK
                     <a className="grey-text text-lighten-4 right" href="#!"></a>
                     </div>

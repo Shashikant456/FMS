@@ -74,7 +74,7 @@ class Register extends Component {
           email:this.state.email,
           password: this.state.password,
           userRoles:{
-                "id":this.state.userRoles.id
+                id:this.state.userRoles.id
            }    
         })
         .then(response=>{

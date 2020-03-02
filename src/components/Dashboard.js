@@ -8,25 +8,26 @@ import { withRouter,Link,NavLink } from 'react-router-dom'
 class Dashboard extends Component {
     state = {
         posts :[],
-        details:[]
+        details:[],
+        userId:''
     }
+    // componentWillMount(){
+    //     this.setState({
+    //         userId:this.props.location.state.userId
+    //     })
+        
+    //}
     componentDidMount(){
         this._isMounted = true;
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     var elems = document.querySelectorAll('.sidenav');
-        //     var instances = M.Sidenav.init(elems,{});
-        // });
-
-
-
-        // axios.get('http://stskfacilities.com:8081/stskFmsApi/jobseeker/getById/'+1)
-        // .then(res =>{
-        //     console.log(res.data)
-        //     console.log(res.data.data)
-        //     this.setState({
-        //         details: res.data.data
-        //     });
-        // })
+        axios.get('http://stskfacilities.com:8081/stskFmsApi/jobseeker/getById/'+this.state.userId)
+        .then(res =>{
+            console.log(res.data)
+            console.log(res.data.data)
+            console.log(this.state.userId)
+            this.setState({
+                details: res.data.data
+            });
+        })
 
         // axios.get('https://jsonplaceholder.typicode.com/posts')
         // .then(res => {
@@ -82,7 +83,7 @@ class Dashboard extends Component {
        
         return (
             <div id="back">
-               <div class="navbar-fixed">
+               <div className="navbar-fixed">
                     <nav >
                         <div className="nav-wrapper white ">
                         <a className="brand-logo left" id="img"> 
@@ -110,7 +111,7 @@ class Dashboard extends Component {
                         <input type="search" placeholder="Search jobs"></input>
                         <i className="material-icons right">
                     
-                        <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
+                        <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i></a></i>
                         
                         <label className="label-icon"><i className="material-icons">search</i>
                     </label>
@@ -131,14 +132,14 @@ class Dashboard extends Component {
                             <i className="material-icons small right">edit</i>
                         </div>
                         <div className="center" id="profile1">
-                            <i className="material-icons large">person</i>
-                            <p>{}</p>
+                            <i className="material-icons large">person</i><br></br>
+                            <strong className="center-align">{this.state.details.name}</strong>
                             <div className="left-align">
                                 <p><i className="material-icons small" id="dashicn">location_on</i>{this.state.details.ulCode}</p>
                                 <p><i className="material-icons small" id="dashicn">email</i>{this.state.details.email}</p>
-                                <p><i className="material-icons small" id="dashicn">call</i>Mobile number</p>
-                                <p><i className="material-icons small" id="dashicn">book</i>Address</p>
-                                <p><i className="material-icons small" id="dashicn">book</i>Pin-code</p>
+                                <p><i className="material-icons small" id="dashicn">call</i>{this.state.details.mob}</p>
+                                <p><i className="material-icons small" id="dashicn">book</i>{this.state.details.experience}</p>
+                                <p><i className="material-icons small" id="dashicn">book</i>{this.state.details.eduQual}</p>
                             </div> 
                             
                             <hr></hr>
@@ -165,7 +166,7 @@ class Dashboard extends Component {
 
                  <footer className="page-footer white">
                  <div className="footer-copyright center" id="footer">
-                   <div className="center">
+                   <div class="text-center"  style={{marginLeft:"470px"}}>
                    <p className="center" id="footer1">Copyright @2020 All rights reserved | This tamplate is made with STSK</p>
                    <a className="grey-text text-lighten-4 right" href="#!"></a>
                    </div>

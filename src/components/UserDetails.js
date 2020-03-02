@@ -173,7 +173,21 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
   })
  
   .then(response=>{
-    console.log(response)
+    if(response.data.success===1)
+    {
+      console.log(response)
+      console.log(response.data)
+      this.props.history.push('./dashboard')
+      // this.props.history.push({
+      //   pathname : '/dashboard',
+      //   state :{
+      //   mobileNumber : this.state,
+      //   userId: this.state.userId
+      //   }
+      //   } 
+      // );
+     
+    }
    
     })
     .catch(error=>{
@@ -219,7 +233,7 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
     axios.get('http://stskfacilities.com:8081/stskFmsApi/userLogin/getByMob/'+this.state.mob)
     .then(res=>{
       console.log(res.data)
-       console.log(res.data.data.id)
+       
         this.setState({
             userLogin : {
               id:res.data.data.id
@@ -240,11 +254,11 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
       jobUpdate : e.target.value
     });
   }
-  // handleCheck = (e) =>{
-  //   this.setState({
-  //     check:true
-  //   });
-  // }
+  handleCheck = (e) =>{
+    this.setState({
+      check:true
+    });
+  }
 
   render() {
   console.log(this.state.userLogin)

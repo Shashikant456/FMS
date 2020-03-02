@@ -1,6 +1,6 @@
 *{
     padding: 0px; margin: 0px; 
-    font-family: lato;
+    font-family: 'Lato', ;
     box-sizing: border-box;
     
 }
@@ -79,3 +79,8 @@
     margin-left: -10px;
     margin: 10px auto;
   }
+  #pre{
+    margin-top: 13px;
+    margin-right: 28px;
+}
+  

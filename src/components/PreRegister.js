@@ -54,7 +54,7 @@ export class Register extends Component {
                 
                 <div key={index} >
                 
-                     <Link to={"/register"+"/"+post.id+"/"+post.name}><h6>{post.name}</h6></Link>
+                     <Link to={"/register"+"/"+post.id+"/"+post.name}><h6 id="pre">{post.name}</h6></Link>
                     
                 </div>
 

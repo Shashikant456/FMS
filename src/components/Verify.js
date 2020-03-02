@@ -11,13 +11,17 @@ class Verify extends Component{
     state = {  
                 mobileNumber:'',
                 otp_input:'',
-                error:''
+                error:'',
+                userId:'',
+                dash:''
              }
              componentDidMount(){
                 this.setState({
                     mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
+                           
+                    
     handleChange = (e) => {
         this.setState({
             otp_input: e.target.value  
@@ -49,12 +53,22 @@ class Verify extends Component{
                     {
                         axios.get('http://stskfacilities.com:8081/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
                         .then(Response => {
-                            // console.log(Response.data)
+                            console.log(Response.data)
+                          
                            
                             if (Response.data.success===1){
                                 console.log("Dashboard")
                                 //history.push('/login', {Login});
-                                this.props.history.push('./dashboard')
+                                //this.props.history.push('./dashboard')
+                                this.props.history.push({
+                                    pathname : '/dashboard',
+                                    state :{
+                                    mobileNumber : this.state,
+                                    //userId: this.state.userId
+                                    }
+                                    } 
+                                  );
+                                
                             }
                             else {
                                 //this.props.history.push('./register')
@@ -65,8 +79,8 @@ class Verify extends Component{
                                     }
                                     } 
                                   );
-                            }
-                        })
+                                }
+                            })
                     }
                     else {
                         console.log("error")
@@ -91,50 +105,7 @@ class Verify extends Component{
     render(){
         console.log(this.state.otp_input)
     return(
-        // <div className="container">
-        //     <h3 className="center"></h3>
-        //       <div className="container">
-        //           <form onSubmit={this.handleSubmit}>
-        //               <input type="text" required onChange={this.handleChange} value={this.state.otp_input} placeholder="enter otp"></input>
-        //               <button className="waves-effect waves-light btn" type="submit">Verify</button>
-        //           </form>
-        //       </div>
-        // </div>aaaa
-
-
-
-        // <div className="wrapper">
-
-        // <div className="form-wrapper">
-        // <div className="text-center">
-        //   <h5>Enter Otp</h5>
-        // <img src={logo} alt="" className="img"></img>
-        // </div>
-         
-        //   <form onSubmit={this.handleSubmit} noValidate>
-           
-        //     <div className="otp">
-        //       {/* <label htmlFor="email">Email</label> */}
-        //       <h6>Enter Otp Here</h6>
-        //         <input placeholder="Enter Otp" type="text" onChange={this.handleChange}/>
-             
-        //          </div>
-        //                 <div className="Verify">
-        //                     <button type="submit">Verify</button>
-        //                     </div>
-        //         </form>
-                            
-        //                     <br/> <br/>
-        //                     <span className="border-right"><small className="text-center"><h4>or</h4></small></span>
-        //                     <br/><br/>
-        //                     <div className="missedcall">
-        //                     <button onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
-                    
-        //             </div>
-                
-        //      </div>
-        //  </div>
-
+        
         <div className="wrapper">
 
         <div className="form-wrapper">
