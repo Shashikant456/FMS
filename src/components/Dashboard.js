@@ -48,7 +48,7 @@ class Dashboard extends Component {
     render() {
         
         console.log(this.state)
-        console.log(this.state.details.email)
+        console.log(this.state.userId)
 
         const {posts} = this.state;
         const postList = posts.length ? (

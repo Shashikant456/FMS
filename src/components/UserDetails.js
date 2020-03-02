@@ -147,14 +147,15 @@ class UserRole extends Component {
   // }
   //clear form
 
-  // this.props.history.push({
-  //           pathname : '/dashboard',
-  //           state :{
-  //           mobileNumber : this.state,
-  //           userId: this.state.userLogin.id
-  //           }
-  //           } 
-  //         );
+//   this.props.history.push({
+//             pathname : '/dashboard',
+//             state :{
+//             mobileNumber : this.state,
+//             userId: this.state.userLogin.id
+//             }
+//             } 
+//           );
+//  }
  
    if(this.state.check===true){
   axios.post('http://stskfacilities.com:8081/stskFmsApi/jobseeker/createJS',{
@@ -186,7 +187,7 @@ class UserRole extends Component {
         pathname : '/dashboard',
         state :{
         mobileNumber : this.state,
-        userId: this.state.userLogin
+        userId: this.state.userLogin.id
         }
         } 
       );
