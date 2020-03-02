@@ -58,16 +58,34 @@ class Verify extends Component{
                            
                             if (Response.data.success===1){
                                 console.log("Dashboard")
-                                //history.push('/login', {Login});
-                                //this.props.history.push('./dashboard')
-                                this.props.history.push({
-                                    pathname : '/dashboard',
-                                    state :{
-                                    mobileNumber : this.state,
-                                    //userId: this.state.userId
+                                axios.get('http://stskfacilities.com:8081/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber)
+                                .then(res =>{
+                                    if(res.data.success===1){
+                                        this.setState({
+                                            userId:res.data.data.id
+                                        })
+                                        this.props.history.push({
+                                            pathname : '/dashboard',
+                                            state :{
+                                            mobileNumber : this.state,
+                                            userId: this.state.userId
+                                            }
+                                            } 
+                                          );
                                     }
-                                    } 
-                                  );
+                                    else{
+                                        this.props.history.push({
+                                            pathname : '/userDetails',
+                                            state :{
+                                            mobileNumber : this.state
+                                            }
+                                            } 
+                                          );
+                                        }
+                                })
+
+                               
+                               
                                 
                             }
                             else {

@@ -44,7 +44,7 @@ class UserRole extends Component {
       check:false,
       name: null,
       email: null,
-      mob:'',
+      mob:'7676476756',
       panNum: null,
       aadharNum: null,
       
@@ -54,9 +54,7 @@ class UserRole extends Component {
       jobUpdate:null,
       //jobss:null,
       // update:null,
-      userLogin:
-        { id:''}
-      ,
+      userLogin:'',
       jobTypes:[
         { id:''}
       ],
@@ -79,9 +77,9 @@ class UserRole extends Component {
         jobUpdate:"",
        //jobss:"",
          //update:"",
-         userLogin:[
-          { id:''}
-        ],
+        //  userLogin:[
+        //   { id:''}
+        // ],
         jobTypes:[
           { id:''}
         ]
@@ -97,18 +95,15 @@ class UserRole extends Component {
 
   componentDidMount(){
    
-axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
+    axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
     .then(res=>{
       console.log(res.data)
       console.log(res.data.data)
       console.log(this.state.mob)
         this.setState({
             jobs : res.data.data,
-            mob:this.props.location.state.mobileNumber.mob
-
-           
+            //mob:this.props.location.state.mobileNumber.mob 
         })  
-       
     })
    
   
@@ -151,6 +146,15 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
    // console.log(this.state)
   // }
   //clear form
+
+  // this.props.history.push({
+  //           pathname : '/dashboard',
+  //           state :{
+  //           mobileNumber : this.state,
+  //           userId: this.state.userLogin.id
+  //           }
+  //           } 
+  //         );
  
    if(this.state.check===true){
   axios.post('http://stskfacilities.com:8081/stskFmsApi/jobseeker/createJS',{
@@ -164,7 +168,7 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
     eduQual: this.state.eduQual,
     jobUpdate:this.state.jobUpdate,
     userLogin:{
-      id:this.state.userLogin.id
+      id:this.state.userLogin
     },
     jobTypes:[{
       id:this.state.jobTypes.id
@@ -178,14 +182,14 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
       console.log(response)
       console.log(response.data)
       this.props.history.push('./dashboard')
-      // this.props.history.push({
-      //   pathname : '/dashboard',
-      //   state :{
-      //   mobileNumber : this.state,
-      //   userId: this.state.userId
-      //   }
-      //   } 
-      // );
+      this.props.history.push({
+        pathname : '/dashboard',
+        state :{
+        mobileNumber : this.state,
+        userId: this.state.userLogin
+        }
+        } 
+      );
      
     }
    
@@ -193,24 +197,7 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
     .catch(error=>{
       console.log(error)
   })
-  console.log(this.state)
 
-   
-    // if (formValid(this.state)) {
-    //   console.log(`
-    //     --SUBMITTING--
-    //     Full Name: ${this.state.name}
-    //     Mobile Number: ${this.state.mob}
-    //     Email: ${this.state.email}
-    //     panNumber: ${this.state.panNum}
-    //     aadhar: ${this.state.aadharNum}
-    //     years: ${this.state.experience}
-    //     education: ${this.state.eduQual}
-    //     jobUpdate:${this.state.jobUpdate}
-    //    `);
-    // } else {
-    //   console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-    // }
   }
     else{
       this.setState({
@@ -218,7 +205,7 @@ axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
       })
     }
   
-};
+ };
   handleChange = e => {
    
       this.setState({update : e.target.value});

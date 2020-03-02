@@ -11,12 +11,12 @@ class Dashboard extends Component {
         details:[],
         userId:''
     }
-    // componentWillMount(){
-    //     this.setState({
-    //         userId:this.props.location.state.userId
-    //     })
+    componentWillMount(){
+        this.setState({
+            userId:this.props.location.state.userId
+        })
         
-    //}
+    }
     componentDidMount(){
         this._isMounted = true;
         axios.get('http://stskfacilities.com:8081/stskFmsApi/jobseeker/getById/'+this.state.userId)
@@ -111,7 +111,8 @@ class Dashboard extends Component {
                         <input type="search" placeholder="Search jobs"></input>
                         <i className="material-icons right">
                     
-                        <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i></a></i>
+                        <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1">
+                        <i className="material-icons right" id="src">search</i>Search</a></i>
                         
                         <label className="label-icon"><i className="material-icons">search</i>
                     </label>
@@ -166,7 +167,7 @@ class Dashboard extends Component {
 
                  <footer className="page-footer white">
                  <div className="footer-copyright center" id="footer">
-                   <div class="text-center"  style={{marginLeft:"470px"}}>
+                   <div className="text-center"  style={{marginLeft:"470px"}}>
                    <p className="center" id="footer1">Copyright @2020 All rights reserved | This tamplate is made with STSK</p>
                    <a className="grey-text text-lighten-4 right" href="#!"></a>
                    </div>

@@ -22,7 +22,7 @@ export class dashboardHelp extends Component {
             <div id="back">
             
             <div>
-            <div class="navbar-fixed">
+            <div className="navbar-fixed">
                 <nav >
                   <div className="nav-wrapper white ">
                       <a className="brand-logo left" id="img"> 
@@ -47,7 +47,7 @@ export class dashboardHelp extends Component {
                 <input type="search" placeholder="Search jobs" required ></input>
                 <i className="material-icons right">
             
-                <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i></a></i>
+                <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
                 
                 <label className="label-icon"><i className="material-icons">search</i>
             </label>
@@ -108,39 +108,39 @@ export class dashboardHelp extends Component {
 
           <div className="container z-depth-1" id="colli">
           <h5 className="center-align" id="coll">Job Seeker</h5>
-              <ul class = "collapsible container" data-collapsible ="accordion" id="collpsible">
+              <ul className = "collapsible container" data-collapsible ="accordion" id="collpsible">
               <li>
-                <div class = "collapsible-header">
-                    <i class = "material-icons"></i>Is there a cost for the service?</div>
-                <div class = "collapsible-body"><p>This is first section.</p></div>
+                <div className = "collapsible-header">
+                    <i className = "material-icons"></i>Is there a cost for the service?</div>
+                <div className = "collapsible-body"><p>This is first section.</p></div>
               </li>
               </ul>
-              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
-                <div class = "collapsible-header">
-                    <i class = "material-icons"></i>How do I apply for a position?</div>
-                <div class = "collapsible-body"><p>This is first section.</p></div>
+                <div className = "collapsible-header">
+                    <i className = "material-icons"></i>How do I apply for a position?</div>
+                <div className = "collapsible-body"><p>This is first section.</p></div>
               </li>
               </ul>
-              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
-                <div class = "collapsible-header">
-                    <i class = "material-icons"></i>What are the next steps after I apply for a position?</div>
-                <div class = "collapsible-body"><p>This is first section.</p></div>
+                <div className = "collapsible-header">
+                    <i className = "material-icons"></i>What are the next steps after I apply for a position?</div>
+                <div className = "collapsible-body"><p>This is first section.</p></div>
               </li>
               </ul>
-              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
-                <div class = "collapsible-header">
-                    <i class = "material-icons"></i>How should I prepare for my Interview?</div>
-                <div class = "collapsible-body"><p>This is first section.</p></div>
+                <div className = "collapsible-header">
+                    <i className = "material-icons"></i>How should I prepare for my Interview?</div>
+                <div className = "collapsible-body"><p>This is first section.</p></div>
               </li>
               </ul>
-              <ul class = "collapsible container" data-collapsible = "accordion" id="collpsible">
+              <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
-                <div class = "collapsible-header">
-                    <i class = "material-icons"></i>How to edit my information in the portal?</div>
-                <div class = "collapsible-body"><p>This is first section.</p></div>
+                <div className = "collapsible-header">
+                    <i className = "material-icons"></i>How to edit my information in the portal?</div>
+                <div className = "collapsible-body"><p>This is first section.</p></div>
               </li>
               </ul>
              
@@ -189,7 +189,7 @@ export class dashboardHelp extends Component {
                     </div>
                   </div>
                   <div className="footer-copyright center" id="footer">
-                    <div class="text-center"  style={{marginLeft:"470px"}}>
+                    <div className="text-center"  style={{marginLeft:"470px"}}>
                     Copyright @2020 All rights reserved | This tamplate is made with STSK
                     <a className="grey-text text-lighten-4 right" href="#!"></a>
                     </div>
