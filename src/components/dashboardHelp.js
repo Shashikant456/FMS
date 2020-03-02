@@ -13,10 +13,10 @@ import * as $ from 'jquery'
 export class dashboardHelp extends Component {
   
     render() {
-    //   function react() {
-    //     $('.collapsible').collapsible("toggle");
-      
-    // }
+      // $(document).ready(function(){
+      //   $('.collapsible').collapsible();
+      // });
+     
         return (
             <div id="back">
             

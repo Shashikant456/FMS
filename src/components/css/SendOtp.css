@@ -28,7 +28,7 @@
 
 *{
     padding: 0px; margin: 0px; 
-    font-family: lato;
+    font-family: 'Lato', ;
     box-sizing: border-box;
 }
 body{
@@ -71,7 +71,6 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);   
     padding-bottom: 20%;
-    font-family: lato;
 }
 #input1{
     border:1.5px solid #8ED6D2;
@@ -80,7 +79,6 @@ body{
     height: 45px;
     border-radius: 10px;
     outline: none;
-    font-family: lato;
     font-weight: 300;
     font-size: 27px; 
     float:right; 
@@ -114,7 +112,6 @@ body{
     margin-top: 10px;
     font-size: medium;
     letter-spacing: 1.5px;
-    font-family: lato;
     margin-left: 100px;
 }
 .fa-facebook {
