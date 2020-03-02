@@ -21,19 +21,20 @@ export class dashboardHelp extends Component {
             <div id="back">
             
             <div>
-            <nav >
-              <div className="nav-wrapper white ">
-                  <a className="brand-logo left" id="img"> 
-                      <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
-                  </a>
-                  <ul id="nav-mobile" className="right">
-                  <li><Link to="/dashboard">Home</Link></li>
-                  <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
-                  <li><a href="">Profile</a></li>
-              </ul>
-              </div>
-        </nav>
-
+            <div class="navbar-fixed">
+                <nav >
+                  <div className="nav-wrapper white ">
+                      <a className="brand-logo left" id="img"> 
+                          <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
+                      </a>
+                      <ul id="nav-mobile" className="right">
+                      <li><Link to="/dashboard">Home</Link></li>
+                      <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
+                      <li><a href="">Profile</a></li>
+                  </ul>
+                  </div>
+              </nav>
+            </div>
      
         <div className="row">
         <img className="center" id="dashboard" src={dashboard} ></img>
@@ -60,7 +61,7 @@ export class dashboardHelp extends Component {
 
         <div className="row container">
           <div className="col s3 m3 l3">
-            <div className="card">
+            <div className="card hoverable">
               <div className="card-image">
                 <img src={jobseeker} width="30" height="50"/>
               </div>
@@ -71,7 +72,7 @@ export class dashboardHelp extends Component {
             </div>
 
             <div className="col s3 m3 l3 ">
-            <div className="card">
+            <div className="card hoverable">
               <div className="card-image">
                 <img src={vendor}/>
               </div>
@@ -82,7 +83,7 @@ export class dashboardHelp extends Component {
             </div>
 
             <div className="col s3 m3 l3">
-            <div className="card">
+            <div className="card hoverable">
               <div className="card-image">
                 <img src={association}/>
               </div>
@@ -93,7 +94,7 @@ export class dashboardHelp extends Component {
             </div>
 
             <div className="col s3 m3 l3">
-            <div className="card">
+            <div className="card hoverable">
               <div className="card-image">
                 <img src={recident}/>
               </div>
@@ -165,7 +166,6 @@ export class dashboardHelp extends Component {
                 </div>
 
                 </footer>
-               
             
         </div>
         </div>
@@ -173,6 +173,7 @@ export class dashboardHelp extends Component {
     }
 }
 // $(document).ready(function(){
-//   $('#collapsible').collapsible();
+//   $('.collapsible').collapsible();
 // });
+
 export default withRouter(dashboardHelp)

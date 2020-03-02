@@ -82,19 +82,20 @@ class Dashboard extends Component {
        
         return (
             <div id="back">
-                <nav >
-                    <div className="nav-wrapper white ">
-                    <a className="brand-logo left" id="img"> 
-                        <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
-                    </a>
-                        <ul id="nav-mobile" className="right">
-                            <li><Link to="/dashboard" className="waves-effect waves-light btn-small" id="btnnav">Home</Link></li>
-                            <li><Link to="/help">Help</Link></li>
-                            <li><a href="">Profile</a></li>
-                        </ul>
-                    </div>
-                </nav>
-
+               <div class="navbar-fixed">
+                    <nav >
+                        <div className="nav-wrapper white ">
+                        <a className="brand-logo left" id="img"> 
+                            <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
+                        </a>
+                            <ul id="nav-mobile" className="right">
+                                <li><Link to="/dashboard" className="waves-effect waves-light btn-small" id="btnnav">Home</Link></li>
+                                <li><Link to="/help">Help</Link></li>
+                                <li><a href="">Profile</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
            
 
                 <div className="row">
