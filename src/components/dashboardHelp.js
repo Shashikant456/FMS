@@ -20,7 +20,6 @@ export class dashboardHelp extends Component {
      
         return (
             <div id="back">
-            
             <div>
             <div className="navbar-fixed">
                 <nav >

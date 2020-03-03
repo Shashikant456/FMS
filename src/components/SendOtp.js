@@ -25,8 +25,7 @@ class SendOtp extends Component{
     }
     handleChange1 = (e) => {
         this.setState({
-            countryCode : e.target.value,
-            
+            countryCode : e.target.value,     
         })
 
         if(e.target.value.length ==100){
@@ -62,7 +61,6 @@ class SendOtp extends Component{
     }
     render(){
      const countries = require("./countryphonecode.json")
-    
     //  console.log(countries)
     return(
         // <div className="container">
@@ -105,7 +103,7 @@ class SendOtp extends Component{
                         {countries.map((country,i) =>(
                             <option key={i} value={country.number.slice(1)}>
                                 {/* {console.log(country.dial_code)}  */}
-                                {country.number} {country.name} 
+                                 {country.name} 
                                 {/* <img src={this.state.imageUrl} alt="" ></img> */}
                                 {/* <a href="{country.flag}" tittle=""></a>  */}
                                 
