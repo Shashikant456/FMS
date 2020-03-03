@@ -59,14 +59,17 @@ class Dashboard extends Component {
 
                             <div className="col s3 m3 l3">
                                 <strong className="text-bold">{post.jobType}</strong>
+                                
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s3 m3 l3">
                                 <strong className="text-bold">{post.jobType}</strong>
+                                
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s3 m3 l3">
                                 <strong className="text-bold">{post.jobType}</strong>
+                                
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s3 m3 l3 right-align">
@@ -167,7 +170,7 @@ class Dashboard extends Component {
 
                  <footer className="page-footer white">
                  <div className="footer-copyright center" id="footer">
-                   <div className="text-center"  style={{marginLeft:"470px"}}>
+                   <div className="text-center">
                    <p className="center" id="footer1">Copyright @2020 All rights reserved | This tamplate is made with STSK</p>
                    <a className="grey-text text-lighten-4 right" href="#!"></a>
                    </div>

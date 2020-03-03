@@ -17,7 +17,7 @@ class Verify extends Component{
              }
              componentDidMount(){
                 this.setState({
-                    mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                    //mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
                            

@@ -3,10 +3,10 @@ import './css/dashboardHelp.css'
 import  mainLogo from './Images/Mainlogo.png'
 import dashboard from './Images/dashboard.png'
 import {  withRouter, Link} from 'react-router-dom'
-// import jobseeker from './Images/jobseeker.png'
-// import vendor from './Images/vendor.png'
-// import association from './Images/association.png'
-// import recident from './Images/resident.png'
+import jobseeker from './Images/JobseekerHelp.png'
+import vendor from './Images/vendorHelp.png'
+import association from './Images/AsssociationHelp.png'
+import recident from './Images/recidentHelp.png'
 import axios from 'axios'
 import * as $ from 'jquery'
 
@@ -25,7 +25,7 @@ export class dashboardHelp extends Component {
                 <nav >
                   <div className="nav-wrapper white ">
                       <a className="brand-logo left" id="img"> 
-                          <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
+                          <img className="center" src={mainLogo} width="60" height="60"></img>
                       </a>
                       <ul id="nav-mobile" className="right">
                       <li><Link to="/dashboard">Home</Link></li>
@@ -59,47 +59,51 @@ export class dashboardHelp extends Component {
         <h4 className="center">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
-        <div className="row container" style={{marginLeft:"100px"}}>
-          <div className="col s3 m3 l3">
+        <div className="row container center-align">
+          <div className="col s6 m3 l3  offset-l3 offset-m3">
             <div className="card hoverable">
-              <div className="card-image">
-                 
+              <div className="card-image" >
+              <img className="center-align" src={jobseeker}></img>
+              <h6 className="center-align" id="imghelp">Job Seeker</h6>
               </div>
               <div className="card-content">
-                <p>Job Seeker</p>
+
               </div>
             </div>
             </div>
 
-            <div className="col s3 m3 l3 ">
+            <div className="col s6 m3 l3 ">
             <div className="card hoverable">
               <div className="card-image">
-                
+              <img className="center-align" src={vendor}></img>
+              <h6 className="center-align" id="imghelp">Vendor</h6>
               </div>
               <div className="card-content">
-                <p>Vendor</p>
+                
               </div>
             </div>
             </div>
 
-            <div className="col s3 m3 l3">
+            <div className="col s6 m3 l3">
             <div className="card hoverable">
               <div className="card-image">
-                
+              <img className="center-align" src={association}></img>
+              <h6 className="center-align" id="imghelp">Association</h6>
               </div>
               <div className="card-content">
-                <p>Association</p>
+        
               </div>
             </div>
             </div>
 
-            <div className="col s3 m3 l3">
+            <div className="col s6 m3 l3">
             <div className="card hoverable">
               <div className="card-image">
-                
+              <img className="center-align" src={recident}></img>
+              <h6 className="center-align" id="imghelp">Recident</h6>
               </div>
               <div className="card-content">
-                <p>Recident</p>
+              
               </div>
             </div>
             </div>
@@ -195,7 +199,7 @@ export class dashboardHelp extends Component {
                     </div>
                   </div>
                   <div className="footer-copyright center" id="footer">
-                    <div className="text-center"  style={{marginLeft:"470px"}}>
+                    <div className="text-center">
                     Copyright @2020 All rights reserved | This tamplate is made with STSK
                     <a className="grey-text text-lighten-4 right" href="#!"></a>
                     </div>

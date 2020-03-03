@@ -29,6 +29,11 @@ import 'jquery';
 
 //   return valid;
 // };
+
+
+
+
+
 class UserRole extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +49,7 @@ class UserRole extends Component {
       check:false,
       name: null,
       email: null,
-      mob:'7676476756',
+      mob:'',
       panNum: null,
       aadharNum: null,
       
@@ -247,10 +252,15 @@ class UserRole extends Component {
       check:true
     });
   }
+  handleRadio=(e)=>{
+    this.setState({
+      working: e.target.value
+    })
+  }
 
   render() {
   console.log(this.state.userLogin)
-  console.log(this.state.jobTypes)
+  console.log(this.state.working)
     // const { formErrors } = this.state;
     
 // console.log(this.state.mobileNumber)
@@ -282,6 +292,8 @@ class UserRole extends Component {
                 name="name"
                 noValidate
                 onChange={this.handleChange}
+                id="input"
+                id="input"
               />
               {/* <div style={{color:"red"}}>{this.state.nameError}</div> */}
               {/* {formErrors.name.length > 0 && (
@@ -297,6 +309,7 @@ class UserRole extends Component {
                 name="mob"
                 noValidate
                 onChange={this.handleChange}
+                id="input"
               />
             
             </div>
@@ -309,6 +322,7 @@ class UserRole extends Component {
                 name="email"
                 noValidate
                 onChange={this.handleChange}
+                id="input"
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>
@@ -321,6 +335,7 @@ class UserRole extends Component {
                 name="panNum"
                 noValidate
                 onChange={this.handleChange}
+                id="input"
               />
              
             </div>
@@ -333,6 +348,7 @@ class UserRole extends Component {
                 name="aadharNum"
                 noValidate
                 onChange={this.handleChange}
+                id="input"
               />
              
             </div>
@@ -345,6 +361,7 @@ class UserRole extends Component {
                 name="experience"
                 noValidate
                 onChange={this.handleChange}
+                id="input"
               /> 
 
               
@@ -360,6 +377,7 @@ class UserRole extends Component {
                 name="eduQual"
                 noValidate
                 onChange={this.handleChange}
+                id="input"
               />
                {/* <div style={{color:"red"}}>{this.state.eduQualError}</div> */}
             </div>
@@ -407,32 +425,35 @@ class UserRole extends Component {
             </div>
  
             <div className="choose">
-              <p>Currently Working</p>
+            <p id="label">Currently Working</p>
   
- <p><label>
- <input name="working"  value="true" onClick={this.handleRadio} type="radio" checked />
-                <span>Yes</span>
-   </label></p>
- <p>
+              <p>
+              <label >
+              <input name="working"  value="true" onClick={this.handleRadio} type="radio" checked />
+                  <span id="label">Yes</span>
+                  </label>
+              </p>
+              <p>
               <label>
                 <input name="working" value="false" onClick={this.handleRadio} type="radio" />
                 <span>No</span>
               </label>
             </p>
-            
 
-</div>
-<div className="checkbox">
+         
 
-<label>
-                <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
-                <span>Terms and Conditions</span>
-              </label>
+              </div>
+              <div className="checkbox">
+
+                  <label>
+                    <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
+                    <span id="label">Terms and Conditions</span>
+                  </label>
               <p className="center red-text">{this.state.checkBoxerror}</p>
- </div> 
+              </div> 
         
- <div className="createAccount">
-              <button type="submit">Submit</button>
+                <div className="createAccount">
+              <button type="submit" id="submit">Submit</button>
             </div>
           </form>
         </div>
