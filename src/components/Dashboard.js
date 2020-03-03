@@ -128,10 +128,10 @@ class Dashboard extends Component {
 
 
 
-            <div className="container" id="details">
-                <div className="col s12">
+            <div className="center-align" id="details">
                 <div className="row">
-                    <div className="col s4 z-depth-1" id="profile">
+                    <div className="col s12 m12 l12">
+                        <div className="col s12 m3 l3 offset-m1 offset-l1 z-depth-1" id="profile">
                         <div id="editicn">
                             <i className="material-icons small right">edit</i>
                         </div>
@@ -151,16 +151,16 @@ class Dashboard extends Component {
                         </div>
                     </div>
                     
-                    <div className="col m8 l8 offset-l1 z-depth-1" id="container">
-                        <h5>Job recomended for you</h5>
-                        {postList}
-                    </div>
-                    </div>
+                            <div className="col s12 m7 l7 offset-l1 z-depth-1" id="container">
+                                <h5>Job recomended for you</h5>
+                                {postList}
+                            </div>
+                        </div>
                     </div>
                
 
-                <div className="row z-depth-1" id="container2">
-                    <div className="container">
+                <div className="col s12 l8 m8 offset-m1 offset-l1 z-depth-1" id="container2">
+                    <div className="">
                         <h5>Status of apllied jobs</h5>
                         {postList}
                      </div>

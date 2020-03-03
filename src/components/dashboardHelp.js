@@ -60,7 +60,7 @@ export class dashboardHelp extends Component {
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
         <div className="row container center-align">
-          <div className="col s6 m3 l3  offset-l3 offset-m3">
+          <div className="col s3 m3 l3 offset-l3 offset-m3">
             <div className="card hoverable">
               <div className="card-image" >
               <img className="center-align" src={jobseeker}></img>
@@ -72,7 +72,7 @@ export class dashboardHelp extends Component {
             </div>
             </div>
 
-            <div className="col s6 m3 l3 ">
+            <div className="col s3 m3 l3 ">
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={vendor}></img>
@@ -84,7 +84,7 @@ export class dashboardHelp extends Component {
             </div>
             </div>
 
-            <div className="col s6 m3 l3">
+            <div className="col s3 m3 l3">
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={association}></img>
@@ -96,7 +96,7 @@ export class dashboardHelp extends Component {
             </div>
             </div>
 
-            <div className="col s6 m3 l3">
+            <div className="col s3 m3 l3">
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={recident}></img>

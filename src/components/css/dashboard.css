@@ -4,6 +4,7 @@
 
 #back{
   background-color: white;
+  overflow: auto;
 } 
 #profile{
     height: 500px;
@@ -19,6 +20,7 @@
     overflow:hidden;
     overflow-y:scroll;
     margin-left: 5%;
+  
   }
   #details{
       margin-bottom: 50px;
