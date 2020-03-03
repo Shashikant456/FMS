@@ -32,7 +32,7 @@
     box-sizing: border-box;
 }
 body{
-    /* background-image: url("../Images/Background.png"); */
+    background-image: url("../Images/Background.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
      }
@@ -88,7 +88,7 @@ body{
     font-size: 18px;
 }
 #mobile{
-    font-size: 16px;
+    font-size: 25px;
     font-family: 'Lato' ;
 }
 /* .form button:enabled{
@@ -225,6 +225,7 @@ button:enabled{
 }
 #country{
     width:93%;
+
 }
 #button1{
     margin-top: -3%;
