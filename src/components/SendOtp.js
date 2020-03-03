@@ -89,10 +89,18 @@ class SendOtp extends Component{
                 <h2>Login</h2>
 
              <div className="inputIcon">
-            <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required maxLength="10" className="placeicon" placeholder="Enter Your Mobile Number "></input><span id="message"></span>
+
+             <div>
+                
+                <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required maxLength="10"
+                className="placeicon" placeholder="Enter Your Mobile Number "></input>
+            </div>
+
+             <span id="message"></span>
             <Form.Group  onChange={this.handleChange1}>
                     
-                    <Form.Control as="select" value={this.state.countryCode} onChange={this.handleChange1} id="country">
+                    <Form.Control as="select" value={this.state.countryCode} onChange={this.handleChange1}
+                     id="country">
                         
                         {countries.map((country,i) =>(
                             <option key={i} value={country.number.slice(1)}>

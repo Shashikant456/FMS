@@ -73,19 +73,23 @@ body{
     padding-bottom: 20%;
 }
 #input1{
-    border:1.5px solid #8ED6D2;
+    font-family: 'Lato';
     padding: 22px ;
     width: 72%;
     height: 45px;
     border-radius: 10px;
     outline: none;
-    font-weight: 300;
-    font-size: 27px; 
+    font-weight: normal;
+    font-size: 17px; 
     float:right; 
-   
+    color: #707070;
+}
+#mobile::placeholder{
+    font-size: 18px;
 }
 #mobile{
-    font-size: 18px;
+    font-size: 16px;
+    font-family: 'Lato' ;
 }
 /* .form button:enabled{
     width: 350px;

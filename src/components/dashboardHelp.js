@@ -67,7 +67,7 @@ export class dashboardHelp extends Component {
                  
               </div>
               <div className="card-content">
-                <p>Job seeker</p>
+                <p>Job Seeker</p>
               </div>
             </div>
             </div>
@@ -108,39 +108,46 @@ export class dashboardHelp extends Component {
 
           <div className="container z-depth-1" id="colli">
           <h5 className="center-align" id="coll">Job Seeker</h5>
-              <ul className = "collapsible container" data-collapsible ="accordion" id="collpsible">
+              <ul className ="collapsible container" data-collapsible ="accordion" id="collpsible">
               <li>
                 <div className = "collapsible-header">
-                    <i className = "material-icons"></i>Is there a cost for the service?</div>
-                <div className = "collapsible-body"><p>This is first section.</p></div>
+                    <i className = "material-icons">arrow_drop_down</i>Is there a cost for the service?</div>
+                <div className = "collapsible-body"><p>Ans: No, there is no cost for the service. It is free of charge.</p></div>
               </li>
               </ul>
               <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
                 <div className = "collapsible-header">
-                    <i className = "material-icons"></i>How do I apply for a position?</div>
-                <div className = "collapsible-body"><p>This is first section.</p></div>
+                    <i className = "material-icons">arrow_drop_down</i>How do I apply for a position?</div>
+                <div className = "collapsible-body"><p>Ans: To apply for a position, you will have to login to the application using your credentials.
+                Once you login, under the Job requirement tab, you will find jobs listed. Click on the job
+                description/job title, check for the eligibility and click on Apply.</p></div>
               </li>
               </ul>
               <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
                 <div className = "collapsible-header">
-                    <i className = "material-icons"></i>What are the next steps after I apply for a position?</div>
-                <div className = "collapsible-body"><p>This is first section.</p></div>
+                    <i className = "material-icons">arrow_drop_down</i>What are the next steps after I apply for a position?</div>
+                <div className = "collapsible-body"><p>Ans: The next step is to wait for the response from the team. Make sure that you have
+                entered correct email address for the team to respond to your application. You can check the
+                status of your application under the Jobs tab and click on Check Updates</p></div>
               </li>
               </ul>
               <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
                 <div className = "collapsible-header">
-                    <i className = "material-icons"></i>How should I prepare for my Interview?</div>
-                <div className = "collapsible-body"><p>This is first section.</p></div>
+                    <i className = "material-icons">arrow_drop_down</i>How should I prepare for my Interview?</div>
+                <div className = "collapsible-body"><p>Ans: Based on the job description provided to you, and based on the roles and
+                responsibilities for the particular post, we would recommend you to go through a few video
+                based contents in our application and get yourself prepared for the interview.</p></div>
               </li>
               </ul>
               <ul className = "collapsible container" data-collapsible = "accordion" id="collpsible">
               <li>
                 <div className = "collapsible-header">
-                    <i className = "material-icons"></i>How to edit my information in the portal?</div>
-                <div className = "collapsible-body"><p>This is first section.</p></div>
+                    <i className = "material-icons">arrow_drop_down</i>How to edit my information in the portal?</div>
+                <div className = "collapsible-body"><p>Ans: Login to the application, go to My Details tab, search for the details to be edited, click
+                on edit, make changes and click on save.</p></div>
               </li>
               </ul>
              

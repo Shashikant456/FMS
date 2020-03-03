@@ -31,7 +31,13 @@
 #icon_prefix{
   width: 255px;
   margin-left: 35px;
+  font-size: 21px;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+}
+#icon_prefix::placeholder{
   font-size: 15px;
+  
 }
 #input-type3{
   width: 288px;

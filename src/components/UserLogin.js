@@ -68,7 +68,6 @@ state = {
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">email</i>
                     <input id="icon_prefix" type="text" placeholder="Email Id" required onChange={this.handleChange1}/>
-                
                 </div>
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>

@@ -407,7 +407,7 @@ class UserRole extends Component {
             </div>
  
             <div className="choose">
-              <label>Currently Working</label>
+              <p>Currently Working</p>
   
  <p><label>
  <input name="working"  value="true" onClick={this.handleRadio} type="radio" checked />
