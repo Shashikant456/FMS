@@ -25,7 +25,7 @@ state = {
         handleSubmit=(e)=>{
             e.preventDefault();
             console.log(this.state)
-            axios.post('http://stskfacilities.com:8081/stskFmsApi/userLogin/verifyUser', this.state )
+            axios.post('/stskFmsApi/userLogin/verifyUser', this.state )
             .then(Response => {
                    if (Response.data.success===1)
                     {

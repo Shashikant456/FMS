@@ -11,6 +11,9 @@ import dashboardHelp from './components/dashboardHelp'
 import ChangePwd from './components/ChangePwd'
 import UserDetails from './components/UserDetails'
 import Dropdown from './components/Dropdown'
+import axios from 'axios'
+axios.defaults.baseURL ="http://stskfacilities.com:8081"
+
 //import dashboardHelp from './components/dashboardHelp'
 
 // import Verify from './components/Verify'

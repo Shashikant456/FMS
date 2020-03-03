@@ -50,7 +50,7 @@ class SendOtp extends Component{
       );
 
       e.preventDefault();
-      axios.post('http://stskfacilities.com:8081/stskFmsApi/otpServices/sendOtpBySMS', this.state )
+      axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state )
             .then(Response => {
                    console.log(Response)
                    console.log(Response.data)

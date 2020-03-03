@@ -69,7 +69,7 @@ class Register extends Component {
      }})
     
     
-        axios.post('http://stskfacilities.com:8081/stskFmsApi/userLogin/createUL',{
+        axios.post('/stskFmsApi/userLogin/createUL',{
           mob:this.state.mob,
           email:this.state.email,
           password: this.state.password,

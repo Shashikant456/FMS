@@ -41,7 +41,7 @@ class ChangePwd extends Component {
                 error:"Password and Confirmpassword miss-match"
             })
         } else {
-            axios.put('http://stskfacilities.com:8081/stskFmsApi/userLogin/resetpassword', 
+            axios.put('/stskFmsApi/userLogin/resetpassword', 
             {   countryCode:91,
                 mob:this.state.mob,
                 password:this.state.password})

@@ -28,7 +28,7 @@ class Verify extends Component{
         })
     }
    handleVerify=(e)=>{
-       axios.post('http://stskfacilities.com:8081/stskFmsApi/otpServices/resendOtpBySMS',
+       axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
        {  countryCode:91,
         mobileNumber :this.state.mobileNumber})
         .then(res =>{
@@ -41,7 +41,7 @@ class Verify extends Component{
         this.setState({
             otp_input:''
         })
-        axios.post('http://stskfacilities.com:8081/stskFmsApi/otpServices/verifyOtpBySMS', 
+        axios.post('/stskFmsApi/otpServices/verifyOtpBySMS', 
         {   countryCode:91,
             mobileNumber :this.state.mobileNumber,
             otp_input: this.state.otp_input})
@@ -51,14 +51,14 @@ class Verify extends Component{
                     
                     if (Response.data.type==="success")
                     {
-                        axios.get('http://stskfacilities.com:8081/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
+                        axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
                         .then(Response => {
                             console.log(Response.data)
                           
                            
                             if (Response.data.success===1){
                                 console.log("Dashboard")
-                                axios.get('http://stskfacilities.com:8081/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber)
+                                axios.get('/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber)
                                 .then(res =>{
                                     if(res.data.success===1){
                                         this.setState({

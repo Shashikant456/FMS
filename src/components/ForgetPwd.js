@@ -21,7 +21,7 @@ state = {
             })
         }
         handleVerify=(e)=>{
-            axios.post('http://stskfacilities.com:8081/stskFmsApi/otpServices/resendOtpBySMS',
+            axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
             {  countryCode:91,
              mobileNumber :this.state.mobileNumber})
              .then(res =>{
@@ -32,7 +32,7 @@ state = {
 
         handleSend = (e) => {
             e.preventDefault();
-            axios.post('http://stskfacilities.com:8081/stskFmsApi/otpServices/sendOtpBySMS',
+            axios.post('/stskFmsApi/otpServices/sendOtpBySMS',
              {  countryCode:91,
                 mobileNumber :this.state.mobileNumber})
             .then(Response => {
@@ -45,7 +45,7 @@ state = {
         }
         handleVerify = (e) => {
             e.preventDefault();
-            axios.post('http://stskfacilities.com:8081/stskFmsApi/otpServices/sendOtpBySMS',
+            axios.post('/stskFmsApi/otpServices/sendOtpBySMS',
             {   countryCode:91,
                 mobileNumber :this.state.mobileNumber,
                 otp_input: this.state.otp_input})

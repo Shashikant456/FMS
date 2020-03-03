@@ -20,7 +20,7 @@ export class Register extends Component {
     
     componentDidMount(){
         this._isMounted = true;
-        axios.get('http://stskfacilities.com:8081/stskFmsApi/userRoles/getAllUserRoles')
+        axios.get('/stskFmsApi/userRoles/getAllUserRoles')
         .then(res=>{
             console.log(res.data)
             console.log(res.data.data)

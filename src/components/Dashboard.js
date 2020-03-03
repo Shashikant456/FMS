@@ -19,7 +19,7 @@ class Dashboard extends Component {
     }
     componentDidMount(){
         this._isMounted = true;
-        axios.get('http://stskfacilities.com:8081/stskFmsApi/jobseeker/getById/'+this.state.userId)
+        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
         .then(res =>{
             console.log(res.data)
             console.log(res.data.data)
@@ -36,7 +36,7 @@ class Dashboard extends Component {
         //     });
         // })
 
-        axios.get('http://stskfacilities.com:8081/stskFmsApi/jobs/getAllJobs')
+        axios.get('/stskFmsApi/jobs/getAllJobs')
         .then(res => {
             this.setState({
                 posts: res.data.data

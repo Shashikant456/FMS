@@ -95,7 +95,7 @@ class UserRole extends Component {
 
   componentDidMount(){
    
-    axios.get('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes')
+    axios.get('/stskFmsApi/jobTypes/getAllJobTypes')
     .then(res=>{
       console.log(res.data)
       console.log(res.data.data)
@@ -158,7 +158,7 @@ class UserRole extends Component {
 //  }
  
    if(this.state.check===true){
-  axios.post('http://stskfacilities.com:8081/stskFmsApi/jobseeker/createJS',{
+  axios.post('/stskFmsApi/jobseeker/createJS',{
     name:this.state.name,
     email: this.state.email,
     mob: this.state.mob,
@@ -218,7 +218,7 @@ class UserRole extends Component {
   };
  
   handleChange1Arg = (e) =>{
-    axios.get('http://stskfacilities.com:8081/stskFmsApi/userLogin/getByMob/'+this.state.mob)
+    axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob)
     .then(res=>{
       console.log(res.data)
        
