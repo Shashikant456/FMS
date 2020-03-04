@@ -264,7 +264,7 @@ class UserRole extends Component {
     // const { formErrors } = this.state;
     
 // console.log(this.state.mobileNumber)
-//  console.log(this.state)
+ console.log(this.state)
 // console.log(this.state.userLogin)
     //  console.log(this.state.jobss)
        console.log(this.state.jobUpdate)
@@ -393,12 +393,10 @@ class UserRole extends Component {
                   ))} */}
                 
                   {this.state.jobs.map(function(job,i){
-                   return( <option key={job.id} value={job.id}>
+                   return(
+                      <option key={job.id} value={job.id}>
                       {job.name}
-                    </option>
-                      // console.log(job.id)
-                      // console.log(job.name)
-                      // console.log(job.id)
+                      </option>
                    ) })}
                   
               </Form.Control> 

@@ -90,7 +90,7 @@ class SendOtp extends Component{
 
              <div>
                 
-                <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required maxLength="10"
+                <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required minLength="10"
                 className="placeicon" placeholder="Enter Your Mobile Number "></input>
             </div>
 

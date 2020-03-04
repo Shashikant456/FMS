@@ -59,7 +59,7 @@ state = {
             <div id="body">
             <div className="row" id="main1">      
              <center id="center">
-             <img className="center" id="logo" src={logo} width="60" height="60"></img>
+             <img className="center" id="logo" src={logo} width="70" height="70"></img>
              <h3 className="center" id="text">Login</h3>  
              <form id="frm" onSubmit={this.handleSubmit}>
              <div className="input-field">

@@ -81,7 +81,7 @@ class ChangePwd extends Component {
             <div id="body">
             <div className="row" id="main2">      
              <center id="center">
-             <img className="center" id="logo" src={logo} width="60" height="60"></img>
+             <img className="center" id="logo" src={logo} width="70" height="70"></img>
              <form id="frm" onSubmit={this.handleSubmit}>
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
