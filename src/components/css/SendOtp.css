@@ -143,8 +143,8 @@ background-size: 35% 68%;
  background-size: 30% 55%;  
 }
 .fa-facebook,.fa-google,.fa-user{
-    width: 95px;
-    height: 48px;
+    width: 80px;
+    height: 42px;
     text-align: center;
     border-radius: 10px;
     padding: 11px;   
@@ -227,10 +227,32 @@ button:enabled{
 .form-group{
     width: 40%;
 }
-#country{
-    width:93%;
-
+#country {
+    width: 65%;
+    margin-left: -50px;
+    top: -57px;
 }
 #button1{
     margin-top: -3%;
+}
+#textsignin{
+    margin-left: -11px;
+    margin-bottom: 29px;
+}
+#sendotpinput {
+    width: 165px;
+    margin-left: 102px;
+    font-size: 13px;
+    font-family: 'Lato';
+    letter-spacing: 1px;
+    color: #707070;
+}
+#sendotpicon {
+    color: gray;
+    margin-top: 4px;
+    margin-left: 68px;
+}
+#sendotpbtn {
+    width: 288px;
+    margin-top: -37px;
 }

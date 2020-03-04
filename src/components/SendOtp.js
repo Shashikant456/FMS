@@ -63,65 +63,101 @@ class SendOtp extends Component{
      const countries = require("./countryphonecode.json")
     //  console.log(countries)
     return(
-        // <div className="container">
-        //     <h3 className="center"></h3>
-        //       <div className="container">
-        //           <form onSubmit={this.handleSubmit}>
-        //               <input type="text" onChange={this.handleChange} placeholder="Enter mobile number"></input>
-        //               <button className="waves-effect waves-light btn" type="submit" onClick={this.navigate}>Send Otp</button>
-        //           </form>
-        //       </div>
-        // </div>
-
-
-        <div className="main">
-        <div className="col s12 m6">
+    //     <div className="main">
+    //     <div className="col s12 m6">
        
-       </div>
-        <form action="" onSubmit={this.handleSubmit} className="form">
+    //    </div>
+    //     <form action="" onSubmit={this.handleSubmit} className="form">
    
-            <img id="img1" src={logo} alt="LOGO" height="50" width="50"></img>
+    //         <img id="img1" src={logo} alt="LOGO" height="50" width="50"></img>
             
-            <div className="form1">
+    //         <div className="form1">
    
-                <h2>Login</h2>
+    //             <h2>Login</h2>
 
-             <div className="inputIcon">
+    //          <div className="inputIcon">
 
-             <div>
+    //          <div>
                 
-                <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required minLength="10"
-                className="placeicon" placeholder="Enter Your Mobile Number "></input>
-            </div>
+    //             <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required minLength="10"
+    //             className="placeicon" placeholder="Enter Your Mobile Number "></input>
+    //         </div>
 
-             <span id="message"></span>
-            <Form.Group  onChange={this.handleChange1}>
+    //          <span id="message"></span>
+    //         <Form.Group  onChange={this.handleChange1}>
                     
-                    <Form.Control as="select" value={this.state.countryCode} onChange={this.handleChange1}
-                     id="country">
+    //                 <Form.Control as="select" value={this.state.countryCode} onChange={this.handleChange1}
+    //                  id="country">
                         
-                        {countries.map((country,i) =>(
-                            <option key={i} value={country.number.slice(1)}>
-                                {/* {console.log(country.dial_code)}  */}
-                                 {country.name} 
-                                {/* <img src={this.state.imageUrl} alt="" ></img> */}
-                                {/* <a href="{country.flag}" tittle=""></a>  */}
+    //                     {countries.map((country,i) =>(
+    //                         <option key={i} value={country.number.slice(1)}>
+    //                             {/* {console.log(country.dial_code)}  */}
+    //                              {country.name} 
+    //                             {/* <img src={this.state.imageUrl} alt="" ></img> */}
+    //                             {/* <a href="{country.flag}" tittle=""></a>  */}
                                 
-                            </option>
-                        ))}
+    //                         </option>
+    //                     ))}
                         
-                    </Form.Control>
-                    </Form.Group>
-                 </div>
-                <button id="button1" disabled={this.state.disabled} type="submit">Send OTP</button>
-                <h3>Sign in options</h3>
-                <div className="logo">
-                    <a href="#" className="fa fa-google" ></a>
-                    <i className="fa fa-facebook"></i> 
-                    <i className="fa fa-user" onClick={this.userLogin} aria-hidden="true"></i>
-                </div>
+    //                 </Form.Control>
+    //                 </Form.Group>
+    //              </div>
+    //             <button id="button1" disabled={this.state.disabled} type="submit">Send OTP</button>
+    //             <h3>Sign in options</h3>
+    //             <div className="logo">
+    //                 <a href="#" className="fa fa-google" ></a>
+    //                 <i className="fa fa-facebook"></i> 
+    //                 <i className="fa fa-user" onClick={this.userLogin} aria-hidden="true"></i>
+    //             </div>
+    //     </div>
+    //     </form>
+    // </div>
+
+
+
+    <div id="body">
+    <div className="row" id="main1">      
+     <center id="center">
+     <img className="center" id="logo" src={logo} width="70" height="70"></img>
+     <h3 className="center" id="text">Login</h3>  
+     <form id="frm" onSubmit={this.handleSubmit}>
+     <div className="input-field">
+            <i id="sendotpicon" className="material-icons prefix">phone_iphone</i>
+            <input id="sendotpinput" type="text" placeholder="Enter mobile number" required onChange={this.handleChange1}/>
+          </div>
+
+          <Form.Group  onChange={this.handleChange1}>
+                    
+                           <Form.Control as="select" value={this.state.countryCode} onChange={this.handleChange1}
+                            id="country">
+                              
+                               {countries.map((country,i) =>(
+                                   <option key={i} value={country.number.slice(1)}>
+                                       {/* {console.log(country.dial_code)}  */}
+                                        {country.name} 
+                                       {/* <img src={this.state.imageUrl} alt="" ></img> */}
+                                       {/* <a href="{country.flag}" tittle=""></a>  */}
+                                      
+                                   </option>
+                               ))}
+                              
+                           </Form.Control>
+                           </Form.Group>
+
+
+
+
+            <button id="sendotpbtn">Send OTP</button>
+            </form>
+            <h6 id="textsignin">Sign in options</h6>
+     
+            <div className="logo">
+                <a href="#" className="fa fa-google" ></a>
+                <i className="fa fa-facebook"></i> 
+                <i className="fa fa-user" onClick={this.userLogin} aria-hidden="true"></i>
         </div>
-        </form>
+     </center>
+    </div> 
     </div>
 
 
