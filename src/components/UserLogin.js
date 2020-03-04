@@ -68,7 +68,7 @@ state = {
                 </div>
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
-                    <input id="icon_prefix" type="text" placeholder="password" required onChange={this.handleChange2}/>
+                    <input id="icon_prefix" type="password" placeholder="password" required onChange={this.handleChange2}/>
                 
                 </div>
             <button id="input-type3">Login</button>

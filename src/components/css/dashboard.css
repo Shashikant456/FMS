@@ -86,3 +86,7 @@
   font-family: 'Lato', ;
   text-transform: capitalize;
 }
+#dashtext{
+  font-weight: bolder;
+  margin-top: -1px;
+}

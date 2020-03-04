@@ -86,13 +86,13 @@ class ChangePwd extends Component {
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" required value={this.state.password} onChange={this.handleChange1}
-                     placeholder="Enter password" onChange={this.handleChange1}/>
+                    minLength="6" placeholder="Enter password" onChange={this.handleChange1}/>
                     
                 </div>
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" required value={this.state.confirmPassword} onChange={this.handleChange2}
-                     placeholder="Confirm password" onChange={this.handleChange2}/>
+                    minLength="6" placeholder="Confirm password" onChange={this.handleChange2}/>
                      <p className="red-text">{this.state.error}</p>
                 </div>
                 

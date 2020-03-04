@@ -40,6 +40,7 @@
   font-size: 21px;
   font-family: 'Lato';
   letter-spacing: 1px;
+  color: #707070;
 }
 #icon_prefix::placeholder{
   font-size: 15px;
@@ -49,6 +50,7 @@
   width: 288px;
 }
 #input-type4{
+  text-decoration: none;
   width: 288px;
   margin-top: -7px;
 }

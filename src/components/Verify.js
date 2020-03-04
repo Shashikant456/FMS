@@ -13,11 +13,11 @@ class Verify extends Component{
                 otp_input:'',
                 error:'',
                 userId:'',
-                dash:''
+                dash:'',
              }
              componentDidMount(){
                 this.setState({
-                    //mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                    mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
                            
@@ -54,15 +54,15 @@ class Verify extends Component{
                         axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
                         .then(Response => {
                             console.log(Response.data)
-                          
                            
                             if (Response.data.success===1){
+                               
                                 console.log("Dashboard")
                                 axios.get('/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber)
                                 .then(res =>{
                                     if(res.data.success===1){
                                         this.setState({
-                                            userId:res.data.data.id
+                                            userId:res.data.data.id,
                                         })
                                         this.props.history.push({
                                             pathname : '/dashboard',

@@ -13,6 +13,24 @@ import * as $ from 'jquery'
 
 export class dashboardHelp extends Component {
 
+   componentDidMount(){
+  //   axios.get('stskFmsApi/userLogin/getByMob/8825290842')
+  //   .then(res=>{
+  //       console.log(res.data.data)
+  //       console.log(res.data.data.userRoles)
+  //       console.log(res.data.data.userRoles.id)
+  //       // this.setState({
+  //       //     userRolesId: res.data.data.userRoles.id
+  //       // })
+  //   })
+    axios.get('stskFmsApi/jobs/recommendedJobs/91')
+  .then(res => {
+      console.log(res.data)
+      console.log(res.data.data)
+  }) 
+  }
+  
+
     render() {
       // $(document).ready(function(){
       //   $('.collapsible').collapsible();

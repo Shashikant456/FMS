@@ -6,29 +6,44 @@ import dashboard from './Images/dashboard.png'
 import { withRouter,Link,NavLink } from 'react-router-dom'
 
 class Dashboard extends Component {
-    state = {
+    constructor(props) {
+        super(props);
+        this.state = {
         posts :[],
         details:[],
         userId:'',
-        LoggedIn:'true'
+        LoggedIn:'true',
+        mobileNumber:''
     }
+}
     componentWillMount(){
         this.setState({
-            //userId:this.props.location.state.userId
+            userId:this.props.location.state.userId,
         })
-        
     }
     componentDidMount(){
         this._isMounted = true;
+
         axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
         .then(res =>{
             console.log(res.data)
             console.log(res.data.data)
-            console.log(this.state.userId)
+            console.log(res.data.data.mob)
+
             this.setState({
                 details: res.data.data
             });
         })
+
+        axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId)
+        .then(res => {
+            console.log(res.data)
+            console.log(res.data.data)
+            this.setState({
+                posts: res.data.data
+            });
+        }) 
+
 
         // axios.get('https://jsonplaceholder.typicode.com/posts')
         // .then(res => {
@@ -36,13 +51,6 @@ class Dashboard extends Component {
         //         posts: res.data.slice(0,10)
         //     });
         // })
-
-        axios.get('/stskFmsApi/jobs/getAllJobs')
-        .then(res => {
-            this.setState({
-                posts: res.data.data
-            });
-        }) 
     }
     handleLogin=(e)=>{
         this.setState({
@@ -52,6 +60,8 @@ class Dashboard extends Component {
     }
    
     render() {
+
+       
         console.log(this.state)
         console.log(this.state.LoggedIn)
 
@@ -62,22 +72,27 @@ class Dashboard extends Component {
                     <div className="row post card" key={post.id}>
                         <div className="card-content" >
 
-                            <div className="col s3 m3 l3">
-                                <strong className="text-bold">{post.jobType}</strong>
-                                
+                            <div className="col s2 m2 l2">
+                                <p id="dashtext" id="dashtext">{post.jobType}</p>
+                                <br></br>
+                                <p>{post.serviceArea}</p>
+                            </div>
+                             <div className="col s2 m2 l2">
+                                 <p id="dashtext">{post.jobType}</p>
+                                <br></br>
+                                <p>{post.serviceArea}</p>
+                            </div>
+                             <div className="col s2 m2 l2">
+                                 <p id="dashtext">{post.jobType}</p>
+                                <br></br>
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s3 m3 l3">
-                                <strong className="text-bold">{post.jobType}</strong>
-                                
+                                 <p id="dashtext">{post.jobType}</p>
+                                <br></br>
                                 <p>{post.serviceArea}</p>
                             </div>
-                             <div className="col s3 m3 l3">
-                                <strong className="text-bold">{post.jobType}</strong>
-                                
-                                <p>{post.serviceArea}</p>
-                            </div>
-                             <div className="col s3 m3 l3 right-align">
+                             <div className="col s2 m2 l2 right-align">
                                 <a className="btn" id="dashbtn">Apply</a>
                             </div>
                            

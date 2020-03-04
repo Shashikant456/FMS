@@ -293,7 +293,6 @@ class UserRole extends Component {
                 noValidate
                 onChange={this.handleChange}
                 id="input"
-                id="input"
               />
               {/* <div style={{color:"red"}}>{this.state.nameError}</div> */}
               {/* {formErrors.name.length > 0 && (
