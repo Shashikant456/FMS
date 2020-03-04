@@ -81,3 +81,8 @@
   color: white;
   text-transform: initial;
 }
+#logout{
+  margin-top: 10%;
+  font-family: 'Lato', ;
+  text-transform: capitalize;
+}

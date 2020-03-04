@@ -21,14 +21,6 @@
   
   }
 
-  body {
-    background: url('../Images/Background.png');
-    background-position: 100% 15%;
-    background-repeat: no-repeat;
-    background-position: fixed;
-    background-size: cover;
-  }
-
   #outline{
       
       margin-top: 30px;
@@ -79,4 +71,24 @@
     margin-top: 13px;
     margin-right: 28px;
 }
+
+@media (min-width: 626px) {
+    body {
+      background: url('../Images/Background.png');
+       background-position: 100% 15%; 
+      background-repeat: no-repeat;
+      background-position: fixed;
+      background-size: cover;
+    }
   
+}
+
+@media (max-width: 625px) {
+  body {
+    background: url('../Images/Background.png');
+     background-position: 100% -40%; 
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-size: cover;
+  }
+} 

@@ -9,7 +9,8 @@ class Dashboard extends Component {
     state = {
         posts :[],
         details:[],
-        userId:''
+        userId:'',
+        LoggedIn:'true'
     }
     componentWillMount(){
         this.setState({
@@ -41,14 +42,18 @@ class Dashboard extends Component {
             this.setState({
                 posts: res.data.data
             });
+        }) 
+    }
+    handleLogin=(e)=>{
+        this.setState({
+            LoggedIn:false
         })
-        
+        this.props.history.push('/')
     }
    
     render() {
-        
         console.log(this.state)
-        console.log(this.state.userId)
+        console.log(this.state.LoggedIn)
 
         const {posts} = this.state;
         const postList = posts.length ? (
@@ -124,10 +129,6 @@ class Dashboard extends Component {
                 </nav>
                 </div>
 
-
-
-
-
             <div className="center-align" id="details">
                 <div className="row">
                     <div className="col s12 m12 l12">
@@ -147,7 +148,7 @@ class Dashboard extends Component {
                             </div> 
                             
                             <hr></hr>
-                            <a className="waves-effect waves-light btn" id="src1"><i className="material-icons left">logout</i>Logout</a>
+                            <a className="waves-effect waves-light btn" onClick={this.handleLogin} id="logout"><i className="material-icons left">logout</i>Logout</a>
                         </div>
                     </div>
                     

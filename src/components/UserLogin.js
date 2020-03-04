@@ -56,9 +56,6 @@ state = {
             //     <a onClick={this.forgetPwd}>Forget Password</a>
             // </div>
 
-
-
-
             <div id="body">
             <div className="row" id="main1">      
              <center id="center">
@@ -81,7 +78,7 @@ state = {
              </center>
             </div> 
             </div>
-
+            
         )
     }
 }
