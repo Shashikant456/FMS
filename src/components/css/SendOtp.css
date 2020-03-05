@@ -1,30 +1,3 @@
-/* #main{
-    margin-top: 10%;
-}
-  #login{
-    max-width: 300px;
-    height: 500px;
-    background-color: azure;
-    
-}
-#button{
-    width: 100%;
-    border-radius: 10px;
-    margin: 12px auto;
-}
-#icon{
-    background-color: blue;
-    width: 80px;
-    height: 45px;
-    border-radius: 8px;
-}
-#image{
-    background-image: url("/src/components/Images/Background.png");
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-position: 100% 100%;
-} */
-
 
 *{
     padding: 0px; margin: 0px; 
@@ -228,7 +201,7 @@ button:enabled{
     width: 40%;
 }
 #country {
-    width: 65%;
+    width: 67%;
     margin-left: -50px;
     top: -57px;
 }
@@ -240,18 +213,18 @@ button:enabled{
     margin-bottom: 29px;
 }
 #sendotpinput {
-    width: 165px;
-    margin-left: 102px;
+    width: 206px;
+    margin-left: 79px;
     font-size: 13px;
     font-family: 'Lato';
     letter-spacing: 1px;
     color: #707070;
 }
-#sendotpicon {
+/* #sendotpicon {
     color: gray;
     margin-top: 4px;
     margin-left: 68px;
-}
+} */
 #sendotpbtn {
     width: 288px;
     margin-top: -37px;

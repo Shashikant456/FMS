@@ -121,10 +121,10 @@ class SendOtp extends Component{
      <img className="center" id="logo" src={logo} width="70" height="70"></img>
      <h3 className="center" id="text">Login</h3>  
      <form id="frm" onSubmit={this.handleSubmit}>
-     <div className="input-field">
-            <i id="sendotpicon" className="material-icons prefix">phone_iphone</i>
-            <input id="sendotpinput" type="text" placeholder="Enter mobile number" required onChange={this.handleChange1}/>
-          </div>
+        <div className="input-field">
+                <input id="sendotpinput" type="text" placeholder="Enter mobile number" maxLength="10"
+                onChange={this.handleChange} required/>
+            </div>
 
           <Form.Group  onChange={this.handleChange1}>
                     
@@ -143,11 +143,7 @@ class SendOtp extends Component{
                               
                            </Form.Control>
                            </Form.Group>
-
-
-
-
-            <button id="sendotpbtn">Send OTP</button>
+                  <button id="sendotpbtn">Send OTP</button>
             </form>
             <h6 id="textsignin">Sign in options</h6>
      

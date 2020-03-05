@@ -93,7 +93,7 @@ state = {
                         <input id="icon_prefix" type="text" required placeholder="Enter mobile numbers" onChange={this.handleChange1}/>
                     
                    </div>
-                        <button id="input-type3">Send otp</button>
+                        <button id="verifymisscall">Send otp</button>
                     </form>
 
                     <form onSubmit={this.handleVerify}>
@@ -101,7 +101,7 @@ state = {
                         <button id="input-type3" >Verify</button>
                     </form>
                     
-                    <a id="forgot" onClick={this.handleVerify} type="submit">Give missedcall to verify</a>
+                    <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
                     </center>
                 </div> 
             </div>
