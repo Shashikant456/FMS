@@ -18,7 +18,7 @@ class Verify extends Component{
              }
              componentDidMount(){
                 this.setState({
-                   // mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
                            
@@ -168,7 +168,8 @@ class Verify extends Component{
                 <h4 className="center" id="otpheader">Enter OTP</h4>  
                 <form id="frm" onSubmit={this.handleSubmit}>
                     <div className="input-field">
-                            <input id="otpinput" type="text" placeholder="Enter OTP" required onChange={this.handleChange1}/>
+                            <input id="otpinput" type="text" placeholder="Enter OTP" required
+                            value={this.state.otp_input} onChange={this.handleChange}/>
                     </div>
                     <a href="" id="resendotp" className="center-align">Resend OTP</a>
                 <button id="input-type3">Verify</button>

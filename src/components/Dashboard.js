@@ -11,14 +11,15 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'91',
         LoggedIn:'true',
-        mobileNumber:''
+        mobileNumber:'',
+        search:''
     }
 }
     componentWillMount(){
         this.setState({
-            userId:this.props.location.state.userId,
+            //userId:this.props.location.state.userId,
         })
     }
     componentDidMount(){
@@ -44,6 +45,15 @@ class Dashboard extends Component {
             });
         }) 
 
+        // axios.put('/stskFmsApi/jobseeker/applyJobs',
+        // {  id:91,
+        //     jobs:[{
+        //         id:13 }]})
+        //     .then(res=>{
+        //         console.log(res)
+        //         console.log(res.data)
+        //     })
+           
 
         // axios.get('https://jsonplaceholder.typicode.com/posts')
         // .then(res => {
@@ -58,7 +68,19 @@ class Dashboard extends Component {
         })
         this.props.history.push('/')
     }
-   
+    handleinputSearch=(e)=>{
+        this.setState({
+            search:e.target.value
+        })
+    }
+    handleSearch=(e)=>{
+       
+        axios.get('/stskFmsApi/jobs/getByJobs/'+this.state.search)
+        .then(res=>{
+            console.log(res)
+            console.log(res.data)
+        })
+    }
     render() {
 
        
@@ -68,32 +90,44 @@ class Dashboard extends Component {
         const {posts} = this.state;
         const postList = posts.length ? (
             posts.map(post => {
+                this.handleApply=(e)=>{
+                    axios.put('/stskFmsApi/jobseeker/applyJobs',
+                        {  id:this.state.userId,
+                            jobs:[{
+                                id:post.id
+                             }]})
+                            .then(res=>{
+                                console.log(res)
+                                console.log(res.data)
+                            })
+                                }
+                
                 return(
                     <div className="row post card" key={post.id}>
                         <div className="card-content" >
-
+                        
                             <div className="col s2 m2 l2">
-                                <p id="dashtext" id="dashtext">{post.jobType}</p>
+                                <p id="dashtext" id="dashtext">Job position</p>
+                                <br></br>
+                                <p>{post.jobType}</p>
+                            </div>
+                             <div className="col s2 m2 l2">
+                                 <p id="dashtext">Location</p>
                                 <br></br>
                                 <p>{post.serviceArea}</p>
                             </div>
                              <div className="col s2 m2 l2">
-                                 <p id="dashtext">{post.jobType}</p>
+                                 <p id="dashtext">Age Limit</p>
                                 <br></br>
-                                <p>{post.serviceArea}</p>
-                            </div>
-                             <div className="col s2 m2 l2">
-                                 <p id="dashtext">{post.jobType}</p>
-                                <br></br>
-                                <p>{post.serviceArea}</p>
+                                <p>{post.ageLimit}</p>
                             </div>
                              <div className="col s3 m3 l3">
-                                 <p id="dashtext">{post.jobType}</p>
+                                 <p id="dashtext">Language</p>
                                 <br></br>
-                                <p>{post.serviceArea}</p>
+                                <p>{post.language}</p>
                             </div>
                              <div className="col s2 m2 l2 right-align">
-                                <a className="btn" id="dashbtn">Apply</a>
+                                <a className="btn" onClick={this.handleApply} value={post.id} id="dashbtn">Apply</a>
                             </div>
                            
                          </div>
@@ -101,7 +135,19 @@ class Dashboard extends Component {
                 )
             })
         ) : (
-            <div className="center"><h5>Loading, please wait....</h5></div>
+            <div className="center"><h5>Loading, please wait....</h5>
+            <div className="preloader-wrapper small active">
+            <div className="spinner-layer spinner-green-only">
+              <div className="circle-clipper left">
+                <div className="circle"></div>
+              </div><div className="gap-patch">
+                <div className="circle"></div>
+              </div><div className="circle-clipper right">
+                <div className="circle"></div>
+              </div>
+            </div>
+          </div>
+            </div>
         )
        
         return (
@@ -130,16 +176,19 @@ class Dashboard extends Component {
 
                 <nav className="container white" id="search">
                 <div className="nav-wrapper">
-                        <div className="input-field">
-                        <input type="search" placeholder="Search jobs"></input>
-                        <i className="material-icons right">
                     
-                        <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1">
-                        <i className="material-icons right" id="src">search</i>Search</a></i>
+                        <div className="input-field">
                         
-                        <label className="label-icon"><i className="material-icons">search</i>
-                    </label>
-                    </div>
+                            <input id="dashinput" type="search" onChange={this.handleinputSearch} required placeholder="Search jobs"></input>
+                            <i className="material-icons right">
+                        
+                            <a className="btn" onClick={this.handleSearch} id="src1">
+                            <i className="material-icons right"  id="src">search</i>Search</a></i>
+                            
+                            <label className="label-icon"><i className="material-icons">search</i></label>
+                        
+                        </div>
+                      
                 </div>
                 </nav>
                 </div>

@@ -51,10 +51,11 @@
   margin-top: -20px;
   
 }
-#src1{
+#src1 {
   margin-top: -12px;
-  
   border-radius: 8px;
+  background-color: #3fb2aa;
+  color: white;
 }
 #dashicn{
   color:#1de9b6;

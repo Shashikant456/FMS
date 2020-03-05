@@ -61,7 +61,7 @@ export class dashboardHelp extends Component {
         <nav className="container white" id="search">
         <div className="nav-wrapper">
                 <div className="input-field">
-                <input type="search" placeholder="Search jobs" required ></input>
+                <input type="search" id="dashinput" placeholder="Ask a question" required ></input>
                 <i className="material-icons right">
             
                 <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
@@ -79,7 +79,7 @@ export class dashboardHelp extends Component {
 
         <div className="row container center-align">
           <div className="col s3 m3 l3 offset-l3 offset-m3">
-            <div className="card hoverable">
+            <div className="card hoverable z-depth-3">
               <div className="card-image" >
               <img className="center-align" src={jobseeker}></img>
               <h6 className="center-align" id="imghelp">Job Seeker</h6>
