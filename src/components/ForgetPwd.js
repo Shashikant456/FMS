@@ -97,7 +97,8 @@ state = {
                     </form>
 
                     <form onSubmit={this.handleVerify}>
-                        <input id="icon_prefix" type="text" required onChange={this.handleChange2} placeholder="Enter OTP here"></input>
+                        <input id="partitioned" type="text" required maxlength="6" onChange={this.handleChange2} />
+                    
                         <button id="input-type3" >Verify</button>
                     </form>
                     

@@ -35,7 +35,6 @@ export class dashboardHelp extends Component {
       // $(document).ready(function(){
       //   $('.collapsible').collapsible();
       // });
-     
         return (
             <div id="back">
             <div>
@@ -64,7 +63,8 @@ export class dashboardHelp extends Component {
                 <input type="search" id="dashinput" placeholder="Ask a question" required ></input>
                 <i className="material-icons right">
             
-                <a className="waves-effect waves-light btn teal lighten-2 text-white" id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
+                <a className="waves-effect waves-light btn teal lighten-2 text-white" 
+                id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
                 
                 <label className="label-icon"><i className="material-icons">search</i>
             </label>

@@ -15,10 +15,11 @@ class Verify extends Component{
                 error:'',
                 userId:'',
                 dash:'',
+                loading:false
              }
              componentDidMount(){
                 this.setState({
-                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                   //mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
                            
@@ -40,7 +41,8 @@ class Verify extends Component{
         e.preventDefault();
         // console.log(this.state.userRoles)
         this.setState({
-            otp_input:''
+            otp_input:'',
+            loading:true
         })
         axios.post('/stskFmsApi/otpServices/verifyOtpBySMS', 
         {   countryCode:91,
@@ -69,35 +71,21 @@ class Verify extends Component{
                                             pathname : '/dashboard',
                                             state :{
                                             mobileNumber : this.state,
-                                            userId: this.state.userId
-                                            }
-                                            } 
-                                          );
+                                            userId: this.state.userId  }} );
                                     }
                                     else{
                                         this.props.history.push({
                                             pathname : '/userDetails',
                                             state :{
-                                            mobileNumber : this.state
-                                            }
-                                            } 
-                                          );
+                                            mobileNumber : this.state }} );
                                         }
-                                })
-
-                               
-                               
-                                
+                                }) 
                             }
                             else {
-                                //this.props.history.push('./register')
                                 this.props.history.push({
                                     pathname : '/preregister',
                                     state :{
-                                    mobileNumber : this.state
-                                    }
-                                    } 
-                                  );
+                                    mobileNumber : this.state }});
                                 }
                             })
                     }
@@ -111,18 +99,15 @@ class Verify extends Component{
                             otp_input:''
                         })
                     }
-
                 })
                 .catch(error => {
                     
                     console.log(error)
                     console.log(this.props.number)
-                    
-                    //this.props.history.push('./register')
                 });           
     }
     render(){
-        console.log(this.state.otp_input)
+        const {loading}=this.state
     return(
         
         // <div className="wrapper">
@@ -168,11 +153,23 @@ class Verify extends Component{
                 <h4 className="center" id="otpheader">Enter OTP</h4>  
                 <form id="frm" onSubmit={this.handleSubmit}>
                     <div className="input-field">
-                            <input id="otpinput" type="text" placeholder="Enter OTP" required
-                            value={this.state.otp_input} onChange={this.handleChange}/>
+                            <input id="partitioned" type="text" maxLength="6" value={this.state.otp_input} 
+                            onChange={this.handleChange} />
                     </div>
                     <a href="" id="resendotp" className="center-align">Resend OTP</a>
-                <button id="input-type3">Verify</button>
+                <button id="input-type3"  disabled={loading}>{loading && 
+                    <div className="preloader-wrapper small active">
+                        <div className="spinner-layer spinner-green-only">
+                        <div className="circle-clipper left">
+                            <div className="circle"></div>
+                        </div><div className="gap-patch">
+                            <div className="circle"></div>
+                        </div><div className="circle-clipper right">
+                            <div className="circle"></div>
+                        </div>
+                        </div>
+                    </div>}
+                      Verify</button>
                 </form>
                 <hr id="hr"></hr>
                 <button onClick={this.handleVerify} id="verifymisscall">Give missedcall to verify</button>
