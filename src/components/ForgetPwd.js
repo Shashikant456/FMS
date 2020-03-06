@@ -90,14 +90,16 @@ state = {
                     
                     <div className="input-field">
                         <i id="iconn" className="material-icons prefix">phone_iphone</i>
-                        <input id="icon_prefix" type="text" required placeholder="Enter mobile numbers" onChange={this.handleChange1}/>
+                        <input id="icon_prefix" type="text" required placeholder="Enter mobile numbers"
+                        pattern="[0-9]{10}" title="Must contain only Numeric value" onChange={this.handleChange1}/>
                     
                    </div>
                         <button id="verifymisscall">Send otp</button>
                     </form>
 
                     <form onSubmit={this.handleVerify}>
-                        <input id="partitioned" type="text" required maxlength="6" onChange={this.handleChange2} />
+                        <input id="partitioned" type="text" required maxLength="10" onChange={this.handleChange2} 
+                        pattern="[0-9]" title="Must contain only Numeric value"/>
                     
                         <button id="input-type3" >Verify</button>
                     </form>

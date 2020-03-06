@@ -4,18 +4,35 @@ import './css/SendOtp.css'
 import back from './Images/Background.png'
 import { Form,FormControl } from 'react-bootstrap';
 import logo from './Images/Mainlogo.png'
+//import PhoneInput from 'react-phone-number-input'
 
 class SendOtp extends Component{
     constructor(props) {
         super(props)
     this.state={
              countryCode:'91',
-             mobileNumber: ' ',
+             mobileNumber:' ',
            }
           this.handleSubmit = this.handleSubmit.bind(this)
         }
     userLogin = (e) => {
         this.props.history.push('/userLogin')
+       
+    }
+
+    handleGoogle=(e)=>{
+        e.preventDefault();
+        console.log("face") 
+        window.location.replace("http://google.com");
+        //window.location.assign("https://www.w3schools.com");
+
+    }
+    handleFacebook=(e)=>{
+        e.preventDefault();
+        console.log("face") 
+    
+        window.location.replace("http://facebook.com");
+
     }
         
     handleChange = (e) => {
@@ -36,6 +53,7 @@ class SendOtp extends Component{
     }
 
     handleSubmit = (e) => {
+        e.preventDefault();
         console.log(this.state)
         console.log(this.state.countryCode)
     //   this.props.history.push('./verify', {mobileNumber:this.state})
@@ -43,13 +61,11 @@ class SendOtp extends Component{
     this.props.history.push({
         pathname : '/verify',
         state :{
-       
         mobileNumber : this.state
            }
         } 
       );
 
-      e.preventDefault();
       axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state )
             .then(Response => {
                    console.log(Response)
@@ -61,60 +77,8 @@ class SendOtp extends Component{
     }
     render(){
      const countries = require("./countryphonecode.json")
-    //  console.log(countries)
     return(
-    //     <div className="main">
-    //     <div className="col s12 m6">
-       
-    //    </div>
-    //     <form action="" onSubmit={this.handleSubmit} className="form">
-   
-    //         <img id="img1" src={logo} alt="LOGO" height="50" width="50"></img>
-            
-    //         <div className="form1">
-   
-    //             <h2>Login</h2>
-
-    //          <div className="inputIcon">
-
-    //          <div>
-                
-    //             <input id="input1" type="tel" onChange={this.handleChange} id="mobile" required minLength="10"
-    //             className="placeicon" placeholder="Enter Your Mobile Number "></input>
-    //         </div>
-
-    //          <span id="message"></span>
-    //         <Form.Group  onChange={this.handleChange1}>
-                    
-    //                 <Form.Control as="select" value={this.state.countryCode} onChange={this.handleChange1}
-    //                  id="country">
-                        
-    //                     {countries.map((country,i) =>(
-    //                         <option key={i} value={country.number.slice(1)}>
-    //                             {/* {console.log(country.dial_code)}  */}
-    //                              {country.name} 
-    //                             {/* <img src={this.state.imageUrl} alt="" ></img> */}
-    //                             {/* <a href="{country.flag}" tittle=""></a>  */}
-                                
-    //                         </option>
-    //                     ))}
-                        
-    //                 </Form.Control>
-    //                 </Form.Group>
-    //              </div>
-    //             <button id="button1" disabled={this.state.disabled} type="submit">Send OTP</button>
-    //             <h3>Sign in options</h3>
-    //             <div className="logo">
-    //                 <a href="#" className="fa fa-google" ></a>
-    //                 <i className="fa fa-facebook"></i> 
-    //                 <i className="fa fa-user" onClick={this.userLogin} aria-hidden="true"></i>
-    //             </div>
-    //     </div>
-    //     </form>
-    // </div>
-
-
-
+    
     <div id="body">
     <div className="row" id="main1">      
      <center id="center">
@@ -122,8 +86,8 @@ class SendOtp extends Component{
      <h3 className="center" id="text">Login</h3>  
      <form id="frm" onSubmit={this.handleSubmit}>
         <div className="input-field">
-                <input id="sendotpinput" type="text" placeholder="Enter mobile number" maxLength="10"
-                onChange={this.handleChange} required/>
+                <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
+                pattern="[0-9]{10}"  onChange={this.handleChange} required/>
             </div>
 
           <Form.Group  onChange={this.handleChange1}>
@@ -148,8 +112,9 @@ class SendOtp extends Component{
             <h6 id="textsignin">Sign in options</h6>
      
             <div className="logo">
-                <a href="#" className="fa fa-google" ></a>
-                <i className="fa fa-facebook"></i> 
+            
+                <a href="" onClick={this.handleGoogle}  className="fa fa-google" ></a>
+                <i onClick={this.handleFacebook} className="fa fa-facebook"></i> 
                 <i className="fa fa-user" onClick={this.userLogin} aria-hidden="true"></i>
         </div>
      </center>

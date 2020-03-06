@@ -25,23 +25,23 @@ state = {
         handleSubmit=(e)=>{
             e.preventDefault();
             console.log(this.state)
-            axios.post('/stskFmsApi/userLogin/verifyUser', this.state )
-            .then(Response => {
-                   if (Response.data.success===1)
-                    {
-                        this.props.history.push('./dashboard')
-                    }
-                     else if(Response.data.message==="User ID or Password error"){
-                        alert("User ID or Password error")
-                    }
-                    else{
-                        alert("Register here")
-                        this.props.history.push('./')
-                    }
-             })
-            .catch(error => {
-                console.log(error)
-            });
+            // axios.post('/stskFmsApi/userLogin/verifyUser', this.state )
+            // .then(Response => {
+            //        if (Response.data.success===1)
+            //         {
+            //             this.props.history.push('./dashboard')
+            //         }
+            //          else if(Response.data.message==="User ID or Password error"){
+            //             alert("User ID or Password error")
+            //         }
+            //         else{
+            //             alert("Register here")
+            //             this.props.history.push('./')
+            //         }
+            //  })
+            // .catch(error => {
+            //     console.log(error)
+            // });
         }
 
 
@@ -64,14 +64,17 @@ state = {
              <form id="frm" onSubmit={this.handleSubmit}>
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">person</i>
-                    <input id="icon_prefix" type="text" placeholder="User Id/Email Id" required onChange={this.handleChange1}/>
+                    <input id="icon_prefix" type="email" size="30"
+                     placeholder="User Id/Email Id" required onChange={this.handleChange1}/>
                 </div>
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
-                    <input id="icon_prefix" type="password" placeholder="password" required onChange={this.handleChange2}/>
+                    <input id="icon_prefix" type="password" placeholder="password" required onChange={this.handleChange2}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
                 
                 </div>
-            <button id="input-type3">Login</button>
+            <button id="UserLoginButton">Login</button>
              </form>
              <a id="forgot" onClick={this.forgetPwd}>Forgot Password</a>
             
