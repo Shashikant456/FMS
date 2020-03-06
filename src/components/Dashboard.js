@@ -11,10 +11,11 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'91',
         LoggedIn:'true',
         mobileNumber:'',
-        search:''
+        search:'',
+        appliedJobs:''
     }
 }
     componentWillMount(){
@@ -24,6 +25,7 @@ class Dashboard extends Component {
     }
     componentDidMount(){
         this._isMounted = true;
+        console.log(this.state.appliedJobs)
 
         axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
         .then(res =>{
@@ -62,6 +64,12 @@ class Dashboard extends Component {
         //     });
         // })
     }
+    handleApply=(e)=>{
+        axios.get('/stskFmsApi/jobseeker/getById/91')
+        .then(res=>{
+            console.log(res.d)
+        })
+    }
     handleLogin=(e)=>{
         this.setState({
             LoggedIn:false
@@ -84,8 +92,7 @@ class Dashboard extends Component {
     render() {
 
        
-        console.log(this.state)
-        console.log(this.state.LoggedIn)
+        console.log(this.state.appliedJobs)
 
         const {posts} = this.state;
         const postList = posts.length ? (
@@ -97,10 +104,17 @@ class Dashboard extends Component {
                                 id:post.id
                              }]})
                             .then(res=>{
-                                console.log(res)
-                                console.log(res.data)
+                                // console.log(res)
+                                // console.log(res.data)
+                                console.log(post.id)
+                            }) 
+                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+                            .then(res=>{
+                                this.setState({
+                                    appliedJobs:res.data.data.jobs
+                                })
                             })
-                                }
+                        }
                 
                 return(
                     <div className="row post card" key={post.id}>
@@ -149,6 +163,55 @@ class Dashboard extends Component {
           </div>
             </div>
         )
+        const {appliedJobs} = this.state;
+        const appliedJobsList = appliedJobs.length ? (
+            appliedJobs.map(post => {      
+                return(
+                    <div className="row post card" key={post.id}>
+                        <div className="card-content" >
+                        
+                            <div className="col s2 m2 l2">
+                                <p id="dashtext" id="dashtext">Job position</p>
+                                <br></br>
+                                <p>{post.jobType}</p>
+                            </div>
+                             <div className="col s2 m2 l2">
+                                 <p id="dashtext">Location</p>
+                                <br></br>
+                                <p>{post.serviceArea}</p>
+                            </div>
+                             <div className="col s2 m2 l2">
+                                 <p id="dashtext">Age Limit</p>
+                                <br></br>
+                                <p>{post.ageLimit}</p>
+                            </div>
+                             <div className="col s3 m3 l3">
+                                 <p id="dashtext">Language</p>
+                                <br></br>
+                                <p>{post.language}</p>
+                            </div>
+                             <div className="col s2 m2 l2 right-align">
+                                <a className="btn" onClick={this.handleApply} value={post.id} id="dashbtn">Apply</a>
+                            </div>
+                           
+                         </div>
+                    </div>
+                )
+            })
+        ) : (
+            <div className="center"><h5>You have not Applied for any Jobs</h5>
+            <div className="preloader-wrapper small active">
+            <div className="spinner-layer spinner-green-only">
+              <div className="circle-clipper left">
+                <div className="circle"></div>
+              </div><div className="gap-patch">
+                <div className="circle"></div>
+              </div><div className="circle-clipper right">
+                <div className="circle"></div>
+              </div>
+            </div>
+          </div>
+            </div>)
        
         return (
             <div id="back">
@@ -226,8 +289,8 @@ class Dashboard extends Component {
 
                 <div className="col s12 l8 m8 offset-m1 offset-l1 z-depth-1" id="container2">
                     <div className="">
-                        <h5>Status of apllied jobs</h5>
-                        {postList}
+                        <h5>Status of applied jobs</h5>
+                        {appliedJobsList}
                      </div>
                 </div>
                 </div>

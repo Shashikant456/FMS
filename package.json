@@ -14,6 +14,7 @@
     "jquery": "^3.4.1",
     "multiselect-react-dropdown": "^1.4.7",
     "react": "^16.12.0",
+    "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-collapsible": "^2.6.3",
     "react-country-region-selector": "^1.4.7",

@@ -153,7 +153,7 @@ class Verify extends Component{
                 <h4 className="center" id="otpheader">Enter OTP</h4>  
                 <form id="frm" onSubmit={this.handleSubmit}>
                     <div className="input-field">
-                            <input id="partitioned" type="text" maxLength="6" value={this.state.otp_input} 
+                            <input id="partitioned" type="text" required maxLength="6" value={this.state.otp_input} 
                             onChange={this.handleChange} />
                     </div>
                     <a href="" id="resendotp" className="center-align">Resend OTP</a>
