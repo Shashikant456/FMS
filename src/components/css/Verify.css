@@ -196,7 +196,7 @@ input.error {
 #resendotp{
   margin-left: 105px;
   margin-bottom: -2px;
-  margin-top: 5px;
+  margin-top: -10px;
   color:lightseagreen;
   text-decoration: none;
 }
@@ -230,4 +230,5 @@ input.error {
   background-position-x: 35px;
   width: 277px;
   border: none;
+  margin-top: -8px;
 }

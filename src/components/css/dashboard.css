@@ -8,6 +8,7 @@
 } 
 #profile{
     height: 500px;
+    margin-bottom:31px;
 }
 #container{
     height:500px; 
@@ -90,4 +91,16 @@
 #dashtext{
   font-weight: bolder;
   margin-top: -1px;
+}
+#home{
+  text-decoration: none;
+  color: #707070;
+}
+.nav-wrapper .input-field input[type=search] {
+  height: inherit;
+  padding-left: 0;
+  width: calc(100% - 4rem);
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

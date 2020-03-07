@@ -5,29 +5,6 @@ import "./css/register1.css";
 import logo from './Images/Mainlogo.png'
 import axios from 'axios'
 
-
-// import image from "../src/image/icon.png";
-
-// const emailRegex = RegExp(
-//   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-// );
-
-// const formValid = ({ formErrors, ...rest }) => {
-//   let valid = true;
-
- 
-//   Object.values(formErrors).forEach(val => {
-//     val.length > 0 && (valid = false);
-//   });
-
-  
-//   Object.values(rest).forEach(val => {
-//     val === null && (valid = false);
-//   });
-
-//   return valid;
-// };
-
 class Register extends Component {
     state = {
       mob:"",
@@ -42,10 +19,10 @@ class Register extends Component {
   
   componentDidMount(){
     this.setState({
-      mob:this.props.location.state.mobileNumber.mobileNumber,
-      userRoles:{
-        id:this.props.match.params.id,
-      }
+      // mob:this.props.location.state.mobileNumber.mobileNumber,
+      // userRoles:{
+      //   id:this.props.match.params.id,
+      // }
     })
   }
 
@@ -60,31 +37,31 @@ class Register extends Component {
             conformPwd:'',
             error:'Password and conformPassword mis-match'
         })
-    } else {
+    // } else {
        
-      this.props.history.push({
-        pathname:'/userDetails',
-         state :{
-         mobileNumber : this.state
-     }})
+    //   this.props.history.push({
+    //     pathname:'/userDetails',
+    //      state :{
+    //      mobileNumber : this.state
+    //  }})
     
     
-        axios.post('/stskFmsApi/userLogin/createUL',{
-          mob:this.state.mob,
-          email:this.state.email,
-          password: this.state.password,
-          userRoles:{
-                id:this.state.userRoles.id
-           }    
-        })
-        .then(response=>{
-          console.log(response)
-          console.log(this.state)
+    //     axios.post('/stskFmsApi/userLogin/createUL',{
+    //       mob:this.state.mob,
+    //       email:this.state.email,
+    //       password: this.state.password,
+    //       userRoles:{
+    //             id:this.state.userRoles.id
+    //        }    
+    //     })
+    //     .then(response=>{
+    //       console.log(response)
+    //       console.log(this.state)
          
-          })
-          .catch(error=>{
-            console.log(error)
-        })
+    //       })
+    //       .catch(error=>{
+    //         console.log(error)
+    //     })
       };
 }
 
@@ -98,31 +75,6 @@ class Register extends Component {
     this.setState({
       password:e.target.value
     })
- 
-    // this.setState({[e.target.name]:e.target.value})
-    // const { name, value } = e.target;
-    // let formErrors = { ...this.state.formErrors };
-
-    // switch (name) {
-    //   case "email":
-    //     formErrors.email = emailRegex.test(value)
-    //       ? ""
-    //       : "invalid email address";
-    //     break;
-    //   case "password":
-    //     formErrors.password =
-    //       value.length < 6 ? "minimum 6 characaters required" : "";
-    //     break;
-    //     case "confirmpassword":
-    //         formErrors.confirmpassword =
-    //           value.length < 6 ? "minimum 6 characaters required" : "";
-          
-    //         break;
-    //   default:
-    //     break;
-    // }
-
-    // this.setState({ formErrors, [name]: value }, () => console.log(this.state));
     
   };
   handleChange3 = (e) => {
@@ -137,136 +89,91 @@ class Register extends Component {
     // const { formErrors } = this.state;
 
     return (
+
       // <div className="wrapper">
       //   <div className="form-wrapper">
        
       //     <div className="text-center">
-      //       {/* <img src={image}></img> */}
+      //       <img src={logo} className="img3"></img>
       //     </div>
-      //     <h5 className="text-center">{this.props.match.params.name}</h5>
+      //      <h2 className="text-center3">{this.props.match.params.name}</h2>
 
       //     <form onSubmit={this.handleSubmit} noValidate>
-     
+          
             
-      //       <div className="email">
-      //         {/* <label htmlFor="email">Email Id/User Id</label> */}
+      //       <div className="email1">
       //         <input
       //           className=""
       //           placeholder="Email Id/User Id"
       //           type="email"
       //           name="email"
-      //           // noValidate
-      //           onChange={this.handleChange}
+      //           onChange={this.handleChange1}
       //           value={email}
       //         />
-      //         {/* {formErrors.email.length > 0 && (
-      //           <span className="errorMessage">{formErrors.email}</span>
-      //         )} */}
       //       </div>
             
-      //       <div className="password">
-      //         {/* <label htmlFor="password">Password</label> */}
-      //         <input
+      //       <div className="password1"> 
+      //          <input
       //           className=""
       //           placeholder="Password"
       //           type="password"
       //           name="password"
-      //           noValidate
-      //           onChange={this.handleChange}
+      //           value={this.state.password}
+      //           onChange={this.handleChange2}
       //           value={password}
-      //         />
-      //         {/* {formErrors.password.length > 0 && (
-      //           <span className="errorMessage">{formErrors.password}</span>
-      //         )} */}
+      //         /> 
       //       </div>
-      //       <div className="confirmpassword">
-      //         {/* <label htmlFor="password">Confirm Password</label> */}
-      //         <input
+      //       <div className="confirmpassword1"> 
+      //          <input
       //           className=""
-      //           placeholder="Confirm Password"
+      //           placeholder="Conform Password"
       //           type="password"
       //           name="confirmpassword"
-      //           noValidate
-      //           onChange={this.handleChange}
-      //         />
-      //         {/* {formErrors.confirmpassword.length > 0 && (
-      //           <span className="errorMessage">{formErrors.confirmpassword}</span>
-      //         )} */}
-      //       </div>
-
+      //           value={this.state.conformPwd}
+      //           onChange={this.handleChange3}
+      //         /> 
+      //       </div> 
+      //         <p className="red-text">{this.state.error}</p>
       //       <div className="createAccount">
       //         <button type="submit">Next</button>
-            
-      //       </div>
+      //         </div>
+           
       //     </form>
       //   </div>
-      // </div>aaaaa
-
-      <div className="wrapper">
-        <div className="form-wrapper">
        
-          <div className="text-center">
-            <img src={logo} className="img3"></img>
+      // </div>
+
+
+      <div id="body">
+      <div className="row" id="main1">      
+       <center id="center">
+         <h3 className="center-align" id="Registertext">Login{this.props.match.params.name}</h3>
+        <i className="material-icons grey-text large">account_circle</i>
+       <form id="frm" onSubmit={this.handleSubmit}>
+       <div className="input-field">
+              <i id="iconn" className="material-icons prefix">person</i>
+              <input id="icon_prefix" type="email" size="30"
+               placeholder="User Id/ Mail Id" required onChange={this.handleChange1}/>
           </div>
-           <h2 className="text-center3">{this.props.match.params.name}</h2>
-
-          <form onSubmit={this.handleSubmit} noValidate>
-          
-            
-            <div className="email1">
-              {/* <label htmlFor="email">Email Id/User Id</label> */}
-              <input
-                className=""
-                placeholder="Email Id/User Id"
-                type="email"
-                name="email"
-                // noValidate
-                onChange={this.handleChange1}
-                value={email}
-              />
-              {/* {formErrors.email.length > 0 && (
-                <span className="errorMessage">{formErrors.email}</span>
-              )} */}
-            </div>
-            
-            <div className="password1"> 
-              {/* <label htmlFor="password">Password</label> */}
-               <input
-                className=""
-                placeholder="Password"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange2}
-                value={password}
-              /> 
-              {/* {formErrors.password.length > 0 && (
-                <span className="errorMessage">{formErrors.password}</span>
-              )} */}
-            </div>
-            <div className="confirmpassword1"> 
-              {/* <label htmlFor="password">Confirm Password</label> */}
-               <input
-                className=""
-                placeholder="Conform Password"
-                type="password"
-                name="confirmpassword"
-                value={this.state.conformPwd}
-                onChange={this.handleChange3}
-              /> 
-              {/* {formErrors.confirmpassword.length > 0 && (
-                <span className="errorMessage">{formErrors.confirmpassword}</span>
-              )} */}
-            </div> 
-              <p className="red-text">{this.state.error}</p>
-            <div className="createAccount">
-              <button type="submit">Next</button>
-              </div>
-           
-          </form>
-        </div>
-       
+              <div className="input-field">
+                <i id="iconn" className="material-icons prefix">lock</i>
+                <input id="icon_prefix" type="password" placeholder="Enter password" required onChange={this.handleChange2}
+                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
+             </div>
+              <div className="input-field">
+                <i id="iconn" className="material-icons prefix">lock</i>
+                <input id="icon_prefix" type="password" placeholder="Confirm password" required onChange={this.handleChange3}
+                // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
+                <p className="red-text">{this.state.error}</p>
+                </div>
+      <button id="RegisterButton"><i className="material-icons right">arrow_forward</i>Next</button>
+       </form>
+       </center>
+      </div> 
       </div>
+    
     );
   }
 }

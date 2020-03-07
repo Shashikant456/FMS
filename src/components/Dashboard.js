@@ -65,9 +65,9 @@ class Dashboard extends Component {
         // })
     }
     handleApply=(e)=>{
-        axios.get('/stskFmsApi/jobseeker/getById/91')
+        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
         .then(res=>{
-            console.log(res.d)
+            console.log(res.data)
         })
     }
     handleLogin=(e)=>{
@@ -191,7 +191,7 @@ class Dashboard extends Component {
                                 <p>{post.language}</p>
                             </div>
                              <div className="col s2 m2 l2 right-align">
-                                <a className="btn" onClick={this.handleApply} value={post.id} id="dashbtn">Apply</a>
+                                <a className="btn green" value={post.id} id="dashbtn">Selected</a>
                             </div>
                            
                          </div>
@@ -216,15 +216,15 @@ class Dashboard extends Component {
         return (
             <div id="back">
                <div className="navbar-fixed">
-                    <nav >
-                        <div className="nav-wrapper white ">
+                    <nav className="" >
+                        <div className="nav-wrapper white">
                         <a className="brand-logo left" id="img"> 
-                            <img className="center" id="logo" src={mainLogo} width="60" height="60"></img>
+                            <img className="center" src={mainLogo} width="55" height="50"></img>
                         </a>
                             <ul id="nav-mobile" className="right">
                                 <li><Link to="/dashboard" className="waves-effect waves-light btn-small" id="btnnav">Home</Link></li>
-                                <li><Link to="/help">Help</Link></li>
-                                <li><a href="">Profile</a></li>
+                                <li><Link id="home" to="/help">Help</Link></li>
+                                <li><a id="home" href="">Profile</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -245,10 +245,12 @@ class Dashboard extends Component {
                             <input id="dashinput" type="search" onChange={this.handleinputSearch} required placeholder="Search jobs"></input>
                             <i className="material-icons right">
                         
-                            <a className="btn" onClick={this.handleSearch} id="src1">
+                            <a className="btn hide-on-small-only" onClick={this.handleSearch} id="src1">
                             <i className="material-icons right"  id="src">search</i>Search</a></i>
+
+                            <i className="material-icons right show-on-small hide-on-med-and-up grey-text"
+                            onClick={this.handleSearch}>search</i>
                             
-                            <label className="label-icon"><i className="material-icons">search</i></label>
                         
                         </div>
                       

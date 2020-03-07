@@ -98,7 +98,7 @@ state = {
                     </form>
 
                     <form onSubmit={this.handleVerify}>
-                        <input id="partitioned" type="text" required maxLength="10" onChange={this.handleChange2} 
+                        <input id="partitioned" type="text" required maxLength="6" onChange={this.handleChange2} 
                         pattern="[0-9]" title="Must contain only Numeric value"/>
                     
                         <button id="input-type3" >Verify</button>

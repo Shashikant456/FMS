@@ -25,9 +25,9 @@ export class Register extends Component {
             console.log(res.data)
             console.log(res.data.data)
             this.setState({
-                userRoless : res.data.data,
-                mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
-                name:this.props.match.params
+                // userRoless : res.data.data,
+                // mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
+                // name:this.props.match.params
             })
            
         })
@@ -104,22 +104,22 @@ export class Register extends Component {
                     <div className='row'>
                             <div className="col s6 m6 l6">
                                 <div id="jobseeker" type='submit' name='btn_login' onClick={this.handleChange}
-                                className=' btn btn-large waves-effect white black-text'>{postList[0]}</div>
+                                className='btn btn-large white'>{postList[0]}</div>
                             </div>
                             <div className="col s6 m6 l6">
                                 <div id="vendor" type='submit' name='btn_login' onClick={this.handleChange}
-                                className='btn btn-large waves-effect white black-text'>{postList[1]}</div>
+                                className='btn btn-large white '>{postList[1]}</div>
                             </div>
                         </div>
 
                     <div className='row'>
                         <div className="col s6 m6 l6">
                                 <div id="association" type='submit' name='btn_login' onClick={this.handleChange}
-                                className='btn btn-large waves-effect white black-text'>{postList[2]}</div>
+                                className='btn btn-large white '>{postList[2]}</div>
                             </div>
                         <div className="col s6 m6 l6">
                             <div id="resident" type='submit' name='btn_login' onClick={this.handleChange}
-                            className='btn btn-large waves-effect white black-text'>{postList[3]}</div>
+                            className='btn btn-large white '>{postList[3]}</div>
                         </div>
                     </div>
                     

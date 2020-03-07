@@ -41,14 +41,14 @@ class Verify extends Component{
         e.preventDefault();
         // console.log(this.state.userRoles)
         this.setState({
-            otp_input:'',
-            loading:true
+            otp_input:''
         })
         axios.post('/stskFmsApi/otpServices/verifyOtpBySMS', 
         {   countryCode:91,
             mobileNumber :this.state.mobileNumber,
             otp_input: this.state.otp_input})
                 .then(Response => {
+                    
                       console.log(Response)
                       console.log(Response.data) 
                     
@@ -57,6 +57,9 @@ class Verify extends Component{
                         axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
                         .then(Response => {
                             console.log(Response.data)
+                            this.setState({
+                                loading:true
+                            })
                            
                             if (Response.data.success===1){
                                
@@ -155,9 +158,11 @@ class Verify extends Component{
                     <div className="input-field">
                             <input id="partitioned" type="text" required maxLength="6" value={this.state.otp_input} 
                             onChange={this.handleChange} />
+                            <p className="red-text">{this.state.error}</p>
                     </div>
                     <a href="" id="resendotp" className="center-align">Resend OTP</a>
-                <button id="input-type3"  disabled={loading}>{loading && 
+                <button id="input-type3"  disabled={loading}>
+                {loading && 
                     <div className="preloader-wrapper small active">
                         <div className="spinner-layer spinner-green-only">
                         <div className="circle-clipper left">

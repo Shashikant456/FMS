@@ -42,12 +42,12 @@ export class dashboardHelp extends Component {
                 <nav >
                   <div className="nav-wrapper white ">
                       <a className="brand-logo left" id="img"> 
-                          <img className="center" src={mainLogo} width="60" height="60"></img>
+                          <img className="center" src={mainLogo} width="55" height="50"></img>
                       </a>
                       <ul id="nav-mobile" className="right">
-                      <li><Link to="/dashboard">Home</Link></li>
+                      <li><Link id="home" to="/dashboard">Home</Link></li>
                       <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
-                      <li><a href="">Profile</a></li>
+                      <li><a id="home" href="">Profile</a></li>
                   </ul>
                   </div>
               </nav>
@@ -63,11 +63,11 @@ export class dashboardHelp extends Component {
                 <input type="search" id="dashinput" placeholder="Ask a question" required ></input>
                 <i className="material-icons right">
             
-                <a className="waves-effect waves-light btn teal lighten-2 text-white" 
+                <a className="btn hide-on-small-only" 
                 id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
+                <i className="material-icons right show-on-small grey-text hide-on-med-and-up" >search</i>
                 
-                <label className="label-icon"><i className="material-icons">search</i>
-            </label>
+              
             </div>
         </div>
         </nav>
