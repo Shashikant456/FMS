@@ -12,6 +12,9 @@ import ChangePwd from './components/ChangePwd'
 import UserDetails from './components/UserDetails'
 import Dropdown from './components/Dropdown'
 import axios from 'axios'
+import Vendor from './components/Help/Vendor'
+import Resident from './components/Help/Resident'
+import Association from './components/Help/Association'
 axios.defaults.baseURL ="http://stskfacilities.com:8081"
 
 
@@ -36,6 +39,9 @@ axios.defaults.baseURL ="http://stskfacilities.com:8081"
               <Route exact path="/register/:id?/:name?" component={ Register } />
               <Route  path="/userDetails" component={ UserDetails } />
               <Route exact path="/help" component={ dashboardHelp } />
+              <Route exact path="/vendorHelp" component={ Vendor } />
+              <Route exact path="/associationHelp" component={ Association } />
+              <Route exact path="/residentHelp" component={ Resident } />
            </Switch>
         </div>
       </BrowserRouter>

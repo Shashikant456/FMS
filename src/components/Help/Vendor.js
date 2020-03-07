@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
-import './css/dashboardHelp.css'
-import  mainLogo from './Images/Mainlogo.png'
-import dashboard from './Images/dashboard.png'
+import '../css/dashboardHelp.css'
+import  mainLogo from '../Images/Mainlogo.png'
+import dashboard from '../Images/dashboard.png'
 import {  withRouter, Link} from 'react-router-dom'
-import jobseeker from './Images/JobseekerHelp.png'
-import vendor from './Images/vendorHelp.png'
-import association from './Images/AsssociationHelp.png'
-import recident from './Images/recidentHelp.png'
+import jobseeker from '../Images/JobseekerInactive.png'
+import vendor from '../Images/vendorActive.png'
+import association from '../Images/AsssociationHelp.png'
+import recident from '../Images/recidentHelp.png'
 import axios from 'axios'
 import * as $ from 'jquery'
 
 
 export class dashboardHelp extends Component {
-
-  
+    
   handleVendor=(e)=>{
     this.props.history.push('/vendorHelp')
   }
   handleJobseeker=(e)=>{
+      console.log("job")
     this.props.history.push('/help')
   }
   handleAssociation=(e)=>{
@@ -26,9 +26,9 @@ export class dashboardHelp extends Component {
   handleResident=(e)=>{
     this.props.history.push('/residentHelp')
   }
+
     render() {
-      console.log(this.state)
-      const jobseker = require("./Json/Jobseeker.json")
+      const jobseker = require("../Json/Jobseeker.json")
       const jobseekerList = jobseker.length ? (
         jobseker.map(Qes => {      
                 return(
@@ -91,7 +91,7 @@ export class dashboardHelp extends Component {
 
         <div className="row container center-align">
           <div className="col s3 m3 l3 offset-l3 offset-m3">
-          <div className="card hoverable z-depth-3" onClick={this.handleJobseeker}>
+          <div className="card hoverable" onClick={this.handleJobseeker}>
               <div className="card-image" >
               <img className="center-align" src={jobseeker}></img>
               <h6 className="center-align" id="imghelp">Job Seeker</h6>
@@ -102,7 +102,7 @@ export class dashboardHelp extends Component {
             </div>
 
             <div className="col s3 m3 l3 " onClick={this.handleVendor} >
-            <div className="card hoverable">
+            <div className="card hoverable z-depth-3">
               <div className="card-image">
               <img className="center-align" src={vendor}></img>
               <h6 className="center-align" id="imghelp">Vendor</h6>
@@ -139,7 +139,7 @@ export class dashboardHelp extends Component {
           </div>
 
           <div className="container z-depth-1" id="colli">
-          <h5 className="center-align" id="coll">Job Seeker</h5>
+          <h5 className="center-align" id="coll">Vendor</h5>
               {jobseekerList}
             </div>
 

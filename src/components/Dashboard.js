@@ -32,7 +32,6 @@ class Dashboard extends Component {
             console.log(res.data)
             console.log(res.data.data)
             console.log(res.data.data.mob)
-
             this.setState({
                 details: res.data.data
             });
@@ -64,12 +63,12 @@ class Dashboard extends Component {
         //     });
         // })
     }
-    handleApply=(e)=>{
-        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
-        .then(res=>{
-            console.log(res.data)
-        })
-    }
+    // handleApply=(e)=>{
+    //     axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+    //     .then(res=>{
+    //         console.log(res.data)
+    //     })
+    // }
     handleLogin=(e)=>{
         this.setState({
             LoggedIn:false
@@ -90,8 +89,6 @@ class Dashboard extends Component {
         })
     }
     render() {
-
-       
         console.log(this.state.appliedJobs)
 
         const {posts} = this.state;
@@ -165,7 +162,7 @@ class Dashboard extends Component {
         )
         const {appliedJobs} = this.state;
         const appliedJobsList = appliedJobs.length ? (
-            appliedJobs.map(post => {      
+        appliedJobs.map(post => {      
                 return(
                     <div className="row post card" key={post.id}>
                         <div className="card-content" >
@@ -211,7 +208,9 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-            </div>)
+            </div>
+            
+            )
        
         return (
             <div id="back">
