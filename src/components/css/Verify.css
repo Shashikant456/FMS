@@ -207,6 +207,7 @@ input.error {
   background: white;
   color: lightseagreen;
   border-color: 7px black;
+  outline: none;
 }
 #hr{
   width: 282px;

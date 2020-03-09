@@ -19,7 +19,7 @@ class Verify extends Component{
              }
              componentDidMount(){
                 this.setState({
-                   //mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
                            
@@ -74,7 +74,8 @@ class Verify extends Component{
                                             pathname : '/dashboard',
                                             state :{
                                             mobileNumber : this.state,
-                                            userId: this.state.userId  }} );
+                                            userId: this.state.userId 
+                                         }} );
                                     }
                                     else{
                                         this.props.history.push({

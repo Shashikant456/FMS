@@ -12,7 +12,9 @@ import * as $ from 'jquery'
 
 
 export class dashboardHelp extends Component {
-
+  state={
+    status:'job'
+  }
   
   handleVendor=(e)=>{
     this.props.history.push('/vendorHelp')
@@ -27,8 +29,8 @@ export class dashboardHelp extends Component {
     this.props.history.push('/residentHelp')
   }
     render() {
-      console.log(this.state)
       const jobseker = require("./Json/Jobseeker.json")
+
       const jobseekerList = jobseker.length ? (
         jobseker.map(Qes => {      
                 return(
@@ -59,7 +61,7 @@ export class dashboardHelp extends Component {
                       <ul id="nav-mobile" className="right">
                       <li><Link id="home" to="/dashboard">Home</Link></li>
                       <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
-                      <li><a id="home" href="">Profile</a></li>
+                      <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
                   </ul>
                 </div>
               </nav>
@@ -201,3 +203,4 @@ export class dashboardHelp extends Component {
 // });
 
 export default withRouter(dashboardHelp)
+

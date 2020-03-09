@@ -4,6 +4,7 @@ import './css/dashboard.css'
 import  mainLogo from './Images/Mainlogo.png'
 import dashboard from './Images/dashboard.png'
 import { withRouter,Link,NavLink } from 'react-router-dom'
+import Popup from "reactjs-popup";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -15,7 +16,10 @@ class Dashboard extends Component {
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
-        appliedJobs:''
+        appliedJobs:'',
+        searchedJobs:[],
+        searchLoading:false,
+        searchError:''
     }
 }
     componentWillMount(){
@@ -29,7 +33,6 @@ class Dashboard extends Component {
 
         axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
         .then(res =>{
-            console.log(res.data)
             console.log(res.data.data)
             console.log(res.data.data.mob)
             this.setState({
@@ -77,20 +80,29 @@ class Dashboard extends Component {
     }
     handleinputSearch=(e)=>{
         this.setState({
-            search:e.target.value
+            search:e.target.value,  
         })
     }
     handleSearch=(e)=>{
-       
         axios.get('/stskFmsApi/jobs/getByJobs/'+this.state.search)
         .then(res=>{
-            console.log(res)
-            console.log(res.data)
+            if(res.data.success===1){
+                this.setState({
+                    searchedJobs:res.data.data,
+                    searchLoading:true,
+                    searchError:''
+                })
+            }
+            else{
+                this.setState({
+                    searchError:'Sorry, No JOb updates..!'
+                })
+            }
+           
         })
     }
     render() {
-        console.log(this.state.appliedJobs)
-
+        
         const {posts} = this.state;
         const postList = posts.length ? (
             posts.map(post => {
@@ -160,6 +172,48 @@ class Dashboard extends Component {
           </div>
             </div>
         )
+
+        const {searchedJobs} = this.state;
+        const searchList = searchedJobs.length ? (
+            searchedJobs.map(search => {
+                return(
+                    <div className="row post card" key={search.id}>
+                        <div className="card-content" >
+                        
+                            <div className="col s2 m2 l2">
+                                <p id="dashtext" id="dashtext">Job position</p>
+                                <br></br>
+                                <p>{search.jobType}</p>
+                            </div>
+                             <div className="col s2 m2 l2">
+                                 <p id="dashtext">Location</p>
+                                <br></br>
+                                <p>{search.serviceArea}</p>
+                            </div>
+                             <div className="col s2 m2 l2">
+                                 <p id="dashtext">Age Limit</p>
+                                <br></br>
+                                <p>{search.ageLimit}</p>
+                            </div>
+                             <div className="col s3 m3 l3">
+                                 <p id="dashtext">Language</p>
+                                <br></br>
+                                <p>{search.language}</p>
+                            </div>
+                             <div className="col s2 m2 l2 right-align">
+                                <a className="btn" onClick={this.handleApply} value={search.id} id="dashbtn">Apply</a>
+                            </div>
+                           
+                         </div>
+                    </div>
+            
+                )
+            })
+        ) :(
+            <div></div>
+        )
+
+
         const {appliedJobs} = this.state;
         const appliedJobsList = appliedJobs.length ? (
         appliedJobs.map(post => {      
@@ -188,7 +242,7 @@ class Dashboard extends Component {
                                 <p>{post.language}</p>
                             </div>
                              <div className="col s2 m2 l2 right-align">
-                                <a className="btn green" value={post.id} id="dashbtn">Selected</a>
+                                <a className="btn green" value={post.id} id="dashbtn">Waiting</a>
                             </div>
                            
                          </div>
@@ -223,7 +277,7 @@ class Dashboard extends Component {
                             <ul id="nav-mobile" className="right">
                                 <li><Link to="/dashboard" className="waves-effect waves-light btn-small" id="btnnav">Home</Link></li>
                                 <li><Link id="home" to="/help">Help</Link></li>
-                                <li><a id="home" href="">Profile</a></li>
+                                <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
                             </ul>
                         </div>
                     </nav>
@@ -235,13 +289,13 @@ class Dashboard extends Component {
                      <img className="center" id="dashboard" src={dashboard} ></img>
                      
                 </div>
-
+                    
                 <nav className="container white" id="search">
                 <div className="nav-wrapper">
                     
                         <div className="input-field">
                         
-                            <input id="dashinput" type="search" onChange={this.handleinputSearch} required placeholder="Search jobs"></input>
+                            <input id="dashinput" type="search" onChange={this.handleinputSearch} required placeholder="Search jobs"/>
                             <i className="material-icons right">
                         
                             <a className="btn hide-on-small-only" onClick={this.handleSearch} id="src1">
@@ -250,19 +304,22 @@ class Dashboard extends Component {
                             <i className="material-icons right show-on-small hide-on-med-and-up grey-text"
                             onClick={this.handleSearch}>search</i>
                             
-                        
                         </div>
                       
                 </div>
                 </nav>
                 </div>
 
+
             <div className="center-align" id="details">
                 <div className="row">
                     <div className="col s12 m12 l12">
                         <div className="col s12 m3 l3 offset-m1 offset-l1 z-depth-1" id="profile">
                         <div id="editicn">
-                            <i className="material-icons small right">edit</i>
+                        <Popup modal trigger={<i className="material-icons small right">edit</i>}>
+                            Edit profile
+                        </Popup>
+                            
                         </div>
                         <div className="center" id="profile1">
                             <i className="material-icons large">person</i><br></br>
@@ -279,10 +336,22 @@ class Dashboard extends Component {
                             <a className="waves-effect waves-light btn" onClick={this.handleLogin} id="logout"><i className="material-icons left">logout</i>Logout</a>
                         </div>
                     </div>
-                    
                             <div className="col s12 m7 l7 offset-l1 z-depth-1" id="container">
-                                <h5>Job recomended for you</h5>
-                                {postList}
+                            {
+                                this.state.search ? (
+                                    <div>
+                                        <h5>Searched Jobs</h5>
+                                        <h4 className="red-text">{this.state.searchError}</h4>
+                                        {searchList}
+                                    </div>
+                                ):(
+                                    <div>
+                                        <h5>Job recomended for you</h5>
+                                        {postList}
+                                    </div>
+                                )
+                            }
+
                             </div>
                         </div>
                     </div>

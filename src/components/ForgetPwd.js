@@ -7,7 +7,8 @@ class ForgetPwd extends Component {
 state = {      
             countryCode:'91',
             mobileNumber:'',
-            input_otp:''   
+            input_otp:'',
+            otpLoading:false
         }
     
         handleChange1 = (e) => {
@@ -32,6 +33,9 @@ state = {
 
         handleSend = (e) => {
             e.preventDefault();
+            this.setState({
+                otpLoading:!this.setState.otpLoading
+            })
             axios.post('/stskFmsApi/otpServices/sendOtpBySMS',
              {  countryCode:91,
                 mobileNumber :this.state.mobileNumber})
@@ -86,25 +90,42 @@ state = {
                 <div className="row" id="main1">      
                     <center id="center">
                     <h3 className="center" id="otp">OTP</h3>  
-                    <form onSubmit={this.handleSend}>
-                    
-                    <div className="input-field">
-                        <i id="iconn" className="material-icons prefix">phone_iphone</i>
-                        <input id="icon_prefix" type="text" required placeholder="Enter mobile numbers"
-                        pattern="[0-9]{10}" title="Must contain only Numeric value" onChange={this.handleChange1}/>
-                    
-                   </div>
-                        <button id="verifymisscall">Send otp</button>
-                    </form>
+                   
+                {
+                    this.state.otpLoading ? (
+                        <div> 
 
-                    <form onSubmit={this.handleVerify}>
-                        <input id="partitioned" type="text" required maxLength="6" onChange={this.handleChange2} 
-                        pattern="[0-9]" title="Must contain only Numeric value"/>
-                    
+                        <form onSubmit={this.handleSend}>
+                        <div className="input-field">
+                            <i id="iconn" className="material-icons prefix">phone_iphone</i>
+                            <input id="icon_prefix" type="text" placeholder="Enter mobile numbers"
+                            pattern="[0-9]{10}" title="Must contain only Numeric value" onChange={this.handleChange1}/>
+                         </div>
+                            <button id="verifymisscall">Send otp</button>
+                        </form>
+
+                        <form onSubmit={this.handleVerify}>
+                            <input id="partitioned" type="text" required maxLength="6" onChange={this.handleChange2} 
+                            //pattern="[0-9]" title="Must contain only Numeric value"
+                            />
                         <button id="input-type3" >Verify</button>
-                    </form>
+                        </form>
+                        <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
+                    </div>
+                    ) : (
+                        <form onSubmit={this.handleSend}>
+                        <div className="input-field">
+                            <i id="iconn" className="material-icons prefix">phone_iphone</i>
+                            <input id="icon_prefix" type="text" placeholder="Enter mobile numbers"
+                            pattern="[0-9]{10}" title="Must contain only Numeric value" onChange={this.handleChange1}/>
+                        
+                       </div>
+                            <button id="input-type3">Send otp</button>
+                        </form>
                     
-                    <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
+                    )
+                }
+                    
                     </center>
                 </div> 
             </div>
