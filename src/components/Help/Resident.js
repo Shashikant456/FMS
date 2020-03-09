@@ -50,15 +50,15 @@ export class dashboardHelp extends Component {
             <div id="back">
             <div>
             <div className="navbar-fixed">
-                <nav >
-                  <div className="nav-wrapper white ">
+            <nav className="white">
+              <div className="nav-wrapper container ">
                       <a className="brand-logo left" id="img"> 
-                          <img className="center" src={mainLogo} width="55" height="50"></img>
+                          <img className="center" src={mainLogo} width="50" height="50"></img>
                       </a>
                       <ul id="nav-mobile" className="right">
                       <li><Link id="home" to="/dashboard">Home</Link></li>
                       <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
-                      <li><a id="home" href="">Profile</a></li>
+                      <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
                   </ul>
                 </div>
               </nav>

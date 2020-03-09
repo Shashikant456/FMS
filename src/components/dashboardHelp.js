@@ -53,10 +53,10 @@ export class dashboardHelp extends Component {
             <div id="back">
             <div>
             <div className="navbar-fixed">
-                <nav >
-                  <div className="nav-wrapper white ">
+                <nav className="white">
+                  <div className="nav-wrapper container ">
                       <a className="brand-logo left" id="img"> 
-                          <img className="center" src={mainLogo} width="55" height="50"></img>
+                          <img className="center" src={mainLogo} width="50" height="50"></img>
                       </a>
                       <ul id="nav-mobile" className="right">
                       <li><Link id="home" to="/dashboard">Home</Link></li>
@@ -92,7 +92,7 @@ export class dashboardHelp extends Component {
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
         <div className="row container center-align">
-          <div className="col s3 m3 l3 offset-l3 offset-m3">
+          <div className="col s6 m3 l3 offset-l3 offset-m3">
           <div className="card hoverable z-depth-3" onClick={this.handleJobseeker}>
               <div className="card-image" >
               <img className="center-align" src={jobseeker}></img>
@@ -101,9 +101,9 @@ export class dashboardHelp extends Component {
               <div className="card-content">
               </div>
             </div>
-            </div>
+          </div>
 
-            <div className="col s3 m3 l3 " onClick={this.handleVendor} >
+            <div className="col s6 m3 l3 " onClick={this.handleVendor} >
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={vendor}></img>
@@ -115,19 +115,18 @@ export class dashboardHelp extends Component {
             </div>
             </div>
 
-            <div className="col s3 m3 l3" onClick={this.handleAssociation}>
+            <div className="col s6 m3 l3" onClick={this.handleAssociation}>
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={association}></img>
               <h6 className="center-align" id="imghelp">Association</h6>
               </div>
               <div className="card-content">
-        
               </div>
             </div>
             </div>
 
-            <div className="col s3 m3 l3" onClick={this.handleResident}>
+            <div className="col s6 m3 l3" onClick={this.handleResident}>
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={recident}></img>

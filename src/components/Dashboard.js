@@ -268,11 +268,11 @@ class Dashboard extends Component {
        
         return (
             <div id="back">
-               <div className="navbar-fixed">
-                    <nav className="" >
-                        <div className="nav-wrapper white">
+               <div className="navbar-fixed white">
+                    <nav className="white" >
+                        <div className="nav-wrapper white container">
                         <a className="brand-logo left" id="img"> 
-                            <img className="center" src={mainLogo} width="55" height="50"></img>
+                            <img className="center" src={mainLogo} width="50" height="50"></img>
                         </a>
                             <ul id="nav-mobile" className="right">
                                 <li><Link to="/dashboard" className="waves-effect waves-light btn-small" id="btnnav">Home</Link></li>
