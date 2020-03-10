@@ -19,7 +19,18 @@ class Dashboard extends Component {
         appliedJobs:'',
         searchedJobs:[],
         searchLoading:false,
-        searchError:''
+        searchError:'',
+
+        name:'',
+        email:'',
+        mob: "",
+        experience: "",
+        eduQual: "",
+        jobUpdate:"",
+        address:'',
+        jobTypes:[
+                 { id:''}
+                 ]
     }
 }
     componentWillMount(){
@@ -83,6 +94,29 @@ class Dashboard extends Component {
             search:e.target.value,  
         })
     }
+    handlepopup=(e)=>{
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+    popupsubmit=(e)=>{
+        e.preventDefault();
+        axios.put('/stskFmsApi/jobseeker/editJS',{
+            name:this.state.name,
+            email: this.state.email,
+            mob: this.state.mob,
+            experience: this.state.experience,
+            eduQual: this.state.eduQual,
+            jobUpdate:this.state.jobUpdate,
+            userLogin:{
+              id:this.state.userLogin
+            },
+            jobTypes:[{
+              id:this.state.jobTypes.id
+            }]
+        })
+    }
+   
     handleSearch=(e)=>{
         axios.get('/stskFmsApi/jobs/getByJobs/'+this.state.search)
         .then(res=>{
@@ -102,7 +136,7 @@ class Dashboard extends Component {
         })
     }
     render() {
-        
+      
         const {posts} = this.state;
         const postList = posts.length ? (
             posts.map(post => {
@@ -311,14 +345,45 @@ class Dashboard extends Component {
                 </div>
 
 
-            <div className="center-align" id="details">
+            <div className="" id="details">
                 <div className="row">
                     <div className="col s12 m12 l12">
                         <div className="col s12 m3 l3 offset-m1 offset-l1 z-depth-1" id="profile">
                         <div id="editicn">
                         <Popup modal trigger={<i className="material-icons small right">edit</i>}>
-                            Edit profile
-                        </Popup>
+                        <div className="popup-content ">
+                            <h4 className="center-align" id="popTitle">Edit profile</h4>
+                            <form onSubmit={this.popupsubmit}>
+                            <div className="col s12 m12 l6">
+                            
+                                <label >First name</label>
+                                <input id="inputBorder" name="name" placeholder={this.state.email} onChange={this.handlepopup} type="text"></input>
+                            
+                            
+                                <label >Email</label>
+                                <input id="inputBorder" name="email" onChange={this.handlepopup}  type="text"></input>
+                            
+                                <label>Education Qualificatin</label>
+                                <input id="inputBorder" name="eduQual" onChange={this.handlepopup}  type="text"></input>
+                                <label>Get job opening updates</label>
+                                <input id="inputBorder" name="jobUpdate" onChange={this.handlepopup}  type="text"></input>
+                                <button id="popcancelbtn" type="text">cancel</button>
+                            </div>
+                            <div className="col s12 m12 l6">
+                                <label>Mobile number</label>
+                                <input id="inputBorder" name="mob" onChange={this.handlepopup} type="text"></input>
+                                <label>No of years experiance</label>
+                                <input id="inputBorder" name="experience" onChange={this.handlepopup}  type="text"></input>
+                                <label>Applied for</label>
+                                <input id="inputBorder" name="" onChange={this.handlepopup}  type="text"></input>
+                                <label>Address</label>
+                                <input id="inputBorder" name="address" onChange={this.handlepopup}  type="text"></input>
+                                <button id="popsavebtn" type="text">save</button>
+                            </div>
+                            </form>
+                            </div>
+                            
+                    </Popup>
                             
                         </div>
                         <div className="center" id="profile1">

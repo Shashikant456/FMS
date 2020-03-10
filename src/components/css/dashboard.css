@@ -108,3 +108,57 @@
 #profileicn{
   font-size: 66px;
 }
+
+
+#popcancelbtn{
+  width: 95%;
+  border: 2px solid lightseagreen;
+  margin-top: 12px;
+  background: white;
+  color: lightseagreen;
+  border-color: 7px black;
+  outline: none;
+}
+#inputBorder{
+  width: 95%;
+  border-radius: 10px;
+  height: 34px;
+    margin: 0px;
+    margin-bottom: 12px;
+  border: 1.5px solid lightseagreen;
+  background: white;
+  color: gray;
+  outline: none;
+  font-size: 13px;
+}
+#popsavebtn{
+    width: 95%;
+    margin-top: 12px;
+    outline: none;
+}
+.popup-content {
+  position: relative;
+  background: rgb(255, 255, 255);
+  width: -1%;
+  height: auto;
+  border-radius: 12px;
+  margin: auto;
+  border: none;
+  padding: 5px;
+}
+.popup-overlay{
+  
+    overflow: scroll;
+
+}
+
+#popTitle{
+
+  margin-bottom: 43px;
+}
+#popLabel{
+  font-size: 17px;
+  margin-right: 28px;
+  margin-left: -67px;
+  margin-bottom: 0px;
+}

@@ -280,11 +280,7 @@ class UserRole extends Component {
           <form onSubmit={this.handleSubmit} noValidate>
         
             <div className="fullName">
-            {/* <div className="A">
-        <Multiselect options={update} onSelectOptions={this.result} />
-      </div> */}
-
-
+          
               <input
                 className=""
                 placeholder="Full Name"
@@ -294,10 +290,6 @@ class UserRole extends Component {
                 onChange={this.handleChange}
                 id="input"
               />
-              {/* <div style={{color:"red"}}>{this.state.nameError}</div> */}
-              {/* {formErrors.name.length > 0 && (
-                <span className="errorMessage">{formErrors.name}</span>
-              )} */}
             </div>
             <div className="mobileNumber">
               
