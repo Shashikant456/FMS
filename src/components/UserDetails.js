@@ -391,11 +391,7 @@ class UserRole extends Component {
                       </option>
                    ) })}
                   
-              </Form.Control> 
-              
-             
-              
-
+                </Form.Control> 
             </div>
             <div className="jobOpening">
          
@@ -428,9 +424,6 @@ class UserRole extends Component {
                 <span>No</span>
               </label>
             </p>
-
-         
-
               </div>
               <div className="checkbox">
 

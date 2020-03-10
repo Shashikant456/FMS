@@ -35,7 +35,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-            //userId:this.props.location.state.userId,
+            //userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -357,7 +357,7 @@ class Dashboard extends Component {
                             <div className="col s12 m12 l6">
                             
                                 <label >First name</label>
-                                <input id="inputBorder" name="name" placeholder={this.state.email} onChange={this.handlepopup} type="text"></input>
+                                <input id="inputBorder" name="name" value={this.state.details.email} onChange={this.handlepopup} type="text"></input>
                             
                             
                                 <label >Email</label>
@@ -424,7 +424,7 @@ class Dashboard extends Component {
 
                 <div className="col s12 l8 m8 offset-m1 offset-l1 z-depth-1" id="container2">
                     <div className="">
-                        <h5>Status of applied jobs</h5>
+                        <h5 className="center-align">Status of applied jobs</h5>
                         {appliedJobsList}
                      </div>
                 </div>
