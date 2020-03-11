@@ -2,160 +2,52 @@
   font-family: 'Lato', ;
 }
 
-body{
+/* body{
   background-color: #111;
+} */
+.control{
+  padding:2px;
 }
 .text-center{
     margin-left: 130px;
   }
   .wrapper5 {
+ 
     margin-top: 10px;
-    /* height: 100vh; */
-    /* width: 100%; */
-    position: fixed;
+   overflow: inherit;
+    /* overflow: hidden;
+    position: fixed; */
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-image: url(image/FMS_Bac.png); */
-    /* background-color: #258ea6; */
-    /* background-image: url("image/FMS_Bac.png"); */
-  }
-  
-  /* .form-wrapper1 {
-     width: 400px; 
-    display: flex;
-    flex-direction: column;
-     padding: 20px 40px; 
-    border-radius: 10px;
-    box-shadow: 0px 10px 50px #555;
-    background-color: #ffffff;
-  } */
-  .form-wrapper4{
-    margin-left: 370px;
-  }
-  form {
-    margin-top: -26px;
-    color: #555;
-    display: flex;
-    margin-left: 1%;
-  }
-  
-  /* h1 {
-    text-align: center;
-    width: 100%;
-    color: #111;
-    font-weight: lighter;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  } */
-  
-  /* label {
-    font-size: 0.8em;
-    margin-bottom: 0.25em;
-    color: #222;
-    font-weight: lighter;
-  } */
-/*   
-  input {
-    padding: 8px 5px 8px 2px;
-    border-radius: 5px;
-    outline: none;
-    font-size: 16px;
-     border: 1px solid #3fb2aa;
-     font-size: 12px;
     
-  } */
-  
-  /* input::placeholder {
-    font-size: 1.2em;
-    font-size: 12px;
-    font-weight: lighter;
-    color: #999;
+   
   }
-   */
-   #input{
-    font-size: 13px;
-    font-family: Lato;
-  }
-  input.error {
-    border: 1px solid red;
-  }
-  
-  .errorMessage {
-    color: red;
-    font-size: 0.75em;
-    display: relative;
-  }
-  
-  .firstName {
-    margin-right: 1%;
-  }
-  
-  .lastName {
-    margin-left: 1%;
-  }
-  
-  .firstName,
-  .lastName,
-  .email,
-  .password {
+  .form-wrapper4{
+    /* position: relative; */
+    
+    position: relative;
+    margin-left: 400px;
+    width: 600px;
     display: flex;
     flex-direction: column;
-    /* margin-bottom: 15px; */
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 7px #555;
+    background-color: #ffffff;
+    height:628px;
   }
-  
-  .firstName,
-  .lastName {
-    width: 49%;
-  }
-  
-  .email,
-  .password {
-    width: 100%;
-  }
-  
-  .createAccount {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .createAccount button {
-    background-color: #519e8a;
-    color: #fff;
-    border: 2px solid #fff;
-    width: 100%;
-    margin-top: 1em;
-    padding: 8px 0px;
-    font-size: 1em;
-    font-weight: lighter;
-    letter-spacing: 1px;
-    margin-bottom: 0.25em;
-  }
-  
-  .createAccount button:hover {
-    color: #519e8a;
-    background-color: #fff;
-    border: 2px solid #519e8a;
-  }
-  
-  .createAccount small {
-    color: #999;
-    font-weight: lighter;
-  }
-  
-  .fullName
-  {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    width: 49%;
-     margin-right: 1%; 
-     /* margin-right: 2%;  */
-  }
-  .mobileNumber,
+
+#popup{
+  margin-bottom: 50px;
+  border:none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius:0px;
+  margin-left: 2%
+}
+.mobileNumber,
   .years,
   .panNumber,
   .jobOpening{
@@ -165,7 +57,9 @@ body{
     width: 49%;
     margin-left: 1%;
   }
+  .fullName,
   .Email,
+  .Resume,
   .aadhar,
   .education,
   .applied{
@@ -175,12 +69,7 @@ body{
     width: 49%;
     margin-right: 1%;
   }
-  /* .text-center{
-    margin-left: 178px;
-  } */
-  /* .text-center h3{
-    margin-right: 96px;
-  } */
+
   h3{
     margin-right: 96px;
   }
@@ -189,13 +78,18 @@ body{
     height: 50px;
   }
   .checkbox{
-    margin-top: -22px;
     margin-left: 183px;
+    position: absolute;
+    top: 489px;
+   
   }
+  /* .checkbox[type="checkbox"]{
+    position: relative;
+    
+  } */
   .text-center h3{
     text-align: center;
     padding-top: 0%;
-    /* padding-bottom: 10px; */
     font-size: 27px;
     color: #707070;
     margin-left: -11px;
@@ -207,7 +101,7 @@ body{
   }
   #demo{ 
     width: 100%;
-    margin-top: 50px;
+    margin-top: 46px;
     margin-left: 1%;
     float: left;
     border: none;
@@ -245,6 +139,8 @@ body{
       font-size: 16px;
     font-weight: 700;
     font-family: Lato;
+    margin-left: 100px;
+    margin-top: 50px;
     }
     #label{
       color: #9e9e9e;
@@ -264,24 +160,63 @@ body{
     color: #707070;
     margin-left: 33px;
   }
-  .form-wrapper4{
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 50px #555;
-    background-color: #ffffff;
-    height: 565px;
+ .address{
+  position: relative;
+  height: 2px;
+  margin-top: -46px;
+  width: 49%;
+ }
+ #address{
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  background: #fff;
+ }
+.userimage{
+    margin-left: 229px;
+    border: 2px solid #3fb2aa;
+    border-radius: 100px;
+    margin-right: 225px;
   }
-  /* #yes{
-    color: green;
-  } */
-  /* #year{
-    
-  } */
-  /* .demo{
-    position: initial;
-    margin-left: 16%;
-    width: 268%;
-  } */
+  .camera{
+    margin-left: 283px;
+    margin-right: 206px;
+    margin-top: -47px;
+    padding: 0px;
+  }
+ 
+  .image_src {
+    background-image: url("../Images/camerapic.png"); 
+    background-repeat: no-repeat;
+ }
+
+ .camera input[type="file"]
+{
+  padding-left: 51px;
+    padding-right: 0px;
+    /* padding-bottom: 0px; */
+    /* padding-top: 0px; */
+    width: 0%;
+    /* background-color: #fff; */
+    border: none;
+    /* padding-left: 24px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: 0%;
+    background-color:#fff;
+    border:none; */
+  }
+#filebutton{
+    width: 10%;
+  }
+  .Resume input[type="file"]{
+    margin-top: -53px;
+    padding: 11px;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0px;
+    margin-left: -8px;
+  }
+  #multi{
+    width:100%;
+  }

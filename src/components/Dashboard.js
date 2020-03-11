@@ -60,6 +60,13 @@ class Dashboard extends Component {
             });
         }) 
 
+        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+        .then(res=>{
+            this.setState({
+                appliedJobs:res.data.data.jobs
+            })
+        })
+
         // axios.put('/stskFmsApi/jobseeker/applyJobs',
         // {  id:91,
         //     jobs:[{
@@ -101,20 +108,21 @@ class Dashboard extends Component {
     }
     popupsubmit=(e)=>{
         e.preventDefault();
-        axios.put('/stskFmsApi/jobseeker/editJS',{
-            name:this.state.name,
-            email: this.state.email,
-            mob: this.state.mob,
-            experience: this.state.experience,
-            eduQual: this.state.eduQual,
-            jobUpdate:this.state.jobUpdate,
-            userLogin:{
-              id:this.state.userLogin
-            },
-            jobTypes:[{
-              id:this.state.jobTypes.id
-            }]
-        })
+        // axios.put('/stskFmsApi/jobseeker/editJS',{
+        //     name:this.state.name,
+        //     email: this.state.email,
+        //     mob: this.state.mob,
+        //     experience: this.state.experience,
+        //     eduQual: this.state.eduQual,
+        //     jobUpdate:this.state.jobUpdate,
+        //     userLogin:{
+        //       id:this.state.userLogin
+        //     },
+        //     jobTypes:[{
+        //       id:this.state.jobTypes.id
+        //     }]
+        // })
+        console.log(this.state.name)
     }
    
     handleSearch=(e)=>{
@@ -357,7 +365,8 @@ class Dashboard extends Component {
                             <div className="col s12 m12 l6">
                             
                                 <label >First name</label>
-                                <input id="inputBorder" name="name" defaultValue={this.state.details.name} onChange={this.handlepopup} type="text"></input>
+                                <input id="inputBorder" name="name" defaultValue={this.state.details.name} 
+                                onChange={this.handlepopup} type="text"></input>
                             
                             
                                 <label >Email</label>
@@ -367,7 +376,7 @@ class Dashboard extends Component {
                                 <input id="inputBorder" name="eduQual" defaultValue={this.state.details.eduQual} onChange={this.handlepopup}  type="text"></input>
                                 <label>Get job opening updates</label>
                                 <input id="inputBorder" name="jobUpdate" defaultValue={this.state.details.jobType} onChange={this.handlepopup}  type="text"></input>
-                                <button id="popcancelbtn" type="text">cancel</button>
+                                <div id="popcancelbtn" onClick={()=>console.log("cancel")} className="center-align">cancel</div>
                             </div>
                             <div className="col s12 m12 l6">
                                 <label>Mobile number</label>

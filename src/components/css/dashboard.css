@@ -113,11 +113,13 @@
 #popcancelbtn{
   width: 95%;
   border: 2px solid lightseagreen;
-  margin-top: 12px;
+  margin-top: 14px;
   background: white;
-  color: lightseagreen;
-  border-color: 7px black;
+  color: 2px solid lightseagreen;
   outline: none;
+  border-radius: 10px;
+  padding: 9px;
+  font-size: 15px;
 }
 #inputBorder{
   width: 95%;

@@ -1,72 +1,55 @@
 import React, { Component } from "react";
+//import { Dropdown } from 'semantic-ui-react'
 import ReactDOM from "react-dom";
-import { Form,FormControl } from 'react-bootstrap';
+import { Form,FormControl} from 'react-bootstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import axios from 'axios'
+import camera from './Images/camerapic.png'
 import "./css/userDetails.css";
+import Select from 'react-select';  
+import 'bootstrap/dist/css/bootstrap.min.css';  
+import Popup from "reactjs-popup";
+//import  MultiSelectReact  from 'multi-select-react';
 
 
-// import "./css/chosen.jquery.min.js";
-import 'jquery';
+// import makeAnimated from 'react-select/animated'; 
+//import Multiselect from 'multiselect-dropdown-react';
+// import Select from 'react-select'; 
+// import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-
-// const emailRegex = RegExp(
-//   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-// );
-
-// const formValid = ({ formErrors, ...rest }) => {
-//   let valid = true;
-
- 
-//   Object.values(formErrors).forEach(val => {
-//     val.length > 0 && (valid = false);
-//   });
-
- 
-//   Object.values(rest).forEach(val => {
-//     val === null && (valid = false);
-//   });
-
-//   return valid;
-// };
-
-
-
-
+// const animatedComponents = makeAnimated();
 
 class UserRole extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      // nameError:"",
-      // emailError:"",
-      // mobError:"",
-      // panNumError: "",
-      // aadharNumError: "",
-      // eduQualError:"",
+  this.state = {
+    multiSelect: [],
+    image: null,
+     selectedFile:null,
+      dropdown:'',
+      displayValue:'',
+      values: [],
+      focusedValue: -1,
+      isFocused: false,
+      isOpen: false,
+      typed: '',
       checkBoxerror:'',
+      
       check:false,
       name: null,
       email: null,
-      mob:'',
+      mob:'8825290842',
       panNum: null,
       aadharNum: null,
       
       experience: null,
       eduQual: null,
-      working : true,
+      working : false,
       jobUpdate:null,
-      //jobss:null,
-      // update:null,
-      userLogin:'',
+      userLogin:'2',
       jobTypes:[
         { id:''}
       ],
-     
-
-      // selectedOption: '',
-      // value:" ",
       jobs:[],
       Updates:["Send Mail","SMS","Both","None"],
      formErrors: {
@@ -78,29 +61,16 @@ class UserRole extends Component {
         experience: "",
         working:"",
         eduQual: "",
-        
         jobUpdate:"",
-       //jobss:"",
-         //update:"",
-        //  userLogin:[
-        //   { id:''}
-        // ],
-        jobTypes:[
+         jobTypes:[
           { id:''}
         ]
-        //
-       // password: "",
-        
-      }
+       }
     };
     this.handleSubmit=this.handleSubmit.bind(this)
-    // this.handleCheck=this.handleCheck.bind(this)
   }
-  
-
   componentDidMount(){
-   
-    axios.get('/stskFmsApi/jobTypes/getAllJobTypes')
+  axios.get('/stskFmsApi/jobTypes/getAllJobTypes')
     .then(res=>{
       console.log(res.data)
       console.log(res.data.data)
@@ -110,60 +80,32 @@ class UserRole extends Component {
             //mob:this.props.location.state.mobileNumber.mob 
         })  
     })
-   
-  
- }
+   }
  handleRadio=(e)=>{
   console.log(e.target.value)
   this.setState({
     working:e.target.value
   })
 }
-// validate(){
-  // let nameError=""
-  // let emailError=""
-  // // let mobError=""
-  // let eduQualError=""
-  // if(!this.state.name){
-  //   nameError="name can not be blank"
-  // }
-  // if(!this.state.email.includes('@')){
-  //   emailError="invalid email"
-  // }
-  // if(this.state.mob!=10){
-  //   mobError="Enter valid mobile number"
-  // }
-//   if(!this.state.eduQual){
-//     eduQualError="Education Qualification can't be empty "
-//   }
-//   if(emailError || nameError || eduQualError){
-//     this.setState({
-//       emailError,nameError,eduQualError
-//     })
-//     return false;
-//   }
-//   return true;
- //}
- handleSubmit = e => {
-  e.preventDefault();
-  //  const isValid = this.validate();
-  // if (isValid){
-   // console.log(this.state)
-  // }
-  //clear form
+handleSubmit = e => {  
+  e.preventDefault(); 
+  // let formData = new FormData();  
 
-//   this.props.history.push({
-//             pathname : '/dashboard',
-//             state :{
-//             mobileNumber : this.state,
-//             userId: this.state.userLogin.id
-//             }
-//             } 
-//           );
-//  }
- 
-   if(this.state.check===true){
-  axios.post('/stskFmsApi/jobseeker/createJS',{
+  // formData.append('file',this.state.image,this.state.image.name);   
+  
+  // console.log(formData)
+  // const config = {     
+  //     headers: { 'content-type': 'multipart/form-data' }
+  // }
+  
+     
+  //     axios.post('stskFmsApi/imageDoc/createDoc/40',formData,config)
+  //         .then(res => {
+  //           console.log(res);
+  //         })
+  //         .catch(err => console.log(err))
+  if(this.state.check===true){
+axios.post('/stskFmsApi/jobseeker/createJS',{
     name:this.state.name,
     email: this.state.email,
     mob: this.state.mob,
@@ -213,22 +155,18 @@ class UserRole extends Component {
   
  };
   handleChange = e => {
-   
-      this.setState({update : e.target.value});
-    //this.setState({value:e.target.value});
-     this.setState({value:e.target.value});
+    this.setState({update : e.target.value});
+    this.setState({value:e.target.value});
      const { name, value } = e.target;
      let formErrors = { ...this.state.formErrors };
      this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
- 
   handleChange1Arg = (e) =>{
     axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob)
     .then(res=>{
       console.log(res.data)
-       
-        this.setState({
-            userLogin : {
+       this.setState({
+              userLogin : {
               id:res.data.data.id
             }
         })
@@ -247,41 +185,106 @@ class UserRole extends Component {
       jobUpdate : e.target.value
     });
   }
+  handlefile(e){
+    let file=e.target.files[0]
+    this.setState({file:file})
+    console.log(e.target.files,"$$$$")
+    console.log(e.target.files[0],"$$$$")
+}
   handleCheck = (e) =>{
     this.setState({
       check:true
     });
   }
-  handleRadio=(e)=>{
+  handleImageChange = (e) => {
+    console.log(e)
+    console.log( e.target.files[0])
+    console.log( e.target.files[0].name)
+    
+  this.setState({
+      image: e.target.files[0]
+  })
+};
+ 
+  onChangeCapture=(e)=>{
+    console.log(e.target.files[0]);
     this.setState({
-      working: e.target.value
+      selectedFile:e.target.files[0]
     })
   }
+  fileUploadHandler = () =>{
+    const fd = new FormData();
+    fd.append('image_src',this.state.selectedFile)
+    console.log(fd)
+    axios.post('/stskFmsApi/imageDoc/createDoc/2',fd)
+    .then(res =>{
+      console.log(res)
+      console.log(this.state.userLogin)
+    })
+  }
+  result=(e)=>{
+    console.log(e.target.value)
+  } 
 
+
+  Jobs() {  
+    return (this.state.jobs.map(job => ({ label: job.name, value: job.id })))  
+}  
   render() {
-  console.log(this.state.userLogin)
-  console.log(this.state.working)
-    // const { formErrors } = this.state;
-    
-// console.log(this.state.mobileNumber)
- console.log(this.state)
-// console.log(this.state.userLogin)
-    //  console.log(this.state.jobss)
-       console.log(this.state.jobUpdate)
+    const selectedOptionsStyles = {
+      color: "#3c763d",
+      backgroundColor: "#dff0d8"
+  };
+  const optionsListStyles = {
+      backgroundColor: "#dff0d8",
+      color: "#3c763d"
+  };
+//  const oplist = this.state.jobs.map(function(job,i){return (job)})
+//  console.log(oplist)
+  console.log(this.state)
+  //console.log(this.state.working)
+//  console.log(this.state)
+ console.log(this.state.jobUpdate)
     return (
-      <div className="wrapper5">
-        <div className="form-wrapper4">
+   
+      <div className="wrapper5 col m4 offset-l1">
+        <div className="form-wrapper4 row ">
+        <div className="userimage">
+        <i className="material-icons large">person</i>
+        
+            </div>
+            <div className="camera">
          
+            {/* <input type="file" />
+        <i className="material-icons small">camera</i> */}
+        {/* <span class="select-wrapper"> */}
+        <input   type="file"
+     name="image" class="image_src" 
+     accept="images.jpeg"  onChange={this.handleImageChange} />
+       {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
+    {/* <button onclick={() => this.fileInput.click()} id="filebutton">pic file</button>
+    <button onClick={this.fileUploadHandler}>Upload</button> */}
+    {/* <i className="material-icons small" id="pic">camera</i>  */}
+  {/* </span> */}
+        </div>
           <div className="text-center">
-            <h3 className="text-center4">JobSeeker</h3>
+        
+            {/* <h3 className="text-center4">JobSeeker</h3> */}
+           
+   
             {/* <h2>{this.props.match.params.name}</h2> */}
           </div>
-
+          {/* <Multiselect options={data} onSelectOptions={this.result} /> */}
+       
+         
           <form onSubmit={this.handleSubmit} noValidate>
-        
-            <div className="fullName">
           
-              <input
+          {/* <Dropdown placeholder='Applied For'  fluid multiple selection options={options} /> */}
+          
+      
+
+         <div className="fullName  ">
+                <input
                 className=""
                 placeholder="Full Name"
                 type="text"
@@ -289,9 +292,11 @@ class UserRole extends Component {
                 noValidate
                 onChange={this.handleChange}
                 id="input"
+                id="input"
               />
+             
             </div>
-            <div className="mobileNumber">
+            <div className="mobileNumber  ">
               
               <input
                 className="" 
@@ -304,7 +309,7 @@ class UserRole extends Component {
               />
             
             </div>
-            <div className="Email">
+            <div className="Email  ">
              
               <input
                 className=""
@@ -317,7 +322,7 @@ class UserRole extends Component {
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>
-            <div className="panNumber">
+            <div className="panNumber  ">
               
               <input
                 className=""
@@ -330,7 +335,7 @@ class UserRole extends Component {
               />
              
             </div>
-            <div className="aadhar">
+            <div className="aadhar  ">
               
               <input
                 className=""
@@ -343,7 +348,7 @@ class UserRole extends Component {
               />
              
             </div>
-            <div className="years">
+            <div className="years  ">
               
                 <input
                 className=""
@@ -359,7 +364,7 @@ class UserRole extends Component {
               </div>
         
            
-            <div className="education">
+            <div className="education  ">
              
               <input
                 className=""
@@ -370,30 +375,38 @@ class UserRole extends Component {
                 onChange={this.handleChange}
                 id="input"
               />
-               {/* <div style={{color:"red"}}>{this.state.eduQualError}</div> */}
+               
             </div>
        
-            <div className="applied">
-            
+            <div className="applied  ">
+          
+           
+  
+         
+        {/* <Popup trigger={<input type="select" placeholder="select" id="popup"/>} position=" center">
+    <div><Select  options={this.Jobs()} value={this.Jobs()} style={{width:'100%'}} onChange={this.handleChange1Arg}
+            id="multi" isMulti 
+           placeholder="select some options"/></div>
+  </Popup> */}
                
-               <Form.Control as="select"  onChange={this.handleChange1Arg}  id="demo" >
-               
-               <option value="" disabled selected>Choose your option</option>
-                {/* {this.state.jobs.map(job =>(
-                    <option key={job.id} value={job.name}  >
-                     </option>
-                  ))} */}
+                <Form.Control as="select"  onChange={this.handleChange1Arg}  id="demo">
+                {/* <select multiple={true} value={this.state.value} onChange={this.handleChange1Arg}> */}
+               <option value="1" disabled selected>Choose your option</option>
+                
                 
                   {this.state.jobs.map(function(job,i){
-                   return(
-                      <option key={job.id} value={job.id}>
+                   return( <option key={job.id} value={job.id}>
                       {job.name}
-                      </option>
+                    </option>
+                      
+                    
                    ) })}
-                  
-                </Form.Control> 
-            </div>
-            <div className="jobOpening">
+                   
+                  {/* </select> */}
+              </Form.Control>  
+              
+                   </div>
+            <div className="jobOpening  ">
          
     <Form.Control as="select" onChange={this.handleChange2} id="update" >
     <option value='1'>Please Select</option>
@@ -409,30 +422,53 @@ class UserRole extends Component {
   </Form.Control> 
             </div>
  
-            <div className="choose">
+            <div className="choose  ">
             <p id="label">Currently Working</p>
   
               <p>
               <label >
-              <input name="working"  value="true" onClick={this.handleRadio} type="radio" checked />
+              <input name="working"  value="true" onClick={this.handleRadio} type="radio"noValidate />
                   <span id="label">Yes</span>
                   </label>
               </p>
               <p>
               <label>
                 <input name="working" value="false" onClick={this.handleRadio} type="radio" />
-                <span>No</span>
+                <span id="label">No</span>
               </label>
             </p>
-              </div>
-              <div className="checkbox">
+            </div>
+           
+              {/* <div className="Resume">
+              
+              <input
+                className=""
+                placeholder="Resume"
+                type="file"
+                name="resume"
+                noValidate
+                onChange={this.handleChange}
+                id="input"
+              />
+              <small>Select Resume</small>
+             
+            </div> */}
+            <div className="address">
+             
+            <textarea id="address" placeholder="Address">
 
-                  <label>
-                    <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
-                    <span id="label">Terms and Conditions</span>
-                  </label>
-              <p className="center red-text">{this.state.checkBoxerror}</p>
-              </div> 
+            </textarea>
+              
+           </div>
+           <div className="checkbox">
+
+           <label>
+             <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
+             <span id="label">Terms and Conditions</span>
+           </label>
+       <p className="center red-text">{this.state.checkBoxerror}</p>
+       </div> 
+        
         
                 <div className="createAccount">
               <button type="submit" id="submit">Submit</button>
