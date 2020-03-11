@@ -357,27 +357,27 @@ class Dashboard extends Component {
                             <div className="col s12 m12 l6">
                             
                                 <label >First name</label>
-                                <input id="inputBorder" name="name" value={this.state.details.email} onChange={this.handlepopup} type="text"></input>
+                                <input id="inputBorder" name="name" defaultValue={this.state.details.name} onChange={this.handlepopup} type="text"></input>
                             
                             
                                 <label >Email</label>
-                                <input id="inputBorder" name="email" onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="email" defaultValue={this.state.details.email} onChange={this.handlepopup}  type="text"></input>
                             
                                 <label>Education Qualificatin</label>
-                                <input id="inputBorder" name="eduQual" onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="eduQual" defaultValue={this.state.details.eduQual} onChange={this.handlepopup}  type="text"></input>
                                 <label>Get job opening updates</label>
-                                <input id="inputBorder" name="jobUpdate" onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="jobUpdate" defaultValue={this.state.details.jobType} onChange={this.handlepopup}  type="text"></input>
                                 <button id="popcancelbtn" type="text">cancel</button>
                             </div>
                             <div className="col s12 m12 l6">
                                 <label>Mobile number</label>
-                                <input id="inputBorder" name="mob" onChange={this.handlepopup} type="text"></input>
+                                <input id="inputBorder" name="mob" defaultValue={this.state.details.mob} onChange={this.handlepopup} type="text"></input>
                                 <label>No of years experiance</label>
-                                <input id="inputBorder" name="experience" onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="experience" defaultValue={this.state.details.experience} onChange={this.handlepopup}  type="text"></input>
                                 <label>Applied for</label>
                                 <input id="inputBorder" name="" onChange={this.handlepopup}  type="text"></input>
                                 <label>Address</label>
-                                <input id="inputBorder" name="address" onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="address"  onChange={this.handlepopup}  type="text"></input>
                                 <button id="popsavebtn" type="text">save</button>
                             </div>
                             </form>
@@ -416,7 +416,6 @@ class Dashboard extends Component {
                                     </div>
                                 )
                             }
-
                             </div>
                         </div>
                     </div>
@@ -440,9 +439,6 @@ class Dashboard extends Component {
                </div>
 
                </footer>
-
-        
-
             </div>
 
         )

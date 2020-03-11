@@ -125,9 +125,9 @@
   height: 34px;
     margin: 0px;
     margin-bottom: 12px;
-  border: 1.5px solid lightseagreen;
+  border: 1px solid lightseagreen;
   background: white;
-  color: gray;
+  color:black;
   outline: none;
   font-size: 13px;
 }
