@@ -77,15 +77,6 @@ state = {
 
     render() {
         return (
-            // <div className="container">
-            //     <form onSubmit={this.handleSubmit}>
-            //     <h5>Forget password</h5>
-            //         <input type="text" onChange={this.handleChange1} placeholder="enterPassword" ></input>
-            //         <input type="text" onChange={this.handleChange2} placeholder="conformPassword"></input>
-            //         <button  className="waves-effect waves-light btn">Save</button>
-            //     </form>
-            // </div>
-
             <div id="body">
                 <div className="row" id="main1">      
                     <center id="center">
