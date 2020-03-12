@@ -9,7 +9,15 @@ import "./css/userDetails.css";
 import Select from 'react-select';  
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import Popup from "reactjs-popup";
+//import  MultiSelectReact  from 'multi-select-react';
 
+
+// import makeAnimated from 'react-select/animated'; 
+//import Multiselect from 'multiselect-dropdown-react';
+// import Select from 'react-select'; 
+// import 'bootstrap/dist/css/bootstrap.min.css'; 
+
+// const animatedComponents = makeAnimated();
 
 class UserRole extends Component {
   constructor(props) {
@@ -21,8 +29,8 @@ class UserRole extends Component {
       dropdown:'',
       displayValue:'',
       values: [],
-      focusedValue: -1,
-      isFocused: false,
+     focusedValue: -1,
+      isFocused: false, 
       isOpen: false,
       typed: '',
       checkBoxerror:'',
@@ -36,28 +44,15 @@ class UserRole extends Component {
       
       experience: null,
       eduQual: null,
-      working : false,
+      working : '',
       jobUpdate:null,
-      userLogin:'',
+      userId:'',
       jobTypes:[
         { id:''}
       ],
       jobs:[],
       Updates:["Send Mail","SMS","Both","None"],
-     formErrors: {
-      name: "",
-      email: "",
-        mob: "",
-       panNum: "",
-        aadharNum: "",
-        experience: "",
-        working:"",
-        eduQual: "",
-        jobUpdate:"",
-         jobTypes:[
-          { id:''}
-        ]
-       }
+   
     };
     this.handleSubmit=this.handleSubmit.bind(this)
   }
@@ -80,7 +75,9 @@ class UserRole extends Component {
   })
 }
 handleSubmit = e => {  
-  e.preventDefault(); 
+ 
+  e.preventDefault();
+  
   // let formData = new FormData();  
 
   // formData.append('file',this.state.image,this.state.image.name);   
@@ -108,7 +105,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
     eduQual: this.state.eduQual,
     jobUpdate:this.state.jobUpdate,
     userLogin:{
-      id:this.state.userLogin
+      id:this.state.userId
     },
     jobTypes:[{
       id:this.state.jobTypes.id
@@ -126,7 +123,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
         pathname : '/dashboard',
         state :{
         mobileNumber : this.state,
-        userId: this.state.userLogin.id
+        userId: this.state.userId
         }
         } 
       );
@@ -152,15 +149,14 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
      const { name, value } = e.target;
      let formErrors = { ...this.state.formErrors };
      this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    // this.setState({[name]: value }, () => console.log(this.state));
   };
   handleChange1Arg = (e) =>{
     axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob)
     .then(res=>{
       console.log(res.data)
        this.setState({
-              userLogin : {
-              id:res.data.data.id
-            }
+            userId:res.data.data.id
         })
     })
 
@@ -211,7 +207,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
     axios.post('/stskFmsApi/imageDoc/createDoc/2',fd)
     .then(res =>{
       console.log(res)
-      console.log(this.state.userLogin)
+      console.log(this.state.userId)
     })
   }
   result=(e)=>{
@@ -231,7 +227,8 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
       backgroundColor: "#dff0d8",
       color: "#3c763d"
   };
-
+//  const oplist = this.state.jobs.map(function(job,i){return (job)})
+//  console.log(oplist)
   console.log(this.state)
   //console.log(this.state.working)
 //  console.log(this.state)
@@ -280,10 +277,10 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 placeholder="Full Name"
                 type="text"
                 name="name"
-                noValidate
+                required
                 onChange={this.handleChange}
                 id="input"
-                id="input"
+                
               />
              
             </div>
@@ -294,9 +291,10 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 placeholder="Mobile Number"
                 type="tel"
                 name="mob"
-                noValidate
+                required
                 onChange={this.handleChange}
                 id="input"
+                pattern="[789][0-9]{9}"
               />
             
             </div>
@@ -305,11 +303,12 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
               <input
                 className=""
                 placeholder="Email"
-                type="text"
+                type="email"
                 name="email"
-                noValidate
+                required
                 onChange={this.handleChange}
                 id="input"
+              
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>
@@ -320,9 +319,12 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 placeholder="Pan Number"
                 type="text"
                 name="panNum"
-                noValidate
+                
+                required
                 onChange={this.handleChange}
                 id="input"
+                pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                title="Enter valid pannumber"
               />
              
             </div>
@@ -333,9 +335,11 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 placeholder="AadharCard Number"
                 type="text"
                 name="aadharNum"
-                noValidate
+                required
                 onChange={this.handleChange}
                 id="input"
+                pattern="^\d{4}\d{4}\d{4}$" title="Addhar Card"
+                title="4 digit space 4 digit space 4digit"
               />
              
             </div>
@@ -346,9 +350,12 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 placeholder="Years of Experience"
                 type="text"
                 name="experience"
-                noValidate
+                required
+                pattern="[0-9]*"
+                title="It should be Numeric"
                 onChange={this.handleChange}
                 id="input"
+                maxLength="2"
               /> 
 
               
@@ -362,7 +369,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 placeholder="Education Qualification"
                 type="text"
                 name="eduQual"
-                noValidate
+                required
                 onChange={this.handleChange}
                 id="input"
               />
@@ -386,7 +393,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 
                 
                   {this.state.jobs.map(function(job,i){
-                   return( <option key={job.id} value={job.id}>
+                   return( <option key={job.id} value={job.id} id="option">
                       {job.name}
                     </option>
                       
@@ -418,7 +425,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
   
               <p>
               <label >
-              <input name="working"  value="true" onClick={this.handleRadio} type="radio"noValidate />
+              <input name="working"  value="true" onClick={this.handleRadio} type="radio"  />
                   <span id="label">Yes</span>
                   </label>
               </p>
@@ -446,14 +453,14 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
             </div> */}
             <div className="address">
              
-            <textarea id="address" placeholder="Address">
+            <textarea id="address"  placeholder="Address">
 
             </textarea>
               
            </div>
            <div className="checkbox">
 
-           <label>
+           <label >
              <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
              <span id="label">Terms and Conditions</span>
            </label>

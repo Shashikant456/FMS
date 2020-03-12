@@ -14,7 +14,7 @@
   .wrapper5 {
  
     margin-top: 10px;
-   overflow: inherit;
+   overflow: hidden;
     /* overflow: hidden;
     position: fixed; */
     /* position: relative; */
@@ -79,8 +79,9 @@
   }
   .checkbox{
     margin-left: 183px;
+    
     position: absolute;
-    top: 489px;
+    top: 469px;
    
   }
   /* .checkbox[type="checkbox"]{
@@ -140,7 +141,7 @@
     font-weight: 700;
     font-family: Lato;
     margin-left: 100px;
-    margin-top: 50px;
+    margin-top: 67px;
     }
     #label{
       color: #9e9e9e;
@@ -160,6 +161,10 @@
     color: #707070;
     margin-left: 33px;
   }
+  #option{
+    background-color: #3fb2aa;
+    color: #ffffff;
+  }
  .address{
   position: relative;
   height: 2px;
@@ -170,6 +175,10 @@
   border: none;
   border-bottom: 1px solid #9e9e9e;
   background: #fff;
+  color: #707070;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 3px;
  }
 .userimage{
     margin-left: 229px;
@@ -220,3 +229,11 @@
   #multi{
     width:100%;
   }
+  #input{
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #707070;
+    
+  }
+  
