@@ -13,7 +13,7 @@ class ChangePwd extends Component {
 
         componentDidMount(){
             this.setState({
-                //mob: this.props.location.state.mobileNumber.mobileNumber
+                mob: this.props.location.state.mobileNumber.mobileNumber
             })
          }
 

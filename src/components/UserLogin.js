@@ -91,7 +91,7 @@ state = {
              <form id="frm" onSubmit={this.handleSubmit}>
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">person</i>
-                    <input id="icon_prefix" type="text" size="30"
+                    <input id="icon_prefix" type="email" size="30"
                      placeholder="User Id/Email Id" required onChange={this.handleChange1}/>
                 </div>
                     <div className="input-field">

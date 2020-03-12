@@ -268,7 +268,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
           {/* <Multiselect options={data} onSelectOptions={this.result} /> */}
        
          
-          <form onSubmit={this.handleSubmit} noValidate>
+          <form onSubmit={this.handleSubmit}>
           
           {/* <Dropdown placeholder='Applied For'  fluid multiple selection options={options} /> */}
           
