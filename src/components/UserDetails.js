@@ -9,15 +9,7 @@ import "./css/userDetails.css";
 import Select from 'react-select';  
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import Popup from "reactjs-popup";
-//import  MultiSelectReact  from 'multi-select-react';
 
-
-// import makeAnimated from 'react-select/animated'; 
-//import Multiselect from 'multiselect-dropdown-react';
-// import Select from 'react-select'; 
-// import 'bootstrap/dist/css/bootstrap.min.css'; 
-
-// const animatedComponents = makeAnimated();
 
 class UserRole extends Component {
   constructor(props) {
@@ -46,7 +38,7 @@ class UserRole extends Component {
       eduQual: null,
       working : false,
       jobUpdate:null,
-      userLogin:'2',
+      userLogin:'',
       jobTypes:[
         { id:''}
       ],
@@ -77,7 +69,7 @@ class UserRole extends Component {
       console.log(this.state.mob)
         this.setState({
             jobs : res.data.data,
-            //mob:this.props.location.state.mobileNumber.mob 
+            mob:this.props.location.state.mobileNumber.mob 
         })  
     })
    }
@@ -239,8 +231,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
       backgroundColor: "#dff0d8",
       color: "#3c763d"
   };
-//  const oplist = this.state.jobs.map(function(job,i){return (job)})
-//  console.log(oplist)
+
   console.log(this.state)
   //console.log(this.state.working)
 //  console.log(this.state)
