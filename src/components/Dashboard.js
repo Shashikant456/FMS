@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'91',
+        userId:'',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -35,7 +35,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-            //userId:this.props.location.state.userId, 
+            userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){

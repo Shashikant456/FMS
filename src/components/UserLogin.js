@@ -82,14 +82,6 @@ state = {
     render() {
         console.log(this.state)
         return (
-            // <div className="container">
-            //     <form onSubmit={this.handleSubmit}>
-            //         <input type="text" onChange={this.handleChange1} placeholder="email" ></input>
-            //         <input type="text" onChange={this.handleChange2} placeholder="password"></input>
-            //         <button  className="waves-effect waves-light btn">button</button>
-            //     </form>
-            //     <a onClick={this.forgetPwd}>Forget Password</a>
-            // </div>
 
             <div id="body">
             <div className="row" id="main1">      
@@ -105,7 +97,7 @@ state = {
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" placeholder="password" required onChange={this.handleChange2}
-                    //pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
                     <p className="red-text">{this.state.UserNotPresent}</p>
                     <p className="red-text">{this.state.error}</p>

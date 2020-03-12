@@ -45,7 +45,7 @@ class ChangePwd extends Component {
             {   countryCode:91,
                 mob:this.state.mob,
                 password:this.state.password})
-           .then(Response => {
+               .then(Response => {
         
                 this.props.history.push('./userLogin')
             
@@ -61,23 +61,7 @@ class ChangePwd extends Component {
 
     render() {
         return (
-            // <div>
-            //     <div id="body">
-            //         <div className="row" id="main">      
-            //         <center id="center">
-            //         <h5 className="center" id="text">Forget Password</h5>  
-            //         <form onSubmit={this.handleSubmit}>
-            //             <input type="password" value={this.state.password} onChange={this.handleChange1} placeholder="Enter password" ></input>
-            //             <input type="password" value={this.state.confirmPassword} onChange={this.handleChange2} placeholder="Conform Password"></input>
-            //             <button  className="waves-effect waves-light btn">Save</button>
-            //         </form>
-            //         </center>
-            //         </div> 
-            //     </div>
-            // </div>
-
-
-
+           
             <div id="body">
             <div className="row" id="main2">      
              <center id="center">
@@ -86,13 +70,15 @@ class ChangePwd extends Component {
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" required value={this.state.password} onChange={this.handleChange1}
-                    minLength="6" placeholder="Enter password" onChange={this.handleChange1}/>
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+                     placeholder="Enter password" onChange={this.handleChange1}/>
                     
                 </div>
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" required value={this.state.confirmPassword} onChange={this.handleChange2}
-                    minLength="6" placeholder="Confirm password" onChange={this.handleChange2}/>
+                     placeholder="Confirm password" onChange={this.handleChange2}/>
                      <p className="red-text">{this.state.error}</p>
                 </div>
                 
