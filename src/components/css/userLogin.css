@@ -13,7 +13,7 @@
     height: 480px;
     background:white;
     border-radius: 10px;
-    margin-top: 90px;
+    margin-top: 118px;
     box-shadow: 0 20px 50px rgba(230, 219, 219, 0.733);
   }
   
@@ -106,4 +106,10 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
   border-bottom: 1px solid #26a69a;
   -webkit-box-shadow: 0 1px 0 0 #26a69a;
   box-shadow: none;
+}
+form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -17px;
 }
