@@ -26,8 +26,8 @@ export class Register extends Component {
             console.log(res.data.data)
             this.setState({
                  userRoless : res.data.data,
-                // mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
-                // name:this.props.match.params
+                 mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
+                 name:this.props.match.params
             })
            
         })
@@ -67,30 +67,6 @@ export class Register extends Component {
 
         //     ))}
         return (
-            // <div id="body">
-            
-            //         <div className="row" id="main">      
-            //         <img className="left align" id="side" src={left} width="50" height="50"></img>
-            //         <img className="right align" id="side" src={right} width="50" height="50"></img>
-            //         <center id="center">
-            //         <img className="center align" src={logo} width="60" height="60"></img>
-            //         <h5 className="center" id="text">Choose Category</h5>  
-                    
-            //         <div className='row'>
-            //                 <div className="col s6 m6 l6">
-            //                         <div id="jobseeker" type='submit' name='btn_login' onClick={this.handleChange1}
-            //                         className=' btn btn-large waves-effect white black-text'>{postList}</div>
-            //                 </div>
-
-            //         </div>
-                    
-            //         </center>
-            //         </div> 
-        
-            // </div>
-
-            //<div className="container"><h3>{postList}</h3></div>
-
 
             <div className="center" id="body">
             

@@ -24,7 +24,6 @@ class SendOtp extends Component{
         e.preventDefault();
         console.log("face") 
         window.location.replace("http://google.com");
-        //window.location.assign("https://www.w3schools.com");
 
     }
     handleFacebook=(e)=>{
