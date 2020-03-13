@@ -12,7 +12,7 @@ state = {
             otpLoading:false
         }
     
-        handleChange1 = (e) => {
+        handleChangeMob = (e) => {
             this.setState({
                 mobileNumber : e.target.value
             })
@@ -83,6 +83,8 @@ state = {
     render() {
         const countries = require("./countryphonecode.json")
         console.log(this.state.countryCode)
+        console.log(this.state.mobileNumber)
+
         return (
             <div id="body">
                 <div className="row" id="main1">      
@@ -95,7 +97,7 @@ state = {
                         <form onSubmit={this.handleSend}>
                         <div className="input-field">
                         <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
-                        pattern="[0-9]{10}"  onChange={this.handleChange} required/>
+                        pattern="[0-9]{10}"  onChange={this.handleChangeMob} required/>
                     </div>
                    <Form.Group  onChange={this.handleChange1}>
                 
@@ -123,7 +125,7 @@ state = {
                         <form onSubmit={this.handleSend}>
                         <div className="input-field">
                             <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
-                              onChange={this.handleChange} required/>
+                              onChange={this.handleChangeMob} required/>
                         </div>
                        <Form.Group  onChange={this.handleChange1}>
                         <Form.Control as="select" value={this.state.countryCode} onChange={this.handleCountryCode}

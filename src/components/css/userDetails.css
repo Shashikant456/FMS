@@ -39,7 +39,9 @@
     background-color: #ffffff;
     height:628px;
   }
-
+#ra{
+  position: fixed;
+}
 #popup{
   margin-bottom: 50px;
   border:none;
@@ -236,4 +238,9 @@
     color: #707070;
     
   }
-  
+  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0px;
+  }

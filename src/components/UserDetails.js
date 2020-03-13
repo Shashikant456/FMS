@@ -9,15 +9,6 @@ import "./css/userDetails.css";
 import Select from 'react-select';  
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import Popup from "reactjs-popup";
-//import  MultiSelectReact  from 'multi-select-react';
-
-
-// import makeAnimated from 'react-select/animated'; 
-//import Multiselect from 'multiselect-dropdown-react';
-// import Select from 'react-select'; 
-// import 'bootstrap/dist/css/bootstrap.min.css'; 
-
-// const animatedComponents = makeAnimated();
 
 class UserRole extends Component {
   constructor(props) {
@@ -108,8 +99,8 @@ handleSubmit = e => {
   //         .catch(err => console.log(err))
 
 
-  if(this.state.check===true){
-axios.post('/stskFmsApi/jobseeker/createJS',{
+    if(this.state.check===true){
+    axios.post('/stskFmsApi/jobseeker/createJS',{
     name:this.state.name,
     email: this.state.email,
     mob: this.state.mob,
@@ -125,7 +116,6 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
     jobTypes:[{
       id:this.state.jobTypes.id
     }]
-    
   })
  
   .then(response=>{
@@ -135,25 +125,23 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
       console.log(response.data)
       this.props.history.push('./dashboard')
       this.props.history.push({
-        pathname : '/dashboard',
-        state :{
-        mobileNumber : this.state,
-        userId: this.state.userId
-        }
-        } 
-      );
-    }
+      pathname : '/dashboard',
+      state :{
+      mobileNumber : this.state,
+      userId: this.state.userId
+        }} );
+      }
     })
     .catch(error=>{
       console.log(error)
-  })
+        })
 
-  }
-    else{
-      this.setState({
-          checkBoxerror:'Accept Terms & Conditions'
-      })
-    }
+        }
+          else{
+            this.setState({
+                checkBoxerror:'Accept Terms & Conditions'
+            })
+          }
   
 
  };
@@ -172,15 +160,6 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
         id:e.target.value
       }
     })
-
-    this.props.history.push({
-      pathname : '/dashboard',
-      state :{
-      mobileNumber : this.state,
-      userId: this.state.userId
-      }
-      } 
-    );
     console.log(e.target.value)
   }
   handleChange2 = e =>{
@@ -433,13 +412,13 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
   
               <p>
               <label >
-              <input name="working"  value="true" onClick={this.handleRadio} type="radio"  />
+              <input name="working"  value="true" onClick={this.handleRadio} type="radio" id="ra" />
                   <span id="label">Yes</span>
                   </label>
               </p>
               <p>
               <label>
-                <input name="working" value="false" onClick={this.handleRadio} type="radio" />
+                <input name="working" value="false" onClick={this.handleRadio} type="radio" id="ra"/>
                 <span id="label">No</span>
               </label>
             </p>

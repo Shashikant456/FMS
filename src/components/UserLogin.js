@@ -78,6 +78,7 @@ state = {
             .catch(error => {
                 console.log(error)
             });
+
         }
 
 
@@ -93,12 +94,12 @@ state = {
              <form id="frm" onSubmit={this.handleSubmit}>
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">person</i>
-                    <input id="icon_prefix" type="email" size="30"
-                     placeholder="User Id/Email Id" required onChange={this.handleChange1}/>
+                    <input id="icon_prefix" type="email" size="30" required
+                     placeholder="User Id/Email Id"  onChange={this.handleChange1}/>
                 </div>
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
-                    <input id="icon_prefix" type="password" placeholder="password" required onChange={this.handleChange2}
+                    <input id="icon_prefix" type="password" placeholder="password" required  onChange={this.handleChange2}
                     //pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
                     <p className="red-text">{this.state.UserNotPresent}</p>

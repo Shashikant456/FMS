@@ -65,7 +65,7 @@ class Dashboard extends Component {
                 });
             }
             else{
-                alert("User Id does not exists")
+                console.log("User Id does not exists")
             }
            
         }) 
@@ -155,6 +155,7 @@ class Dashboard extends Component {
     }
     render() {
         console.log(this.state.userId)
+        console.log(this.state)
       
         const {posts} = this.state;
         const postList = posts.length ? (
