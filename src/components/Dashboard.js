@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'40',
+        userId:'3',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -365,8 +365,10 @@ class Dashboard extends Component {
                 <div className="row">
                     <div className="col s12 m12 l12">
                         <div className="col s12 m3 l3 offset-m1 offset-l1 z-depth-1" id="profile">
-                        <div id="editicn">
-                        <Popup modal trigger={<i className="material-icons small right">edit</i>}>
+                        <div id="editicn" >
+                        <Popup modal trigger={
+                            <div><i className="material-icons small right">edit</i><br></br></div>
+                        }>
                         <div className="popup-content ">
                             <h4 className="center-align" id="popTitle">Edit profile</h4>
                             <form onSubmit={this.popupsubmit}>
@@ -404,7 +406,9 @@ class Dashboard extends Component {
                             
                         </div>
                         <div className="center" id="profile1">
+                        <div className="center">
                             <i className="material-icons large">person</i><br></br>
+                        </div>
                             <strong className="center-align">{this.state.details.name}</strong>
                             <div className="left-align">
                                 <p><i className="material-icons small" id="dashicn">location_on</i>{this.state.details.ulCode}</p>
