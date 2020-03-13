@@ -52,6 +52,12 @@
   width: 288px;
   outline: none;
 }
+#input-forgot{
+  width: 288px;
+  outline: none;
+  margin-top: -30px;
+}
+
 #input-type4{
   text-decoration: none;
   width: 288px;

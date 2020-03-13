@@ -22,6 +22,8 @@ class Dashboard extends Component {
         searchError:'',
 
         // Edit Profile
+        popup:false,
+
         name:'',
         email:'',
         mob: "",
@@ -367,8 +369,10 @@ class Dashboard extends Component {
                         <div className="col s12 m3 l3 offset-m1 offset-l1 z-depth-1" id="profile">
                         <div id="editicn" >
                         <Popup modal trigger={
-                            <div><i className="material-icons small right">edit</i><br></br></div>
+                        
+                            <div><i className="material-icons small right" onClick={()=>this.setState({popup:true})}>edit</i><br></br></div>
                         }>
+                        
                         <div className="popup-content ">
                             <h4 className="center-align" id="popTitle">Edit profile</h4>
                             <form onSubmit={this.popupsubmit}>
@@ -386,7 +390,7 @@ class Dashboard extends Component {
                                 <input id="inputBorder" name="eduQual" defaultValue={this.state.details.eduQual} onChange={this.handlepopup}  type="text"></input>
                                 <label>Get job opening updates</label>
                                 <input id="inputBorder" name="jobUpdate" defaultValue={this.state.details.jobType} onChange={this.handlepopup}  type="text"></input>
-                                <div id="popcancelbtn" onClick={()=>console.log("cancel")} className="center-align">cancel</div>
+                                <div id="popcancelbtn" onClick={()=>this.setState({popup:false})} className="center-align">cancel</div>
                             </div>
                             <div className="col s12 m12 l6">
                                 <label>Mobile number</label>

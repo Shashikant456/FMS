@@ -204,8 +204,8 @@ button:enabled{
     width: 40%;
 }
 #country {
-    width: 67%;
-    margin-left: -50px;
+    width: 65%;
+    margin-left: -34px;
     top: -57px;
 }
 #button1{
@@ -216,8 +216,8 @@ button:enabled{
     margin-bottom: 29px;
 }
 #sendotpinput {
-    width: 206px;
-    margin-left: 79px;
+    width: 195px;
+    margin-left: 94px;
     font-size: 13px;
     font-family: 'Lato';
     letter-spacing: 1px;

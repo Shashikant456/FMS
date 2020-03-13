@@ -55,7 +55,6 @@ class SendOtp extends Component{
         e.preventDefault();
         console.log(this.state)
         console.log(this.state.countryCode)
-    //   this.props.history.push('./verify', {mobileNumber:this.state})
 
     this.props.history.push({
         pathname : '/verify',
@@ -76,6 +75,7 @@ class SendOtp extends Component{
     }
     render(){
      const countries = require("./countryphonecode.json")
+     console.log(this.state.countryCode)
     return(
     
     <div id="body">
@@ -104,8 +104,8 @@ class SendOtp extends Component{
                                    </option>
                                ))}
                               
-                           </Form.Control>
-                           </Form.Group>
+                            </Form.Control>
+            </Form.Group>
                   <button id="sendotpbtn">Send OTP</button>
             </form>
             <h6 id="textsignin">Sign in options</h6>

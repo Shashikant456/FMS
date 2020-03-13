@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Form,FormControl } from 'react-bootstrap';
 import {  withRouter } from 'react-router-dom'
 
 class ForgetPwd extends Component {
@@ -29,7 +30,11 @@ state = {
                  console.log(res)
              })
         }
-       
+        handleCountryCode = (e) => {
+            this.setState({
+                countryCode : e.target.value,     
+            })
+        }
 
         handleSend = (e) => {
             e.preventDefault();
@@ -76,6 +81,8 @@ state = {
         }
 
     render() {
+        const countries = require("./countryphonecode.json")
+        console.log(this.state.countryCode)
         return (
             <div id="body">
                 <div className="row" id="main1">      
@@ -84,34 +91,55 @@ state = {
                    
                 {
                     this.state.otpLoading ? (
-                        <div> 
-
+                    <div> 
                         <form onSubmit={this.handleSend}>
                         <div className="input-field">
-                            <i id="iconn" className="material-icons prefix">phone_iphone</i>
-                            <input id="icon_prefix" type="text" placeholder="Enter mobile numbers"
-                            pattern="[0-9]{10}" title="Must contain only Numeric value" onChange={this.handleChange1}/>
-                         </div>
+                        <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
+                        pattern="[0-9]{10}"  onChange={this.handleChange} required/>
+                    </div>
+                   <Form.Group  onChange={this.handleChange1}>
+                
+                        <Form.Control as="select" value={this.state.countryCode} onChange={this.handleCountryCode}
+                            id="country">
+                            {countries.map((country,i) =>(
+                                <option key={i} value={country.number.slice(1)}>
+                                        {country.name} 
+                                </option>
+                            ))}
+                            </Form.Control>
+                    </Form.Group>
                             <button id="verifymisscall">Send otp</button>
                         </form>
 
                         <form onSubmit={this.handleVerify}>
                             <input id="partitioned" type="text" required maxLength="6" onChange={this.handleChange2} 
-                            //pattern="[0-9]" title="Must contain only Numeric value"
+                            pattern="[0-9]" title="Must contain only Numeric value"
                             />
                         <button id="input-type3" >Verify</button>
                         </form>
-                        <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
+                        <button id="verifymisscall1" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
                     </div>
                     ) : (
                         <form onSubmit={this.handleSend}>
                         <div className="input-field">
-                            <i id="iconn" className="material-icons prefix">phone_iphone</i>
-                            <input id="icon_prefix" type="text" placeholder="Enter mobile numbers"
-                            pattern="[0-9]{10}" title="Must contain only Numeric value" onChange={this.handleChange1}/>
-                        
-                       </div>
-                            <button id="input-type3">Send otp</button>
+                            <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
+                            pattern="[0-9]{10}"  onChange={this.handleChange} required/>
+                        </div>
+                       <Form.Group  onChange={this.handleChange1}>
+                        <Form.Control as="select" value={this.state.countryCode} onChange={this.handleCountryCode}
+                            id="country">
+                            
+                            {countries.map((country,i) =>(
+                                <option key={i} value={country.number.slice(1)}>
+        
+                                        {country.name} 
+                                    
+                                </option>
+                            ))}
+                            
+                            </Form.Control>
+                        </Form.Group>
+                            <button id="input-forgot">Send otp</button>
                         </form>
                     
                     )

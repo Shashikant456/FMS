@@ -200,14 +200,20 @@ input.error {
   color:lightseagreen;
   text-decoration: none;
 }
-#verifymisscall{
+#verifymisscall,
+#verifymisscall1{
   width: 289px;
   border: 2px solid lightseagreen;
-  margin-top: 9px;
   background: white;
   color: lightseagreen;
   border-color: 7px black;
   outline: none;
+}
+#verifymisscall{
+  margin-top: -44px;
+}
+#verifymisscall1{
+  margin-top: 9px;
 }
 #hr{
   width: 282px;
