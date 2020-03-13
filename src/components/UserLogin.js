@@ -23,6 +23,8 @@ state = {
         handleChange2 = (e) => {
             axios.get('/stskFmsApi/jobseeker/getByEmailid/'+ this.state.email)
             .then(res=>{
+                console.log(res.data)
+                console.log(res.data.data)
                 if(res.data.data===null){
                     this.setState({
                         UserNotPresent: 'Oops!!! your email does not exists'
@@ -97,7 +99,7 @@ state = {
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" placeholder="password" required onChange={this.handleChange2}
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    //pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
                     <p className="red-text">{this.state.UserNotPresent}</p>
                     <p className="red-text">{this.state.error}</p>

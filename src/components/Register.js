@@ -13,7 +13,7 @@ class Register extends Component {
       userRoles:{
                "id":'' 
                 },
-       conformPwd:'',
+      conformPwd:'',
        error:''
       }
   
@@ -37,31 +37,31 @@ class Register extends Component {
             conformPwd:'',
             error:'Password and conformPassword mis-match'
         })
-    // } else {
+    } else {
        
-    //   this.props.history.push({
-    //     pathname:'/userDetails',
-    //      state :{
-    //      mobileNumber : this.state
-    //  }})
-    
-    
-    //     axios.post('/stskFmsApi/userLogin/createUL',{
-    //       mob:this.state.mob,
-    //       email:this.state.email,
-    //       password: this.state.password,
-    //       userRoles:{
-    //             id:this.state.userRoles.id
-    //        }    
-    //     })
-    //     .then(response=>{
-    //       console.log(response)
-    //       console.log(this.state)
+        axios.post('/stskFmsApi/userLogin/createUL',{
+          mob:this.state.mob,
+          email:this.state.email,
+          password: this.state.password,
+          userRoles:{
+                id:this.state.userRoles.id
+           }    
+        })
+        .then(response=>{
+          console.log(response)
+          console.log(this.state)
          
-    //       })
-    //       .catch(error=>{
-    //         console.log(error)
-    //     })
+          })
+          .catch(error=>{
+            console.log(error)
+        })
+
+        this.props.history.push({
+          pathname:'/userDetails',
+           state :{
+           mobileNumber : this.state,
+           email:this.state.email
+       }})
       };
 }
 
@@ -90,59 +90,7 @@ class Register extends Component {
 
     return (
 
-      // <div className="wrapper">
-      //   <div className="form-wrapper">
-       
-      //     <div className="text-center">
-      //       <img src={logo} className="img3"></img>
-      //     </div>
-      //      <h2 className="text-center3">{this.props.match.params.name}</h2>
-
-      //     <form onSubmit={this.handleSubmit} noValidate>
-          
-            
-      //       <div className="email1">
-      //         <input
-      //           className=""
-      //           placeholder="Email Id/User Id"
-      //           type="email"
-      //           name="email"
-      //           onChange={this.handleChange1}
-      //           value={email}
-      //         />
-      //       </div>
-            
-      //       <div className="password1"> 
-      //          <input
-      //           className=""
-      //           placeholder="Password"
-      //           type="password"
-      //           name="password"
-      //           value={this.state.password}
-      //           onChange={this.handleChange2}
-      //           value={password}
-      //         /> 
-      //       </div>
-      //       <div className="confirmpassword1"> 
-      //          <input
-      //           className=""
-      //           placeholder="Conform Password"
-      //           type="password"
-      //           name="confirmpassword"
-      //           value={this.state.conformPwd}
-      //           onChange={this.handleChange3}
-      //         /> 
-      //       </div> 
-      //         <p className="red-text">{this.state.error}</p>
-      //       <div className="createAccount">
-      //         <button type="submit">Next</button>
-      //         </div>
-           
-      //     </form>
-      //   </div>
-       
-      // </div>
-
+     
 
       <div id="body">
       <div className="row" id="main1">      

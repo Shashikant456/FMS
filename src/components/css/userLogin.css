@@ -6,7 +6,7 @@
   background-image: url('../Images/Background.png');
   background-position: fixed;
   background-repeat: no-repeat;
-  background-position: 100% 100%;
+  /* background-position: 100% 100%; */
 }
 #main1{
     width: 390px;

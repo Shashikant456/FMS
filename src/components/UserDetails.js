@@ -56,15 +56,29 @@ class UserRole extends Component {
     };
     this.handleSubmit=this.handleSubmit.bind(this)
   }
+
+  componentWillMount(){
+    this.setState({
+     mob:this.props.location.state.mobileNumber.mob ,
+     email:this.props.location.state.email
+  })  
+  }
   componentDidMount(){
+
   axios.get('/stskFmsApi/jobTypes/getAllJobTypes')
     .then(res=>{
       console.log(res.data)
       console.log(res.data.data)
         this.setState({
-            jobs : res.data.data,
-            mob:this.props.location.state.mobileNumber.mob 
+            jobs : res.data.data
         })  
+    })
+    axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob)
+    .then(res=>{
+      console.log(res.data)
+       this.setState({
+            userId:res.data.data.id
+        })
     })
    }
  handleRadio=(e)=>{
@@ -87,11 +101,13 @@ handleSubmit = e => {
   // }
   
      
-  //     axios.post('stskFmsApi/imageDoc/createDoc/40',formData,config)
+  //     axios.post('stskFmsApi/imageDoc/createDoc/'+this.state.userId,formData,config)
   //         .then(res => {
   //           console.log(res);
   //         })
   //         .catch(err => console.log(err))
+
+
   if(this.state.check===true){
 axios.post('/stskFmsApi/jobseeker/createJS',{
     name:this.state.name,
@@ -126,9 +142,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
         }
         } 
       );
-     
     }
-   
     })
     .catch(error=>{
       console.log(error)
@@ -141,23 +155,17 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
       })
     }
   
+
  };
   handleChange = e => {
     this.setState({update : e.target.value});
     this.setState({value:e.target.value});
      const { name, value } = e.target;
-     let formErrors = { ...this.state.formErrors };
-     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+     //let formErrors = { ...this.state.formErrors };
+     this.setState({  [name]: value }, () => console.log(this.state));
     // this.setState({[name]: value }, () => console.log(this.state));
   };
   handleChange1Arg = (e) =>{
-    axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob)
-    .then(res=>{
-      console.log(res.data)
-       this.setState({
-            userId:res.data.data.id
-        })
-    })
 
     this.setState({
       jobTypes:{
@@ -165,6 +173,14 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
       }
     })
 
+    this.props.history.push({
+      pathname : '/dashboard',
+      state :{
+      mobileNumber : this.state,
+      userId: this.state.userId
+      }
+      } 
+    );
     console.log(e.target.value)
   }
   handleChange2 = e =>{
@@ -218,14 +234,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
     return (this.state.jobs.map(job => ({ label: job.name, value: job.id })))  
 }  
   render() {
-    const selectedOptionsStyles = {
-      color: "#3c763d",
-      backgroundColor: "#dff0d8"
-  };
-  const optionsListStyles = {
-      backgroundColor: "#dff0d8",
-      color: "#3c763d"
-  };
+  
 //  const oplist = this.state.jobs.map(function(job,i){return (job)})
 //  console.log(oplist)
   console.log(this.state)
@@ -291,9 +300,9 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 type="tel"
                 name="mob"
                 required
-                onChange={this.handleChange}
+                value={this.state.mob}
                 id="input"
-                pattern="[789][0-9]{9}"
+                
               />
             
             </div>
@@ -305,7 +314,7 @@ axios.post('/stskFmsApi/jobseeker/createJS',{
                 type="email"
                 name="email"
                 required
-                onChange={this.handleChange}
+                value={this.state.email}
                 id="input"
               
               />

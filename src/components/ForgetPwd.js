@@ -113,7 +113,7 @@ state = {
 
                         <form onSubmit={this.handleVerify}>
                             <input id="partitioned" type="text" required maxLength="6" onChange={this.handleChange2} 
-                            pattern="[0-9]" title="Must contain only Numeric value"
+                             title="Must contain only Numeric value"
                             />
                         <button id="input-type3" >Verify</button>
                         </form>
@@ -123,7 +123,7 @@ state = {
                         <form onSubmit={this.handleSend}>
                         <div className="input-field">
                             <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
-                            pattern="[0-9]{10}"  onChange={this.handleChange} required/>
+                              onChange={this.handleChange} required/>
                         </div>
                        <Form.Group  onChange={this.handleChange1}>
                         <Form.Control as="select" value={this.state.countryCode} onChange={this.handleCountryCode}

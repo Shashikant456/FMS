@@ -38,7 +38,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-            //userId:this.props.location.state.userId, 
+            userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -154,6 +154,7 @@ class Dashboard extends Component {
         })
     }
     render() {
+        console.log(this.state.userId)
       
         const {posts} = this.state;
         const postList = posts.length ? (

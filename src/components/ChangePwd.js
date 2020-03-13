@@ -52,13 +52,11 @@ class ChangePwd extends Component {
                 console.log(Response)
                 console.log(Response.data)
             })
-          
            .catch(error => {
                console.log(error)
            });
         }
     }
-
     render() {
         return (
            
@@ -70,7 +68,7 @@ class ChangePwd extends Component {
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" required value={this.state.password} onChange={this.handleChange1}
-                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                    // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                      title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
                      placeholder="Enter password" onChange={this.handleChange1}/>
                     
