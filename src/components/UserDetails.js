@@ -61,7 +61,6 @@ class UserRole extends Component {
     .then(res=>{
       console.log(res.data)
       console.log(res.data.data)
-      console.log(this.state.mob)
         this.setState({
             jobs : res.data.data,
             mob:this.props.location.state.mobileNumber.mob 

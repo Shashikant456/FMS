@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'40',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -21,6 +21,7 @@ class Dashboard extends Component {
         searchLoading:false,
         searchError:'',
 
+        // Edit Profile
         name:'',
         email:'',
         mob: "",
@@ -35,7 +36,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-            userId:this.props.location.state.userId, 
+            //userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -54,10 +55,17 @@ class Dashboard extends Component {
         axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId)
         .then(res => {
             console.log(res.data)
-            console.log(res.data.data)
-            this.setState({
-                posts: res.data.data
-            });
+            console.log(res.data.success)
+
+            if(res.data.success===1){
+                this.setState({
+                    posts: res.data.data
+                });
+            }
+            else{
+                alert("User Id does not exists")
+            }
+           
         }) 
 
         axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
