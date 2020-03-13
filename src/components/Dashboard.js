@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'3',
+        userId:'',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -228,6 +228,24 @@ class Dashboard extends Component {
         const {searchedJobs} = this.state;
         const searchList = searchedJobs.length ? (
             searchedJobs.map(search => {
+                this.handleSearchApply=(e)=>{
+                    axios.put('/stskFmsApi/jobseeker/applyJobs',
+                        {  id:this.state.userId,
+                            jobs:[{
+                                id:search.id
+                             }]})
+                            .then(res=>{
+                                // console.log(res)
+                                // console.log(res.data)
+                                console.log(search.id)
+                            }) 
+                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+                            .then(res=>{
+                                this.setState({
+                                    appliedJobs:res.data.data.jobs
+                                })
+                            })
+                        }
                 return(
                     <div className="row post card" key={search.id}>
                         <div className="card-content" >
@@ -235,7 +253,7 @@ class Dashboard extends Component {
                             <div className="col s2 m2 l2">
                                 <p id="dashtext" id="dashtext">Job position</p>
                                 <br></br>
-                                <p>{search.jobType}</p>
+                                <p>{search.id}</p>
                             </div>
                              <div className="col s2 m2 l2">
                                  <p id="dashtext">Location</p>
@@ -253,7 +271,7 @@ class Dashboard extends Component {
                                 <p>{search.language}</p>
                             </div>
                              <div className="col s2 m2 l2 right-align">
-                                <a className="btn" onClick={this.handleApply} value={search.id} id="dashbtn">Apply</a>
+                                <a className="btn" onClick={this.handleSearchApply} value={search.id} id="dashbtn">Apply</a>
                             </div>
                            
                          </div>
@@ -366,14 +384,14 @@ class Dashboard extends Component {
             <div className="" id="details">
                 <div className="row">
                     <div className="col s12 m12 l12">
-                        <div className="col s12 m3 l3 offset-m1 offset-l1 z-depth-1" id="profile">
+                        <div className="col s10 m3 l3 offset-m1 offset-l1 offset-s1 z-depth-1" id="profile">
                         <div id="editicn" >
                         <Popup modal trigger={
                         
                             <div><i className="material-icons small right" onClick={()=>this.setState({popup:true})}>edit</i><br></br></div>
                         }>
                         
-                        <div className="popup-content ">
+                        <div className="popup-content">
                             <h4 className="center-align" id="popTitle">Edit profile</h4>
                             <form onSubmit={this.popupsubmit}>
                             <div className="col s12 m12 l6">
