@@ -37,7 +37,8 @@ class Register extends Component {
             conformPwd:'',
             error:'Password and conformPassword mis-match'
         })
-    } else {
+    } 
+    else {
        
         axios.post('/stskFmsApi/userLogin/createUL',{
           mob:this.state.mob,

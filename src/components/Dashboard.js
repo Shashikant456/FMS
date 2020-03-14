@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'3',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -38,7 +38,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-            userId:this.props.location.state.userId, 
+           // userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -183,27 +183,39 @@ class Dashboard extends Component {
                     <div className="row post card" key={post.id}>
                         <div className="card-content" >
                         
-                            <div className="col s2 m2 l2">
+                            <div className="col s5 m2 l2 offset-s1">
                                 <p id="dashtext" id="dashtext">Job position</p>
                                 <br></br>
                                 <p>{post.jobType}</p>
                             </div>
-                             <div className="col s2 m2 l2">
+                             <div className="col s5 m2 l2">
                                  <p id="dashtext">Location</p>
                                 <br></br>
                                 <p>{post.serviceArea}</p>
+                                <br className="show-on-small"></br>
                             </div>
-                             <div className="col s2 m2 l2">
+                             <div className="col s5 m2 l2 offset-s1">
                                  <p id="dashtext">Age Limit</p>
                                 <br></br>
                                 <p>{post.ageLimit}</p>
                             </div>
-                             <div className="col s3 m3 l3">
+                             <div className="col s5 m2 l2 offset-s1">
+                                 <p id="dashtext">Salary range</p>
+                                <br></br>
+                                <p>{post.salaryRange}</p>
+                            </div>
+                             <div className="col s5 m3 l3">
                                  <p id="dashtext">Language</p>
                                 <br></br>
                                 <p>{post.language}</p>
+                                <br className="show-on-small"></br>
                             </div>
-                             <div className="col s2 m2 l2 right-align">
+                            <div className="col s5 m2 l2 offset-s1">
+                                <p id="dashtext">Valid upto</p>
+                                <br></br>
+                            <p>{post.validUpto}</p>
+                       </div>
+                             <div className="col s6 m2 l2 offset-s3">
                                 <a className="btn" onClick={this.handleApply} value={post.id} id="dashbtn">Apply</a>
                             </div>
                            
@@ -252,27 +264,39 @@ class Dashboard extends Component {
                     <div className="row post card" key={search.id}>
                         <div className="card-content" >
                         
-                            <div className="col s2 m2 l2">
+                            <div className="col s5 m2 l2 offset-s1">
                                 <p id="dashtext" id="dashtext">Job position</p>
                                 <br></br>
                                 <p>{search.id}</p>
                             </div>
-                             <div className="col s2 m2 l2">
+                             <div className="col s5 m2 l2">
                                  <p id="dashtext">Location</p>
                                 <br></br>
                                 <p>{search.serviceArea}</p>
+                                <br className="show-on-small"></br>
                             </div>
-                             <div className="col s2 m2 l2">
+                             <div className="col s5 m2 l2 offset-s1">
                                  <p id="dashtext">Age Limit</p>
                                 <br></br>
                                 <p>{search.ageLimit}</p>
                             </div>
-                             <div className="col s3 m3 l3">
+                            <div className="col s5 m2 l2 offset-s1">
+                                 <p id="dashtext">Salary range</p>
+                                <br></br>
+                                <p>{search.salaryRange}</p>
+                            </div>
+                             <div className="col s5 m3 l3 ">
                                  <p id="dashtext">Language</p>
                                 <br></br>
                                 <p>{search.language}</p>
+                                <br className="show-on-small"></br>
                             </div>
-                             <div className="col s2 m2 l2 right-align">
+                            <div className="col s5 m2 l2 offset-s1">
+                                <p id="dashtext">Valid upto</p>
+                                <br></br>
+                                <p>{search.validUpto}</p>
+                            </div>
+                             <div className="col s5 m2 l2 offset-s3" >
                                 <a className="btn" onClick={this.handleSearchApply} value={search.id} id="dashbtn">Apply</a>
                             </div>
                            
@@ -293,27 +317,39 @@ class Dashboard extends Component {
                     <div className="row post card" key={post.id}>
                         <div className="card-content" >
                         
-                            <div className="col s2 m2 l2">
+                            <div className="col s5 m2 l2 offset-s1">
                                 <p id="dashtext" id="dashtext">Job position</p>
                                 <br></br>
                                 <p>{post.jobType}</p>
                             </div>
-                             <div className="col s2 m2 l2">
+                             <div className="col s5 m2 l2">
                                  <p id="dashtext">Location</p>
                                 <br></br>
                                 <p>{post.serviceArea}</p>
+                                <br className="show-on-small"></br>
                             </div>
-                             <div className="col s2 m2 l2">
+                             <div className="col s5 m2 l2 offset-s1">
                                  <p id="dashtext">Age Limit</p>
                                 <br></br>
                                 <p>{post.ageLimit}</p>
                             </div>
-                             <div className="col s3 m3 l3">
+                            <div className="col s5 m2 l2 offset-s1">
+                                <p id="dashtext">Salary range</p>
+                                <br></br>
+                                <p>{post.salaryRange}</p>
+                            </div>
+                             <div className="col s5 m3 l3">
                                  <p id="dashtext">Language</p>
                                 <br></br>
                                 <p>{post.language}</p>
+                                <br className="show-on-small"></br>
                             </div>
-                             <div className="col s2 m2 l2 right-align">
+                                <div className="col s5 m2 l2 offset-s1">
+                                <p id="dashtext">Valid upto</p>
+                                <br></br>
+                            <p>{post.validUpto}</p>
+                           </div>
+                             <div className="col s6 m2 l2 offset-s3">
                                 <a className="btn green" value={post.id} id="dashbtn">Waiting</a>
                             </div>
                            

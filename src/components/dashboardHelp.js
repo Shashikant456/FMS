@@ -91,8 +91,8 @@ export class dashboardHelp extends Component {
         <h4 className="center">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
-        <div className="row container center-align">
-          <div className="col s6 m3 l3 offset-l3 offset-m3">
+        <div className="row container center">
+          <div className="col s6 m2 l3 offset-l3">
           <div className="card hoverable z-depth-3" onClick={this.handleJobseeker}>
               <div className="card-image" >
               <img className="center-align" src={jobseeker}></img>
@@ -103,7 +103,7 @@ export class dashboardHelp extends Component {
             </div>
           </div>
 
-            <div className="col s6 m3 l3 " onClick={this.handleVendor} >
+            <div className="col s6 m2 l3 " onClick={this.handleVendor} >
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={vendor}></img>
@@ -115,7 +115,7 @@ export class dashboardHelp extends Component {
             </div>
             </div>
 
-            <div className="col s6 m3 l3" onClick={this.handleAssociation}>
+            <div className="col s6 m2 l3" onClick={this.handleAssociation}>
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={association}></img>
@@ -126,7 +126,7 @@ export class dashboardHelp extends Component {
             </div>
             </div>
 
-            <div className="col s6 m3 l3" onClick={this.handleResident}>
+            <div className="col s6 m2 l3" onClick={this.handleResident}>
             <div className="card hoverable">
               <div className="card-image">
               <img className="center-align" src={recident}></img>
