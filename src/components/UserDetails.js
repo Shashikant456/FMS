@@ -50,8 +50,9 @@ class UserRole extends Component {
 
   componentWillMount(){
     this.setState({
-     mob:this.props.location.state.mobileNumber.mob ,
-     email:this.props.location.state.email
+     mob:this.props.location.state.mobileNumber.mobileNumber ,
+     email:this.props.location.state.email,
+     userId:this.props.location.state.userId
   })  
   }
   componentDidMount(){
@@ -64,13 +65,16 @@ class UserRole extends Component {
             jobs : res.data.data
         })  
     })
+
     axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob)
     .then(res=>{
       console.log(res.data)
        this.setState({
-            userId:res.data.data.id
+            userId:res.data.data.id,
+            email:res.data.data.email
         })
     })
+
    }
  handleRadio=(e)=>{
   console.log(e.target.value)
@@ -155,6 +159,21 @@ handleSubmit = e => {
   };
   handleChange1Arg = (e) =>{
 
+    // axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob)
+    // .then(res=>{
+    //   console.log(res.data)
+    //    this.setState({
+    //         userId:res.data.data.id
+    //     })
+    // })
+
+    // axios.get('/stskFmsApi/userLogin/getByMob/7909185027')
+    // .then(res=>{
+    //   console.log(res.data)
+    //    this.setState({
+    //         userId:res.data.data.id
+    //     })
+    // })
     this.setState({
       jobTypes:{
         id:e.target.value

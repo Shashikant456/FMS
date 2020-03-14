@@ -217,9 +217,15 @@ input.error {
   margin-top: 9px;
 }
 #hr{
-  width: 282px;
-  margin-top: 4px;
-  margin-bottom: 24px;
+  
+  width: 282px; 
+  margin-top: -9px;
+  margin-bottom: 34px;
+
+}
+#enterHere{
+  margin-bottom: -7px;
+  color: #707070;
 }
 /* #hr {
   width: 129px;
@@ -239,4 +245,21 @@ input.error {
   width: 277px;
   border: none;
   margin-top: -8px;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.separator::before, .separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #707070;
+}
+.separator::before {
+  margin-right: .25em;
+}
+.separator::after {
+  margin-left: .25em;
 }

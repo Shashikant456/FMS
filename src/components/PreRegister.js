@@ -4,6 +4,7 @@ import { withRouter,Link, Route} from 'react-router-dom'
 import logo from './Images/Mainlogo.png'
 import left from './Images/leftside.png'
 import right from './Images/rightside.png'
+import job from './Images/Pre-reg_icon_jobseeker.png'
 import './css/register.css'
 import axios from 'axios'
 
@@ -25,7 +26,7 @@ export class Register extends Component {
             console.log(res.data)
             console.log(res.data.data)
             this.setState({
-                 userRoless : res.data.data,
+                  userRoless : res.data.data,
                  mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
                  name:this.props.match.params
             })
@@ -68,9 +69,9 @@ export class Register extends Component {
         //     ))}
         return (
 
-            <div className="center" id="body">
+            <div className="center row" id="body">
             
-                    <div className="center" id="main">      
+                    <div className="center col s10" id="main">      
                     <img className="left align" id="side" src={left} width="50" height="50"></img>
                     <img className="right align" id="side" src={right} width="50" height="50"></img>
                     <center id="center">
@@ -80,7 +81,8 @@ export class Register extends Component {
                     <div className='row'>
                             <div className="col s6 m6 l6">
                                 <div id="jobseeker" type='submit' name='btn_login' onClick={this.handleChange}
-                                className='btn btn-large white'>{postList[0]}</div>
+                                className='btn btn-large white'>{postList[0]}
+                                </div>
                             </div>
                             <div className="col s6 m6 l6">
                                 <div id="vendor" type='submit' name='btn_login' onClick={this.handleChange}

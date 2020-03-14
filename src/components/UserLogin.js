@@ -85,8 +85,8 @@ state = {
     render() {
         console.log(this.state)
         return (
-
-            <div id="body">
+        
+            <div className="" id="body">
             <div className="row" id="main1">      
              <center id="center">
              <img className="center" id="logo" src={logo} width="70" height="70"></img>
@@ -112,7 +112,8 @@ state = {
              </center>
             </div> 
             </div>
-            
+
+          
         )
     }
 }

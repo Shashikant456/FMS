@@ -78,15 +78,16 @@ class SendOtp extends Component{
      console.log(this.state.countryCode)
     return(
     
-    <div id="body">
-    <div className="row" id="main1">      
+    <div  id="body">
+    <div className="row" id="main1">    
+    
      <center id="center">
      <img className="center" id="logo" src={logo} width="70" height="70"></img>
      <h3 className="center" id="text">Login</h3>  
      <form id="frm" onSubmit={this.handleSubmit}>
         <div className="input-field">
                 <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
-                pattern="[0-9]{10}"  onChange={this.handleChange} required/>
+                pattern="[0-9]{10}" title="Enter 10 digit number"  onChange={this.handleChange} required/>
             </div>
 
           <Form.Group  onChange={this.handleChange1}>
@@ -119,9 +120,7 @@ class SendOtp extends Component{
      </center>
     </div> 
     </div>
-
-
-
+    
 
     )}
 }

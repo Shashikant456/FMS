@@ -14,12 +14,14 @@ class Register extends Component {
                "id":'' 
                 },
       conformPwd:'',
+      mobileNumber:'',
        error:''
       }
   
   componentDidMount(){
     this.setState({
       mob:this.props.location.state.mobileNumber.mobileNumber,
+      mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
       userRoles:{
         id:this.props.match.params.id,
       }

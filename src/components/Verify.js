@@ -19,10 +19,10 @@ class Verify extends Component{
              }
              componentDidMount(){
                 this.setState({
-                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                  mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
-                           
+                        
                     
     handleChange = (e) => {
         this.setState({
@@ -78,10 +78,18 @@ class Verify extends Component{
                                          }} );
                                     }
                                     else{
+                                        // axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
+                                        // .then(res=>{
+                                        //     console.log(res.data.data.email)
+                                        //     this.setState({
+                                        //         email:res.data.data.email
+                                        //     })
+                                        // })
                                         this.props.history.push({
                                             pathname : '/userDetails',
                                             state :{
-                                            mobileNumber : this.state }} );
+                                            mobileNumber : this.state
+                                        }} );
                                         }
                                 }) 
                             }
@@ -112,6 +120,8 @@ class Verify extends Component{
     }
     render(){
         const {loading}=this.state
+        console.log(this.state.userId)
+        console.log(this.state)
     return(
         
         // <div className="wrapper">
@@ -156,6 +166,7 @@ class Verify extends Component{
                 <img className="center" id="logo" src={logo} width="70" height="70"></img>
                 <h4 className="center" id="otpheader">Enter OTP</h4>  
                 <form id="frm" onSubmit={this.handleSubmit}>
+                <h6 id="enterHere">Enter Otp Here</h6>
                     <div className="input-field">
                             <input id="partitioned" type="text" required maxLength="6" value={this.state.otp_input} 
                             onChange={this.handleChange} />
@@ -177,7 +188,7 @@ class Verify extends Component{
                     </div>}
                       Verify</button>
                 </form>
-                <hr id="hr"></hr>
+                <div id="hr" className="separator">or</div>
                 <button onClick={this.handleVerify} id="verifymisscall">Give missedcall to verify</button>
             </center>
             </div> 
