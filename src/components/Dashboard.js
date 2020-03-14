@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'3',
+        userId:'',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
