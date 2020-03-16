@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'3',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -22,6 +22,8 @@ class Dashboard extends Component {
         searchError:'',
 
         // Edit Profile
+        editProfile:'',
+
         popup:false,
 
         name:'',
@@ -38,7 +40,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-           // userId:this.props.location.state.userId, 
+            //userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -50,7 +52,8 @@ class Dashboard extends Component {
             console.log(res.data.data)
             console.log(res.data.data.mob)
             this.setState({
-                details: res.data.data
+                details: res.data.data,
+                editProfile:res.data.data
             });
         })
 
@@ -112,27 +115,33 @@ class Dashboard extends Component {
         })
     }
     handlepopup=(e)=>{
-        this.setState({
-            [e.target.name] : e.target.value
-        })
+        // this.setState({
+        //     [e.target.name] : e.target.value
+        // })
+        const { editProfile } = { ...this.state };
+        const currentState = editProfile;
+        const { name, value } = e.target;
+        currentState[name] = value;
+      
+        this.setState({ editProfile: currentState });
     }
     popupsubmit=(e)=>{
         e.preventDefault();
         // axios.put('/stskFmsApi/jobseeker/editJS',{
-        //     name:this.state.name,
-        //     email: this.state.email,
-        //     mob: this.state.mob,
-        //     experience: this.state.experience,
-        //     eduQual: this.state.eduQual,
-        //     jobUpdate:this.state.jobUpdate,
+        //     name:this.state.editProfile.name,
+        //     email: this.state.editProfile.email,
+        //     mob: this.state.editProfile.mob,
+        //     experience: this.state.editProfile.experience,
+        //     eduQual: this.state.editProfile.eduQual,
+        //     jobUpdate:this.state.editProfile.jobUpdate,
         //     userLogin:{
-        //       id:this.state.userLogin
+        //       id:this.state.editProfile.userLogin
         //     },
         //     jobTypes:[{
-        //       id:this.state.jobTypes.id
+        //       id:this.state.editProfile.jobTypes.id
         //     }]
         // })
-        console.log(this.state.name)
+        console.log(this.state.editProfile.name)
     }
    
     handleSearch=(e)=>{
@@ -154,7 +163,6 @@ class Dashboard extends Component {
         })
     }
     render() {
-        console.log(this.state.userId)
         console.log(this.state)
       
         const {posts} = this.state;
@@ -391,7 +399,7 @@ class Dashboard extends Component {
                     </nav>
                 </div>
            
-
+                
                 <div className="row">
                 <div className="">
                      <img className="center" id="dashboard" src={dashboard} ></img>
