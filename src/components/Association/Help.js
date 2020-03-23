@@ -1,34 +1,35 @@
 import React, { Component } from 'react'
-import './css/dashboardHelp.css'
-import  mainLogo from './Images/Mainlogo.png'
-import dashboard from './Images/dashboard.png'
+import '../css/dashboardHelp.css'
+import  mainLogo from '../Images/Mainlogo.png'
+import dashboard from '../Images/dashboard.png'
 import {  withRouter, Link} from 'react-router-dom'
-import jobseeker from './Images/JobseekerHelp.png'
-import vendor from './Images/vendorHelp.png'
-import association from './Images/AsssociationHelp.png'
-import recident from './Images/recidentHelp.png'
+import jobseeker from '../Images/JobseekerInactive.png'
+import vendor from '../Images/vendorHelp.png'
+import association from '../Images/AsssociationActive.png'
+import recident from '../Images/recidentHelp.png'
 import axios from 'axios'
 import * as $ from 'jquery'
 
 
-export class dashboardHelp extends Component {
+class Help extends Component {
   state={
     status:'job'
   }
   handleVendor=(e)=>{
-    this.props.history.push('/vendorHelp')
+    this.props.history.push('/assoVendorHelp')
   }
   handleJobseeker=(e)=>{
-    this.props.history.push('/help')
+    this.props.history.push('/assoJSHelp')
   }
   handleAssociation=(e)=>{
-    this.props.history.push('/associationHelp')
+    this.props.history.push('/associationPageHelp')
   }
   handleResident=(e)=>{
-    this.props.history.push('/residentHelp')
+    this.props.history.push('/assoResidentHelp')
   }
+  
     render() {
-      const jobseker = require("./Json/Jobseeker.json")
+      const jobseker = require("../Json/Association.json")
 
       const jobseekerList = jobseker.length ? (
         jobseker.map(Qes => {      
@@ -49,51 +50,38 @@ export class dashboardHelp extends Component {
         return (
             <div id="back">
             <div>
-            <div className="navbar-fixed">
-                <nav className="white">
-                  <div className="nav-wrapper container ">
-                      <a className="brand-logo left" id="img"> 
-                          <img className="center" src={mainLogo} width="50" height="50"></img>
-                      </a>
-                      <ul id="nav-mobile" className="right">
-                      <li><Link id="home" to="/dashboard">Home</Link></li>
-                      <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
-                      <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
-                  </ul>
+
+            <div className="navbar-fixed white">
+            <nav className="white" >
+                <div className="nav-wrapper white container">
+                <a className="brand-logo left" id="img"> 
+                    <img className="center" src={mainLogo} width="50" height="50"></img>
+                </a>
+                    <ul id="nav-mobile" className="right">
+                        <li><Link to="/">Property Details</Link></li>
+                        <li><Link id="home" to="/">Vendor</Link></li>
+                        <li><Link id="home" to="/">Resident Details</Link></li>
+                        <li><Link id="home" to="/">Payment</Link></li>
+                        <li><Link id="home" className="waves-effect waves-light btn-small white-text" to="/associationPageHelp">Help</Link></li>
+                        <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
+                    </ul>
                 </div>
-              </nav>
-            </div>
-     
-        <div className="row">
-        <img className="center" id="dashboard" src={dashboard} ></img>
+            </nav>
+          </div>
 
-
-        <nav className="container white" id="search">
-        <div className="nav-wrapper">
-                <div className="input-field">
-                <input type="search" id="dashinput" placeholder="Ask a question" required ></input>
-                <i className="material-icons right">
-            
-                <a className="btn hide-on-small-only" 
-                id="src1"><i className="material-icons right" id="src">search</i>Search</a></i>
-                <i className="material-icons right show-on-small grey-text hide-on-med-and-up" >search</i>
+          <div className="row">
+            <img className="center" id="dashboard" src={dashboard} ></img>
+          </div>
                 
-              
-            </div>
-        </div>
-        </nav>
-        </div>
-          
-            
         <h4 className="center">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
         <div className="row container center">
           <div className="col s6 m2 l3 offset-l3 offset-m3">
-          <div className="card hoverable z-depth-3" onClick={this.handleJobseeker}>
+          <div className="card hoverable z-depth-3" onClick={this.handleAssociation}>
               <div className="card-image" >
-              <img className="center-align" src={jobseeker}></img>
-              <h6 className="center-align" id="imghelp">Job Seeker</h6>
+              <img className="center-align" src={association}></img>
+              <h6 className="center-align" id="imghelp">Association</h6>
               </div>
               <div className="card-content">
               </div>
@@ -112,11 +100,11 @@ export class dashboardHelp extends Component {
             </div>
             </div>
 
-            <div className="col s6 m2 l3" onClick={this.handleAssociation}>
+            <div className="col s6 m2 l3" onClick={this.handleJobseeker}>
             <div className="card hoverable">
               <div className="card-image">
-              <img className="center-align" src={association}></img>
-              <h6 className="center-align" id="imghelp">Association</h6>
+              <img className="center-align" src={jobseeker}></img>
+              <h6 className="center-align" id="imghelp">Job Seeker</h6>
               </div>
               <div className="card-content">
               </div>
@@ -136,7 +124,7 @@ export class dashboardHelp extends Component {
           </div>
 
           <div className="container z-depth-1" id="colli">
-              <h5 className="center-align" id="coll">Job Seeker</h5>
+              <h5 className="center-align" id="coll">Association</h5>
               {jobseekerList}
           </div>
 
@@ -193,8 +181,6 @@ export class dashboardHelp extends Component {
         )
     }
 }
-// $(document).ready(function(){
-//   $('.collapsible').collapsible();
-// });
 
-export default withRouter(dashboardHelp)
+export default Help
+

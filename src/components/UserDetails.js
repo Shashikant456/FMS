@@ -310,12 +310,12 @@ handleSubmit = e => {
               <input
                 className=""
                 placeholder="Email"
-                type="email"
+                type="text"
                 name="email"
                 required
                 value={this.state.email}
                 id="input"
-              
+
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>

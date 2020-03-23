@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'3',
+        userId:'',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -40,7 +40,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-            //userId:this.props.location.state.userId, 
+            userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -115,9 +115,6 @@ class Dashboard extends Component {
         })
     }
     handlepopup=(e)=>{
-        // this.setState({
-        //     [e.target.name] : e.target.value
-        // })
         const { editProfile } = { ...this.state };
         const currentState = editProfile;
         const { name, value } = e.target;
@@ -175,8 +172,6 @@ class Dashboard extends Component {
                                 id:post.id
                              }]})
                             .then(res=>{
-                                // console.log(res)
-                                // console.log(res.data)
                                 console.log(post.id)
                             }) 
                             axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
@@ -277,13 +272,13 @@ class Dashboard extends Component {
                                 <br></br>
                                 <p>{search.id}</p>
                             </div>
-                             <div className="col s5 m2 l2">
+                            <div className="col s5 m2 l2">
                                  <p id="dashtext">Location</p>
                                 <br></br>
                                 <p>{search.serviceArea}</p>
                                 <br className="show-on-small"></br>
                             </div>
-                             <div className="col s5 m2 l2 offset-s1">
+                            <div className="col s5 m2 l2 offset-s1">
                                  <p id="dashtext">Age Limit</p>
                                 <br></br>
                                 <p>{search.ageLimit}</p>
@@ -293,7 +288,7 @@ class Dashboard extends Component {
                                 <br></br>
                                 <p>{search.salaryRange}</p>
                             </div>
-                             <div className="col s5 m3 l3 ">
+                            <div className="col s5 m3 l3 ">
                                  <p id="dashtext">Language</p>
                                 <br></br>
                                 <p>{search.language}</p>
@@ -304,13 +299,12 @@ class Dashboard extends Component {
                                 <br></br>
                                 <p>{search.validUpto}</p>
                             </div>
-                             <div className="col s5 m2 l2 offset-s3" >
+                            <div className="col s5 m2 l2 offset-s3" >
                                 <a className="btn" onClick={this.handleSearchApply} value={search.id} id="dashbtn">Apply</a>
                             </div>
                            
                          </div>
                     </div>
-            
                 )
             })
         ) :(
@@ -399,7 +393,7 @@ class Dashboard extends Component {
                     </nav>
                 </div>
            
-                
+
                 <div className="row">
                 <div className="">
                      <img className="center" id="dashboard" src={dashboard} ></img>

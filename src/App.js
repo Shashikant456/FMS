@@ -15,6 +15,11 @@ import axios from 'axios'
 import Vendor from './components/Help/Vendor'
 import Resident from './components/Help/Resident'
 import Association from './components/Help/Association'
+import Navbar from './components/Association/navBar'
+import Help from './components/Association/Help'
+import AssJsHelp from './components/Association/AssJSHelp'
+import AssVendorHelp from './components/Association/AssVendorHelp'
+import AssResidentHelp from './components/Association/AssResidentHelp'
 axios.defaults.baseURL ="http://stskfacilities.com:8081"
 
 
@@ -42,6 +47,13 @@ axios.defaults.baseURL ="http://stskfacilities.com:8081"
               <Route exact path="/vendorHelp" component={ Vendor } />
               <Route exact path="/associationHelp" component={ Association } />
               <Route exact path="/residentHelp" component={ Resident } />
+
+              <Route exact path="/nav" component={ Navbar } />
+              <Route path="/associationPageHelp" component={ Help } />
+              <Route path="/assoJSHelp" component={ AssJsHelp } />
+              <Route path="/assoVendorHelp" component={ AssVendorHelp } />
+              <Route path="/assoResidentHelp" component={ AssResidentHelp } />
+
            </Switch>
         </div>
       </BrowserRouter>

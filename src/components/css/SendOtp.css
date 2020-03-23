@@ -234,3 +234,8 @@ button:enabled{
     margin-top: -37px;
 }
 
+@media (max-width: 100px) {
+    #main1 {
+      background-color: rgb(1, 10, 14);
+    }
+  }

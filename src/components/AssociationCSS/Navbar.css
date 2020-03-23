@@ -1,0 +1,13 @@
+.card {
+  
+    background-color: white;
+   
+}
+#block{
+    padding: 7px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+#MianBlock{
+    margin: 10px;
+}

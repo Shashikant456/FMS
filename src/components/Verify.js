@@ -29,6 +29,16 @@ class Verify extends Component{
             otp_input: e.target.value  
         })
     }
+    handleResend= (e)=>{
+        axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state.mobileNumber )
+        .then(Response => {
+               console.log(Response)
+               console.log(Response.data)
+         })
+        .catch(error => {
+            console.log(error)
+        });
+    }
    handleVerify=(e)=>{
        axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
        {  countryCode:91,
@@ -172,7 +182,7 @@ class Verify extends Component{
                             onChange={this.handleChange} />
                             <p className="red-text">{this.state.error}</p>
                     </div>
-                    <a href="" id="resendotp" className="center-align">Resend OTP</a>
+                    <a href="" id="resendotp" onClick={this.handleResend} className="center-align">Resend OTP</a>
                 <button id="input-type3"  disabled={loading}>
                 {loading && 
                     <div className="preloader-wrapper small active">
