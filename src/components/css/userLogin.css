@@ -82,6 +82,11 @@
   margin-left: 87px;
   margin-bottom: 39px;
 }
+#userloginHeading{
+  color: gray;
+  margin-right: -1px;
+  margin-bottom: 39px;
+}
 #otp{
   color: gray;
   margin-left: 85px;
@@ -112,4 +117,16 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
   border-bottom: 1px solid #26a69a;
   -webkit-box-shadow: 0 1px 0 0 #26a69a;
   box-shadow: none;
+}
+#userLogin1{
+  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -33px;
+}
+
+#FpVerify{
+  width: 288px;
+    outline: none;
+    margin-top: 10px;
 }

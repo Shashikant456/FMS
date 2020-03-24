@@ -9,6 +9,7 @@ state = {
             countryCode:'91',
             mobileNumber:'',
             input_otp:'',
+            errorOtp:'',
             otpLoading:false
         }
     
@@ -50,7 +51,7 @@ state = {
              })
             .catch(error => {
                 console.log(error)
-            });
+              });
         }
         handleVerify = (e) => {
             e.preventDefault();
@@ -73,6 +74,9 @@ state = {
                    }
                    else {
                        alert("Otp miss-match")
+                       this.setState({
+                           errorOtp:'Otp miss-match'
+                       })
                    }
              })
             .catch(error => {
@@ -94,7 +98,7 @@ state = {
                 {
                     this.state.otpLoading ? (
                     <div> 
-                        <form onSubmit={this.handleSend}>
+                        <form id="userLogin1" onSubmit={this.handleSend}>
                         <div className="input-field">
                         <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
                         pattern="[0-9]{10}"  onChange={this.handleChangeMob} required/>
@@ -117,12 +121,13 @@ state = {
                             <input id="partitioned" type="text" required maxLength="6" onChange={this.handleChange2} 
                              title="Must contain only Numeric value"
                             />
-                        <button id="input-type3" >Verify</button>
+                            <h6 className="center-align red-text">{this.state.errorOtp}</h6>
+                        <button id="FpVerify" >Verify</button>
                         </form>
                         <button id="verifymisscall1" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
                     </div>
                     ) : (
-                        <form onSubmit={this.handleSend}>
+                        <form id="userLogin1" onSubmit={this.handleSend}>
                         <div className="input-field">
                             <input id="sendotpinput" type="tel"  placeholder="Enter mobile number" maxLength="10"
                               onChange={this.handleChangeMob} required/>

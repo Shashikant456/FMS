@@ -86,60 +86,62 @@ state = {
         console.log(this.state)
         return (
         
-            // <div className="" id="body">
-            // <div className="row" id="main1">      
-            //  <center id="center">
-            //  <img className="center" id="logo" src={logo} width="70" height="70"></img>
-            //  <h3 className="center" id="text">Login</h3>  
-            //  <form id="frm" onSubmit={this.handleSubmit}>
-            //  <div className="input-field">
-            //         <i id="iconn" className="material-icons prefix">person</i>
-            //         <input id="icon_prefix" type="email" size="30" required
-            //          placeholder="User Id/Email Id"  onChange={this.handleChange1}/>
-            //     </div>
-            //         <div className="input-field">
-            //         <i id="iconn" className="material-icons prefix">lock</i>
-            //         <input id="icon_prefix" type="password" placeholder="password" required  onChange={this.handleChange2}
-            //         //pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            //         title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
-            //         <p className="red-text">{this.state.UserNotPresent}</p>
-            //         <p className="red-text">{this.state.error}</p>
-            //     </div>
-            // <button id="UserLoginButton">Login</button>
-            //  </form>
-            //  <a id="forgot" onClick={this.forgetPwd}>Forgot Password</a>
-            
-            //  </center>
-            // </div> 
-            // </div>
-
             <div className="" id="body">
             <div className="row" id="main1">      
-            <i className="material-icons prefix left-align">arrow_back</i>
-
              <center id="center">
-             <h3 className="center" id="text">Document upload</h3>  
-             <i id="iconn" className="material-icons prefix ">cloud_upload</i>
-             <h5 className="grey-text">upload logo</h5>
+             <img className="center" id="logo" src={logo} width="70" height="70"></img>
+             <h3 className="" id="userloginHeading">User Login</h3>  
              <form id="frm" onSubmit={this.handleSubmit}>
              <div className="input-field">
-                    <i id="iconn" className="material-icons prefix">cloud_upload</i>
-                    <input id="icon_prefix" type="text" size="30" required
-                     placeholder="Upload GST document"  onChange={this.handleChange1}/>
+                    <i id="iconn" className="material-icons prefix">person</i>
+                    <input id="icon_prefix" type="email" size="30" required
+                     placeholder="User Id/Email Id"  onChange={this.handleChange1}/>
                 </div>
-                <div className="input-field">
-                    <i id="iconn" className="material-icons prefix">cloud_upload</i>
-                    <input id="icon_prefix" type="password" placeholder="Upload PAN document" required  onChange={this.handleChange2}/>
+                    <div className="input-field">
+                    <i id="iconn" className="material-icons prefix">lock</i>
+                    <input id="icon_prefix" type="password" placeholder="password" required  onChange={this.handleChange2}
+                    //pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
+                    <p className="red-text">{this.state.UserNotPresent}</p>
+                    <p className="red-text">{this.state.error}</p>
                 </div>
-                <div className="input-field">
-                    <i id="iconn" className="material-icons prefix">cloud_upload</i>
-                    <input id="icon_prefix" type="password" placeholder="Upload TAN document" required  onChange={this.handleChange2}/>
-                </div>
-            <button id="UserLoginButton">Submit</button>
+            <button id="UserLoginButton">Login</button>
              </form>
+             <a id="forgot" onClick={this.forgetPwd}>Forgot Password?</a>
+            
              </center>
             </div> 
             </div>
+
+
+
+            // <div className="" id="body">
+            // <div className="row" id="main1">      
+            // <i className="material-icons prefix left-align">arrow_back</i>
+
+            //  <center id="center">
+            //  <h3 className="center" id="text">Document upload</h3>  
+            //  <i id="iconn" className="material-icons prefix ">cloud_upload</i>
+            //  <h5 className="grey-text">upload logo</h5>
+            //  <form id="frm" onSubmit={this.handleSubmit}>
+            //  <div className="input-field">
+            //         <i id="iconn" className="material-icons prefix">cloud_upload</i>
+            //         <input id="icon_prefix" type="text" size="30" required
+            //          placeholder="Upload GST document"  onChange={this.handleChange1}/>
+            //     </div>
+            //     <div className="input-field">
+            //         <i id="iconn" className="material-icons prefix">cloud_upload</i>
+            //         <input id="icon_prefix" type="password" placeholder="Upload PAN document" required  onChange={this.handleChange2}/>
+            //     </div>
+            //     <div className="input-field">
+            //         <i id="iconn" className="material-icons prefix">cloud_upload</i>
+            //         <input id="icon_prefix" type="password" placeholder="Upload TAN document" required  onChange={this.handleChange2}/>
+            //     </div>
+            // <button id="UserLoginButton">Submit</button>
+            //  </form>
+            //  </center>
+            // </div> 
+            // </div>
             
 
           
