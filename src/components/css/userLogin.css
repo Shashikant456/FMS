@@ -136,3 +136,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     color: #3FB2AA;
     cursor: pointer;
 }
+i.right {
+  float: right;
+  margin-left: -21px;
+}

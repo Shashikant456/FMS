@@ -10,7 +10,7 @@ state = {
             mobileNumber:'',
             input_otp:'',
             errorOtp:'',
-            otpLoading:false
+            otpLoading:true
         }
     
         handleChangeMob = (e) => {
@@ -124,7 +124,7 @@ state = {
                              title="Must contain only Numeric value"
                             />
                             <h6 className="center-align red-text">{this.state.errorOtp}</h6>
-                        <button id="FpVerify" >Verify</button>
+                        <button id="FpVerify"><i class="material-icons right">arrow_forward</i>Verify</button>
                         </form>
                         <div id="hr" className="separator">or</div>
                         <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
