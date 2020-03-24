@@ -73,7 +73,6 @@ state = {
                     } )
                    }
                    else {
-                       alert("Otp miss-match")
                        this.setState({
                            errorOtp:'Otp miss-match'
                        })
@@ -92,7 +91,10 @@ state = {
         return (
             <div id="body">
                 <div className="row" id="main1">      
+                
                     <center id="center">
+                     <i id="otpleftarrow" className="material-icons" onClick={()=>this.props.history.push('/userLogin')}>arrow_back</i>
+
                     <h3 className="center" id="otp">OTP</h3>  
                    
                 {
@@ -124,7 +126,8 @@ state = {
                             <h6 className="center-align red-text">{this.state.errorOtp}</h6>
                         <button id="FpVerify" >Verify</button>
                         </form>
-                        <button id="verifymisscall1" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
+                        <div id="hr" className="separator">or</div>
+                        <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
                     </div>
                     ) : (
                         <form id="userLogin1" onSubmit={this.handleSend}>

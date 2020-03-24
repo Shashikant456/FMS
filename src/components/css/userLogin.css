@@ -91,7 +91,8 @@
   color: gray;
   margin-left: 85px;
   margin: 20px auto;
-  margin-bottom: 46px;
+  margin-bottom: 42px;
+  margin-top: -4px;
 }
 #main2{
   position: absolute;
@@ -129,4 +130,9 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
   width: 288px;
     outline: none;
     margin-top: 10px;
+}
+#otpleftarrow{
+  margin-right: 271px;
+    color: #3FB2AA;
+    cursor: pointer;
 }
