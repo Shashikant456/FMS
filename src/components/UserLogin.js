@@ -107,7 +107,7 @@ state = {
                 </div>
             <button id="UserLoginButton">Login</button>
              </form>
-             <a id="forgot" onClick={this.forgetPwd}>Forgot Password?</a>
+             <h6 id="forgot" onClick={this.forgetPwd}>Forgot Password?</h6>
             
              </center>
             </div> 

@@ -12,7 +12,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'3',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -40,7 +40,7 @@ class Dashboard extends Component {
 }
     componentWillMount(){
         this.setState({
-            userId:this.props.location.state.userId, 
+            //userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -192,32 +192,18 @@ class Dashboard extends Component {
                                 <p>{post.jobType}</p>
                             </div>
                              <div className="col s5 m2 l2">
+                                 <p id="dashtext">Experience</p>
+                                <br></br>
+                                <p>{post.serviceArea}</p>
+                                <br className="show-on-small"></br>
+                            </div>
+                             <div className="col s5 m2 l2">
                                  <p id="dashtext">Location</p>
                                 <br></br>
                                 <p>{post.serviceArea}</p>
                                 <br className="show-on-small"></br>
                             </div>
-                             <div className="col s5 m2 l2 offset-s1">
-                                 <p id="dashtext">Age Limit</p>
-                                <br></br>
-                                <p>{post.ageLimit}</p>
-                            </div>
-                             <div className="col s5 m2 l2 offset-s1">
-                                 <p id="dashtext">Salary range</p>
-                                <br></br>
-                                <p>{post.salaryRange}</p>
-                            </div>
-                             <div className="col s5 m3 l3">
-                                 <p id="dashtext">Language</p>
-                                <br></br>
-                                <p>{post.language}</p>
-                                <br className="show-on-small"></br>
-                            </div>
-                            <div className="col s5 m2 l2 offset-s1">
-                                <p id="dashtext">Valid upto</p>
-                                <br></br>
-                            <p>{post.validUpto}</p>
-                       </div>
+                            
                              <div className="col s6 m2 l2 offset-s3">
                                 <a className="btn" onClick={this.handleApply} value={post.id} id="dashbtn">Apply</a>
                             </div>

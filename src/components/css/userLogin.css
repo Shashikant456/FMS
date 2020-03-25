@@ -140,3 +140,15 @@ i.right {
   float: right;
   margin-left: -21px;
 }
+@media only screen and (max-width: 625px)
+{
+    html{
+
+        width: 405px;
+    }
+    #main1{
+       
+        width: 374px;
+        margin-left: 2px; 
+    }
+}

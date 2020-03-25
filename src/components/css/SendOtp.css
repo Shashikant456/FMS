@@ -234,8 +234,22 @@ button:enabled{
     margin-top: -37px;
 }
 
-@media (max-width: 100px) {
-    #main1 {
-      background-color: rgb(1, 10, 14);
+@media only screen and (max-width: 625px)
+{
+    html{
+
+        width: 405px;
     }
-  }
+    #main1{
+       
+        width: 374px;
+        margin-left: 2px; 
+    }
+    #center{
+        width: 374px;
+    }
+}
+
+/* 
+width: 374px;
+margin-left: 2px; */

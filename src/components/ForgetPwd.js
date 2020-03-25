@@ -10,7 +10,7 @@ state = {
             mobileNumber:'',
             input_otp:'',
             errorOtp:'',
-            otpLoading:true
+            otpLoading:false
         }
     
         handleChangeMob = (e) => {
