@@ -30,6 +30,7 @@
     "react-select": "^3.0.8",
     "react-telephone-input": "^4.73.4",
     "reactjs-popup": "^1.5.0",
+    "redux": "^4.0.5",
     "requires": "^1.0.2"
   },
   "scripts": {

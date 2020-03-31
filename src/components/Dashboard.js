@@ -6,13 +6,17 @@ import dashboard from './Images/dashboard.png'
 import { withRouter,Link,NavLink } from 'react-router-dom'
 import Popup from "reactjs-popup";
 
+const header={
+     'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+ }
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'3',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -38,6 +42,7 @@ class Dashboard extends Component {
                  ]
     }
 }
+
     componentWillMount(){
         this.setState({
             //userId:this.props.location.state.userId, 
@@ -47,7 +52,7 @@ class Dashboard extends Component {
         this._isMounted = true;
         console.log(this.state.appliedJobs)
 
-        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
         .then(res =>{
             console.log(res.data.data)
             console.log(res.data.data.mob)
@@ -57,7 +62,7 @@ class Dashboard extends Component {
             });
         })
 
-        axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId)
+        axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
         .then(res => {
             console.log(res.data)
             console.log(res.data.success)
@@ -73,7 +78,7 @@ class Dashboard extends Component {
            
         }) 
 
-        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
         .then(res=>{
             this.setState({
                 appliedJobs:res.data.data.jobs
@@ -142,7 +147,7 @@ class Dashboard extends Component {
     }
    
     handleSearch=(e)=>{
-        axios.get('/stskFmsApi/jobs/getByJobs/'+this.state.search)
+        axios.get('/stskFmsApi/jobs/getByJobs/'+this.state.search,{headers:header})
         .then(res=>{
             if(res.data.success===1){
                 this.setState({
@@ -170,11 +175,12 @@ class Dashboard extends Component {
                         {  id:this.state.userId,
                             jobs:[{
                                 id:post.id
-                             }]})
+                             }]
+                            },{headers:header})
                             .then(res=>{
                                 console.log(post.id)
                             }) 
-                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
                             .then(res=>{
                                 this.setState({
                                     appliedJobs:res.data.data.jobs
@@ -236,13 +242,14 @@ class Dashboard extends Component {
                         {  id:this.state.userId,
                             jobs:[{
                                 id:search.id
-                             }]})
+                             }]
+                            },{headers:header})
                             .then(res=>{
                                 // console.log(res)
                                 // console.log(res.data)
                                 console.log(search.id)
                             }) 
-                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
+                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
                             .then(res=>{
                                 this.setState({
                                     appliedJobs:res.data.data.jobs
