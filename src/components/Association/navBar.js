@@ -54,7 +54,7 @@ class Navbar extends Component {
               <br></br>
                <div id="block" onClick={()=>this.setState({Block:false})} className="button center-align white">
                <i class="material-icons left">keyboard_arrow_right</i><i class="material-icons right">edit</i>Block A</div>
-              <h6 className="center white-text"><i class="material-icons">add</i>Add flat</h6>
+              <h6 className="center white-text cursor-pointer"><i class="material-icons">add</i>Add flat</h6>
               </div>
           </div>
           </div>
@@ -66,7 +66,7 @@ class Navbar extends Component {
             <div className="row white">
             <div className="col s10 m10 l10">
                 <h4>Block Details</h4>
-                <div id="MianBlock" className="col s5 m2 l2 z-depth-1 red container" onClick={this.handleVendor} >
+                <div id="MianBlock" className="col s5 m2 l2 z-depth-1 teal accent-4 container" onClick={this.handleVendor} >
                 <br></br>
                 <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
                 <i class="material-icons left">keyboard_arrow_down</i><i class="material-icons right">edit</i>Block A</div>
@@ -91,6 +91,12 @@ class Navbar extends Component {
 </div>
      )}
            
+     <div className="footer-copyright center" id="footer">
+     <div className="text-center">
+     <p className="center-align" id="footer">Copyright @2020 All rights reserved | This tamplate is made with STSK</p>
+     <a className="grey-text text-lighten-4 right" href="#!"></a>
+     </div>
+ </div>
 
         </div>
         )
