@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import logo from './Images/Mainlogo.png'
 
+const header={
+    'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
 class ChangePwd extends Component {
 
         state = {
@@ -44,7 +48,7 @@ class ChangePwd extends Component {
             axios.put('/stskFmsApi/userLogin/resetpassword', 
             {   countryCode:91,
                 mob:this.state.mob,
-                password:this.state.password})
+                password:this.state.password},{headers:header})
                .then(Response => {
         
                 this.props.history.push('./userLogin')

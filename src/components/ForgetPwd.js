@@ -4,6 +4,11 @@ import axios from 'axios'
 import { Form,FormControl } from 'react-bootstrap';
 import {  withRouter } from 'react-router-dom'
 
+
+const header={
+    'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
 class ForgetPwd extends Component {
 state = {      
             countryCode:'91',
@@ -26,7 +31,7 @@ state = {
         handleVerify=(e)=>{
             axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
             {  countryCode:91,
-             mobileNumber :this.state.mobileNumber})
+             mobileNumber :this.state.mobileNumber},{headers:header})
              .then(res =>{
                  console.log(res)
              })
@@ -44,7 +49,7 @@ state = {
             })
             axios.post('/stskFmsApi/otpServices/sendOtpBySMS',
              {  countryCode:91,
-                mobileNumber :this.state.mobileNumber})
+                mobileNumber :this.state.mobileNumber},{headers:header})
             .then(Response => {
                    console.log(Response)
                    console.log(Response.data)
@@ -58,7 +63,7 @@ state = {
             axios.post('/stskFmsApi/otpServices/sendOtpBySMS',
             {   countryCode:91,
                 mobileNumber :this.state.mobileNumber,
-                otp_input: this.state.otp_input})
+                otp_input: this.state.otp_input},{headers:header})
                 .then(Response => {
                    console.log(Response)
                    console.log(Response.data)

@@ -3,6 +3,11 @@ import axios from 'axios'
 import logo from './Images/Mainlogo.png'
 import './css/userLogin.css'
 
+
+const header={
+    'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
 class UserLogin extends Component {
 state = {
               email:'',
@@ -21,7 +26,7 @@ state = {
             
         }
         handleChange2 = (e) => {
-            axios.get('/stskFmsApi/jobseeker/getByEmailid/'+ this.state.email)
+            axios.get('/stskFmsApi/jobseeker/getByEmailid/'+ this.state.email,{headers:header})
             .then(res=>{
                 console.log(res.data)
                 console.log(res.data.data)
@@ -51,7 +56,7 @@ state = {
             axios.post('/stskFmsApi/userLogin/verifyUser',{
                 email:this.state.email1,
                 password:this.state.password
-            })
+            },{headers:header})
             .then(Response => {
                 console.log(Response.data)
                 console.log(Response.data.success)
