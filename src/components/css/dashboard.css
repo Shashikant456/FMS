@@ -165,3 +165,10 @@
   margin-left: -67px;
   margin-bottom: 0px;
 }
+#viewdetails{
+  color: turquoise;
+    cursor: pointer;
+}
+#cardContent{
+  padding: 6px;
+}

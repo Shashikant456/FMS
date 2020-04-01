@@ -64,7 +64,7 @@ class Dashboard extends Component {
 
         axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
         .then(res => {
-            console.log(res.data)
+            console.log(res.data.data)
             console.log(res.data.success)
 
             if(res.data.success===1){
@@ -189,31 +189,82 @@ class Dashboard extends Component {
                         }
                 
                 return(
-                    <div className="row post card" key={post.id}>
-                        <div className="card-content" >
+                    <div className="row card"  key={post.id}>
+                        <div className="card-content" id="cardContent">
                         
-                            <div className="col s5 m2 l2 offset-s1">
-                                <p id="dashtext" id="dashtext">Job position</p>
-                                <br></br>
-                                <p>{post.jobType}</p>
-                            </div>
-                             <div className="col s5 m2 l2">
-                                 <p id="dashtext">Experience</p>
-                                <br></br>
-                                <p>{post.serviceArea}</p>
-                                <br className="show-on-small"></br>
-                            </div>
-                             <div className="col s5 m2 l2">
-                                 <p id="dashtext">Location</p>
-                                <br></br>
-                                <p>{post.serviceArea}</p>
-                                <br className="show-on-small"></br>
-                            </div>
-                            
-                             <div className="col s6 m2 l2 offset-s3">
-                                <a className="btn" onClick={this.handleApply} value={post.id} id="dashbtn">Apply</a>
-                            </div>
-                           
+                        <div className="col s5 m3 l3 offset-s1">
+                             <p id="dashtext">Job position-{post.jobType}</p>
+                          </div>
+                        <div className="col s5 m3 l3 offset-s1">
+                              <p id="dashtext">Experience-{post.serviceArea}</p>
+                          </div>
+                        <div className="col s5 m3 l3 offset-s1">
+                              <p  id="dashtext">Location-{post.serviceArea}</p>
+                          </div>
+                             
+
+                            <Popup modal trigger={
+                                <div className="col s6 m2 l2 offset-s3 right-align">
+                                    <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
+                                </div> }>
+
+                                <div className="popup-content">
+                                    <div className="col s12 m12 l12">
+                                        <div className="right-align">
+                                            <i className="material-icons">clear</i>
+                                        </div>
+                                        <h4 className="center align grey-text">View Details</h4>
+                                        
+                                        <br></br>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Job position-{post.jobType}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Experience - {post.jobType}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Language - {post.language}
+                                            </h6>
+                                            <br></br>
+                                        </div>
+                                        
+                                        <div className="col s12 m12 l6">
+                                            <h6> Age limit - {post.ageLimit}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6> Valid Upto - {post.validUpto}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Location - {post.serviceArea}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Vacancy -</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6> Salary range - {post.salaryRange}</h6>
+                                            <br></br>
+                                        </div>
+                                       <div>
+                                            <h6>Description</h6>
+                                            <h6>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription</h6>
+                                        </div>
+                                        <div className="col s12 m6 l6">
+                                            <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m6 l6">
+                                            <button onClick={this.handleApply} value={post.id} id="popsavebtn" type="text">Apply</button>
+                                            <br></br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Popup>
                          </div>
                     </div>
                 )
@@ -236,18 +287,18 @@ class Dashboard extends Component {
 
         const {searchedJobs} = this.state;
         const searchList = searchedJobs.length ? (
-            searchedJobs.map(search => {
+            searchedJobs.map(post => {
                 this.handleSearchApply=(e)=>{
                     axios.put('/stskFmsApi/jobseeker/applyJobs',
                         {  id:this.state.userId,
                             jobs:[{
-                                id:search.id
+                                id:post.id
                              }]
-                            },{headers:header})
+                            })
                             .then(res=>{
                                 // console.log(res)
                                 // console.log(res.data)
-                                console.log(search.id)
+                                console.log(post.id)
                             }) 
                             axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
                             .then(res=>{
@@ -257,51 +308,88 @@ class Dashboard extends Component {
                             })
                         }
                 return(
-                    <div className="row post card" key={search.id}>
-                        <div className="card-content" >
+                    <div className="row card"  key={post.id}>
+                        <div className="card-content" id="cardContent">
                         
-                            <div className="col s5 m2 l2 offset-s1">
-                                <p id="dashtext" id="dashtext">Job position</p>
-                                <br></br>
-                                <p>{search.id}</p>
-                            </div>
-                            <div className="col s5 m2 l2">
-                                 <p id="dashtext">Location</p>
-                                <br></br>
-                                <p>{search.serviceArea}</p>
-                                <br className="show-on-small"></br>
-                            </div>
-                            <div className="col s5 m2 l2 offset-s1">
-                                 <p id="dashtext">Age Limit</p>
-                                <br></br>
-                                <p>{search.ageLimit}</p>
-                            </div>
-                            <div className="col s5 m2 l2 offset-s1">
-                                 <p id="dashtext">Salary range</p>
-                                <br></br>
-                                <p>{search.salaryRange}</p>
-                            </div>
-                            <div className="col s5 m3 l3 ">
-                                 <p id="dashtext">Language</p>
-                                <br></br>
-                                <p>{search.language}</p>
-                                <br className="show-on-small"></br>
-                            </div>
-                            <div className="col s5 m2 l2 offset-s1">
-                                <p id="dashtext">Valid upto</p>
-                                <br></br>
-                                <p>{search.validUpto}</p>
-                            </div>
-                            <div className="col s5 m2 l2 offset-s3" >
-                                <a className="btn" onClick={this.handleSearchApply} value={search.id} id="dashbtn">Apply</a>
-                            </div>
-                           
+                        <div className="col s5 m3 l3 offset-s1">
+                             <p id="dashtext">Job position-{post.jobType}</p>
+                          </div>
+                        <div className="col s5 m3 l3 offset-s1">
+                              <p id="dashtext">Experience-{post.serviceArea}</p>
+                          </div>
+                        <div className="col s5 m3 l3 offset-s1">
+                              <p  id="dashtext">Location-{post.serviceArea}</p>
+                          </div>
+                             
+
+                            <Popup modal trigger={
+                                <div className="col s6 m2 l2 offset-s3 right-align">
+                                    <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
+                                </div> }>
+
+                                <div className="popup-content">
+                                    <div className="col s12 m12 l12">
+                                        <div className="right-align">
+                                            <i className="material-icons">clear</i>
+                                        </div>
+                                        <h4 className="center align grey-text">View Details</h4>
+                                        
+                                        <br></br>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Job position-{post.jobType}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Experience - {post.jobType}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Language - {post.language}
+                                            </h6>
+                                            <br></br>
+                                        </div>
+                                        
+                                        <div className="col s12 m12 l6">
+                                            <h6> Age limit - {post.ageLimit}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6> Valid Upto - {post.validUpto}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Location - {post.serviceArea}</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6>Vacancy -</h6>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m12 l6">
+                                            <h6> Salary range - {post.salaryRange}</h6>
+                                            <br></br>
+                                        </div>
+                                       <div>
+                                            <h6>Description</h6>
+                                            <h6>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription</h6>
+                                        </div>
+                                        <div className="col s12 m6 l6">
+                                            <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
+                                            <br></br>
+                                        </div>
+                                        <div className="col s12 m6 l6">
+                                            <button onClick={this.handleSearchApply} value={post.id} id="popsavebtn" type="text">Apply</button>
+                                            <br></br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Popup>
                          </div>
                     </div>
                 )
             })
         ) :(
-            <div></div>
+            <div>Loading please wait...</div>
         )
 
 
@@ -309,47 +397,84 @@ class Dashboard extends Component {
         const appliedJobsList = appliedJobs.length ? (
         appliedJobs.map(post => {      
                 return(
-                    <div className="row post card" key={post.id}>
-                        <div className="card-content" >
-                        
-                            <div className="col s5 m2 l2 offset-s1">
-                                <p id="dashtext" id="dashtext">Job position</p>
-                                <br></br>
-                                <p>{post.jobType}</p>
+                    <div className="row card"  key={post.id}>
+                    <div className="card-content" id="cardContent">
+                    
+                    <div className="col s5 m3 l3 offset-s1">
+                         <p id="dashtext">Job position-{post.jobType}</p>
+                      </div>
+                    <div className="col s5 m3 l3 offset-s1">
+                          <p id="dashtext">Experience-{post.serviceArea}</p>
+                      </div>
+                    <div className="col s5 m3 l3 offset-s1">
+                          <p  id="dashtext">Location-{post.serviceArea}</p>
+                      </div>
+                         
+
+                        <Popup modal trigger={
+                            <div className="col s6 m2 l2 offset-s3 right-align">
+                                <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
+                            </div> }>
+
+                            <div className="popup-content">
+                                <div className="col s12 m12 l12">
+                                    <div className="right-align">
+                                        <i className="material-icons">clear</i>
+                                    </div>
+                                    <h4 className="center align grey-text">View Details</h4>
+                                    
+                                    <br></br>
+                                    <div className="col s12 m12 l6">
+                                        <h6>Job position-{post.jobType}</h6>
+                                        <br></br>
+                                    </div>
+                                    <div className="col s12 m12 l6">
+                                        <h6>Experience - {post.jobType}</h6>
+                                        <br></br>
+                                    </div>
+                                    <div className="col s12 m12 l6">
+                                        <h6>Language - {post.language}
+                                        </h6>
+                                        <br></br>
+                                    </div>
+                                    
+                                    <div className="col s12 m12 l6">
+                                        <h6> Age limit - {post.ageLimit}</h6>
+                                        <br></br>
+                                    </div>
+                                    <div className="col s12 m12 l6">
+                                        <h6> Valid Upto - {post.validUpto}</h6>
+                                        <br></br>
+                                    </div>
+                                    <div className="col s12 m12 l6">
+                                        <h6>Location - {post.serviceArea}</h6>
+                                        <br></br>
+                                    </div>
+                                    <div className="col s12 m12 l6">
+                                        <h6>Vacancy -</h6>
+                                        <br></br>
+                                    </div>
+                                    <div className="col s12 m12 l6">
+                                        <h6> Salary range - {post.salaryRange}</h6>
+                                        <br></br>
+                                    </div>
+                                   <div>
+                                        <h6>Description</h6>
+                                        <h6>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription</h6>
+                                    </div>
+                                    <div className="col s12 m6 l6">
+                                        <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
+                                        <br></br>
+                                    </div>
+                                    <div className="col s12 m6 l6">
+                                        <button value={post.id} id="popsavebtn" type="text">Apply</button>
+                                        <br></br>
+                                    </div>
+                                </div>
                             </div>
-                             <div className="col s5 m2 l2">
-                                 <p id="dashtext">Location</p>
-                                <br></br>
-                                <p>{post.serviceArea}</p>
-                                <br className="show-on-small"></br>
-                            </div>
-                             <div className="col s5 m2 l2 offset-s1">
-                                 <p id="dashtext">Age Limit</p>
-                                <br></br>
-                                <p>{post.ageLimit}</p>
-                            </div>
-                            <div className="col s5 m2 l2 offset-s1">
-                                <p id="dashtext">Salary range</p>
-                                <br></br>
-                                <p>{post.salaryRange}</p>
-                            </div>
-                             <div className="col s5 m3 l3">
-                                 <p id="dashtext">Language</p>
-                                <br></br>
-                                <p>{post.language}</p>
-                                <br className="show-on-small"></br>
-                            </div>
-                                <div className="col s5 m2 l2 offset-s1">
-                                <p id="dashtext">Valid upto</p>
-                                <br></br>
-                            <p>{post.validUpto}</p>
-                           </div>
-                             <div className="col s6 m2 l2 offset-s3">
-                                <a className="btn green" value={post.id} id="dashbtn">Waiting</a>
-                            </div>
-                           
-                         </div>
-                    </div>
+                        </Popup>
+                     </div>
+                </div>
                 )
             })
         ) : (
@@ -421,7 +546,8 @@ class Dashboard extends Component {
                         <div id="editicn" >
                         <Popup modal trigger={
                         
-                            <div><i className="material-icons small right" onClick={()=>this.setState({popup:true})}>edit</i><br></br></div>
+                            <div><i className="material-icons small right" onClick={()=>this.setState({popup:true})}>edit</i>
+                            <br></br></div>
                         }>
                         
                         <div className="popup-content">
