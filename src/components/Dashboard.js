@@ -289,15 +289,16 @@ class Dashboard extends Component {
         const searchList = searchedJobs.length ? (
             searchedJobs.map(post => {
                 this.handleSearchApply=(e)=>{
+                    console.log(post.id)
+                    console.log(this.state.userId)
                     axios.put('/stskFmsApi/jobseeker/applyJobs',
-                        {  id:this.state.userId,
+                        {  
+                            id:this.state.userId,
                             jobs:[{
                                 id:post.id
                              }]
-                            })
+                            },{headers:header})
                             .then(res=>{
-                                // console.log(res)
-                                // console.log(res.data)
                                 console.log(post.id)
                             }) 
                             axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
