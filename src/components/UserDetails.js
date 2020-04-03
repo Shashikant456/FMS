@@ -58,7 +58,7 @@ class UserRole extends Component {
       eduQual: null,
       working : '',
       jobUpdate:null,
-      userId:'',
+      userId:'3',
       jobTypes:[
         { id:''}
       ],
@@ -119,9 +119,8 @@ class UserRole extends Component {
 
   componentWillMount(){
     this.setState({
-      mob:this.props.location.state.mobileNumber.mobileNumber ,
-    //  email:this.props.location.state.email,
-    //  userId:this.props.location.state.userId
+      mob:this.props.location.state.mobileNumber.mobileNumber
+     //email:this.props.location.state.email
   })  
   }
   componentDidMount(){
@@ -151,6 +150,13 @@ class UserRole extends Component {
    }
  handleRadio=(e)=>{
   console.log(e.target.value)
+
+  if(e.target.value=='true'){
+    document.getElementById("abcd").style.display = "none";
+
+  }else{
+    document.getElementById("abcd").style.display = "block";
+  }
   this.setState({
     working:e.target.value
   })
@@ -509,7 +515,7 @@ var newdata="["+finaldata+ "]";
                 required
                 value={this.state.mob}
                 id="input"
-                onChange={this.handleChange}
+              
                 
               />
             
@@ -524,7 +530,7 @@ var newdata="["+finaldata+ "]";
                 required
                 value={this.state.email}
                 id="input"
-                onChange={this.handleChange}
+                
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>
@@ -665,8 +671,14 @@ var newdata="["+finaldata+ "]";
               </label>
             </p>
             </div>
-          
-           <div className="years">
+            <div className="address">
+             
+             <textarea id="address"  placeholder="Address" onChange={this.handleChange5}>
+ 
+             </textarea>
+  </div>
+          <div id="abcd" >
+           <div className="years"  >
               
                 <input
                 className=""
@@ -722,8 +734,8 @@ var newdata="["+finaldata+ "]";
                 id="input"
                 
               /> 
-              {/* </div>
-               <div className="place">
+               </div>
+              {/* <div className="place">
               <input
                 className=""
                 placeholder="Place"
@@ -735,20 +747,8 @@ var newdata="["+finaldata+ "]";
                 id="input"
                 
               />  */}
-              </div>
-              {/* <div className="designation">
-              <input
-                className=""
-                placeholder="Designation"
-                type="text"
-                name="designation"
-                required
-                
-                onChange={this.handleChange}
-                id="input"
-                
-              /> 
-              </div> */}
+              {/* </div> */}
+            
               <div className="notice_period">
             <p id="label">notice period?</p>
   
@@ -771,6 +771,19 @@ var newdata="["+finaldata+ "]";
                 placeholder="days"
                 type="text"
                 name="noOfDays"
+                required
+                
+                onChange={this.handleChange}
+                id="input"
+                
+              /> 
+              </div>
+                <div className="designation">
+              <input
+                className=""
+                placeholder="Designation"
+                type="text"
+                name="designation"
                 required
                 
                 onChange={this.handleChange}
@@ -820,7 +833,7 @@ var newdata="["+finaldata+ "]";
                 
               /> 
               </div>
-              <div className="designation">
+              {/* <div className="designation">
               <input
                 className=""
                 placeholder="Designation"
@@ -832,9 +845,13 @@ var newdata="["+finaldata+ "]";
                 id="input"
                 
               /> 
-              </div>
+              </div> */}
+              {/* </div> */}
              
               
+           
+           
+           
            
               {/* <div className="Resume">
               
@@ -849,13 +866,9 @@ var newdata="["+finaldata+ "]";
               />
               <small>Select Resume</small>
              
-            </div> */}
-            <div className="address">
-             
-            <textarea id="address"  placeholder="Address" onChange={this.handleChange5}>
+             </div> */}
+             </div>
 
-            </textarea>
- </div>
  
 
             
@@ -879,4 +892,3 @@ var newdata="["+finaldata+ "]";
 }
 
 export default UserRole;
-
