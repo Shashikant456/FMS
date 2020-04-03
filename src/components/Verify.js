@@ -14,7 +14,7 @@ const header={
 class Verify extends Component{
     
     state = {  
-                mobileNumber:'9008845003',
+                mobileNumber:'',
                 otp_input:'',
                 error:'',
                 userId:'',
@@ -23,14 +23,8 @@ class Verify extends Component{
              }
              componentDidMount(){
                 this.setState({
-                  //mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                    mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
-
-                this.props.history.push({
-                    pathname : '/userDetails',
-                    state :{
-                    mobileNumber : this.state
-                }})
              }
                         
                     
