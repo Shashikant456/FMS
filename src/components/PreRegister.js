@@ -8,6 +8,10 @@ import job from './Images/Pre-reg_icon_jobseeker.png'
 import './css/register.css'
 import axios from 'axios'
 
+const header={
+    'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
 
 export class Register extends Component {
     
@@ -21,7 +25,7 @@ export class Register extends Component {
     
     componentDidMount(){
         this._isMounted = true;
-        axios.get('/stskFmsApi/userRoles/getAllUserRoles')
+        axios.get('/stskFmsApi/userRoles/getAllUserRoles',{headers:header})
         .then(res=>{
             console.log(res.data)
             console.log(res.data.data)

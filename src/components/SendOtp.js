@@ -6,6 +6,11 @@ import { Form,FormControl } from 'react-bootstrap';
 import logo from './Images/Mainlogo.png'
 //import PhoneInput from 'react-phone-number-input'
 
+const header={
+    'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
+
 class SendOtp extends Component{
     constructor(props) {
         super(props)
@@ -64,7 +69,7 @@ class SendOtp extends Component{
         } 
       );
 
-      axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state )
+      axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state,{headers:header} )
             .then(Response => {
                    console.log(Response)
                    console.log(Response.data)

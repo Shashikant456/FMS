@@ -102,6 +102,7 @@ state = {
                     <input id="icon_prefix" type="email" size="30" required
                      placeholder="User Id/Email Id"  onChange={this.handleChange1}/>
                 </div>
+            
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" placeholder="password" required  onChange={this.handleChange2}

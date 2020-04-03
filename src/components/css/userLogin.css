@@ -109,7 +109,7 @@
 
 #UserLoginButton{
   width: 288px;
-  margin-top: -5px;
+  margin-top: 29px;
   outline: none;
   border: none;
 }
@@ -129,7 +129,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 #FpVerify{
   width: 288px;
     outline: none;
-    margin-top: 10px;
+    margin-top: 48px;
 }
 #otpleftarrow{
   margin-right: 271px;

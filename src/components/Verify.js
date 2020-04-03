@@ -6,6 +6,10 @@ import logo from './Images/Mainlogo.png'
 
 import './css/Verify.css'
 
+const header={
+    'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
 
 class Verify extends Component{
     
@@ -21,16 +25,18 @@ class Verify extends Component{
                 this.setState({
                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
+
              }
                         
                     
+
     handleChange = (e) => {
         this.setState({
             otp_input: e.target.value  
         })
     }
     handleResend= (e)=>{
-        axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state.mobileNumber )
+        axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state.mobileNumber,{headers:header} )
         .then(Response => {
                console.log(Response)
                console.log(Response.data)
@@ -42,7 +48,7 @@ class Verify extends Component{
    handleVerify=(e)=>{
        axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
        {  countryCode:91,
-        mobileNumber :this.state.mobileNumber})
+        mobileNumber :this.state.mobileNumber},{headers:header})
         .then(res =>{
             console.log(res)
         })
@@ -56,7 +62,7 @@ class Verify extends Component{
         axios.post('/stskFmsApi/otpServices/verifyOtpBySMS', 
         {   countryCode:91,
             mobileNumber :this.state.mobileNumber,
-            otp_input: this.state.otp_input})
+            otp_input: this.state.otp_input},{headers:header})
                 .then(Response => {
                     
                       console.log(Response)
@@ -64,7 +70,7 @@ class Verify extends Component{
                     
                     if (Response.data.type==="success")
                     {
-                        axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
+                        axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber,{headers:header})
                         .then(Response => {
                             console.log(Response.data)
                             this.setState({
@@ -74,7 +80,7 @@ class Verify extends Component{
                             if (Response.data.success===1){
                                
                                 console.log("Dashboard")
-                                axios.get('/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber)
+                                axios.get('/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber,{headers:header})
                                 .then(res =>{
                                     if(res.data.success===1){
                                         this.setState({
@@ -134,40 +140,6 @@ class Verify extends Component{
         console.log(this.state)
     return(
         
-        // <div className="wrapper">
-
-        // <div className="form-wrapper">
-        // <div className="text-center">
-          
-        // <img src={logo} alt="" className="img1"></img>
-        // <h2 id="verifyotp">Enter Otp</h2>
-        // </div>
-         
-        //   <form onSubmit={this.handleSubmit} noValidate>
-           
-        //     <div className="otp">
-        //       {/* <label htmlFor="email">Email</label> */}
-        //       <h6>Enter Otp Here</h6>
-        //         <input placeholder="Enter Otp" type="text" value={this.state.otp_input} onChange={this.handleChange}/>
-        //         <p className="red-text">{this.state.error}</p>
-        //          </div>
-        //             <div className="Verify">
-        //                 <button type="submit">Verify</button>
-        //             </div>
-        //         </form>
-                            
-        //                     <br/> <br/>
-        //                     <span className="border-right"><small className="text-center1"><h4>or</h4></small></span>
-        //                     <br/><br/>
-        //                     <div className="missedcall">
-        //                     <button onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
-                    
-        //             </div>
-                
-        //      </div>
-        //  </div>
-
-
 
 
         <div id="body">
@@ -178,8 +150,10 @@ class Verify extends Component{
                 <form id="frm" onSubmit={this.handleSubmit}>
                 <h6 id="enterHere">Enter Otp Here</h6>
                     <div className="input-field">
-                            <input id="partitioned" type="text" required maxLength="6" value={this.state.otp_input} 
+                            <input id="partitioned" type="text"  maxLength="6" value={this.state.otp_input} 
                             onChange={this.handleChange} />
+                            <br></br>
+                            <br></br>
                             <p className="red-text">{this.state.error}</p>
                     </div>
                     <a href="" id="resendotp" onClick={this.handleResend} className="center-align">Resend OTP</a>
