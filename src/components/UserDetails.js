@@ -120,7 +120,7 @@ class UserRole extends Component {
   componentWillMount(){
     this.setState({
       mob:this.props.location.state.mobileNumber.mobileNumber
-     //email:this.props.location.state.email
+
   })  
   }
   componentDidMount(){
