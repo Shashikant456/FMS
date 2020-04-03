@@ -16,7 +16,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'3',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -45,7 +45,7 @@ class Dashboard extends Component {
 
     componentWillMount(){
         this.setState({
-            userId:this.props.location.state.userId, 
+            //userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -468,7 +468,7 @@ class Dashboard extends Component {
                                         <br></br>
                                     </div>
                                     <div className="col s12 m6 l6">
-                                        <button value={post.id} id="popsavebtn" type="text">Apply</button>
+                                        <button value={post.id} id="popsavebtn" type="text">Applied</button>
                                         <br></br>
                                     </div>
                                 </div>

@@ -72,7 +72,7 @@
   #mail{
     height: 80px;
   }
-  #address{
+  #addresss{
     background-color: #F9FFFF;
   }
   #textcolor{
@@ -83,6 +83,7 @@
     color: #3FB2AA;
   }
   #collpsible{
+    padding: 0px;
     width: 90%;
     
   }
@@ -99,4 +100,5 @@
  }
 #dashinput{
   font-family: 'Lato', ;
+  padding: 26px;
 }

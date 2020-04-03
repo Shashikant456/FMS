@@ -164,7 +164,7 @@ export class dashboardHelp extends Component {
             </div>
 
           
-                  <footer className="page-footer" id="address">
+                  <footer className="page-footer" id="addresss">
                   <div className="center align">
                     <div className="row ">
                       <div className="col l6 s12 m6 ">
