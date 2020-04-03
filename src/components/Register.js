@@ -12,7 +12,7 @@ class Register extends Component {
     state = {
       isPasswordShown:"false",
       mob:"",
-      mobileNumber:"",
+      mobileNumber:'',
       email:"",
       password: "",
       userRoles:{
@@ -26,14 +26,13 @@ class Register extends Component {
       
   componentDidMount(){
     this.setState({
-       mob:this.props.location.state.mobileNumber.mobileNumber,
        mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
-       userRoles:{
+       mob:this.props.location.state.mobileNumber.mobileNumber,
+      userRoles:{
         id:this.props.match.params.id,
         name:this.props.match.params.name
       }
     })
-
   }
 
 
@@ -201,7 +200,7 @@ handleChange10(){
                title="Must contain at least one number
                and one uppercase and lowercase letter,
                 and at least 6 or more characters" onChange={this.handleChange3}/>
-               <i className="fa fa-eye" id="eye" onClick={this.togglePasswordVisibility}></i>
+               <i className="fa fa-eye" id="eyes" onClick={this.togglePasswordVisibility}></i>
 
           </div>
 
@@ -269,16 +268,7 @@ handleChange10(){
 }
 
 export default withRouter(Register);
-// $(".toggle-password").click(function() {
 
-//   $(this).toggleClass("fa-eye fa-eye-slash");
-//   var input = $($(this).attr("toggle"));
-//   if (input.attr("type") == "password") {
-//     input.attr("type", "text");
-//   } else {
-//     input.attr("type", "password");
-//   }
-// });
 (($) => {
 
   class Toggle {
