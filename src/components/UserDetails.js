@@ -30,7 +30,7 @@ const formValid = ({ formErrors, ...rest }) => {
 };
 
 
-class UserRole extends Component {
+class UserDetails extends Component {
   constructor(props) {
     super(props);
   this.state = {
@@ -80,20 +80,19 @@ class UserRole extends Component {
       formErrors: {
         name: "",
         email: "",
-          mob: "",
          panNum: "",
           aadharNum: "",
           experience: "", 
           eduQual: "",
           working:"",
           jobUpdate:"",
-          userId:"",
+
          //jobss:"",
            //update:"",
           //  userLogin:[
           //   { id:''}
           // ],
-          jobTypes:
+          jobTypes: 
             { id:''}
           ,
           fresher:'',
@@ -119,9 +118,9 @@ class UserRole extends Component {
 
   componentWillMount(){
     this.setState({
-      mob:this.props.location.state.mobileNumber.mobileNumber
+     mob:this.props.location.state.mobileNumber.mobileNumber
+
   })  
- 
   }
   componentDidMount(){
 
@@ -150,12 +149,13 @@ class UserRole extends Component {
    }
  handleRadio=(e)=>{
   console.log(e.target.value)
+ 
 
-  if(e.target.value=='true'){
-    document.getElementById("abcd").style.display = "none";
+  if(e.target.value=='false'){
+    document.getElementById("abcd").style.display = "block";
 
   }else{
-    document.getElementById("abcd").style.display = "block";
+    document.getElementById("abcd").style.display = "none";
   }
   this.setState({
     working:e.target.value
@@ -238,6 +238,7 @@ handleSubmit = e => {
     {
       console.log(response)
       console.log(response.data)
+  
       this.props.history.push({
       pathname : '/dashboard',
       state :{
@@ -328,7 +329,7 @@ handleSubmit = e => {
     var dropDown = document.getElementById('demo'), jobtypesArray = [], i;
     for (i = 0; i < dropDown.options.length ; i += 1) {
         if (dropDown.options[i].selected) {
-            //countryArray.push( dropDown.options[i].value); //If you need only values 
+            //countryArray.push( dropDown.options[i].value); 
             jobtypesArray.push(dropDown.options[i].value );
         }
     }
@@ -676,7 +677,7 @@ var newdata="["+finaldata+ "]";
  
              </textarea>
   </div>
-          <div id="abcd" >
+          <div id="abcd" style={{display:'none'}} >
            <div className="years"  >
               
                 <input
@@ -890,4 +891,4 @@ var newdata="["+finaldata+ "]";
   }
 }
 
-export default UserRole;
+export default UserDetails;

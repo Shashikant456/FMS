@@ -54,7 +54,7 @@ class Verify extends Component{
     }
    handleVerify=(e)=>{
        axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
-       {  countryCode:91,
+       {  countryCode:this.state.countryCode,
         mobileNumber :this.state.mobileNumber},{headers:header})
         .then(res =>{
             console.log(res)

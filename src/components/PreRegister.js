@@ -5,7 +5,7 @@ import logo from './Images/Mainlogo.png'
 import left from './Images/leftside.png'
 import right from './Images/rightside.png'
 import job from './Images/Pre-reg_icon_jobseeker.png'
-import './css/register.css'
+import './css/preregister.css'
 import axios from 'axios'
 
 const header={
@@ -32,7 +32,6 @@ export class Register extends Component {
             this.setState({
                   userRoless : res.data.data,
                  mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
-                 name:this.props.match.params
             })
            
         })
