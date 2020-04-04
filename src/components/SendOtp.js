@@ -20,7 +20,8 @@ class SendOtp extends Component{
            }
           this.handleSubmit = this.handleSubmit.bind(this)
         }
-    userLogin = (e) => {
+    
+     userLogin = (e) => {
         this.props.history.push('/userLogin')
        
     }
@@ -64,7 +65,8 @@ class SendOtp extends Component{
     this.props.history.push({
         pathname : '/verify',
         state :{
-        mobileNumber : this.state
+        mobileNumber : this.state,
+        countryCode:this.state
            }
         } 
       );

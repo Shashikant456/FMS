@@ -24,7 +24,8 @@ class Verify extends Component{
              }
              componentDidMount(){
                 this.setState({
-                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
+                   countryCode: this.props.location.state.countryCode.countryCode
                 })
              }
                         
@@ -37,8 +38,6 @@ class Verify extends Component{
     }
     handleResend= (e)=>{
         e.preventDefault()
-        console.log("shashi")
-        console.log(this.state.mobileNumber)
 
         axios.post('/stskFmsApi/otpServices/sendOtpBySMS',{
             countryCode:this.state.countryCode,
@@ -47,7 +46,7 @@ class Verify extends Component{
         .then(Response => {
                console.log(Response)
                console.log(Response.data)
-               console.log('shashi')
+              
          })
         .catch(error => {
             console.log(error)
@@ -144,8 +143,8 @@ class Verify extends Component{
     }
     render(){
         const {loading}=this.state
-        console.log(this.state.userId)
-        console.log(this.state)
+        console.log(this.state.countryCode)
+    
     return(
         
 
