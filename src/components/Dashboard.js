@@ -16,7 +16,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
-        userId:'',
+        userId:'3',
         LoggedIn:'true',
         mobileNumber:'',
         search:'',
@@ -45,7 +45,7 @@ class Dashboard extends Component {
 
     componentWillMount(){
         this.setState({
-            userId:this.props.location.state.userId, 
+           // userId:this.props.location.state.userId, 
         })
     }
     componentDidMount(){
@@ -192,19 +192,19 @@ class Dashboard extends Component {
                     <div className="row card"  key={post.id}>
                         <div className="card-content" id="cardContent">
                         
-                        <div className="col s5 m3 l3 offset-s1">
-                             <p id="dashtext">Job position-{post.jobType}</p>
+                        <div className="col s5 m6 l3 offset-s1">
+                             <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
                           </div>
-                        <div className="col s5 m3 l3 offset-s1">
-                              <p id="dashtext">Experience-{post.serviceArea}</p>
+                        <div className="col s5 m6 l3 offset-s1">
+                              <p id="dashtext">Experience-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>
-                        <div className="col s5 m3 l3 offset-s1">
-                              <p  id="dashtext">Location-{post.serviceArea}</p>
+                        <div className="col s5 m6 l3 offset-s1">
+                              <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>
                              
 
                             <Popup modal trigger={
-                                <div className="col s6 m2 l2 offset-s3 right-align">
+                                <div className="col s6 m6 l2 offset-s3 right-align">
                                     <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
                                 </div> }>
 
@@ -217,29 +217,28 @@ class Dashboard extends Component {
                                         
                                         <br></br>
                                         <div className="col s12 m12 l6">
-                                            <h6>Job position-{post.jobType}</h6>
+                                            <h6>Job position-<span className="grey-text">{post.jobType}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Experience - {post.jobType}</h6>
+                                            <h6>Experience - <span className="grey-text">{post.jobType}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Language - {post.language}
-                                            </h6>
+                                            <h6>Language - <span className="grey-text">{post.language}</span> </h6>
                                             <br></br>
                                         </div>
                                         
                                         <div className="col s12 m12 l6">
-                                            <h6> Age limit - {post.ageLimit}</h6>
+                                            <h6> Age limit - <span className="grey-text">{post.ageLimit}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6> Valid Upto - {post.validUpto}</h6>
+                                            <h6> Valid Upto - <span className="grey-text">{post.validUpto}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Location - {post.serviceArea}</h6>
+                                            <h6>Location - <span className="grey-text">{post.serviceArea}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
@@ -247,12 +246,14 @@ class Dashboard extends Component {
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6> Salary range - {post.salaryRange}</h6>
+                                            <h6> Salary range - <span className="grey-text">{post.salaryRange}</span></h6>
                                             <br></br>
                                         </div>
                                        <div>
                                             <h6>Description</h6>
-                                            <h6>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription</h6>
+                                            <br></br>
+                                            <p className="grey-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                             industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                         </div>
                                         <div className="col s12 m6 l6">
                                             <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
@@ -312,19 +313,19 @@ class Dashboard extends Component {
                     <div className="row card"  key={post.id}>
                         <div className="card-content" id="cardContent">
                         
-                        <div className="col s5 m3 l3 offset-s1">
-                             <p id="dashtext">Job position-{post.jobType}</p>
+                        <div className="col s5 m6 l3 offset-s1">
+                             <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
                           </div>
-                        <div className="col s5 m3 l3 offset-s1">
-                              <p id="dashtext">Experience-{post.serviceArea}</p>
+                        <div className="col s5 m6 l3 offset-s1">
+                              <p id="dashtext">Experience-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>
-                        <div className="col s5 m3 l3 offset-s1">
-                              <p  id="dashtext">Location-{post.serviceArea}</p>
+                        <div className="col s5 m6 l3 offset-s1">
+                              <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>
                              
 
                             <Popup modal trigger={
-                                <div className="col s6 m2 l2 offset-s3 right-align">
+                                <div className="col s6 m6 l2 offset-s3 right-align">
                                     <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
                                 </div> }>
 
@@ -337,29 +338,28 @@ class Dashboard extends Component {
                                         
                                         <br></br>
                                         <div className="col s12 m12 l6">
-                                            <h6>Job position-{post.jobType}</h6>
+                                            <h6>Job position-<span className="grey-text">{post.jobType}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Experience - {post.jobType}</h6>
+                                            <h6>Experience - <span className="grey-text">{post.jobType}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Language - {post.language}
-                                            </h6>
+                                            <h6>Language - <span className="grey-text">{post.language}</span> </h6>
                                             <br></br>
                                         </div>
                                         
                                         <div className="col s12 m12 l6">
-                                            <h6> Age limit - {post.ageLimit}</h6>
+                                            <h6> Age limit - <span className="grey-text">{post.ageLimit}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6> Valid Upto - {post.validUpto}</h6>
+                                            <h6> Valid Upto - <span className="grey-text">{post.validUpto}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Location - {post.serviceArea}</h6>
+                                            <h6>Location - <span className="grey-text">{post.serviceArea}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
@@ -367,12 +367,14 @@ class Dashboard extends Component {
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6> Salary range - {post.salaryRange}</h6>
+                                            <h6> Salary range - <span className="grey-text">{post.salaryRange}</span></h6>
                                             <br></br>
                                         </div>
                                        <div>
                                             <h6>Description</h6>
-                                            <h6>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription</h6>
+                                            <br></br>
+                                            <p className="grey-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                             industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                         </div>
                                         <div className="col s12 m6 l6">
                                             <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
@@ -401,68 +403,69 @@ class Dashboard extends Component {
                     <div className="row card"  key={post.id}>
                     <div className="card-content" id="cardContent">
                     
-                    <div className="col s5 m3 l3 offset-s1">
-                         <p id="dashtext">Job position-{post.jobType}</p>
-                      </div>
-                    <div className="col s5 m3 l3 offset-s1">
-                          <p id="dashtext">Experience-{post.serviceArea}</p>
-                      </div>
-                    <div className="col s5 m3 l3 offset-s1">
-                          <p  id="dashtext">Location-{post.serviceArea}</p>
-                      </div>
-                         
+                    <div className="col s5 m6 l3 offset-s1">
+                    <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
+                 </div>
+               <div className="col s5 m6 l3 offset-s1">
+                     <p id="dashtext">Experience-<span className="grey-text">{post.serviceArea}</span></p>
+                 </div>
+               <div className="col s5 m6 l3 offset-s1">
+                     <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
+                 </div>
+                    
 
-                        <Popup modal trigger={
-                            <div className="col s6 m2 l2 offset-s3 right-align">
-                                <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
-                            </div> }>
+                   <Popup modal trigger={
+                       <div className="col s6 m6 l2 offset-s3 right-align">
+                           <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
+                       </div> }>
 
-                            <div className="popup-content">
-                                <div className="col s12 m12 l12">
-                                    <div className="right-align">
-                                        <i className="material-icons">clear</i>
-                                    </div>
-                                    <h4 className="center align grey-text">View Details</h4>
-                                    
-                                    <br></br>
-                                    <div className="col s12 m12 l6">
-                                        <h6>Job position-{post.jobType}</h6>
-                                        <br></br>
-                                    </div>
-                                    <div className="col s12 m12 l6">
-                                        <h6>Experience - {post.jobType}</h6>
-                                        <br></br>
-                                    </div>
-                                    <div className="col s12 m12 l6">
-                                        <h6>Language - {post.language}
-                                        </h6>
-                                        <br></br>
-                                    </div>
-                                    
-                                    <div className="col s12 m12 l6">
-                                        <h6> Age limit - {post.ageLimit}</h6>
-                                        <br></br>
-                                    </div>
-                                    <div className="col s12 m12 l6">
-                                        <h6> Valid Upto - {post.validUpto}</h6>
-                                        <br></br>
-                                    </div>
-                                    <div className="col s12 m12 l6">
-                                        <h6>Location - {post.serviceArea}</h6>
-                                        <br></br>
-                                    </div>
-                                    <div className="col s12 m12 l6">
-                                        <h6>Vacancy -</h6>
-                                        <br></br>
-                                    </div>
-                                    <div className="col s12 m12 l6">
-                                        <h6> Salary range - {post.salaryRange}</h6>
-                                        <br></br>
-                                    </div>
-                                   <div>
-                                        <h6>Description</h6>
-                                        <h6>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription</h6>
-                                    </div>
+                       <div className="popup-content">
+                           <div className="col s12 m12 l12">
+                               <div className="right-align">
+                                   <i className="material-icons">clear</i>
+                               </div>
+                               <h4 className="center align grey-text">View Details</h4>
+                               
+                               <br></br>
+                               <div className="col s12 m12 l6">
+                                   <h6>Job position-<span className="grey-text">{post.jobType}</span></h6>
+                                   <br></br>
+                               </div>
+                               <div className="col s12 m12 l6">
+                                   <h6>Experience - <span className="grey-text">{post.jobType}</span></h6>
+                                   <br></br>
+                               </div>
+                               <div className="col s12 m12 l6">
+                                   <h6>Language - <span className="grey-text">{post.language}</span> </h6>
+                                   <br></br>
+                               </div>
+                               
+                               <div className="col s12 m12 l6">
+                                   <h6> Age limit - <span className="grey-text">{post.ageLimit}</span></h6>
+                                   <br></br>
+                               </div>
+                               <div className="col s12 m12 l6">
+                                   <h6> Valid Upto - <span className="grey-text">{post.validUpto}</span></h6>
+                                   <br></br>
+                               </div>
+                               <div className="col s12 m12 l6">
+                                   <h6>Location - <span className="grey-text">{post.serviceArea}</span></h6>
+                                   <br></br>
+                               </div>
+                               <div className="col s12 m12 l6">
+                                   <h6>Vacancy -</h6>
+                                   <br></br>
+                               </div>
+                               <div className="col s12 m12 l6">
+                                   <h6> Salary range - <span className="grey-text">{post.salaryRange}</span></h6>
+                                   <br></br>
+                               </div>
+                              <div>
+                                   <h6>Description</h6>
+                                   <br></br>
+                                   <p className="grey-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
+                               </div>
                                     <div className="col s12 m6 l6">
                                         <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
                                         <br></br>
