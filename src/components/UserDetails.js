@@ -234,6 +234,7 @@ handleSubmit = e => {
  })
  
   .then(response=>{
+    console.log(response.data)
     if(response.data.success===1)
     {
       console.log(response)
@@ -250,7 +251,7 @@ handleSubmit = e => {
     .catch(error=>{
       console.log(error)
         })
-         if (formValid(this.state)) {
+        if (formValid(this.state)) {
       console.log(`
         --SUBMITTING--
         Full Name: ${this.state.name}
