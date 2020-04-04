@@ -13,6 +13,11 @@ import Popup from "reactjs-popup";
 import Bootstrap from "react-bootstrap";
 // import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
+const header={
+  'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
+
 const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
 
@@ -51,6 +56,7 @@ class UserDetails extends Component {
       name: null,
       email: '',
       mob:'',
+      mobileNumber:'',
       panNum: null,
       aadharNum: null,
       
@@ -118,16 +124,15 @@ class UserDetails extends Component {
 
   componentWillMount(){
     this.setState({
-     mob:this.props.location.state.mobileNumber.mobileNumber
-
+     mob:this.props.location.state.mobileNumber.mobileNumber,
+     mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+     
   })  
+  
   }
   componentDidMount(){
 
-  axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{
-    headers: 
-       { 'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
- })
+  axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
     .then(res=>{
       console.log(res.data)
       console.log(res.data.data)
@@ -135,10 +140,7 @@ class UserDetails extends Component {
             jobs : res.data.data
         })  
     })
-    axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mob,{
-      headers: 
-         { 'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
-   })
+    axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
     .then(res=>{
       console.log(res.data)
        this.setState({
@@ -244,7 +246,6 @@ handleSubmit = e => {
       pathname : '/dashboard',
       state :{
       mobileNumber : this.state,
-      userId: this.state.userId
         }} );
       }
     })
@@ -300,6 +301,7 @@ handleSubmit = e => {
     // this.setState({value:e.target.value});
     //  const { name, value } = e.target;
     // this.setState({  [name]: value }, () => console.log(this.state));
+
     this.setState({update : e.target.value});
     
      this.setState({value:e.target.value});
@@ -307,6 +309,7 @@ handleSubmit = e => {
      let formErrors = { ...this.state.formErrors };
      this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 
+  
    };
   handleChange1Arg = (e) =>{
     // console.log(this.state.jobTypes.id)

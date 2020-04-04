@@ -15,6 +15,7 @@ state = {
               password:'',
               userId:'',
               error:'',
+              mobileNumber:''
         }
     
         handleChange1 = (e) => {
@@ -36,7 +37,8 @@ state = {
                 }else{
                 console.log(res.data.data)
                 this.setState({
-                    userId:res.data.data.id
+                    userId:res.data.data.id,
+                    mobileNumber:res.data.data.mob
                 })}
 
             })

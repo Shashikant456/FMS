@@ -6,7 +6,9 @@ import axios from 'axios'
 import $ from 'jquery'
 import jQuery from 'jquery'
 
-
+const header={
+  'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
 
 class Register extends Component {
     state = {
@@ -26,12 +28,12 @@ class Register extends Component {
       
   componentDidMount(){
     this.setState({
-       mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
-       mob:this.props.location.state.mobileNumber.mobileNumber,
-      userRoles:{
-        id:this.props.match.params.id,
-        name:this.props.match.params.name
-      }
+      //  mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
+      //  mob:this.props.location.state.mobileNumber.mobileNumber,
+      //   userRoles:{
+      //   id:this.props.match.params.id,
+      //   name:this.props.match.params.name
+      // }
     })
   }
 
@@ -50,6 +52,7 @@ class Register extends Component {
         })
     } 
     else {
+       this.setState({error:''})
        
         axios.post('/stskFmsApi/userLogin/createUL',{
           mob:this.state.mob,
@@ -58,25 +61,23 @@ class Register extends Component {
           userRoles:{
                 id:this.state.userRoles.id
            }    
-        },{
-          headers: 
-             { 'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
-       })
+           },{headers:header})
         .then(response=>{
           console.log(response)
           console.log(this.state)
-         
+          this.props.history.push({
+            pathname:'/userDetails',
+             state :{
+             mobileNumber : this.state,
+         }})
           })
           .catch(error=>{
             console.log(error)
         })
         
 // if(userRoles.name==jobseeker){
-        this.props.history.push({
-          pathname:'/userDetails',
-           state :{
-           mobileNumber : this.state,
-       }})
+       
+  
       // }
       // else{
       //   this.props.history.push({
@@ -201,7 +202,9 @@ handleChange10(){
                and one uppercase and lowercase letter,
                 and at least 6 or more characters" onChange={this.handleChange3}/>
                <i className="fa fa-eye" id="eyes" onClick={this.togglePasswordVisibility}></i>
-
+               <br></br>
+              
+            <h6 className="red-text center-align">{this.state.error}</h6>
           </div>
 
               {/* <div className="input-field">

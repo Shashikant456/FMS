@@ -26,59 +26,66 @@ class Dashboard extends Component {
         searchError:'',
 
         // Edit Profile
-        editProfile:'',
+    //     editProfile:'',
 
-        popup:false,
+    //     popup:false,
 
-        name:'',
-        email:'',
-        mob: "",
-        experience: "",
-        eduQual: "",
-        jobUpdate:"",
-        address:'',
-        jobTypes:[
-                 { id:''}
-                 ]
-    }
+    //     name:'',
+    //     email:'',
+    //     mob: "",
+    //     experience: "",
+    //     eduQual: "",
+    //     jobUpdate:"",
+    //     address:'',
+    //     jobTypes:[
+    //              { id:''}
+    //              ]
+     }
 }
 
     componentWillMount(){
-        this.setState({
-           userId:this.props.location.state.userId, 
-        })
+        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+        .then(res =>{
+          console.log(res.data)
+                this.setState({
+                    userId:res.data.data.id,
+                    details: res.data.data,
+                editProfile:res.data.data
+                })
+              })
     }
     componentDidMount(){
+        
         this._isMounted = true;
-        console.log(this.state.appliedJobs)
-
-        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
+        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
         .then(res =>{
-            console.log(res.data.data)
-            console.log(res.data.data.mob)
-            this.setState({
-                details: res.data.data,
-                editProfile:res.data.data
-            });
-        })
-
-        axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
-        .then(res => {
-            console.log(res.data.data)
-            console.log(res.data.success)
-
-            if(res.data.success===1){
+          console.log(res.data)
                 this.setState({
-                    posts: res.data.data
-                });
-            }
-            else{
-                console.log("User Id does not exists")
-            }
+                    userId:res.data.data.id,
+                    details: res.data.data,
+                    editProfile:res.data.data
+                })
+              })
+
+              const timer = setTimeout(() => {
+                axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
+                .then(res => {
+                    console.log(res.data.data)
+                    console.log(res.data.success)
+
+                    if(res.data.success===1){
+                        this.setState({
+                            posts: res.data.data
+                        });
+                    }
+                    else{
+                        console.log("User Id does not exists")
+                    }
            
         }) 
+    }, 2000);
 
-        axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
+                axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
         .then(res=>{
             this.setState({
                 appliedJobs:res.data.data.jobs
