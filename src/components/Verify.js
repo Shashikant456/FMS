@@ -14,6 +14,7 @@ const header={
 class Verify extends Component{
     
     state = {  
+                countryCode:'91',
                 mobileNumber:'',
                 otp_input:'',
                 error:'',
@@ -23,7 +24,7 @@ class Verify extends Component{
              }
              componentDidMount(){
                 this.setState({
-                    mobileNumber: this.props.location.state.mobileNumber.mobileNumber
+                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber
                 })
              }
                         
@@ -35,10 +36,18 @@ class Verify extends Component{
         })
     }
     handleResend= (e)=>{
-        axios.post('/stskFmsApi/otpServices/sendOtpBySMS', this.state.mobileNumber,{headers:header} )
+        e.preventDefault()
+        console.log("shashi")
+        console.log(this.state.mobileNumber)
+
+        axios.post('/stskFmsApi/otpServices/sendOtpBySMS',{
+            countryCode:this.state.countryCode,
+            mobileNumber:this.state.mobileNumber
+        } ,{headers:header} )
         .then(Response => {
                console.log(Response)
                console.log(Response.data)
+               console.log('shashi')
          })
         .catch(error => {
             console.log(error)
