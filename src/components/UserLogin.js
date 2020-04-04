@@ -15,7 +15,6 @@ state = {
               password:'',
               userId:'',
               error:'',
-              UserNotPresent:''
         }
     
         handleChange1 = (e) => {
@@ -32,7 +31,7 @@ state = {
                 console.log(res.data.data)
                 if(res.data.data===null){
                     this.setState({
-                        UserNotPresent: 'Oops!!! your email does not exists'
+                        error: 'Oops!!! your email does not exists'
                     })
                 }else{
                 console.log(res.data.data)
@@ -108,9 +107,11 @@ state = {
                     <input id="icon_prefix" type="password" placeholder="password" required  onChange={this.handleChange2}
                     //pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
-                    <p className="red-text">{this.state.UserNotPresent}</p>
-                    <p className="red-text">{this.state.error}</p>
+                   <br></br>
+                   <br></br>
+                    <h6 className="red-text">{this.state.error}</h6>
                 </div>
+                <br></br>
             <button id="UserLoginButton">Login</button>
              </form>
              <h6 id="forgot" onClick={this.forgetPwd}>Forgot Password?</h6>
@@ -119,40 +120,6 @@ state = {
             </div> 
             </div>
 
-
-
-            // <div className="" id="body">
-            // <div className="row" id="main1">      
-            // <i className="material-icons prefix left-align">arrow_back</i>
-
-            //  <center id="center">
-            //  <h3 className="center" id="text">Document upload</h3>  
-            //  <i id="iconn" className="material-icons prefix ">cloud_upload</i>
-            //  <h5 className="grey-text">upload logo</h5>
-            //  <form id="frm" onSubmit={this.handleSubmit}>
-            //  <div className="input-field">
-            //         <i id="iconn" className="material-icons prefix">cloud_upload</i>
-            //         <input id="icon_prefix" type="text" size="30" required
-            //          placeholder="Upload GST document"  onChange={this.handleChange1}/>
-            //     </div>
-            //     <div className="input-field">
-            //         <i id="iconn" className="material-icons prefix">cloud_upload</i>
-            //         <input id="icon_prefix" type="password" placeholder="Upload PAN document" required  onChange={this.handleChange2}/>
-            //     </div>
-            //     <div className="input-field">
-            //         <i id="iconn" className="material-icons prefix">cloud_upload</i>
-            //         <input id="icon_prefix" type="password" placeholder="Upload TAN document" required  onChange={this.handleChange2}/>
-            //     </div>
-            // <button id="UserLoginButton">Submit</button>
-            //  </form>
-            //  </center>
-            // </div> 
-            // </div>
-            
-
-          
-
-          
         )
     }
 }

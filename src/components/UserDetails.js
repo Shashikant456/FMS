@@ -58,7 +58,7 @@ class UserRole extends Component {
       eduQual: null,
       working : '',
       jobUpdate:null,
-      userId:'3',
+      userId:'',
       jobTypes:[
         { id:''}
       ],
@@ -87,7 +87,7 @@ class UserRole extends Component {
           eduQual: "",
           working:"",
           jobUpdate:"",
-          userId:"3",
+          userId:"",
          //jobss:"",
            //update:"",
           //  userLogin:[
@@ -120,8 +120,8 @@ class UserRole extends Component {
   componentWillMount(){
     this.setState({
       mob:this.props.location.state.mobileNumber.mobileNumber
-
   })  
+ 
   }
   componentDidMount(){
 
@@ -238,7 +238,6 @@ handleSubmit = e => {
     {
       console.log(response)
       console.log(response.data)
-      this.props.history.push('./dashboard')
       this.props.history.push({
       pathname : '/dashboard',
       state :{
