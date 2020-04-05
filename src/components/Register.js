@@ -28,12 +28,12 @@ class Register extends Component {
       
   componentDidMount(){
     this.setState({
-      //  mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
-      //  mob:this.props.location.state.mobileNumber.mobileNumber,
-      //   userRoles:{
-      //   id:this.props.match.params.id,
-      //   name:this.props.match.params.name
-      // }
+       mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
+       mob:this.props.location.state.mobileNumber.mobileNumber,
+        userRoles:{
+        id:this.props.match.params.id,
+        name:this.props.match.params.name
+      }
     })
   }
 

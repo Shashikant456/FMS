@@ -127,8 +127,7 @@ class UserDetails extends Component {
      mob:this.props.location.state.mobileNumber.mobileNumber,
      mobileNumber:this.props.location.state.mobileNumber.mobileNumber
      
-  })  
-  
+  })    
   }
   componentDidMount(){
 

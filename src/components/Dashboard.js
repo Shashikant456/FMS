@@ -50,22 +50,14 @@ class Dashboard extends Component {
                 this.setState({
                     userId:res.data.data.id,
                     details: res.data.data,
-                editProfile:res.data.data
-                })
-              })
-    }
-    componentDidMount(){
-        
-        this._isMounted = true;
-        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
-        .then(res =>{
-          console.log(res.data)
-                this.setState({
-                    userId:res.data.data.id,
-                    details: res.data.data,
                     editProfile:res.data.data
                 })
               })
+    }
+
+    componentDidMount(){
+        
+        this._isMounted = true;
 
               const timer = setTimeout(() => {
                 axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
@@ -83,7 +75,7 @@ class Dashboard extends Component {
                     }
            
         }) 
-    }, 2000);
+    }, 3000);
 
                 axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
         .then(res=>{
