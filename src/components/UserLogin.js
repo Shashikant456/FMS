@@ -34,11 +34,18 @@ state = {
                     
                     axios.get('stskFmsApi/userLogin/getByEmailid/'+ this.state.email,{headers:header})
                     .then(res=>{
-                        console.log(res.data)
-                        console.log(res.data.data)
-                        this.setState({
-                            mobileNumber:res.data.data.mob
-                        })
+                        if(res.data.success===1){
+                            this.setState({
+                                mobileNumber:res.data.data.mob
+                            })
+                        }
+                        else{
+                            this.setState({
+                                error:'Opps! email id does not registered'
+                            })
+                        }
+        
+                       
                     })
                 }else{
                 console.log(res.data.data)
@@ -64,7 +71,7 @@ state = {
                 email:this.state.email1,
                 password:this.state.password
                  },{headers:header})
-            .then(Response => {
+                .then(Response => {
                 console.log(Response.data)
                 console.log(Response.data.success)
                    if (Response.data.success===1)
@@ -81,11 +88,7 @@ state = {
                                 }} );
                              }
                              else{
-                            // console.log(res.data.data)
-                            // this.setState({
-                            //     userId:res.data.data.id,
-                            //     mobileNumber:res.data.data.mob
-                            // })
+                           
                             this.props.history.push({
                                 pathname : '/dashboard',
                                 state :{
