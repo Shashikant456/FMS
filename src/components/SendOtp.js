@@ -20,7 +20,7 @@ class SendOtp extends Component{
            }
           this.handleSubmit = this.handleSubmit.bind(this)
         }
-    
+
      userLogin = (e) => {
         this.props.history.push('/userLogin')
        
