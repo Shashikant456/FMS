@@ -32,7 +32,7 @@ state = {
                 console.log(res.data.data)
                 if(res.data.data===null){
                     this.setState({
-                        error: 'Oops!!! your email does not exists'
+                        error: 'Oops!!! your email does not registered'
                     })
                 }else{
                 console.log(res.data.data)
