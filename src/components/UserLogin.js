@@ -31,8 +31,14 @@ state = {
                 console.log(res.data)
                 console.log(res.data.data)
                 if(res.data.data===null){
-                    this.setState({
-                        error: 'Oops!!! your email does not registered'
+                    
+                    axios.get('stskFmsApi/userLogin/getByEmailid/'+ this.state.email,{headers:header})
+                    .then(res=>{
+                        console.log(res.data)
+                        console.log(res.data.data)
+                        this.setState({
+                            mobileNumber:res.data.data.mob
+                        })
                     })
                 }else{
                 console.log(res.data.data)
@@ -57,18 +63,38 @@ state = {
             axios.post('/stskFmsApi/userLogin/verifyUser',{
                 email:this.state.email1,
                 password:this.state.password
-            },{headers:header})
+                 },{headers:header})
             .then(Response => {
                 console.log(Response.data)
                 console.log(Response.data.success)
                    if (Response.data.success===1)
                     {
-                        this.props.history.push({
-                            pathname : '/dashboard',
-                            state :{
-                            mobileNumber : this.state,
-                            userId: this.state.userId 
-                         }})
+                        axios.get('/stskFmsApi/jobseeker/getByEmailid/'+ this.state.email,{headers:header})
+                        .then(res=>{
+                            console.log(res.data)
+                            console.log(res.data.data)
+                            if(res.data.data===null){
+                                this.props.history.push({
+                                    pathname : '/userDetails',
+                                    state :{
+                                    mobileNumber : this.state
+                                }} );
+                             }
+                             else{
+                            // console.log(res.data.data)
+                            // this.setState({
+                            //     userId:res.data.data.id,
+                            //     mobileNumber:res.data.data.mob
+                            // })
+                            this.props.history.push({
+                                pathname : '/dashboard',
+                                state :{
+                                mobileNumber : this.state,
+                                userId: this.state.userId 
+                             }})
+                        }
+            
+                        })
 
                     }
                      else if(Response.data.message==="User ID or Password error"){
