@@ -44,8 +44,6 @@ state = {
                                 error:'Opps! email id does not registered'
                             })
                         }
-        
-                       
                     })
                 }else{
                 console.log(res.data.data)
