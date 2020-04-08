@@ -101,13 +101,7 @@ class Verify extends Component{
                                          }} );
                                     }
                                     else{
-                                        // axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber)
-                                        // .then(res=>{
-                                        //     console.log(res.data.data.email)
-                                        //     this.setState({
-                                        //         email:res.data.data.email
-                                        //     })
-                                        // })
+                
                                         this.props.history.push({
                                             pathname : '/userDetails',
                                             state :{

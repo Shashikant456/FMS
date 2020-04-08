@@ -141,7 +141,6 @@
 }
 .popup-content {
   position: relative;
-  background: rgb(255, 255, 255);
   width: -1%;
   height: auto;
   border-radius: 12px;
@@ -151,7 +150,8 @@
 }
 .popup-overlay{
   
-    overflow: scroll;
+  overflow: scroll;
+  background: content-box;
 
 }
 
@@ -177,3 +177,6 @@ nav .nav-wrapper {
   height: 100%;
   margin-top: -53px;
 } 
+#dashcancelbtn{
+  cursor: pointer;
+}

@@ -16,6 +16,7 @@ class Dashboard extends Component {
         this.state = {
         posts :[],
         details:[],
+        editProfile:[],
         userId:'',
         LoggedIn:'true',
         mobileNumber:'',
@@ -24,27 +25,18 @@ class Dashboard extends Component {
         searchedJobs:[],
         searchLoading:false,
         searchError:'',
-
-        // Edit Profile
-    //     editProfile:'',
-
-    //     popup:false,
-
-    //     name:'',
-    //     email:'',
-    //     mob: "",
-    //     experience: "",
-    //     eduQual: "",
-    //     jobUpdate:"",
-    //     address:'',
-    //     jobTypes:[
-    //              { id:''}
-    //              ]
+        model_open:false,
+       
+       
      }
 }
 
-    componentWillMount(){
-        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+   
+    componentDidMount(){
+        
+        this._isMounted = true;
+
+      axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
         .then(res =>{
           console.log(res.data)
                 this.setState({
@@ -52,12 +44,8 @@ class Dashboard extends Component {
                     details: res.data.data,
                     editProfile:res.data.data
                 })
-              })
-    }
+               })
 
-    componentDidMount(){
-        
-        this._isMounted = true;
 
               const timer = setTimeout(() => {
                 axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
@@ -74,15 +62,19 @@ class Dashboard extends Component {
                         console.log("User Id does not exists")
                     }
            
-        }) 
-    }, 3000);
+                    }) 
+                }, 2000);
 
-                axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
-        .then(res=>{
-            this.setState({
-                appliedJobs:res.data.data.jobs
-            })
-        })
+                const timer1 = setTimeout(() => {
+                    axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
+                    .then(res=>{
+                    this.setState({
+                  appliedJobs:res.data.data.jobs
+                            })
+                        })
+                    }, 3000);
+
+                              
 
         // axios.put('/stskFmsApi/jobseeker/applyJobs',
         // {  id:91,
@@ -128,21 +120,23 @@ class Dashboard extends Component {
     }
     popupsubmit=(e)=>{
         e.preventDefault();
-        // axios.put('/stskFmsApi/jobseeker/editJS',{
-        //     name:this.state.editProfile.name,
-        //     email: this.state.editProfile.email,
-        //     mob: this.state.editProfile.mob,
-        //     experience: this.state.editProfile.experience,
-        //     eduQual: this.state.editProfile.eduQual,
-        //     jobUpdate:this.state.editProfile.jobUpdate,
-        //     userLogin:{
-        //       id:this.state.editProfile.userLogin
-        //     },
-        //     jobTypes:[{
-        //       id:this.state.editProfile.jobTypes.id
-        //     }]
-        // })
-        console.log(this.state.editProfile.name)
+        axios.put('/stskFmsApi/jobseeker/editJS',{
+            name:this.state.editProfile.name,
+            email: this.state.editProfile.email,
+            mob: this.state.editProfile.mob,
+            experience: this.state.editProfile.experience,
+            eduQual: this.state.editProfile.eduQual,
+            jobUpdate:this.state.editProfile.jobUpdate,
+            userLogin:{
+              id:this.state.editProfile.userLogin
+            },
+            jobTypes:[{
+              id:this.state.editProfile.jobTypes.id
+            }]
+        },{headers:header})
+        .then(res=>{
+            console.log(res.data)
+        })
     }
    
     handleSearch=(e)=>{
@@ -170,17 +164,19 @@ class Dashboard extends Component {
         const postList = posts.length ? (
             posts.map(post => {
                 this.handleApply=(e)=>{
-                    axios.put('/stskFmsApi/jobseeker/applyJobs',
+                    axios.post('/stskFmsApi/jobseeker/applyJobs',
                         {  id:this.state.userId,
                             jobs:[{
                                 id:post.id
                              }]
                             },{headers:header})
                             .then(res=>{
+                                console.log(res.data)
                                 console.log(post.id)
                             }) 
                             axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
                             .then(res=>{
+                                console.log(res.data)
                                 this.setState({
                                     appliedJobs:res.data.data.jobs
                                 })
@@ -201,70 +197,78 @@ class Dashboard extends Component {
                               <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>
                              
+                          <div>
+                          <div className="col s6 m6 l2 offset-s3 right-align">
+                          <h6 id="viewdetails"  onClick={()=>this.setState({model_open:true})} className="right-align" value={post.id}> <u>ViewDetails</u></h6>
+                          </div> 
+                          <Popup
+                            open={this.state.model_open}
+                            closeOnDocumentClick
+                            onClose={()=>{this.setState({model_open:false})}}
+                          > 
 
-                            <Popup modal trigger={
-                                <div className="col s6 m6 l2 offset-s3 right-align">
-                                    <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
-                                </div> }>
+                          <div className="popup-content">
+                          <div className="col s12 m12 l12">
+                              <div className="right-align">
+                                  <i className="material-icons" id="dashcancelbtn" onClick={()=>this.setState({model_open:false})}>clear</i>
+                              </div>
 
-                                <div className="popup-content">
-                                    <div className="col s12 m12 l12">
-                                        <div className="right-align">
-                                            <i className="material-icons">clear</i>
-                                        </div>
-                                        <h4 className="center align grey-text">View Details</h4>
-                                        
-                                        <br></br>
-                                        <div className="col s12 m12 l6">
-                                            <h6>Job position-<span className="grey-text">{post.jobType}</span></h6>
-                                            <br></br>
-                                        </div>
-                                        <div className="col s12 m12 l6">
-                                            <h6>Experience - <span className="grey-text">{post.jobType}</span></h6>
-                                            <br></br>
-                                        </div>
-                                        <div className="col s12 m12 l6">
-                                            <h6>Language - <span className="grey-text">{post.language}</span> </h6>
-                                            <br></br>
-                                        </div>
-                                        
-                                        <div className="col s12 m12 l6">
-                                            <h6> Age limit - <span className="grey-text">{post.ageLimit}</span></h6>
-                                            <br></br>
-                                        </div>
-                                        <div className="col s12 m12 l6">
-                                            <h6> Valid Upto - <span className="grey-text">{post.validUpto}</span></h6>
-                                            <br></br>
-                                        </div>
-                                        <div className="col s12 m12 l6">
-                                            <h6>Location - <span className="grey-text">{post.serviceArea}</span></h6>
-                                            <br></br>
-                                        </div>
-                                        <div className="col s12 m12 l6">
-                                            <h6>Vacancy -</h6>
-                                            <br></br>
-                                        </div>
-                                        <div className="col s12 m12 l6">
-                                            <h6> Salary range - <span className="grey-text">{post.salaryRange}</span></h6>
-                                            <br></br>
-                                        </div>
-                                       <div>
-                                            <h6>Description</h6>
-                                            <br></br>
-                                            <p className="grey-text">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                             industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
-                                        </div>
-                                        <div className="col s12 m6 l6">
-                                            <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
-                                            <br></br>
-                                        </div>
-                                        <div className="col s12 m6 l6">
-                                            <button onClick={this.handleApply} value={post.id} id="popsavebtn" type="text">Apply</button>
-                                            <br></br>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Popup>
+                              <h4 className="center align grey-text">View Details</h4>
+                              
+                              <br></br>
+                              <div className="col s12 m12 l6">
+                                  <h6>Job position-<span className="grey-text">{post.jobType}</span></h6>
+                                  <br></br>
+                              </div>
+                              <div className="col s12 m12 l6">
+                                  <h6>Experience - <span className="grey-text">{post.jobType}</span></h6>
+                                  <br></br>
+                              </div>
+                              <div className="col s12 m12 l6">
+                                  <h6>Language - <span className="grey-text">{post.language}</span> </h6>
+                                  <br></br>
+                              </div>
+                              
+                              <div className="col s12 m12 l6">
+                                  <h6> Age limit - <span className="grey-text">{post.ageLimit}</span></h6>
+                                  <br></br>
+                              </div>
+                              <div className="col s12 m12 l6">
+                                  <h6> Valid Upto - <span className="grey-text">{post.validUpto}</span></h6>
+                                  <br></br>
+                              </div>
+                              <div className="col s12 m12 l6">
+                                  <h6>Location - <span className="grey-text">{post.serviceArea}</span></h6>
+                                  <br></br>
+                              </div>
+                              <div className="col s12 m12 l6">
+                                  <h6>Vacancy -</h6>
+                                  <br></br>
+                              </div>
+                              <div className="col s12 m12 l6">
+                                  <h6> Salary range - <span className="grey-text">{post.salaryRange}</span></h6>
+                                  <br></br>
+                              </div>
+                             <div>
+                                  <h6>Description</h6>
+                                  <br></br>
+                                  <p className="grey-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                   industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
+                              </div>
+                              <div className="col s12 m6 l6">
+                                  <button className="grey-text" onClick={()=>this.setState({model_open:false})} id="popcancelbtn" type="text">cancel</button>
+                                  <br></br>
+                              </div>
+                              <div className="col s12 m6 l6">
+                                  <button onClick={this.handleApply} value={post.id} id="popsavebtn" type="text">Apply</button>
+                                  <br></br>
+                              </div>
+                          </div>
+                      </div>
+                          </Popup>
+                        </div>
+
+                          
                          </div>
                     </div>
                 )
@@ -287,19 +291,20 @@ class Dashboard extends Component {
 
         const {searchedJobs} = this.state;
         const searchList = searchedJobs.length ? (
-            searchedJobs.map(post => {
+            searchedJobs.map(search => {
                 this.handleSearchApply=(e)=>{
-                    console.log(post.id)
+                    console.log(search.id)
                     console.log(this.state.userId)
-                    axios.put('/stskFmsApi/jobseeker/applyJobs',
+                    axios.search('/stskFmsApi/jobseeker/applyJobs',
                         {  
                             id:this.state.userId,
                             jobs:[{
-                                id:post.id
+                                id:search.id
                              }]
                             },{headers:header})
                             .then(res=>{
-                                console.log(post.id)
+                                console.log(res.data)
+                                console.log(search.id)
                             }) 
                             axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
                             .then(res=>{
@@ -309,56 +314,62 @@ class Dashboard extends Component {
                             })
                         }
                 return(
-                    <div className="row card"  key={post.id}>
+                    <div className="row card"  key={search.id}>
                         <div className="card-content" id="cardContent">
                         
                         <div className="col s5 m6 l3 offset-s1">
-                             <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
+                             <p id="dashtext">Job position-<span className="grey-text">{search.jobType}</span></p>
                           </div>
                         <div className="col s5 m6 l3 offset-s1">
-                              <p id="dashtext">Experience-<span className="grey-text">{post.serviceArea}</span></p>
+                              <p id="dashtext">Experience-<span className="grey-text">{search.serviceArea}</span></p>
                           </div>
                         <div className="col s5 m6 l3 offset-s1">
-                              <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
+                              <p  id="dashtext">Location-<span className="grey-text">{search.serviceArea}</span></p>
                           </div>
                              
 
-                            <Popup modal trigger={
-                                <div className="col s6 m6 l2 offset-s3 right-align">
-                                    <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
-                                </div> }>
+                          <div>
+                          <div className="col s6 m6 l2 offset-s3 right-align">
+                          <h6 id="viewdetails"  onClick={()=>this.setState({model_open:true})} className="right-align" value={search.id}> <u>ViewDetails</u></h6>
+                          </div> 
+                          <Popup
+                            open={this.state.model_open}
+                            closeOnDocumentClick
+                            onClose={()=>{this.setState({model_open:false})}}
+                          > 
+
 
                                 <div className="popup-content">
                                     <div className="col s12 m12 l12">
                                         <div className="right-align">
-                                            <i className="material-icons">clear</i>
+                                            <i className="material-icons" id="dashcancelbtn" onClick={()=>this.setState({model_open:false})}>clear</i>
                                         </div>
                                         <h4 className="center align grey-text">View Details</h4>
                                         
                                         <br></br>
                                         <div className="col s12 m12 l6">
-                                            <h6>Job position-<span className="grey-text">{post.jobType}</span></h6>
+                                            <h6>Job position-<span className="grey-text">{search.jobType}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Experience - <span className="grey-text">{post.jobType}</span></h6>
+                                            <h6>Experience - <span className="grey-text">{search.jobType}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Language - <span className="grey-text">{post.language}</span> </h6>
+                                            <h6>Language - <span className="grey-text">{search.language}</span> </h6>
                                             <br></br>
                                         </div>
                                         
                                         <div className="col s12 m12 l6">
-                                            <h6> Age limit - <span className="grey-text">{post.ageLimit}</span></h6>
+                                            <h6> Age limit - <span className="grey-text">{search.ageLimit}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6> Valid Upto - <span className="grey-text">{post.validUpto}</span></h6>
+                                            <h6> Valid Upto - <span className="grey-text">{search.validUpto}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6>Location - <span className="grey-text">{post.serviceArea}</span></h6>
+                                            <h6>Location - <span className="grey-text">{search.serviceArea}</span></h6>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
@@ -366,7 +377,7 @@ class Dashboard extends Component {
                                             <br></br>
                                         </div>
                                         <div className="col s12 m12 l6">
-                                            <h6> Salary range - <span className="grey-text">{post.salaryRange}</span></h6>
+                                            <h6> Salary range - <span className="grey-text">{search.salaryRange}</span></h6>
                                             <br></br>
                                         </div>
                                        <div>
@@ -376,17 +387,18 @@ class Dashboard extends Component {
                                              industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                         </div>
                                         <div className="col s12 m6 l6">
-                                            <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
+                                            <button className="grey-text" onClick={()=>this.setState({model_open:false})} id="popcancelbtn" type="text">cancel</button>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m6 l6">
-                                            <button onClick={this.handleSearchApply} value={post.id} id="popsavebtn" type="text">Apply</button>
+                                            <button onClick={this.handleSearchApply} value={search.id} id="popsavebtn" type="text">Apply</button>
                                             <br></br>
                                         </div>
                                     </div>
                                 </div>
                             </Popup>
                          </div>
+                    </div>
                     </div>
                 )
             })
@@ -397,58 +409,63 @@ class Dashboard extends Component {
 
         const {appliedJobs} = this.state;
         const appliedJobsList = appliedJobs.length ? (
-        appliedJobs.map(post => {      
+        appliedJobs.map(applied => {      
                 return(
-                    <div className="row card"  key={post.id}>
+                    <div className="row card"  key={applied.id}>
                     <div className="card-content" id="cardContent">
                     
                     <div className="col s5 m6 l3 offset-s1">
-                    <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
+                    <p id="dashtext">Job position-<span className="grey-text">{applied.jobType}</span></p>
                  </div>
                <div className="col s5 m6 l3 offset-s1">
-                     <p id="dashtext">Experience-<span className="grey-text">{post.serviceArea}</span></p>
+                     <p id="dashtext">Experience-<span className="grey-text">{applied.serviceArea}</span></p>
                  </div>
                <div className="col s5 m6 l3 offset-s1">
-                     <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
+                     <p  id="dashtext">Location-<span className="grey-text">{applied.serviceArea}</span></p>
                  </div>
                     
 
-                   <Popup modal trigger={
-                       <div className="col s6 m6 l2 offset-s3 right-align">
-                           <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
-                       </div> }>
+                 <div>
+                 <div className="col s6 m6 l2 offset-s3 right-align">
+                 <h6 id="viewdetails"  onClick={()=>this.setState({model_open:true})} className="right-align" value={applied.id}> <u>ViewDetails</u></h6>
+                 </div> 
+                 <Popup
+                   open={this.state.model_open}
+                   closeOnDocumentClick
+                   onClose={()=>{this.setState({model_open:false})}}
+                 > 
 
                        <div className="popup-content">
                            <div className="col s12 m12 l12">
                                <div className="right-align">
-                                   <i className="material-icons">clear</i>
+                                   <i className="material-icons" id="dashcancelbtn" onClick={()=>this.setState({model_open:false})}>clear</i>
                                </div>
                                <h4 className="center align grey-text">View Details</h4>
                                
                                <br></br>
                                <div className="col s12 m12 l6">
-                                   <h6>Job position-<span className="grey-text">{post.jobType}</span></h6>
+                                   <h6>Job position-<span className="grey-text">{applied.jobType}</span></h6>
                                    <br></br>
                                </div>
                                <div className="col s12 m12 l6">
-                                   <h6>Experience - <span className="grey-text">{post.jobType}</span></h6>
+                                   <h6>Experience - <span className="grey-text">{applied.jobType}</span></h6>
                                    <br></br>
                                </div>
                                <div className="col s12 m12 l6">
-                                   <h6>Language - <span className="grey-text">{post.language}</span> </h6>
+                                   <h6>Language - <span className="grey-text">{applied.language}</span> </h6>
                                    <br></br>
                                </div>
                                
                                <div className="col s12 m12 l6">
-                                   <h6> Age limit - <span className="grey-text">{post.ageLimit}</span></h6>
+                                   <h6> Age limit - <span className="grey-text">{applied.ageLimit}</span></h6>
                                    <br></br>
                                </div>
                                <div className="col s12 m12 l6">
-                                   <h6> Valid Upto - <span className="grey-text">{post.validUpto}</span></h6>
+                                   <h6> Valid Upto - <span className="grey-text">{applied.validUpto}</span></h6>
                                    <br></br>
                                </div>
                                <div className="col s12 m12 l6">
-                                   <h6>Location - <span className="grey-text">{post.serviceArea}</span></h6>
+                                   <h6>Location - <span className="grey-text">{applied.serviceArea}</span></h6>
                                    <br></br>
                                </div>
                                <div className="col s12 m12 l6">
@@ -456,7 +473,7 @@ class Dashboard extends Component {
                                    <br></br>
                                </div>
                                <div className="col s12 m12 l6">
-                                   <h6> Salary range - <span className="grey-text">{post.salaryRange}</span></h6>
+                                   <h6> Salary range - <span className="grey-text">{applied.salaryRange}</span></h6>
                                    <br></br>
                                </div>
                               <div>
@@ -466,17 +483,18 @@ class Dashboard extends Component {
                                     industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                </div>
                                     <div className="col s12 m6 l6">
-                                        <button className="grey-text" id="popcancelbtn" type="text">cancel</button>
+                                        <button className="grey-text" onClick={()=>this.setState({model_open:false})} id="popcancelbtn" type="text">cancel</button>
                                         <br></br>
                                     </div>
                                     <div className="col s12 m6 l6">
-                                        <button value={post.id} id="popsavebtn" type="text">Applied</button>
+                                        <button value={applied.id} id="popsavebtn" type="text">Applied</button>
                                         <br></br>
                                     </div>
                                 </div>
                             </div>
                         </Popup>
                      </div>
+                </div>
                 </div>
                 )
             })
@@ -559,24 +577,24 @@ class Dashboard extends Component {
                             <div className="col s12 m12 l6">
                             
                                 <label >First name</label>
-                                <input id="inputBorder" name="name" defaultValue={this.state.details.name} 
+                                <input id="inputBorder" name="name" value={this.state.editProfile.name} 
                                 onChange={this.handlepopup} type="text"></input>
                             
                             
                                 <label >Email</label>
-                                <input id="inputBorder" name="email" defaultValue={this.state.details.email} onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="email" defaultValue={this.state.editProfile.email} onChange={this.handlepopup}  type="text"></input>
                             
                                 <label>Education Qualificatin</label>
-                                <input id="inputBorder" name="eduQual" defaultValue={this.state.details.eduQual} onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="eduQual" defaultValue={this.state.editProfile.eduQual} onChange={this.handlepopup}  type="text"></input>
                                 <label>Get job opening updates</label>
-                                <input id="inputBorder" name="jobUpdate" defaultValue={this.state.details.jobType} onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="jobUpdate" defaultValue={this.state.editProfile.jobType} onChange={this.handlepopup}  type="text"></input>
                                 <div id="popcancelbtn" onClick={()=>this.setState({popup:false})} className="center-align">cancel</div>
                             </div>
                             <div className="col s12 m12 l6">
                                 <label>Mobile number</label>
-                                <input id="inputBorder" name="mob" defaultValue={this.state.details.mob} onChange={this.handlepopup} type="text"></input>
+                                <input id="inputBorder" name="mob" defaultValue={this.state.editProfile.mob} onChange={this.handlepopup} type="text"></input>
                                 <label>No of years experiance</label>
-                                <input id="inputBorder" name="experience" defaultValue={this.state.details.experience} onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="experience" defaultValue={this.state.editProfile.experience} onChange={this.handlepopup}  type="text"></input>
                                 <label>Applied for</label>
                                 <input id="inputBorder" name="" onChange={this.handlepopup}  type="text"></input>
                                 <label>Address</label>
