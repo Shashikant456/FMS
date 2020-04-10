@@ -28,17 +28,16 @@ class Dashboard extends Component {
         model_open:false,
         model_open1:false,
         model_open2:false,
-       
-       
+        dataPass:false
      }
 }
-
-   
     componentDidMount(){
-        
-        this._isMounted = true;
-
-      axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+    this._isMounted = true;
+    this.setState({
+        mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+    })
+   
+        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
         .then(res =>{
           console.log(res.data)
                 this.setState({
@@ -47,8 +46,6 @@ class Dashboard extends Component {
                     editProfile:res.data.data
                 })
                })
-
-
               const timer = setTimeout(() => {
                 axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
                 .then(res => {
@@ -63,7 +60,6 @@ class Dashboard extends Component {
                     else{
                         console.log("User Id does not exists")
                     }
-           
                     }) 
                 }, 2000);
 
@@ -75,38 +71,15 @@ class Dashboard extends Component {
                             })
                         })
                     }, 3000);
-
-                              
-
-        // axios.put('/stskFmsApi/jobseeker/applyJobs',
-        // {  id:91,
-        //     jobs:[{
-        //         id:13 }]})
-        //     .then(res=>{
-        //         console.log(res)
-        //         console.log(res.data)
-        //     })
-           
-
-        // axios.get('https://jsonplaceholder.typicode.com/posts')
-        // .then(res => {
-        //     this.setState({
-        //         posts: res.data.slice(0,10)
-        //     });
-        // })
     }
-    // handleApply=(e)=>{
-    //     axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId)
-    //     .then(res=>{
-    //         console.log(res.data)
-    //     })
-    // }
+
     handleLogin=(e)=>{
         this.setState({
             LoggedIn:false
         })
         this.props.history.push('/')
     }
+   
     handleinputSearch=(e)=>{
         this.setState({
             search:e.target.value,  
@@ -202,17 +175,15 @@ class Dashboard extends Component {
                           </div>
                              
                           <div>
-                          <Popup modal trigger={
-                            <div className="col s6 m6 l2 offset-s3 right-align">
-                                <h6 id="viewdetails" className="right-align" onClick={()=>this.setState({model_open:true})} value={post.id}> <u>ViewDetails</u></h6>
-                            </div> }
-                            
+                          <div className="col s6 m6 l2 offset-s3 right-align">
+                          <h6 id="viewdetails" className="right-align" onClick={()=>this.setState({model_open:true})} value={post.id}> <u>ViewDetails</u></h6>
+                        </div>
+                          <Popup
                             open={this.state.model_open}
+                          closeOnDocumentClick
                             onClose={()=>{this.setState({model_open:false})}}
                            >
-
-
-                                <div className="popup-content">
+                            <div className="popup-content">
                                 <div className="col s12 m12 l12">
                                     <div className="right-align">
                                         <i className="material-icons" id="dashcancelbtn" onClick={()=>this.setState({model_open:false})}>clear</i>
@@ -270,9 +241,6 @@ class Dashboard extends Component {
                                     </div>
                                 </div>
                             </div>
-
-                                 
-                               
                             </Popup>
                         </div>
                          </div>
@@ -531,7 +499,12 @@ class Dashboard extends Component {
                         </a>
                             <ul id="nav-mobile" className="right">
                                 <li><Link to="/dashboard" className="waves-effect waves-light btn-small" id="btnnav">Home</Link></li>
-                                <li><Link id="home" to="/help">Help</Link></li>
+                                <li><Link id="home" to={{
+                                    pathname : '/help',
+                                    state :{
+                                    mobileNumber : this.state,
+                                 }
+                                }}>Help</Link></li>
                                 <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
                             </ul>
                         </div>
@@ -611,7 +584,7 @@ class Dashboard extends Component {
                             
                     </Popup>
                             
-                        </div>
+                    </div>
                         <div className="center" id="profile1">
                         <div className="center">
                             <i className="material-icons large">person</i><br></br>
@@ -668,10 +641,7 @@ class Dashboard extends Component {
 
                </footer>
             </div>
-
-        )
-        
+        )       
     }
 }
-
 export default withRouter(Dashboard)

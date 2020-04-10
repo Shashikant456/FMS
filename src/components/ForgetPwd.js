@@ -132,7 +132,7 @@ state = {
                         <button id="FpVerify"><i class="material-icons right">arrow_forward</i>Verify</button>
                         </form>
                         <div id="hr" className="separator">or</div>
-                        <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missedcall to verify</button>
+                        <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missed call to verify</button>
                     </div>
                     ) : (
                         <form id="userLogin1" onSubmit={this.handleSend}>

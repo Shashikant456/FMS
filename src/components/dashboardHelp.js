@@ -13,21 +13,44 @@ import * as $ from 'jquery'
 
 export class dashboardHelp extends Component {
   state={
-    status:'job'
+    status:'job',
+    mobileNumber:''
   }
   handleVendor=(e)=>{
-    this.props.history.push('/vendorHelp')
+    this.props.history.push({
+      pathname : '/vendorHelp',
+      state :{
+      mobileNumber : this.state
+  }} );
   }
   handleJobseeker=(e)=>{
-    this.props.history.push('/help')
+    this.props.history.push({
+      pathname : '/help',
+      state :{
+      mobileNumber : this.state
+  }} );
   }
   handleAssociation=(e)=>{
-    this.props.history.push('/associationHelp')
+    this.props.history.push({
+      pathname : '/associationHelp',
+      state :{
+      mobileNumber : this.state
+  }} );
   }
   handleResident=(e)=>{
-    this.props.history.push('/residentHelp')
+    this.props.history.push({
+      pathname : '/residentHelp',
+      state :{
+      mobileNumber : this.state
+  }} );
+  }
+  componentDidMount(){
+    this.setState({
+      mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+    })
   }
     render() {
+      console.log(this.state)
       const jobseker = require("./Json/Jobseeker.json")
 
       const jobseekerList = jobseker.length ? (
@@ -56,7 +79,12 @@ export class dashboardHelp extends Component {
                           <img className="center" src={mainLogo} width="50" height="50"></img>
                       </a>
                       <ul id="nav-mobile" className="right">
-                      <li><Link id="home" to="/dashboard">Home</Link></li>
+                      <li><Link id="home" to={{
+                        pathname : '/dashboard',
+                        state :{
+                        mobileNumber : this.state,
+                     }
+                    }}>Home</Link></li>
                       <li><a href="" className="waves-effect waves-light btn-small" id="btnnav">Help</a></li>
                       <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
                   </ul>

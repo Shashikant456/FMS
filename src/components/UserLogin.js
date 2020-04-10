@@ -15,7 +15,7 @@ state = {
               password:'',
               userId:'',
               error:'',
-              mobileNumber:''
+              mobileNumber:'',
         }
     
         handleChange1 = (e) => {
@@ -26,6 +26,17 @@ state = {
             
         }
         handleChange2 = (e) => {
+            this.setState({
+                password :e.target.value
+            })
+
+        }
+        forgetPwd=(e)=>{
+            this.props.history.push('/forgotPwd')
+        }
+        handleSubmit=(e)=>{
+            e.preventDefault();
+            console.log(this.state)
             axios.get('/stskFmsApi/jobseeker/getByEmailid/'+ this.state.email,{headers:header})
             .then(res=>{
                 console.log(res.data)
@@ -53,17 +64,7 @@ state = {
                 })}
 
             })
-            this.setState({
-                password :e.target.value
-            })
-
-        }
-        forgetPwd=(e)=>{
-            this.props.history.push('/forgotPwd')
-        }
-        handleSubmit=(e)=>{
-            e.preventDefault();
-            console.log(this.state)
+          
 
             axios.post('/stskFmsApi/userLogin/verifyUser',{
                 email:this.state.email1,
@@ -93,10 +94,8 @@ state = {
                                 mobileNumber : this.state,
                                 userId: this.state.userId 
                              }})
-                        }
-            
+                            }
                         })
-
                     }
                      else if(Response.data.message==="User ID or Password error"){
                         this.setState({
@@ -104,8 +103,9 @@ state = {
                         })
                     }
                     else{
-                        alert("Register here")
-                        this.props.history.push('./')
+                        this.setState({
+                            error:'Opps! email id does not registered'
+                        })
                     }
              })
             .catch(error => {
