@@ -28,6 +28,7 @@ class Dashboard extends Component {
         model_open:false,
         model_open1:false,
         model_open2:false,
+        appliedJobsId:[19,23,34]
      }
 }
     componentDidMount(){
@@ -66,8 +67,10 @@ class Dashboard extends Component {
                     axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
                     .then(res=>{
                     this.setState({
-                  appliedJobs:res.data.data.jobs
-                            })
+                    appliedJobs:res.data.data.jobs,
+                    appliedJobsId:res.data.data.jobs,
+                    // appliedJobdId:[...this.state.appliedJobdId, res.data.data.jobs]
+                     })    
                         })
                     }, 3000);
     }
@@ -128,15 +131,15 @@ class Dashboard extends Component {
                     searchError:'Sorry, No JOb updates..!'
                 })
             }
-           
         })
     }
     render() {
         console.log(this.state)
-      
         const {posts} = this.state;
         const postList = posts.length ? (
             posts.map(post => {
+                {this.state.appliedJobsId.map(apply=>{
+                    if(apply!=post.id){
                 this.handleApply=(e)=>{
                     console.log(post.id)
                     axios.post('/stskFmsApi/jobseeker/applyJobs',
@@ -157,11 +160,12 @@ class Dashboard extends Component {
                                     appliedJobs:res.data.data.jobs
                                 })
                             })
-                        }
-                
+                        }   
+                        
                 return(
                     
                     <div className="row card"  key={post.id}>
+                    
                         <div className="card-content" id="cardContent">
                         
                         <div className="col s5 m6 l3 offset-s1">
@@ -174,13 +178,15 @@ class Dashboard extends Component {
                               <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>
                              
-                          <div>
-                          <div className="col s6 m6 l2 offset-s3 right-align">
-                          <h6 id="viewdetails" className="right-align" onClick={()=>this.setState({model_open:true})} value={post.id}> <u>ViewDetails</u></h6>
-                        </div>
-                          <Popup
+                          
+                         
+                          <Popup    modal trigger={
+                            <div className="col s6 m6 l2 offset-s3 right-align">
+                            <h6 id="viewdetails" className="right-align" onClick={()=>this.setState({model_open:true})} value={post.id}> <u>ViewDetails</u></h6>
+                            </div>}
                             open={this.state.model_open}
-                          closeOnDocumentClick
+
+                            closeOnDocumentClick
                             onClose={()=>{this.setState({model_open:false})}}
                            >
                             <div className="popup-content">
@@ -235,6 +241,7 @@ class Dashboard extends Component {
                                         <button className="grey-text" onClick={()=>this.setState({model_open:false})} id="popcancelbtn" type="text">cancel</button>
                                         <br></br>
                                     </div>
+                                    
                                     <div className="col s12 m6 l6">
                                         <button onClick={this.handleApply} value={post.id} id="popsavebtn" type="text">Apply</button>
                                         <br></br>
@@ -244,9 +251,9 @@ class Dashboard extends Component {
                             </Popup>
                         </div>
                          </div>
-                     </div>
+                     
                 )
-            })
+            }})} })
         ) : (
             <div className="center"><h5>Loading, please wait....</h5>
             <div className="preloader-wrapper small active">
@@ -262,6 +269,8 @@ class Dashboard extends Component {
           </div>
             </div>
         )
+        
+            
 
         const {searchedJobs} = this.state;
         const searchList = searchedJobs.length ? (
@@ -300,8 +309,6 @@ class Dashboard extends Component {
                         <div className="col s5 m6 l3 offset-s1">
                               <p  id="dashtext">Location-<span className="grey-text">{search.serviceArea}</span></p>
                           </div>
-                             
-
                           <div>
                          
                           <Popup modal trigger={ <div className="col s6 m6 l2 offset-s3 right-align">
@@ -311,8 +318,6 @@ class Dashboard extends Component {
                             closeOnDocumentClick
                             onClose={()=>{this.setState({model_open1:false})}}
                           > 
-
-
                                 <div className="popup-content">
                                     <div className="col s12 m12 l12">
                                         <div className="right-align">
@@ -384,6 +389,7 @@ class Dashboard extends Component {
         const {appliedJobs} = this.state;
         const appliedJobsList = appliedJobs.length ? (
         appliedJobs.map(applied => {      
+            
                 return(
                     <div className="row card"  key={applied.id}>
                     <div className="card-content" id="cardContent">
