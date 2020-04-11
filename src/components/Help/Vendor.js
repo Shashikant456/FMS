@@ -117,7 +117,7 @@ export class dashboardHelp extends Component {
         <h4 className="center">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
-        <div className="row container center-align">
+        <div className="row container center-align" id="jobtypesbtn">
           <div className="col s3 m3 l3 offset-l3 offset-m3">
           <div className="card hoverable" onClick={this.handleJobseeker}>
               <div className="card-image" >
@@ -165,7 +165,7 @@ export class dashboardHelp extends Component {
             </div>
             </div>
           </div>
-
+          <br></br>
           <div className="container z-depth-1" id="colli">
           <h5 className="center-align" id="coll">Vendor</h5>
               {jobseekerList}
@@ -176,7 +176,7 @@ export class dashboardHelp extends Component {
               <p className="center gray-text" id="textcolor">Lets talk about everything!</p>
               </div>
 
-              <div className="row container">
+              <div className="row container" id="helpDetails">
               <div className="col s6 m5 l5 offset-m3 offset-l3 z-depth-1 center " id="mail">
                  <i className="material-icons">email</i>
                  <p id="textcolor">send us an email <a href="">info@stskfecilities.com</a></p>
@@ -186,16 +186,17 @@ export class dashboardHelp extends Component {
                  <p id="textcolor">Call us on <a href="">1800-121-0786</a></p>
               </div>
             </div>
-
+            <br></br>
+            <br></br>
 
             <div className="container z-depth-1">
               <ul className="">
-                <div className="collapsible-header">System info:</div>
+                <div className="collapsible-header" id="jobtypesbtn">System info:</div>
               </ul>
             </div>
 
           
-                  <footer className="page-footer" id="address">
+                  <footer className="page-footer" id="addresss">
                   <div className="center align">
                     <div className="row ">
                       <div className="col l6 s12 m6 ">

@@ -28,7 +28,6 @@ class Dashboard extends Component {
         model_open:false,
         model_open1:false,
         model_open2:false,
-        dataPass:false
      }
 }
     componentDidMount(){
@@ -161,6 +160,7 @@ class Dashboard extends Component {
                         }
                 
                 return(
+                    
                     <div className="row card"  key={post.id}>
                         <div className="card-content" id="cardContent">
                         

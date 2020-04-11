@@ -117,7 +117,7 @@ export class dashboardHelp extends Component {
         <h4 className="center">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
-        <div className="row container center">
+        <div className="row container center" id="jobtypesbtn">
           <div className="col s6 m2 l3 offset-l3 offset-m3">
           <div className="card hoverable z-depth-3" onClick={this.handleJobseeker}>
               <div className="card-image" >
@@ -163,6 +163,7 @@ export class dashboardHelp extends Component {
             </div>
             </div>
           </div>
+          <br></br>
 
           <div className="container z-depth-1" id="colli">
               <h5 className="center-align" id="coll">Job Seeker</h5>
@@ -174,7 +175,7 @@ export class dashboardHelp extends Component {
               <p className="center gray-text" id="textcolor">Lets talk about everything!</p>
               </div>
 
-              <div className="row container">
+              <div className="row container" id="helpDetails">
               <div className="col s6 m5 l5 offset-m3 offset-l3 z-depth-1 center " id="mail">
                  <i className="material-icons">email</i>
                  <p id="textcolor">send us an email <a href="">info@stskfecilities.com</a></p>
@@ -184,11 +185,14 @@ export class dashboardHelp extends Component {
                  <p id="textcolor">Call us on <a href="">1800-121-0786</a></p>
               </div>
             </div>
-
+            
+        
+              <br></br>
+              <br></br>
 
             <div className="container z-depth-1">
-              <ul className="">
-                <div className="collapsible-header">System info:</div>
+              <ul className="" >
+                <div className="collapsible-header" id="jobtypesbtn">System info:</div>
               </ul>
             </div>
 
