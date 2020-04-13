@@ -139,6 +139,8 @@ class Dashboard extends Component {
         const postList = posts.length ? (
             posts.map(post => {
                 {this.state.appliedJobsId.map(apply=>{
+                    console.log(apply)
+                    console.log(post.id)
                     if(apply!=post.id){
                 this.handleApply=(e)=>{
                     console.log(post.id)

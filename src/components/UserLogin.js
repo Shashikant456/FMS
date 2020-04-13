@@ -128,7 +128,7 @@ state = {
              <div className="input-field">
                     <i id="iconn" className="material-icons prefix">person</i>
                     <input id="icon_prefix" type="email" size="30" required
-                     placeholder="User Id/Email Id"  onChange={this.handleChange1}/>
+                     placeholder="User Id/ Mail Id"  onChange={this.handleChange1}/>
                 </div>
             
                     <div className="input-field">

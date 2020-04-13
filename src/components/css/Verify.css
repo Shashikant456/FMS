@@ -45,7 +45,7 @@ label {
   font-weight: lighter;
 }
 
-input {
+/* input {
   padding: 10px 10px;
   border-radius: 5px;
   outline: none;
@@ -54,7 +54,7 @@ input {
   border-radius: 10px;
   margin:5px;
   width: 100%;
-}
+} */
 
 input::placeholder {
   font-size: 1.2em;
@@ -200,6 +200,7 @@ input.error {
   margin-top: -10px;
   color:lightseagreen;
   text-decoration: none;
+  cursor: pointer;
 }
 #verifymisscall,
 #verifymisscall1{
@@ -209,6 +210,7 @@ input.error {
   color: lightseagreen;
   border-color: 7px black;
   outline: none;
+  font-weight: 500;
 }
 #verifymisscall{
   margin-top: -44px;
@@ -225,7 +227,6 @@ input.error {
 }
 #enterHere{
   margin-bottom: -7px;
-  color: #707070;
 }
 /* #hr {
   width: 129px;

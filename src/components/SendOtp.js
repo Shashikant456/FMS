@@ -116,7 +116,9 @@ class SendOtp extends Component{
             </Form.Group>
                   <button id="sendotpbtn">Send OTP</button>
             </form>
-            <h6 id="textsignin">Sign in options</h6>
+            <strong id="textsignin">Sign in options</strong>
+            <br></br>
+            <br></br>
      
             <div className="logo">
             

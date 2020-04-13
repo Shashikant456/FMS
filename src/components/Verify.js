@@ -26,7 +26,7 @@ class Verify extends Component{
                 this.setState({
                    mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
                    countryCode: this.props.location.state.countryCode.countryCode
-                })
+                 })
              }
                         
                     
@@ -37,6 +37,7 @@ class Verify extends Component{
         })
     }
     handleResend= (e)=>{
+    
         e.preventDefault()
 
         axios.post('/stskFmsApi/otpServices/sendOtpBySMS',{
@@ -157,7 +158,7 @@ class Verify extends Component{
                             <br></br>
                             <p className="red-text">{this.state.error}</p>
                     </div>
-                    <a href="" id="resendotp" onClick={this.handleResend} className="center-align">Resend OTP</a>
+                    <h6 id="resendotp" onClick={this.handleResend} className="center-align">Resend OTP</h6>
                 <button id="input-type3"  disabled={loading}>
                 {loading && 
                     <div className="preloader-wrapper small active">
@@ -174,7 +175,7 @@ class Verify extends Component{
                       Verify</button>
                 </form>
                 <div id="hr" className="separator">or</div>
-                <button onClick={this.handleVerify} id="verifymisscall">Give missedcall to verify</button>
+                <button onClick={this.handleVerify} id="verifymisscall">Give missed call to verify</button>
             </center>
             </div> 
         </div>

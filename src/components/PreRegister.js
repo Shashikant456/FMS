@@ -79,7 +79,7 @@ export class Register extends Component {
                     <img className="right align" id="side" src={right} width="50" height="50"></img>
                     <center id="center">
                     <img id="logo" className="center" src={logo} width="60" height="60"></img>
-                    <h5 className="center" id="text">Choose Category</h5>  
+                    <h3 className="center" id="text">Choose Category</h3>  
                     
                     <div className='row'>
                             <div className="col s6 m6 l6">
