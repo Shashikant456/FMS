@@ -28,7 +28,8 @@ class Dashboard extends Component {
         model_open:false,
         model_open1:false,
         model_open2:false,
-        appliedJobsId:[19,23,34]
+        appliedJobsId:[18,12],
+    
      }
 }
     componentDidMount(){
@@ -58,7 +59,7 @@ class Dashboard extends Component {
                         });
                     }
                     else{
-                        console.log("User Id does not exists")
+                        console.log("No jobs present")
                     }
                     }) 
                 }, 2000);
@@ -75,6 +76,33 @@ class Dashboard extends Component {
                     }, 3000);
     }
 
+    handleApply=(id)=>{
+        console.log(id)
+        axios.post('/stskFmsApi/jobseeker/applyJobs',
+            { 
+                id:this.state.userId,
+                jobs:[{
+                    id:id
+                 }]
+                },{headers:header})
+                .then(res=>{
+                    console.log(res.data)
+                }) 
+                axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
+                .then(res=>{
+                    console.log(res.data)
+                    this.setState({
+                        appliedJobs:res.data.data.jobs
+                    })
+                })
+                const posts = this.state.posts.filter(job =>{
+                    return job.id !== id
+                })
+                this.setState({
+                    posts : posts
+                })
+        }   
+
     handleLogin=(e)=>{
         this.setState({
             LoggedIn:false
@@ -87,6 +115,7 @@ class Dashboard extends Component {
             search:e.target.value,  
         })
     }
+   
     handlepopup=(e)=>{
         const { editProfile } = { ...this.state };
         const currentState = editProfile;
@@ -134,36 +163,12 @@ class Dashboard extends Component {
         })
     }
     render() {
-        console.log(this.state)
+        console.log(this.state.appliedJobsId)
         const {posts} = this.state;
         const postList = posts.length ? (
             posts.map(post => {
-                {this.state.appliedJobsId.map(apply=>{
-                    console.log(apply)
-                    console.log(post.id)
-                    if(apply!=post.id){
-                this.handleApply=(e)=>{
-                    console.log(post.id)
-                    axios.post('/stskFmsApi/jobseeker/applyJobs',
-                        { 
-                            id:this.state.userId,
-                            jobs:[{
-                                id:post.id
-                             }]
-                            },{headers:header})
-                            .then(res=>{
-                                console.log(res.data)
-                                console.log(post.id)
-                            }) 
-                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
-                            .then(res=>{
-                                console.log(res.data)
-                                this.setState({
-                                    appliedJobs:res.data.data.jobs
-                                })
-                            })
-                        }   
-                        
+                if(this.state.appliedJobsId!==post.id){
+                    console.log('shashi')
                 return(
                     
                     <div className="row card"  key={post.id}>
@@ -178,16 +183,13 @@ class Dashboard extends Component {
                           </div>
                         <div className="col s5 m6 l3 offset-s1">
                               <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
-                          </div>
-                             
-                          
-                         
+                          </div>      
                           <Popup    modal trigger={
                             <div className="col s6 m6 l2 offset-s3 right-align">
                             <h6 id="viewdetails" className="right-align" onClick={()=>this.setState({model_open:true})} value={post.id}> <u>ViewDetails</u></h6>
                             </div>}
                             open={this.state.model_open}
-
+                            
                             closeOnDocumentClick
                             onClose={()=>{this.setState({model_open:false})}}
                            >
@@ -245,7 +247,7 @@ class Dashboard extends Component {
                                     </div>
                                     
                                     <div className="col s12 m6 l6">
-                                        <button onClick={this.handleApply} value={post.id} id="popsavebtn" type="text">Apply</button>
+                                        <button onClick={()=>{this.handleApply(post.id)}} value={post.id} id="popsavebtn" type="text">Apply</button>
                                         <br></br>
                                     </div>
                                 </div>
@@ -254,8 +256,11 @@ class Dashboard extends Component {
                         </div>
                          </div>
                      
-                )
-            }})} })
+                )}
+                else{
+                    console.log('yehhh')
+                }
+             })
         ) : (
             <div className="center"><h5>Loading, please wait....</h5>
             <div className="preloader-wrapper small active">
@@ -277,27 +282,7 @@ class Dashboard extends Component {
         const {searchedJobs} = this.state;
         const searchList = searchedJobs.length ? (
             searchedJobs.map(search => {
-                this.handleSearchApply=(e)=>{
-                    console.log(search.id)
-                    console.log(this.state.userId)
-                    axios.post('/stskFmsApi/jobseeker/applyJobs',
-                        {  
-                            id:this.state.userId,
-                            jobs:[{
-                                id:search.id
-                             }]
-                            },{headers:header})
-                            .then(res=>{
-                                console.log(res.data)
-                                console.log(search.id)
-                            }) 
-                            axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
-                            .then(res=>{
-                                this.setState({
-                                    appliedJobs:res.data.data.jobs
-                                })
-                            })
-                        }
+               
                 return(
                     <div className="row card"  key={search.id}>
                         <div className="card-content" id="cardContent">
@@ -372,7 +357,7 @@ class Dashboard extends Component {
                                             <br></br>
                                         </div>
                                         <div className="col s12 m6 l6">
-                                            <button onClick={this.handleSearchApply} value={search.id} id="popsavebtn" type="text">Apply</button>
+                                            <button onClick={()=>{this.handleApply(search.id)}} id="popsavebtn" type="text">Apply</button>
                                             <br></br>
                                         </div>
                                     </div>
@@ -398,25 +383,21 @@ class Dashboard extends Component {
                     
                     <div className="col s5 m6 l3 offset-s1">
                     <p id="dashtext">Job position-<span className="grey-text">{applied.jobType}</span></p>
-                 </div>
-               <div className="col s5 m6 l3 offset-s1">
-                     <p id="dashtext">Experience-<span className="grey-text">{applied.serviceArea}</span></p>
-                 </div>
-               <div className="col s5 m6 l3 offset-s1">
-                     <p  id="dashtext">Location-<span className="grey-text">{applied.serviceArea}</span></p>
-                 </div>
-                    
-
-                
-                 <Popup modal trigger={ 
+                      </div>
+                    <div className="col s5 m6 l3 offset-s1">
+                        <p id="dashtext">Experience-<span className="grey-text">{applied.serviceArea}</span></p>
+                    </div>
+                    <div className="col s5 m6 l3 offset-s1">
+                    <p  id="dashtext">Location-<span className="grey-text">{applied.serviceArea}</span></p>
+                    </div>                
+                    <Popup modal trigger={ 
                     <div className="col s6 m6 l2 offset-s3 right-align">
                     <h6 id="viewdetails"  onClick={()=>this.setState({model_open2:true})} className="right-align" value={applied.id}> <u>ViewDetails</u></h6>
                     </div> }
-                   open={this.state.model_open2}
-                   closeOnDocumentClick
-                   onClose={()=>{this.setState({model_open2:false})}}
-                 > 
-
+                    open={this.state.model_open2}
+                    closeOnDocumentClick
+                    onClose={()=>{this.setState({model_open2:false})}}
+                    > 
                        <div className="popup-content">
                            <div className="col s12 m12 l12">
                                <div className="right-align">

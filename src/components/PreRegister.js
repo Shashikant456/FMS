@@ -53,7 +53,6 @@ export class Register extends Component {
         console.log(this.state)
         const postList = userRoless.map((post,index) =>{
             
-        
             return(
                 
                 <div key={index} >
@@ -63,13 +62,6 @@ export class Register extends Component {
                 </div>
 
             )})
-        // {console.log(userRole.name)}
-        // {this.state.userRoles.map(userRole=>(<option key={userRole.id} value={userRole.name}>
-            
-            
-        //     </option>
-
-        //     ))}
         return (
 
             <div className="center row" id="body">
