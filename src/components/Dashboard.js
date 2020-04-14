@@ -33,11 +33,11 @@ class Dashboard extends Component {
      }
 }
     componentDidMount(){
-    this._isMounted = true;
-    this.setState({
-        mobileNumber:this.props.location.state.mobileNumber.mobileNumber
-    })
-   
+        this._isMounted = true;
+        this.setState({
+            mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+        })
+    
         axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
         .then(res =>{
           console.log(res.data)
@@ -71,9 +71,9 @@ class Dashboard extends Component {
                     appliedJobs:res.data.data.jobs,
                     appliedJobsId:res.data.data.jobs,
                     // appliedJobdId:[...this.state.appliedJobdId, res.data.data.jobs]
-                     })    
-                        })
-                    }, 3000);
+                    })    
+                    })
+                }, 3000);
     }
 
     handleApply=(id)=>{
@@ -99,7 +99,8 @@ class Dashboard extends Component {
                     return job.id !== id
                 })
                 this.setState({
-                    posts : posts
+                    posts,
+                    model_open:false
                 })
         }   
 
@@ -146,7 +147,11 @@ class Dashboard extends Component {
     }
    
     handleSearch=(e)=>{
-        axios.get('/stskFmsApi/jobs/getByJobs/'+this.state.search,{headers:header})
+        this.setState({
+            search:e.target.value,  
+        })
+        const timer1 = setTimeout(() => {
+            axios.get('/stskFmsApi/jobs/getByJobs/'+this.state.search,{headers:header})
         .then(res=>{
             if(res.data.success===1){
                 this.setState({
@@ -161,9 +166,10 @@ class Dashboard extends Component {
                 })
             }
         })
+        }, 1000);
+        
     }
     render() {
-        console.log(this.state.appliedJobsId)
         const {posts} = this.state;
         const postList = posts.length ? (
             posts.map(post => {
@@ -463,17 +469,7 @@ class Dashboard extends Component {
             })
         ) : (
             <div className="center"><h5>You have not Applied for any Jobs</h5>
-            <div className="preloader-wrapper small active">
-            <div className="spinner-layer spinner-green-only">
-              <div className="circle-clipper left">
-                <div className="circle"></div>
-              </div><div className="gap-patch">
-                <div className="circle"></div>
-              </div><div className="circle-clipper right">
-                <div className="circle"></div>
-              </div>
-            </div>
-          </div>
+            
             </div>
             
             )
@@ -511,7 +507,7 @@ class Dashboard extends Component {
                 <div className="nav-wrapper">
                     
                         <div className="input-field">
-                            <input id="dashinput" type="search" onChange={this.handleinputSearch} required placeholder="Search jobs"/>
+                            <input id="dashinput" type="search" onChange={this.handleSearch} required placeholder="Search jobs"/>
                             <i className="material-icons right">
                         
                             <a className="btn hide-on-small-only" onClick={this.handleSearch} id="src1">

@@ -121,33 +121,31 @@ class UserDetails extends Component {
     };
     this.handleSubmit=this.handleSubmit.bind(this)
   }
-
-  componentWillMount(){
-    this.setState({
-     mob:this.props.location.state.mobileNumber.mobileNumber,
-     mobileNumber:this.props.location.state.mobileNumber.mobileNumber
-     
-  })    
-  }
   componentDidMount(){
-
-  axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
-    .then(res=>{
-      console.log(res.data)
-      console.log(res.data.data)
-        this.setState({
-            jobs : res.data.data
-        })  
-    })
-    axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
-    .then(res=>{
-      console.log(res.data)
-       this.setState({
-            userId:res.data.data.id,
-            email:res.data.data.email
+    this.setState({
+      mob:this.props.location.state.mobileNumber.mobileNumber,
+      mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+      
+   })    
+    const timer1 = setTimeout(() => {
+      axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+      .then(res=>{
+        console.log(res.data)
+         this.setState({
+              userId:res.data.data.id,
+              email:res.data.data.email
+            })
         })
-    })
-   }
+    }, 1000);
+    axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
+      .then(res=>{
+        console.log(res.data)
+        console.log(res.data.data)
+          this.setState({
+              jobs : res.data.data
+          })  
+      })
+    }
  handleRadio=(e)=>{
   console.log(e.target.value)
  
