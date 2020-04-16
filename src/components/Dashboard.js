@@ -25,10 +25,7 @@ class Dashboard extends Component {
         searchedJobs:[],
         searchLoading:false,
         searchError:'',
-        model_open:false,
-        model_open1:false,
-        model_open2:false,
-        appliedJobsId:[18,12],
+        appliedJobsId:[]
     
      }
 }
@@ -69,9 +66,8 @@ class Dashboard extends Component {
                     .then(res=>{
                     this.setState({
                     appliedJobs:res.data.data.jobs,
-                    appliedJobsId:res.data.data.jobs,
                     // appliedJobdId:[...this.state.appliedJobdId, res.data.data.jobs]
-                    })    
+                        })    
                     })
                 }, 3000);
     }
@@ -87,6 +83,7 @@ class Dashboard extends Component {
                 },{headers:header})
                 .then(res=>{
                     console.log(res.data)
+                    console.log(res)
                 }) 
                 axios.get('/stskFmsApi/jobseeker/getById/'+this.state.userId,{headers:header})
                 .then(res=>{
@@ -100,10 +97,10 @@ class Dashboard extends Component {
                 })
                 this.setState({
                     posts,
+                    //appliedJobsId:[...this.state.appliedJobsId, id],
                     model_open:false
                 })
-        }   
-
+        }    
     handleLogin=(e)=>{
         this.setState({
             LoggedIn:false
@@ -170,13 +167,19 @@ class Dashboard extends Component {
         
     }
     render() {
+        console.log(this.state)
         const {posts} = this.state;
         const postList = posts.length ? (
             posts.map(post => {
-                if(this.state.appliedJobsId!==post.id){
-                    console.log('shashi')
+                // return this.state.appliedJobsId.map(item2 => {
+            
+                //      if(item2!==post.id){
+                //          console.log('yehh')
+                //      }else{
+                //          console.log('puss')
+                //      }
+                //    })
                 return(
-                    
                     <div className="row card"  key={post.id}>
                     
                         <div className="card-content" id="cardContent">
@@ -185,24 +188,21 @@ class Dashboard extends Component {
                              <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
                           </div>
                         <div className="col s5 m6 l3 offset-s1">
-                              <p id="dashtext">Experience-<span className="grey-text">{post.serviceArea}</span></p>
+                              <p id="dashtext">Experience-<span className="grey-text">{post.jobType}</span></p>
                           </div>
                         <div className="col s5 m6 l3 offset-s1">
                               <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>      
-                          <Popup    modal trigger={
+                          <Popup
+                           trigger={
                             <div className="col s6 m6 l2 offset-s3 right-align">
-                            <h6 id="viewdetails" className="right-align" onClick={()=>this.setState({model_open:true})} value={post.id}> <u>ViewDetails</u></h6>
-                            </div>}
-                            open={this.state.model_open}
-                            
-                            closeOnDocumentClick
-                            onClose={()=>{this.setState({model_open:false})}}
-                           >
+                            <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
+                            </div>} modal>
+                            {close => (
                             <div className="popup-content">
                                 <div className="col s12 m12 l12">
                                     <div className="right-align">
-                                        <i className="material-icons" id="dashcancelbtn" onClick={()=>this.setState({model_open:false})}>clear</i>
+                                        <i className="material-icons" id="dashcancelbtn" onClick={()=>{close();}}>clear</i>
                                     </div>
 
                                     <h4 className="center align grey-text">View Details</h4>
@@ -248,7 +248,7 @@ class Dashboard extends Component {
                                          industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                     </div>
                                     <div className="col s12 m6 l6">
-                                        <button className="grey-text" onClick={()=>this.setState({model_open:false})} id="popcancelbtn" type="text">cancel</button>
+                                        <button className="grey-text"  onClick={() => {close();}} id="popcancelbtn" type="text">cancel</button>
                                         <br></br>
                                     </div>
                                     
@@ -258,14 +258,11 @@ class Dashboard extends Component {
                                     </div>
                                 </div>
                             </div>
+                            )}
                             </Popup>
                         </div>
-                         </div>
-                     
-                )}
-                else{
-                    console.log('yehhh')
-                }
+                         </div>    
+                )
              })
         ) : (
             <div className="center"><h5>Loading, please wait....</h5>
@@ -304,17 +301,14 @@ class Dashboard extends Component {
                           </div>
                           <div>
                          
-                          <Popup modal trigger={ <div className="col s6 m6 l2 offset-s3 right-align">
-                          <h6 id="viewdetails"  onClick={()=>this.setState({model_open1:true})} className="right-align" value={search.id}> <u>ViewDetails</u></h6>
-                          </div> }
-                            open={this.state.model_open1}
-                            closeOnDocumentClick
-                            onClose={()=>{this.setState({model_open1:false})}}
-                          > 
+                          <Popup trigger={ <div className="col s6 m6 l2 offset-s3 right-align">
+                          <h6 id="viewdetails" className="right-align" value={search.id}> <u>ViewDetails</u></h6>
+                          </div> } modal> 
+                          {close => (
                                 <div className="popup-content">
                                     <div className="col s12 m12 l12">
                                         <div className="right-align">
-                                            <i className="material-icons" id="dashcancelbtn" onClick={()=>this.setState({model_open1:false})}>clear</i>
+                                            <i className="material-icons" id="dashcancelbtn" onClick={()=>{close();}}>clear</i>
                                         </div>
                                         <h4 className="center align grey-text">View Details</h4>
                                         
@@ -359,7 +353,7 @@ class Dashboard extends Component {
                                              industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                         </div>
                                         <div className="col s12 m6 l6">
-                                            <button className="grey-text" onClick={()=>this.setState({model_open1:false})} id="popcancelbtn" type="text">cancel</button>
+                                            <button className="grey-text" onClick={()=>{close();}} id="popcancelbtn" type="text">cancel</button>
                                             <br></br>
                                         </div>
                                         <div className="col s12 m6 l6">
@@ -368,6 +362,7 @@ class Dashboard extends Component {
                                         </div>
                                     </div>
                                 </div>
+                          )}
                             </Popup>
                          </div>
                     </div>
@@ -396,18 +391,15 @@ class Dashboard extends Component {
                     <div className="col s5 m6 l3 offset-s1">
                     <p  id="dashtext">Location-<span className="grey-text">{applied.serviceArea}</span></p>
                     </div>                
-                    <Popup modal trigger={ 
+                    <Popup trigger={ 
                     <div className="col s6 m6 l2 offset-s3 right-align">
                     <h6 id="viewdetails"  onClick={()=>this.setState({model_open2:true})} className="right-align" value={applied.id}> <u>ViewDetails</u></h6>
-                    </div> }
-                    open={this.state.model_open2}
-                    closeOnDocumentClick
-                    onClose={()=>{this.setState({model_open2:false})}}
-                    > 
+                    </div> } modal > 
+                    {close => (
                        <div className="popup-content">
                            <div className="col s12 m12 l12">
                                <div className="right-align">
-                                   <i className="material-icons" id="dashcancelbtn" onClick={()=>this.setState({model_open2:false})}>clear</i>
+                                   <i className="material-icons" id="dashcancelbtn" onClick={()=>{close();}}>clear</i>
                                </div>
                                <h4 className="center align grey-text">View Details</h4>
                                
@@ -452,7 +444,7 @@ class Dashboard extends Component {
                                     industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                </div>
                                     <div className="col s12 m6 l6">
-                                        <button className="grey-text" onClick={()=>this.setState({model_open2:false})} id="popcancelbtn" type="text">cancel</button>
+                                        <button className="grey-text" onClick={()=>{close();}} id="popcancelbtn" type="text">cancel</button>
                                         <br></br>
                                     </div>
                                     <div className="col s12 m6 l6">
@@ -461,6 +453,7 @@ class Dashboard extends Component {
                                     </div>
                                 </div>
                             </div>
+                    )}
                         </Popup>
                      </div>
             

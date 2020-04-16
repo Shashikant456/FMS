@@ -5,6 +5,9 @@ import back from './Images/Background.png'
 import { Form,FormControl } from 'react-bootstrap';
 import logo from './Images/Mainlogo.png'
 //import PhoneInput from 'react-phone-number-input'
+//import OTPInput from 'react-otp-input';
+import M from 'materialize-css'
+
 
 const header={
     'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -21,6 +24,12 @@ class SendOtp extends Component{
           this.handleSubmit = this.handleSubmit.bind(this)
         }
 
+        componentDidMount(){
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.modal');
+                var instances = M.Modal.init(elems, {});
+              });
+        }
      userLogin = (e) => {
         this.props.history.push('/userLogin')
        
@@ -87,7 +96,6 @@ class SendOtp extends Component{
     
     <div  id="body">
     <div className="row" id="main1">    
-    
      <center id="center">
      <img className="center" id="logo" src={logo} width="70" height="70"></img>
      <h3 className="center" id="text">Login</h3>  
@@ -104,11 +112,8 @@ class SendOtp extends Component{
                               
                                {countries.map((country,i) =>(
                                    <option key={i} value={country.number.slice(1)}>
-                                       {/* {console.log(country.dial_code)}  */}
                                         {country.name} 
-                                       {/* <img src={this.state.imageUrl} alt="" ></img> */}
-                                       {/* <a href="{country.flag}" tittle=""></a>  */}
-                                      
+
                                    </option>
                                ))}
                               
@@ -128,9 +133,8 @@ class SendOtp extends Component{
         </div>
      </center>
     </div> 
-    </div>
-    
 
+    </div>
     )}
 }
 export default SendOtp
