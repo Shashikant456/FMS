@@ -128,8 +128,8 @@ class Dashboard extends Component {
         const currentState = editProfile;
         const { name, value } = e.target;
         currentState[name] = value;
-      
-        this.setState({ editProfile: currentState });
+        this.setState({ editProfile: editProfile });
+        
     }
     popupsubmit=(e)=>{
         e.preventDefault();
@@ -542,7 +542,7 @@ class Dashboard extends Component {
                             <div className="col s12 m12 l6">
                             
                                 <label >First name</label>
-                                <input id="inputBorder" name="name" value={this.state.editProfile.name} 
+                                <input id="inputBorder" name="name" required value={this.state.editProfile.name} 
                                 onChange={this.handlepopup} type="text"></input>
                             
                             

@@ -87,6 +87,9 @@
     width: 90%;
     
   }
+  #coll{
+    margin-top: -34px;
+  }
   /* #colli{
     height: 389px;
     width: 991px;
@@ -101,4 +104,8 @@
 #dashinput{
   font-family: 'Lato', ;
   padding: 26px;
+}
+#headinggg{
+  margin-left: 8px;
+  color: black;
 }

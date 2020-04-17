@@ -6,8 +6,6 @@ import { Form,FormControl } from 'react-bootstrap';
 import logo from './Images/Mainlogo.png'
 //import PhoneInput from 'react-phone-number-input'
 //import OTPInput from 'react-otp-input';
-import M from 'materialize-css'
-
 
 const header={
     'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -23,13 +21,6 @@ class SendOtp extends Component{
              loading:false
            }
           this.handleSubmit = this.handleSubmit.bind(this)
-        }
-
-        componentDidMount(){
-            document.addEventListener('DOMContentLoaded', function() {
-                var elems = document.querySelectorAll('.modal');
-                var instances = M.Modal.init(elems, {});
-              });
         }
      userLogin = (e) => {
         this.props.history.push('/userLogin')
@@ -72,7 +63,7 @@ class SendOtp extends Component{
         this.setState({
             loading:true
         })
-         this.props.history.push({
+        this.props.history.push({
         pathname : '/verify',
         state :{
         mobileNumber : this.state,

@@ -12,8 +12,8 @@
     margin-left: 130px;
   }
   .wrapper5 {
- 
-    margin-top: 10px;
+    background-size: cover;
+    /* margin-top: 10px; */
    overflow: hidden;
     /* overflow: hidden;
     position: fixed; */
@@ -22,7 +22,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
    
   }
   .form-wrapper4{
@@ -30,17 +31,20 @@
     
     position: relative;
     margin-left: 400px;
-    width: 600px;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0px 4px 7px #555;
     background-color: #ffffff;
-    height:628px;
+    height:750px;
   }
 #ra{
   position: fixed;
+}
+#abcd{
+  margin-top: 50px;
 }
 #popup{
   margin-bottom: 50px;
@@ -50,13 +54,13 @@
   margin-left: 0%
 }
 .mobileNumber,
-  .years,
+  /* .years, */
   .panNumber,
   .jobOpening{
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
-    width: 49%;
+    width: 35%;
     margin-left: 1%;
   }
   .fullName,
@@ -68,7 +72,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
-    width: 49%;
+    width: 35%;
     margin-right: 1%;
   }
 
@@ -99,47 +103,84 @@
     margin-bottom: 65px;
   
   }
-  .years{
+  .a .years{
     position: inherit;
-    margin-top: -20px;
-    margin-left: 0%;
-    width: 107%;
+    margin-top: -19px;
+    margin-left: -19px;
+    width: 831px;
+    /* margin-left: -138%;
+    width: 138%; */
+    /* width: 153%;
+    margin-left: -155%; */
   }
-  .company{
+  .c .years{
     position: inherit;
-    margin-top: -17px;
-    margin-left: -1%;
-    width: 106%;
+    margin-top: -19px;
+    width: 155%;
+    margin-left: -156%;
   }
-  .place{
+  .a .company{
     position: inherit;
-    margin-top: -31px;
-    margin-left: 111%;
-    width: 112%;
+    margin-top: -46px;
+    margin-left: 28%;
   }
-  .currentLocation{
+  .c .company{
     position: inherit;
-    margin-top: -49px;
-    margin-left: 111%;
-    width: 110%;
+    margin-top: -44px;
+    margin-left: 50%;
+    width: 162%;
   }
-  .days{
-       /* position: inherit; */
-       margin-top: -55px;
-       margin-left: 111%;
-       width: 111%;
+  .a .place{
+    position: inherit;
+    margin-top: -48px;
+    margin-left:59%;
+   
   }
-  .salary{
+  .c .place{
+    position: inherit;
+    margin-top: 15px;
+    margin-left: -157%;
+    width: 155%;
+  }
+  .c .currentLocation{
+    position: inherit;
+    margin-top: 13px;
+    margin-left: -157%;
+    width: 155%;
+  }
+  .b .currentLocation{
+    position: inherit;
+    margin-top: -10px;
+    margin-left: -220%;
+    width: 133%;
+  }
+  .b .days{
+          /* position: inherit; */
+          margin-top: 127px;
+          margin-left: -43%;
+          width: 138%;
+  }
+  .b .salary{
+    position: inherit;
+    margin-top: 15px;
+    margin-left: -43%;
+    width: 138%;
+}
+  
+  .a .designation{
+    position: inherit;
+    margin-top: -3px;
+    margin-left: -2%;
+  }
+    
+  .c .designation{
     position: inherit;
     margin-top: -30px;
-    margin-left: 111%;
-    width: 110%;
+    margin-left: 50%;
+    width: 162%;
   }
-  .designation{
-    position: inherit;
-    margin-top: 10px;
-    margin-left: -2%;
-    width: 107%;
+  #pqrs{
+    margin-top: 50px;
   }
   #demo{ 
     width: 100%;
@@ -171,7 +212,7 @@
   .choose{
     margin-top: -50px;
     display: flex;
-    margin-left: 1%;
+    margin-left: 0%;
     font-size: 16px;
     font-family: Lato;
     color: #9e9e9e;
@@ -179,40 +220,58 @@
     }
     .fresher{
       /* margin-top: -50px; */
-      margin-top: -41px;
+      /* margin-top: -65px; */
+     
+      /* margin-left: 122%; */
       display: flex;
-      margin-left: 122%;
       font-size: 16px;
       font-family: Lato;
       color: #9e9e9e;
     }
-    .negotiable{
+    .b .negotiable{
       display: flex;
-      margin-left: 4%;
+      margin-left: -218%;
       font-size: 16px;
       font-family: Lato;
       color: #9e9e9e;
-      margin-top: 25px;
+      margin-top: -11px;
     }
     .notice_period{
-      margin-top: 23px;
-      display: flex;
-      margin-left: 1%;
+      /* margin-top: 23px;
+      
+     
       font-size: 16px;
       font-family: Lato;
       color: #9e9e9e;
-      margin-left: 11px;
+      margin-left: -251px;
+   */
+   margin-left: 30%;
+   margin-top: -32px;
+   display: flex;
     }
-    #submit{
+    .days{
+      margin-top: -31px;
+      margin-left: 10px;
+      width: 730px;
+    }
+    #submit1{
      
       position: absolute;
       font-size: 16px;
       font-weight: 700;
       font-family: Lato;
-      margin-left: -153px;
-      margin-top: 219px;
+      margin-left: 190px;
+      margin-top: 121px;
+}
+  .createAccount1{
+    /* margin-top: 146px;
+    position: fixed; */
+    margin-top: 304px;
+    position: absolute;
+  }
+  
     
-    }
+    
     #label{
       color: #9e9e9e;
       font-size: 16px;
@@ -239,7 +298,7 @@
   position: relative;
   height: 2px;
   margin-top: -46px;
-  width: 49%;
+  width: 35%;
  }
  #address{
   border: none;
@@ -252,10 +311,10 @@
   margin-left: 8%;
  }
 .userimage{
-  margin-left: 220px;
+  margin-left: 439px;
   border: 2px solid #3fb2aa;
   border-radius: 100px;
-  margin-right: 229px;
+  margin-right: 439px;
   }
   .camera{
     margin-left: 283px;
@@ -324,8 +383,137 @@
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
-.createAccount{
-  position: fixed;
-    margin-top: 235px;
-    margin-left: 231px;
+.multiselect {
+  width: 200px;
+}
+
+
+
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+/**anit code**/
+
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+.file{
+  /* background-image: url("../Images/file.png");  */
+  background-image: url("../Images/camerapic.png"); 
+  background-repeat: no-repeat;
+}
+.field input[type="file"]{
+
+}
+.inputfile {
+width: 0.1px;
+height: 0.1px;
+opacity: 0;
+overflow: hidden;
+position: absolute;
+z-index: -1;
+}
+#hugewhite {
+  /* height: 51%; */
+ 
+  width: 267px;
+  border-radius: 10px;
+  border: 1px solid #3fb2aa;
+  margin: 8px;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #9e9e9e;
+}
+
+
+
+
+
+
+
+#fileimg{
+  width: 35px;
+  height: 35px;
+  margin-top: 5px;
+  /* margin-right: 10px; */ 
+  margin-left: 10px;
+}
+#doclogo{
+  margin-left: 147px;
+  width: 70px;
+}
+h4{
+  margin-left: 103px;
+  color: darkgray;
+}
+#doc{
+  font-size: 14px;
+  font-weight: 700;
+  color: darkgray;
+  /* margin-top: 44px; */
+  position: relative;
+  top: 5px;
+  margin-left: 10px;
 }

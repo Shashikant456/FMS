@@ -114,7 +114,7 @@ export class dashboardHelp extends Component {
         </div>
           
             
-        <h4 className="center">Got questions?</h4>
+        <h4 className="center" id="headinggg">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
         <div className="row container center-align" id="jobtypesbtn">
@@ -173,7 +173,7 @@ export class dashboardHelp extends Component {
             </div>
 
             <div id="ques">
-              <h4  className="center">You still have a questions?</h4>
+              <h4  className="center" id="headinggg">You still have a questions?</h4>
               <p className="center gray-text" id="textcolor">Lets talk about everything!</p>
               </div>
 

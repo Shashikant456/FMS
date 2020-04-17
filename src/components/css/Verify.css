@@ -185,6 +185,8 @@ input.error {
 #otpheader{
   color: #707070;
   margin-bottom: 27px;
+  margin-left: 6px;
+
 }
 #otpinput {
   width: 278px;
