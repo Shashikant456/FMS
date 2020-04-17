@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "history": "^4.10.1",
     "jquery": "^3.4.1",
-    "multiselect-react-dropdown": "^1.4.7",
+    "multiselect-react-dropdown": "^1.4.8",
     "otp-input-react": "^0.2.4",
     "react": "^16.12.0",
     "react-autocomplete": "^1.8.1",

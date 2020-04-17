@@ -582,7 +582,7 @@ class Dashboard extends Component {
                                 <p><i className="material-icons small" id="dashicn">email</i>{this.state.details.email}</p>
                                 <p><i className="fa fa-phone" id="dashicn"></i>{this.state.details.mob}</p>
                                 <p><i className="fa fa-suitcase" id="dashicn"></i>{this.state.details.experience}</p>
-                                <p><i className="material-icons small" id="dashicn">book</i>{this.state.details.eduQual}</p>
+                                <p><i className="fa fa-book" id="dashicn"></i>{this.state.details.eduQual}</p>
                             </div> 
                             
                             <hr></hr>

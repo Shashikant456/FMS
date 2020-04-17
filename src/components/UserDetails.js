@@ -7,17 +7,11 @@ import axios from 'axios'
 import camera from './Images/camerapic.png'
 import "./css/userDetails.css";
 import Select from 'react-select';  
- import 'bootstrap/dist/css/bootstrap.min.css';  
+import 'bootstrap/dist/css/bootstrap.min.css';  
 import Popup from "reactjs-popup";
-import jQuery from 'jquery'
-import $  from 'jquery'
-import { Multiselect } from "multiselect-react-dropdown";
-
+// import { Dropdown } from 'semantic-ui-react'
 import Bootstrap from "react-bootstrap";
-import file from './Images/file.png'
-
-
-
+// import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
 const header={
   'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -27,7 +21,13 @@ const header={
 const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
 
- Object.values(rest).forEach(val => {
+ 
+  // Object.values(formErrors).forEach(val => {
+  //   val.length > 0 && (valid = false);
+  // });
+
+ 
+  Object.values(rest).forEach(val => {
     val === null && (valid = false);
   });
 
@@ -38,9 +38,7 @@ const formValid = ({ formErrors, ...rest }) => {
 class UserDetails extends Component {
   constructor(props) {
     super(props);
-    
   this.state = {
-    
     // oplist:[],
     // multiSelect: [],
     // image: null,
@@ -53,14 +51,12 @@ class UserDetails extends Component {
     //   isOpen: false,
     //   typed: '',
     //   checkBoxerror:'',
-    selectedValue:null,
-    Types:[],
-      resume:null,
+      
       check:false,
       name: null,
       email: '',
       mob:'',
-       mobileNumber:'',
+      mobileNumber:'',
       panNum: null,
       aadharNum: null,
       
@@ -69,63 +65,53 @@ class UserDetails extends Component {
       working : '',
       jobUpdate:null,
       userId:'',
-    //  jobTypes:[
-    //     { id:''},
-    //  ],
-       jobTypes:'',
+      jobTypes:[
+        { id:''}
+      ],
       fresher:'',
-      Current_company:null,
-      noticePeriod:null,
-      companyName:null,
-      currentLocation:null,
-      jobLocation:null,
-      designation:null,
-      negotiable:null,
-      upTo:null,
-      noOfDays:null,
+      Current_company:'',
+      noticePeriod:'',
+      companyName:'',
+      currentLocation:'',
+      jobLocation:'',
+      destination:'',
+      negotiable:'',
+      upTo:'',
+      noOfDays:'',
      
       address:null,
-      prevcompanyName:null,
-      prevdesignation:null,
-      prevjobLocation:null,
       jobs:[],
       
       Updates:["Send Mail","SMS","Both","None"],
       formErrors: {
         name: "",
         email: "",
-        mob:"",
-        mobileNumber:'',
          panNum: "",
           aadharNum: "",
           experience: "", 
           eduQual: "",
           working:"",
           jobUpdate:"",
-          userId:'3',
+
          //jobss:"",
            //update:"",
           //  userLogin:[
           //   { id:''}
           // ],
-        //   jobTypes: 
-        //     [{ id:''}]
-        //  ,
-          jobTypes:[],
+          jobTypes: 
+            { id:''}
+          ,
           fresher:'',
-       Current_company:'',
+      Current_company:'',
       noticePeriod:'',
       companyName:'',
       currentLocation:'',
       jobLocation:'',
-      designation:'',
+      destination:'',
       negotiable:'',
       upTo:'',
       noOfDays:'',
       address:null,
-      prevcompanyName:'',
-      prevdesignation:'',
-      prevjobLocation:'',
           // address:'',
           //
          // password: "",
@@ -135,138 +121,53 @@ class UserDetails extends Component {
     };
     this.handleSubmit=this.handleSubmit.bind(this)
   }
-
-  componentWillMount(){
-    this.setState({
-     mob:this.props.location.state.mobileNumber.mobileNumber,
-     mobileNumber:this.props.location.state.mobileNumber.mobileNumber
-     
-  })  
-  fetch('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes',{headers:header}) 
-    
-
-  .then(response => response.json()) 
-  
-  
-  .then(data => { 
-  // console.log(data)
-  let TypesFromApi = data.data.map(Type => {
-      return { id: Type.id, name: Type.name };
-    });
-    this.setState({
-      Types: [
-        {
-          id: "",
-          name:
-            "(Select your favourite team)"
-        }
-      ].concat(TypesFromApi)
-    });
-  })
-  .catch(error => {
-      console.log(error);
-    });  
-  }
   componentDidMount(){
-    const config = {     
-      headers: { 'content-type': 'multipart/form-data',
-      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
-    }
-      let formData = new FormData();  
-      formData.append('file',this.state.resume);   
-      // console.log(formData)
-      axios.post('stskFmsApi/jobseekerdoc/createDoc/608',formData,config)
-              .then(res => {
-                console.log(res);
-              })
-              .catch(err => console.log(err))
-
-  // axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
-  //   .then(res=>{
-  //     console.log(res.data)
-  //     console.log(res.data.data)
-  //       this.setState({
-  //           jobs : res.data.data
-  //       })  
-  //   })
-    axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
-    .then(res=>{
-      console.log(res.data)
-       this.setState({
-            userId:res.data.data.id,
-            email:res.data.data.email
+    this.setState({
+      mob:this.props.location.state.mobileNumber.mobileNumber,
+      mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+      
+   })    
+    const timer1 = setTimeout(() => {
+      axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+      .then(res=>{
+        console.log(res.data)
+         this.setState({
+              userId:res.data.data.id,
+              email:res.data.data.email
+            })
         })
-    })
-    // jobtypes new code
-
-
-
- 
- }
+    }, 1000);
+    axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
+      .then(res=>{
+        console.log(res.data)
+        console.log(res.data.data)
+          this.setState({
+              jobs : res.data.data
+          })  
+      })
+    }
  handleRadio=(e)=>{
   console.log(e.target.value)
  
 
   if(e.target.value=='false'){
-    document.getElementById("efgh").style.display = "flex";
-
-  }else{
-    document.getElementById("efgh").style.display = "none";
-  }
-  if(e.target.value=='true'){
-    document.getElementById("abcd").style.display = "none";
-
-  }else{
-    document.getElementById("abcd").style.display = "none";
-  }
-  if(e.target.value=='true'){
-    document.getElementById("mnop").style.display = "none";
-
-  }else{
-    document.getElementById("mnop").style.display = "none";
-  }
-  if(e.target.value=='false'){
-    document.getElementById("pqrs").style.display = "none";
-
-  }else{
-    document.getElementById("pqrs").style.display = "none";
-  }
-  this.setState({
-    fresher:e.target.value
-  })
-}
-handleRadio1=(e)=>{
-  console.log(e.target.value)
-  if(e.target.value=='true'){
     document.getElementById("abcd").style.display = "block";
 
   }else{
     document.getElementById("abcd").style.display = "none";
   }
-  if(e.target.value=='false'){
-    document.getElementById("pqrs").style.display = "block";
-
-  }else{
-    document.getElementById("pqrs").style.display = "none";
-  }
-  if(e.target.value=='false'){
-    document.getElementById("mnop").style.display = "none";
-
-  }else{
-    document.getElementById("mnop").style.display = "none";
-  }
   this.setState({
     working:e.target.value
   })
 }
+handleRadio1=(e)=>{
+  console.log(e.target.value)
+  this.setState({
+    fresher_exp:e.target.value
+  })
+}
 handleRadio2=(e)=>{
   console.log(e.target.value)
-  if(e.target.value=='true'){
-    document.getElementById("mnop").style.display = "block";
-
-  }else{
-    document.getElementById("mnop").style.display = "none";
-  }
   this.setState({
     noticePeriod:e.target.value
   })
@@ -277,8 +178,6 @@ handleRadio3=(e)=>{
     negotiable:e.target.value
   })
 }
-
-
 handleSubmit = e => {  
  
   e.preventDefault();
@@ -307,17 +206,14 @@ handleSubmit = e => {
     mob: this.state.mob,
     panNum:this.state.panNum,
     aadharNum: this.state.aadharNum,
-    eduQual: this.state.eduQual,
     experience: this.state.experience,
     working : this.state.working,
+    eduQual: this.state.eduQual,
     jobUpdate:this.state.jobUpdate,
     address:this.state.address,
     fresher:this.state.fresher,
-    prevcompanyName:this.state.fresher,
-    prevdesignation:this.state.fresher,
-    prevjobLocation:this.state.fresher,
     companyName:this.state.companyName,
-    designation:this.state.designation,
+    destination:this.state.destination,
     noticePeriod:this.state.noticePeriod,
     noOfDays:this.state.noOfDays,
     currentLocation:this.state.currentLocation,
@@ -327,11 +223,9 @@ handleSubmit = e => {
     userLogin:{
       id:this.state.userId
     },
-    // jobTypes:[{
-    //   id:this.state.jobTypes.id
-    // }]
-    jobTypes:this.state.jobTypes
-    
+    jobTypes:[{
+      id:this.state.jobTypes.id
+    }]
    
   },{
     headers: 
@@ -380,14 +274,11 @@ handleSubmit = e => {
       companyName:${this.state.companyName},
       currentLocation:${this.state.currentLocation},
       jobLocation:${this.state.jobLocation},
-      designation:${this.state.designation},
+      destination:${this.state.destination},
       negotiable:${this.state.negotiable},
       upTo:${this.state.upTo},
       noOfDays:${this.state.noOfDays},
-      address:${this.state.address},
-      prevcompanyName:${this.state.prevcompanyName},
-    prevdesignation:${this.state.prevdesignation},
-    prevjobLocation:${this.state.prevjobLocation},
+      address:${this.state.address}
        `);
     } else {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
@@ -417,13 +308,88 @@ handleSubmit = e => {
 
   
    };
-   
-  handleChange1Arg = (selectedvalue) =>{
+  handleChange1Arg = (e) =>{
+    // console.log(this.state.jobTypes.id)
+    // alert(this.state.jobTypes.id);
+    // var options = e.target.value;
+    // var value = [];
+    // for (var i = 0, l = options.length; i < l; i++) {
+    //   if (options[i].selected) {
+    //     value.push(options[i].value);
+    //   }
+    //   alert(value);
+    // }
+    // var select = document.getElementById('option');
+    // var textarea = document.getElementById('opitems');
+    // select.onchange = function() {
+    //   textarea.value = select.value;
+    // }
+
+
+    
+    var dropDown = document.getElementById('demo'), jobtypesArray = [], i;
+    for (i = 0; i < dropDown.options.length ; i += 1) {
+        if (dropDown.options[i].selected) {
+            //countryArray.push( dropDown.options[i].value); 
+            jobtypesArray.push(dropDown.options[i].value );
+        }
+    }
+
+    // console.log(jobtypesArray);
+
+    //  var x = jobtypesArray.toString();
+    
+    // var x = jobtypesArray;
+    // console.log(x)
+    // var dataobj={jobtypesArray:[]};
+    // var finalval = JSON.stringify(x); 
+     
+//      var arrayToString = JSON.stringify(Object.assign({}, array)); 
+//  console.log(arrayToString);
+//  function arrayToJSONObject (arr){
+  //header
+//    var keys = arr[0];
+
   
-   console.log(this.state.selectedValue);
-    console.log(`Option selected:`, selectedvalue);
-    this.setState({ selectedvalue})
-    this.setState({jobTypes:selectedvalue})}
+//   var newArr = arr.slice(1, arr.length);
+
+//   var formatted = [],
+//   data = newArr,
+//   cols = keys,
+//   l = cols.length;
+//   for (var i=0; i<data.length; i++) {
+//           var d = data[i],
+//                   o = {};
+//           for (var j=0; j<l; j++)
+//                   o[cols[j]] = d[j];
+//           formatted.push(o);
+//   }
+//   return formatted;
+  
+// }
+// console.log(arrayToJSONObject (arr))
+var arr = jobtypesArray; //6,8
+var count =arr.length;
+var finaldata='';
+for(var i=1;i<=count;i++){
+  finaldata+="{'id':"+i+"},";
+}
+var newdata="["+finaldata+ "]";
+
+
+
+//  var json = Object.assign({}, arr);
+//  var jsonobj = arr.reduce((json, value, key) => { json[key] = value; return json; }, {});
+// console.log(jsonobj)
+
+    this.setState({
+      jobTypes:{
+        id:e.target.value
+      }
+      // jobTypes:newdata
+    })
+    
+  }
   
   handleChange2 = e =>{
     this.setState({
@@ -450,15 +416,6 @@ handleSubmit = e => {
       image: e.target.files[0]
   })
 };
-handleResumeChange = (e) => {
-  console.log( e.target.files[0])
-  this.setState({
-    resume: e.target.files[0]
-})
-
-
-   
-}
  
   onChangeCapture=(e)=>{
     console.log(e.target.files[0]);
@@ -472,7 +429,6 @@ handleResumeChange = (e) => {
       address:e.target.value
     })
   }
-
   fileUploadHandler = () =>{
     const fd = new FormData();
     fd.append('image_src',this.state.selectedFile)
@@ -492,7 +448,6 @@ handleResumeChange = (e) => {
     return (this.state.jobs.map(job => ({ label: job.name, value: job.id })))  
 }  
   render() {
-    console.log(this.state.jobTypes)
   // console.log(job.id)
 //  const oplist = this.state.jobs.map(function(job){return (job)})
 //  console.log(oplist)
@@ -500,16 +455,15 @@ handleResumeChange = (e) => {
   //console.log(this.state.working)
 //  console.log(this.state)
  console.log(this.state.jobUpdate)
- const { selectedValue } = this.state;
     return (
    
       <div className="wrapper5 col m4 offset-l1">
-        <div className="form-wrapper4 row " style={{width:'800px',height:'600px'}}>
-        <div className="userimage" style={{marginLeft:'329px',marginRight:'332px'}}>
+        <div className="form-wrapper4 row ">
+        <div className="userimage">
         <i className="material-icons large">person</i>
         
             </div>
-            <div className="camera" style={{marginLeft:'385px'}}>
+            <div className="camera">
          
             {/* <input type="file" />
         <i className="material-icons small">camera</i> */}
@@ -533,13 +487,13 @@ handleResumeChange = (e) => {
           {/* <Multiselect options={data} onSelectOptions={this.result} /> */}
        
          
-          <form onSubmit={this.handleSubmit} class="form-row">
+          <form onSubmit={this.handleSubmit}>
           
           {/* <Dropdown placeholder='Applied For'  fluid multiple selection options={options} /> */}
           
-   
-          <div class="col-md-4 mb-3">
-         {/* <div className="fullName" style={{width:'35%',marginLeft:'10%'}}> */}
+      
+
+         <div className="fullName  ">
                 <input
                 className=""
                 placeholder="Full Name"
@@ -552,8 +506,7 @@ handleResumeChange = (e) => {
               />
              
             </div>
-            <div class="col-md-4 mb-3">
-            {/* <div className="mobileNumber" style={{width:'35%',marginLeft:'10%'}}> */}
+            <div className="mobileNumber  ">
               
               <input
                 className="" 
@@ -568,8 +521,7 @@ handleResumeChange = (e) => {
               />
             
             </div>
-            <div class="col-md-4 mb-3">
-            {/* <div className="Email"  style={{width:'35%',marginLeft:'10%'}}> */}
+            <div className="Email  ">
              
               <input
                 className=""
@@ -583,9 +535,7 @@ handleResumeChange = (e) => {
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>
-            <div class="form-row">
-            <div class="col-md-4 mb-3" style={{width:'400px'}}>
-         
+            <div className="panNumber  ">
               
               <input
                 className=""
@@ -601,8 +551,7 @@ handleResumeChange = (e) => {
               />
              
             </div>
-            <div class="col-md-4 mb-3">
-           
+            <div className="aadhar  ">
               
               <input
                 className=""
@@ -617,10 +566,26 @@ handleResumeChange = (e) => {
               />
              
             </div>
-          
+            {/* <div className="years  ">
+              
+                <input
+                className=""
+                placeholder="Years of Experience"
+                type="text"
+                name="experience"
+                required
+                pattern="[0-9]*"
+                title="It should be Numeric"
+                onChange={this.handleChange}
+                id="input"
+                maxLength="2"
+              /> 
+
+              
+              </div> */}
         
-        <div class="col-md-4 mb-3">
-            {/* <div className="education  "  style={{width:'35%',marginLeft:'10%'}} > */}
+           
+            <div className="education  ">
              
               <input
                 className=""
@@ -635,101 +600,93 @@ handleResumeChange = (e) => {
 {/* <ReactMultiSelectCheckboxes options={this.Updates} /> */}
                
             </div>
-       </div>
-       <div class="form-row">
-       <div class="col-md-4 mb-3" style={{width:'500px'}}>
-           
-          <Popup trigger={<input type="select"  placeholder="select" id="popup"/>} position=" center">
-           
-               <Multiselect options={this.state.Types}
-                 value={selectedValue} displayValue="name"
-                 onSelect={this.handleChange1Arg} id="demo"/>   
-  </Popup>
        
-</div> 
-    <div class="col-md-4 mb-3">
-       
+            <div className="applied  ">
+          
+           
+  
+         
+        {/* <Popup trigger={<input type="select" placeholder="select" id="popup"/>} position=" center">
+    <div><Select  options={this.Jobs()}  value="6"  style={{width:'100%'}} onChange={this.handleChange1Arg} 
+            id="multi" isMulti 
+           placeholder="select some options"/>
+           </div>
+  </Popup> */}
+               {/* <textarea id="opitems"  placeholder="PleaseSelect" onChange={this.handleChange5}>
+
+</textarea> */}
+
+  <Popup trigger={<input type="select" placeholder="select" id="popup"/>} position=" center">
+                <Form.Control as="select"  onChange={this.handleChange1Arg} placeholder="Select ids" id="demo" > 
+                
+               
+               {/* <option value=" " disabled selected>Choose your option</option> */}
+  
+                
+             {this.state.jobs.map(function(job,i){
+                   return( <option key={job.id} value={job.id} id="option">
+                      {job.name}
+                    </option>
+                      
+                    
+                   ) })}
+                   
+
+
+                  </Form.Control> 
+                
+       </Popup>
+                   </div> 
+            <div className="jobOpening  ">
+            
     <Form.Control as="select" onChange={this.handleChange2} id="update" >
     <option value='1'>Please Select</option>
     {this.state.Updates.map(jobUpdate =>(
           <option key={jobUpdate} value={jobUpdate}>
-             {jobUpdate}
+             
+             
+              {jobUpdate}
+              
           </option>
       ))}
- </Form.Control> 
+
+
+      
+  </Form.Control> 
   
             </div>
-            <div class="col-md-4 mb-3" style={{marginTop:'15px',marginLeft:'-19px'}}>
-            {/* <div className="address"  style={{width:'35%',marginLeft:'9%'}}> */}
-             
-             <textarea id="address"  placeholder="Address" onChange={this.handleChange5}>
  
-             </textarea>
-  </div>
-            </div>
-            <div class="form-row" style={{marginTop:'-35px'}}>
-            <div class="col-md-6 mb-3" style={{display:'contents'}} >
- 
- {/* <div className="choose" style={{width:'35%',marginLeft:'10%'}} > */}
- <p id="label">Are you a fresher?</p>
-
-   <p>
-   <label >
-   <input name="fresher"  value="true" onClick={this.handleRadio} type="radio" id="ra" />
-       <span id="label">Yes</span>
-       </label>
-   </p>
-   <p>
-   <label>
-     <input name="fresher" value="false" onClick={this.handleRadio} type="radio" id="ra"/>
-     <span id="label">No</span>
-   </label>
- </p>
- </div>
- {/* <div class="col-md-6 mb-3" style={{marginLeft: '31px',
-    marginTop: '-16px'}} >
- <input type="file" 
-                onChange={this.handleResumeChange}
-                class="inputfile" id="embedpollfileinput" />
-
-                    <label for="embedpollfileinput" class="ui huge white right floated button" id="hugewhite">
-                    
-                    <img src={file} id="fileimg"/>
-                   
-                    </label>
-
-  </div> */}
-  </div>
-  <div class="form-row" id="efgh" style={{marginTop:'0px',marginLeft:'-233px',display:'none'}}>
-            <div class="col-md-6 mb-3"  style={{display:'contents'}} >
-  {/* <div className="fresher" id="efgh" style={{display:'none',width:'35%',marginLeft:'10%'}} > */}
-              <p id="label">Currently working?</p>
+            <div className="choose  ">
+            <p id="label">Are you a fresher?</p>
   
               <p>
-              <label>
-              <input name="working"  value="true" onClick={this.handleRadio1} type="radio" id="ra" />
+              <label >
+              <input name="working"  value="true" onClick={this.handleRadio} type="radio" id="ra" />
                   <span id="label">Yes</span>
                   </label>
               </p>
               <p>
               <label>
-                <input name="working" value="false" onClick={this.handleRadio1} type="radio" id="ra"/>
+                <input name="working" value="false" onClick={this.handleRadio} type="radio" id="ra"/>
                 <span id="label">No</span>
               </label>
             </p>
             </div>
-            </div>
-            <div class="form-row" className="a" id="abcd" style={{marginTop:'0px',marginLeft:'0px',display:'none'}}>
-          {/* <div id="abcd" style={{display:'none'}} className="a" > */}
-          <div class="col-md-4 mb-3 years">
-           {/* <div className="years"  style={{width:'155%',marginLeft:"-158%"}} > */}
+            <div className="address">
+             
+             <textarea id="address"  placeholder="Address" onChange={this.handleChange5}>
+ 
+             </textarea>
+  </div>
+          <div id="abcd" style={{display:'none'}} >
+           <div className="years"  >
               
                 <input
                 className=""
                 placeholder="Years of Experience"
-                type="text" 
+                type="text"
                 name="experience"
-                
+                required
                 pattern="[0-9]*"
                 title="It should be Numeric"
                 onChange={this.handleChange}
@@ -737,64 +694,63 @@ handleResumeChange = (e) => {
                 maxLength="2"
               /> 
               </div>
-              <div class="col-md-4 mb-3 company">
-              {/* <div className="company" > */}
+              <div className="fresher">
+            <p id="label">Are you working?</p>
+  
+              <p>
+              <label >
+              <input name="fresher"  value="true" onClick={this.handleRadio1} type="radio" id="ra" />
+                  <span id="label">Yes</span>
+                  </label>
+              </p>
+              <p>
+              <label>
+                <input name="fresher" value="false" onClick={this.handleRadio1} type="radio" id="ra"/>
+                <span id="label">No</span>
+              </label>
+            </p>
+            </div>
+            <div className="company">
               <input
                 className=""
                 placeholder="Enter Current Company Name"
                 type="text"
                 name="companyName"
-                
+                required
                 
                 onChange={this.handleChange}
                 id="input"
                
               /> 
               </div>
-              <div class="col-md-4 mb-3 place">
-              {/* <div className="place"  > */}
+              <div className="place">
               <input
                 className=""
                 placeholder="Job Location"
                 type="text"
                 name="jobLocation"
+                required
+                
                 onChange={this.handleChange}
                 id="input"
                 
               /> 
                </div>
-              
-               {/* <div class="form-row"> */}
-               <div class="col-md-4 mb-3 designation">
-               {/* <div className="designation"  style={{width:'35%'}}> */}
+              {/* <div className="place">
               <input
                 className=""
-                placeholder="Designation"
+                placeholder="Place"
                 type="text"
-                name="designation"
-               
+                name="place"
+                required
                 
                 onChange={this.handleChange}
                 id="input"
                 
-              /> 
-              </div>
-              <div className="col-md-4 mb-3 currentLocation" style={{marginLeft: '229px',marginTop: '-48px'}}>
-              <input
-                className=""
-                placeholder="Current Location"
-                type="text"
-                name="currentLocation"
-                
-                
-                onChange={this.handleChange}
-                id="input"
-                
-              /> 
-              </div>
-              
-              <div class="col-md-4 mb-3 notice_period" style={{marginLeft:'60%'}}>
-              {/* <div className="notice_period" > */}
+              />  */}
+              {/* </div> */}
+            
+              <div className="notice_period">
             <p id="label">notice period?</p>
   
               <p>
@@ -810,123 +766,46 @@ handleResumeChange = (e) => {
               </label>
             </p>
             </div>
-              </div>
-              {/* </div> */}
-              {/* abcd */}
-              <div class="form-row" id="pqrs" style={{display:'none'}}>
-              <div class="col-md-4 mb-3 years"  style={{width: '695px',
-    marginTop: '-69px'}}>
-              {/* <div id="pqrs" style={{display:'none'}} className="c"> */}
-           {/* <div className="years"  > */}
-              
-                <input
-                className=""
-                placeholder="Years of Experience"
-                type="text"
-                name="experience"
-                
-                pattern="[0-9]*"
-                title="It should be Numeric"
-                onChange={this.handleChange}
-                id="input"
-                maxLength="2"
-              /> 
-              </div>
-               <div class="col-md-4 mb-3 company"  style={{marginLeft:'35%',
-    marginTop: '-46px'}}>
-              
-              <input
-                className=""
-                placeholder="Enter previous Company Name"
-                type="text"
-                name="prevcompanyName"
-               
-                
-                onChange={this.handleChange}
-                id="input"
-               
-              /> 
-              </div>
-              <div class="col-md-4 mb-3 place"  style={{marginLeft: '71%',
-    marginTop: '-48px'}}>
-              
-              <input
-                className=""
-                placeholder=" previous Job Location"
-                type="text"
-                name="prevjobLocation"
-                onChange={this.handleChange}
-                id="input"
-                
-              /> 
-               </div>
-               <div class="col-md-4 mb-3 designation"  style={{marginLeft:'0px'}}>
-               
-              <input
-                className=""
-                placeholder="Previous Designation"
-                type="text"
-                name="prevdesignation"
-                onChange={this.handleChange}
-                id="input"
-                
-              /> 
-              </div>
-              <div className="col-md-4 mb-3 currentLocation" style={{marginLeft: '243px',marginTop: '-48px'}}>
-              <input
-                className=""
-                placeholder="Current Location"
-                type="text"
-                name="currentLocation"
-                
-                
-                onChange={this.handleChange}
-                id="input"
-                
-              /> 
-              </div>
-              
-          </div>
-          {/* </div> */}
-              {/* pqrs */}
-         
-         
-             
-              {/* <div className="place">
-              <input
-                className=""
-                placeholder="Place"
-                type="text"
-                name="place"
-                required
-                
-                onChange={this.handleChange}
-                id="input"
-                
-              />  */}
-              {/* </div> */}
-            <div class="form-row" id="mnop" style={{display:'none'}} >
-            {/* <div id="mnop" style={{display:'none'}} className="b"> */}
-            {/* <div className="days" > */}
-            <div class="col-md-4 mb-3 days" style={{marginTop: '-31px',
-    marginLeft: '10px',
-    width: '730px'}}>
+            <div className="days">
               <input
                 
                 placeholder="days"
                 type="text"
                 name="noOfDays"
-                
+                required
                 
                 onChange={this.handleChange}
                 id="input"
                 
               /> 
               </div>
-              <div class="col-md-4 mb-3 negotiable" style={{display: 'flex',
-    marginTop:'-34px',
-    marginLeft: '268px'}}>
-               {/* <div className="negotiable" > */}
+                <div className="designation">
+              <input
+                className=""
+                placeholder="Designation"
+                type="text"
+                name="designation"
+                required
+                
+                onChange={this.handleChange}
+                id="input"
+                
+              /> 
+              </div>
+              <div className="salary">
+              <input
+                
+                placeholder="salary"
+                type="text"
+                name="upTo"
+                required
+                
+                onChange={this.handleChange}
+                id="input"
+                
+              /> 
+              </div>
+               <div className="negotiable">
             <p id="label">negotiable</p>
   
               <p>
@@ -942,40 +821,19 @@ handleResumeChange = (e) => {
               </label>
             </p>
             </div>
-              <div class="col-md-4 mb-3 salary" style={{marginLeft: '69%',
-    marginTop: '-78px'}}>
-              {/* <div className="salary" > */}
+            <div className="currentLocation">
               <input
-                
-                placeholder="upTo"
+                className=""
+                placeholder="Current Location"
                 type="text"
-                name="upTo"
-                
+                name="currentLocation"
+                required
                 
                 onChange={this.handleChange}
                 id="input"
                 
               /> 
               </div>
-              
-            
-            </div>
-            {/* </div> */}
-            {/* <div class="col-md-4 mb-3" style={{marginTop:'159px'}}>
-          
-
-<label>
-  <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
-  <span id="label">Terms and Conditions</span>
-</label>
-<p className="center red-text">{this.state.checkBoxerror}</p>
-</div>  */}
-  
-            <div className="createAccount1">
-              <button type="submit" id="submit1">Submit</button>
-            </div> 
-            {/* mnop */}
-          
               {/* <div className="designation">
               <input
                 className=""
@@ -1010,27 +868,28 @@ handleResumeChange = (e) => {
               <small>Select Resume</small>
              
              </div> */}
-             {/* </div> */}
+             </div>
 
  
 
             
-          
+           {/* <div className="checkbox">
+
+<label>
+  <input name="check" value="false " onClick={this.handleCheck} type="checkbox" />
+  <span id="label">Terms and Conditions</span>
+</label>
+<p className="center red-text">{this.state.checkBoxerror}</p>
+</div>  */}
         
-               
+                  <div className="createAccount">
+              <button type="submit" id="submit">Submit</button>
+            </div>
           </form>
         </div>
-       </div>
+      </div>
     );
   }
 }
-
-// jQuery(document).ready(function() {
-//   jQuery('#demo').multiselect({
-//     includeSelectAllOption: true,
-//  });
-// });
-
-
 
 export default UserDetails;
