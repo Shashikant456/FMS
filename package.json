@@ -34,6 +34,8 @@
     "react-scripts": "3.3.1",
     "react-select": "^3.0.8",
     "react-telephone-input": "^4.73.4",
+    "react-toastify": "^5.5.0",
+    "react-toasts": "^3.0.6",
     "reactjs-popup": "^1.5.0",
     "redux": "^4.0.5",
     "requires": "^1.0.2"

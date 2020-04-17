@@ -5,11 +5,14 @@ import  mainLogo from './Images/Mainlogo.png'
 import dashboard from './Images/dashboard.png'
 import { withRouter,Link,NavLink } from 'react-router-dom'
 import Popup from "reactjs-popup";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const header={
      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
  }
 
+toast.configure();
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -74,6 +77,8 @@ class Dashboard extends Component {
 
     handleApply=(id)=>{
         console.log(id)
+        toast.success("yeeeahhhh",{position: toast.POSITION.BOTTOM_CENTER,
+        autoClose:8000})
         axios.post('/stskFmsApi/jobseeker/applyJobs',
             { 
                 id:this.state.userId,
@@ -95,11 +100,16 @@ class Dashboard extends Component {
                 const posts = this.state.posts.filter(job =>{
                     return job.id !== id
                 })
+                const searchedJobs = this.state.searchedJobs.filter(job =>{
+                    return job.id !== id
+                })
                 this.setState({
                     posts,
+                    searchedJobs,
                     //appliedJobsId:[...this.state.appliedJobsId, id],
-                    model_open:false
                 })
+               
+              
         }    
     handleLogin=(e)=>{
         this.setState({
@@ -248,7 +258,7 @@ class Dashboard extends Component {
                                          industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                                     </div>
                                     <div className="col s12 m6 l6">
-                                        <button className="grey-text"  onClick={() => {close();}} id="popcancelbtn" type="text">cancel</button>
+                                        <button className="grey-text" onClick={() => {close();}} id="popcancelbtn" type="text">cancel</button>
                                         <br></br>
                                     </div>
                                     
