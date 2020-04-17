@@ -567,8 +567,7 @@ class Dashboard extends Component {
                                 <button id="popsavebtn" type="text">save</button>
                             </div>
                             </form>
-                            </div>
-                            
+                            </div>added
                     </Popup>
                             
                     </div>
