@@ -7,8 +7,6 @@ import jobseeker from './Images/JobseekerHelp.png'
 import vendor from './Images/vendorHelp.png'
 import association from './Images/AsssociationHelp.png'
 import recident from './Images/recidentHelp.png'
-import M from "materialize-css";
-//import "materialize-css/dist/css/materialize.min.css";
 import axios from 'axios'
 import * as $ from 'jquery'
 
@@ -20,11 +18,6 @@ export class dashboardHelp extends Component {
     mobileNumber:''
   }
   componentDidMount(){
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.collapsible');
-      var instances = M.Collapsible.init(elems, {});
-    });
-   
     this.setState({
       mobileNumber:this.props.location.state.mobileNumber.mobileNumber
     })

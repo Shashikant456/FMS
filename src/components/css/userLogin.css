@@ -141,6 +141,12 @@ i.right {
   float: right;
   margin-left: -21px;
 }
+span.character-counter{
+  color: white;
+    margin-top: -56px;
+    position: fixed;
+
+}
 @media only screen and (max-width: 625px)
 {
     html{

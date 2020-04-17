@@ -232,6 +232,7 @@ button:enabled{
 #sendotpbtn {
     width: 288px;
     margin-top: -17px;
+    outline: none;
 }
 
 @media only screen and (max-width: 625px)

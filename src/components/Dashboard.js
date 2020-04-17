@@ -28,7 +28,7 @@ class Dashboard extends Component {
         searchedJobs:[],
         searchLoading:false,
         searchError:'',
-        appliedJobsId:[]
+        appliedJobsId:[18]
     
      }
 }
@@ -77,8 +77,7 @@ class Dashboard extends Component {
 
     handleApply=(id)=>{
         console.log(id)
-        toast.success("yeeeahhhh",{position: toast.POSITION.BOTTOM_CENTER,
-        autoClose:8000})
+        toast.success("Applied successfully",{position: toast.POSITION.BOTTOM_CENTER})
         axios.post('/stskFmsApi/jobseeker/applyJobs',
             { 
                 id:this.state.userId,
@@ -255,7 +254,7 @@ class Dashboard extends Component {
                                         <h6>Description</h6>
                                         <br></br>
                                         <p className="grey-text">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                         industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
+                                         industry. since the 1500s, when an unknown</p>
                                     </div>
                                     <div className="col s12 m6 l6">
                                         <button className="grey-text" onClick={() => {close();}} id="popcancelbtn" type="text">cancel</button>
@@ -533,7 +532,7 @@ class Dashboard extends Component {
                         <div id="editicn" >
                         <Popup modal trigger={
                         
-                            <div><i className="material-icons small right" onClick={()=>this.setState({popup:true})}>edit</i>
+                            <div><i className="fa fa-pencil right" onClick={()=>this.setState({popup:true})}></i>
                             <br></br></div>
                         }>
                         
@@ -581,8 +580,8 @@ class Dashboard extends Component {
                             <div className="left-align">
                                 <p><i className="material-icons small" id="dashicn">location_on</i>{this.state.details.currentLocation}</p>
                                 <p><i className="material-icons small" id="dashicn">email</i>{this.state.details.email}</p>
-                                <p><i className="material-icons small" id="dashicn">call</i>{this.state.details.mob}</p>
-                                <p><i className="material-icons small" id="dashicn">book</i>{this.state.details.experience}</p>
+                                <p><i className="fa fa-phone" id="dashicn"></i>{this.state.details.mob}</p>
+                                <p><i className="fa fa-suitcase" id="dashicn"></i>{this.state.details.experience}</p>
                                 <p><i className="material-icons small" id="dashicn">book</i>{this.state.details.eduQual}</p>
                             </div> 
                             

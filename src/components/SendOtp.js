@@ -20,6 +20,7 @@ class SendOtp extends Component{
     this.state={
              countryCode:'91',
              mobileNumber:' ',
+             loading:false
            }
           this.handleSubmit = this.handleSubmit.bind(this)
         }
@@ -68,10 +69,10 @@ class SendOtp extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
-        console.log(this.state.countryCode)
-
-    this.props.history.push({
+        this.setState({
+            loading:true
+        })
+         this.props.history.push({
         pathname : '/verify',
         state :{
         mobileNumber : this.state,
@@ -90,6 +91,7 @@ class SendOtp extends Component{
             });
     }
     render(){
+    const {loading}=this.state
      const countries = require("./countryphonecode.json")
      console.log(this.state.countryCode)
     return(
@@ -119,7 +121,10 @@ class SendOtp extends Component{
                               
                             </Form.Control>
             </Form.Group>
-                  <button id="sendotpbtn">Send OTP</button>
+                  <button id="sendotpbtn">
+                   {loading && 
+                    <i className="fa fa-spinner fa-spin"></i>}
+               Send OTP</button>
             </form>
             <strong id="textsignin">Sign in options</strong>
             <br></br>

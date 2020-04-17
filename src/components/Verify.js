@@ -63,9 +63,9 @@ class Verify extends Component{
    }
     handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(this.state.userRoles)
         this.setState({
-            otp_input:''
+            otp_input:'',
+            loading:true
         })
         axios.post('/stskFmsApi/otpServices/verifyOtpBySMS', 
         {   countryCode:91,
@@ -81,10 +81,6 @@ class Verify extends Component{
                         axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber,{headers:header})
                         .then(Response => {
                             console.log(Response.data)
-                            this.setState({
-                                loading:true
-                            })
-                           
                             if (Response.data.success===1){
                                
                                 console.log("Dashboard")
@@ -122,12 +118,10 @@ class Verify extends Component{
                     else {
                         console.log("error")
                         this.setState({
-                            error: 'otp miss-match'
+                            error: 'otp miss-match',
+                            loading:false
                         })
                         this.props.history.push('./verify')
-                        this.setState({
-                            otp_input:''
-                        })
                     }
                 })
                 .catch(error => {
@@ -138,12 +132,9 @@ class Verify extends Component{
     }
     render(){
         const {loading}=this.state
-        console.log(this.state.countryCode)
+        console.log(this.state)
     
     return(
-        
-
-
         <div id="body">
             <div className="row" id="main1">      
             <center id="center">
@@ -156,22 +147,12 @@ class Verify extends Component{
                             onChange={this.handleChange} />
                             <br></br>
                             <br></br>
-                            <p className="red-text">{this.state.error}</p>
+                            <h6 className="red-text">{this.state.error}</h6>
                     </div>
                     <h6 id="resendotp" onClick={this.handleResend} className="center-align">Resend OTP</h6>
-                <button id="input-type3"  disabled={loading}>
+                <button id="input-type3">
                 {loading && 
-                    <div className="preloader-wrapper small active">
-                        <div className="spinner-layer spinner-green-only">
-                        <div className="circle-clipper left">
-                            <div className="circle"></div>
-                        </div><div className="gap-patch">
-                            <div className="circle"></div>
-                        </div><div className="circle-clipper right">
-                            <div className="circle"></div>
-                        </div>
-                        </div>
-                    </div>}
+                    <i className="fa fa-spinner fa-spin"></i>}
                       Verify</button>
                 </form>
                 <div id="hr" className="separator">or</div>

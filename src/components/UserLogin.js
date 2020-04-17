@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import logo from './Images/Mainlogo.png'
 import './css/userLogin.css'
-
+import Loader from 'react-loader-spinner'
 
 const header={
     'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -16,6 +16,7 @@ state = {
               userId:'',
               error:'',
               mobileNumber:'',
+              loading:false
         }
     
         handleChange1 = (e) => {
@@ -37,6 +38,9 @@ state = {
         handleSubmit=(e)=>{
             e.preventDefault();
             console.log(this.state)
+            this.setState({
+                loading:true
+            })
             axios.get('/stskFmsApi/jobseeker/getByEmailid/'+ this.state.email,{headers:header})
             .then(res=>{
                 console.log(res.data)
@@ -99,12 +103,14 @@ state = {
                     }
                      else if(Response.data.message==="User ID or Password error"){
                         this.setState({
-                            error:'User ID or Password error'
+                            error:'User ID or Password error',
+                            loading:false
                         })
                     }
                     else{
                         this.setState({
-                            error:'Opps! email id does not registered'
+                            error:'Opps! email id does not registered',
+                            loading:false
                         })
                     }
              })
@@ -117,6 +123,7 @@ state = {
 
     render() {
         console.log(this.state)
+        const {loading}=this.state
         return (
         
             <div className="" id="body">
@@ -141,7 +148,10 @@ state = {
                     <h6 className="red-text">{this.state.error}</h6>
                 </div>
                 <br></br>
-            <button id="UserLoginButton">Login</button>
+            <button id="UserLoginButton">
+            {loading && 
+                <i className="fa fa-spinner fa-spin"></i>}
+                Login</button>
              </form>
              <h6 id="forgot" onClick={this.forgetPwd}>Forgot Password?</h6>
             
