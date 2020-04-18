@@ -4,7 +4,10 @@ import { withRouter,Link, Route} from 'react-router-dom'
 import logo from './Images/Mainlogo.png'
 import left from './Images/leftside.png'
 import right from './Images/rightside.png'
-import job from './Images/Pre-reg_icon_jobseeker.png'
+import job from './Images/jobseeker2.png'
+import vendor from './Images/vendor2.png'
+import association from './Images/association2.png'
+import resident from './Images/resident2.png'
 import './css/preregister.css'
 import axios from 'axios'
 
@@ -27,7 +30,6 @@ export class Register extends Component {
         this._isMounted = true;
         axios.get('/stskFmsApi/userRoles/getAllUserRoles',{headers:header})
         .then(res=>{
-            console.log(res.data)
             console.log(res.data.data)
             this.setState({
                 userRoless : res.data.data,
@@ -43,7 +45,6 @@ export class Register extends Component {
              path:('/register'),
             state :{
             mobileNumber : this.state
-            //name:this.state.name
         }})
     }
    
@@ -66,38 +67,32 @@ export class Register extends Component {
 
             <div className="center row" id="body">
             
-                    <div className="center col s10" id="main">      
+                <div className="center col s10" id="main">      
                     <img className="left align" id="side" src={left} width="50" height="50"></img>
                     <img className="right align" id="side" src={right} width="50" height="50"></img>
                     <center id="center">
-                    <img id="logo" className="center" src={logo} width="60" height="60"></img>
-                    <h3 className="center" id="text">Choose Category</h3>  
-                    
-                    <div className='row'>
-                            <div className="col s6 m6 l6">
-                                <div id="jobseeker" type='submit' name='btn_login' onClick={this.handleChange}
-                                className='btn btn-large white'>{postList[0]}
-                                </div>
+                        <img id="logo" className="center" src={logo} width="60" height="60"></img>
+                        <h3 className="center" id="texttt">Choose Category</h3>  
+                        
+                        <div className='row'>
+                            <div className="col m6 l6" id="jobseeeker">
+                                <img className="left align"  src={job} width="60" height="60"></img>{postList[0]}
                             </div>
-                            <div className="col s6 m6 l6">
-                                <div id="vendor" type='submit' name='btn_login' onClick={this.handleChange}
-                                className='btn btn-large white '>{postList[1]}</div>
+                            <div className="col m6 l6" id="associationn">
+                                <img className="left align"  src={association} width="60" height="60"></img>{postList[1]}
                             </div>
                         </div>
-
-                    <div className='row'>
-                        <div className="col s6 m6 l6">
-                                <div id="association" type='submit' name='btn_login' onClick={this.handleChange}
-                                className='btn btn-large white '>{postList[2]}</div>
+                        <div className='row'>
+                            <div className="col m6 l6" id="vendorr">
+                                <img className="left align"  src={vendor} width="60" height="60"></img>{postList[2]}
                             </div>
-                        <div className="col s6 m6 l6">
-                            <div id="resident" type='submit' name='btn_login' onClick={this.handleChange}
-                            className='btn btn-large white '>{postList[3]}</div>
+                            <div className="col m6 l6" id="residentt">
+                                <img className="left align"  src={resident} width="60" height="60"></img>{postList[3]}
+                            </div>
                         </div>
-                    </div>
-                    
+                     
                     </center>
-                    </div> 
+                </div> 
         
             </div>
 
