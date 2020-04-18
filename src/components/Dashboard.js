@@ -7,6 +7,7 @@ import { withRouter,Link,NavLink } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {FaBookOpen} from 'react-icons/fa'
 
 const header={
      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -581,7 +582,8 @@ class Dashboard extends Component {
                                 <p><i className="material-icons small" id="dashicn">email</i>{this.state.details.email}</p>
                                 <p><i className="fa fa-phone" id="dashicn"></i>{this.state.details.mob}</p>
                                 <p><i className="fa fa-suitcase" id="dashicn"></i>{this.state.details.experience}</p>
-                                <p><i className="fa fa-book" id="dashicn"></i>{this.state.details.eduQual}</p>
+                                <p><FaBookOpen id="dashicn"/>{this.state.details.eduQual}</p>
+                                
                             </div> 
                             
                             <hr></hr>
