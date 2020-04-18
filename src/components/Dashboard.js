@@ -7,7 +7,16 @@ import { withRouter,Link,NavLink } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import logout from './Images/logout.png'
+import call from './Images/call.png'
+import location from './Images/location.png'
+import experiance from './Images/experiance.png'
+import book from './Images/book.png'
+import edit from './Images/edit.png'
 import {FaBookOpen} from 'react-icons/fa'
+import {MdCall} from 'react-icons/md'
+import {AiOutlineLogout} from 'react-icons/ai'
+
 
 const header={
      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -533,7 +542,7 @@ class Dashboard extends Component {
                         <div id="editicn" >
                         <Popup modal trigger={
                         
-                            <div><i className="fa fa-pencil right" onClick={()=>this.setState({popup:true})}></i>
+                            <div className="right-align"><img src={edit} width="20" height="20"></img>
                             <br></br></div>
                         }>
                         
@@ -568,7 +577,7 @@ class Dashboard extends Component {
                                 <button id="popsavebtn" type="text">save</button>
                             </div>
                             </form>
-                            </div>added
+                            </div>
                     </Popup>
                             
                     </div>
@@ -578,16 +587,17 @@ class Dashboard extends Component {
                         </div>
                             <strong className="center-align">{this.state.details.name}</strong>
                             <div className="left-align">
-                                <p><i className="material-icons small" id="dashicn">location_on</i>{this.state.details.currentLocation}</p>
+                                <p><img className="center" id="dashicn" src={location} width="23" height="23"></img>{this.state.details.currentLocation}</p>
                                 <p><i className="material-icons small" id="dashicn">email</i>{this.state.details.email}</p>
-                                <p><i className="fa fa-phone" id="dashicn"></i>{this.state.details.mob}</p>
-                                <p><i className="fa fa-suitcase" id="dashicn"></i>{this.state.details.experience}</p>
-                                <p><FaBookOpen id="dashicn"/>{this.state.details.eduQual}</p>
+                                <p><img className="center" id="dashicn" src={call} width="20" height="20"></img>{this.state.details.mob}</p>
+                                <p><img className="center" id="dashicn" src={experiance} width="20" height="20"></img>{this.state.details.experience}</p>
+                                <p><img className="center" id="dashicn" src={book} width="20" height="20"></img>{this.state.details.eduQual}</p>
                                 
                             </div> 
                             
                             <hr></hr>
-                            <a className="waves-effect waves-light btn" onClick={this.handleLogin} id="logout"><i className="material-icons left">logout</i>Logout</a>
+                            <a className="waves-effect waves-light btn" onClick={this.handleLogin} id="logout">
+                            <img className="center" src={logout} width="20" height="20"></img>Logout</a>
                         </div>
                     </div>
                             <div className="col s12 m7 l7 offset-l1 z-depth-1" id="container">
