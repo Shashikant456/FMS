@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-
 import axios from 'axios'
 import '../AssociationCSS/Navbar.css'
 import  mainLogo from '../Images/Mainlogo.png'
 import dashboard from '../Images/dashboard.png'
 import { withRouter,Link,NavLink } from 'react-router-dom'
+import edit from '../Images/edit.png'
 
 
 const header={
@@ -13,7 +13,8 @@ const header={
 
 class Navbar extends Component {
     state={
-        Block:true
+        Block:true,
+        Block1:true
     }
     componentDidMount(){
         axios.get('/stskFmsApi/blocks/getAllBlocks',{headers:header})
@@ -53,11 +54,12 @@ class Navbar extends Component {
         <div className="row white">
           <div className="col s10 m10 l10">
           <div className="col s10 m10 l10 offset-m1 offset-l1 z-depth-1">
-          <h4>Block Details</h4>
-              <div id="MianBlock" className="col s5 m2 l2 z-depth-1 grey container" onClick={this.handleVendor} >
+          <h4 className="headingg">Block Details</h4>
+              <div id="MianBlock" className="col s5 m4 l2 z-depth-1 grey container" onClick={this.handleVendor} >
               <br></br>
                <div id="block" onClick={()=>this.setState({Block:false})} className="button center-align white">
-               <i className="material-icons left">keyboard_arrow_right</i><i className="material-icons right">edit</i>Block A</div>
+               <i className="material-icons left">keyboard_arrow_right</i>
+               Block A<img className="assoEdit" id="" src={edit} width="20" height="20"></img></div>
               <h6 className="center white-text cursor-pointer"><i className="material-icons">add</i>Add flat</h6>
               </div>
           </div>
@@ -69,11 +71,12 @@ class Navbar extends Component {
           <div className="col s10 m10 l10 offset-m1 offset-l1 z-depth-1">
             <div className="row white">
             <div className="col s10 m10 l10">
-                <h4>Block Details</h4>
-                <div id="MianBlock" className="col s5 m2 l2 z-depth-1 teal accent-4 container" onClick={this.handleVendor} >
+                <h4 className="headingg">Block Details</h4>
+                <div id="MianBlock" className="col s5 m4 l2 z-depth-1 teal accent-4 container" onClick={this.handleVendor} >
                 <br></br>
                 <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
-                <i className="material-icons left">keyboard_arrow_down</i><i className="material-icons right">edit</i>Block A</div>
+                <i className="material-icons left">keyboard_arrow_down</i>
+                Block A<img className="assoEdit" src={edit} width="20" height="20"></img></div>
                 <br></br>
                 </div>
             </div>
@@ -81,12 +84,13 @@ class Navbar extends Component {
 
             <div className="row white">
             <div className="col s12 m10 l10">
-                <h4>Block A- Flore Details</h4>
-                <div id="MianBlock" className="col s4 m2 l2 z-depth-1 grey container" onClick={this.handleVendor} >
+                <h4 className="headingg">Block A- Flore Details</h4>
+                <div id="MianBlock" className="col s4 m4 l2 z-depth-1 grey container" onClick={this.handleVendor} >
                 <br></br>
                 <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
-                <i className="material-icons left">keyboard_arrow_right</i><i className="material-icons right">edit</i>Ground Flore</div>
-                <h6 className="center white-text"><i class="material-icons">add</i>Add a room</h6>
+                <i className="material-icons left">keyboard_arrow_right</i>Ground Flore
+                <img className="assoEdit" src={edit} width="20" height="20"></img></div>
+                <h6 className="center white-text"><i className="material-icons">add</i>Add a room</h6>
                 </div>
             </div>
             </div>

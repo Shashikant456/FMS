@@ -13,9 +13,6 @@ import location from './Images/location.png'
 import experiance from './Images/experiance.png'
 import book from './Images/book.png'
 import edit from './Images/edit.png'
-import {FaBookOpen} from 'react-icons/fa'
-import {MdCall} from 'react-icons/md'
-import {AiOutlineLogout} from 'react-icons/ai'
 
 const header={
      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -617,8 +614,6 @@ class Dashboard extends Component {
                             </div>
                         </div>
                     </div>
-               
-
                 <div className="col s12 l8 m8 offset-m1 offset-l1 z-depth-1" id="container2">
                     <div className="">
                         <h5 className="center-align">Status of applied jobs</h5>
@@ -626,8 +621,6 @@ class Dashboard extends Component {
                      </div>
                 </div>
                 </div>
-                
-
                  <footer className="page-footer white">
                  <div className="footer-copyright center" id="footer">
                    <div className="text-center">
