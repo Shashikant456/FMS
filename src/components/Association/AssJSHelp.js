@@ -57,7 +57,7 @@ class AssJsHelp extends Component {
                     <img className="center" src={mainLogo} width="50" height="50"></img>
                 </a>
                     <ul id="nav-mobile" className="right">
-                        <li><Link to="/">Property Details</Link></li>
+                        <li><Link id="home" to="/nav">Property Details</Link></li>
                         <li><Link id="home" to="/">Vendor</Link></li>
                         <li><Link id="home" to="/">Resident Details</Link></li>
                         <li><Link id="home" to="/">Payment</Link></li>
@@ -72,10 +72,10 @@ class AssJsHelp extends Component {
             <img className="center" id="dashboard" src={dashboard} ></img>
           </div>
                 
-        <h4 className="center">Got questions?</h4>
+        <h4 className="center" id="headinggg">Got questions?</h4>
         <p className="center" id="textcolor">Perfect, we've got answer!</p>
 
-        <div className="row container center">
+        <div className="row container center" id="jobtypesbtn">
           <div className="col s6 m2 l3 offset-l3 offset-m3">
           <div className="card hoverable" onClick={this.handleAssociation}>
               <div className="card-image" >
@@ -121,62 +121,65 @@ class AssJsHelp extends Component {
             </div>
             </div>
           </div>
-
+          <br></br>
           <div className="container z-depth-1" id="colli">
               <h5 className="center-align" id="coll">Jobseeker</h5>
               {jobseekerList}
           </div>
 
-            <div id="ques">
-              <h4  className="center">You still have a questions?</h4>
-              <p className="center gray-text" id="textcolor">Lets talk about everything!</p>
-              </div>
+          <div id="ques">
+          <h4  className="center" id="headinggg">You still have a questions?</h4>
+          <p className="center gray-text" id="textcolor">Lets talk about everything!</p>
+          </div>
 
-              <div className="row container">
-              <div className="col s6 m5 l5 offset-m3 offset-l3 z-depth-1 center " id="mail">
-                 <i className="material-icons">email</i>
-                 <p id="textcolor">send us an email <a href="">info@stskfecilities.com</a></p>
-              </div>
-              <div className="col s6 m5 l5 offset-s1 offset-l1 offset-m1 z-depth-1 center" id="mail">
-                 <i className="material-icons ">call</i>
-                 <p id="textcolor">Call us on <a href="">1800-121-0786</a></p>
-              </div>
-            </div>
+          <div className="row container" id="helpDetails">
+          <div className="col s6 m5 l5 offset-m3 offset-l3 z-depth-1 center " id="mail">
+             <i className="material-icons">email</i>
+             <p id="textcolor">send us an email <a href="">info@stskfecilities.com</a></p>
+          </div>
+          <div className="col s6 m5 l5 offset-s1 offset-l1 offset-m1 z-depth-1 center" id="mail">
+             <i className="material-icons ">call</i>
+             <p id="textcolor">Call us on <a href="">1800-121-0786</a></p>
+          </div>
+        </div>
+        
+    
+          <br></br>
+          <br></br>
 
+        <div className="container z-depth-1">
+          <ul className="" >
+            <div className="collapsible-header" id="jobtypesbtn">System info:</div>
+          </ul>
+        </div>
 
-            <div className="container z-depth-1">
-              <ul className="">
-                <div className="collapsible-header">System info:</div>
-              </ul>
-            </div>
-
-          
-                  <footer className="page-footer" id="address">
-                  <div className="center align">
-                    <div className="row ">
-                      <div className="col l6 s12 m6 ">
-                        <h5 className="black-text">Come and visit our office</h5>
-                        <p className="" id="textcolor">To get in touch with us, and to know more about us and our service,</p>
-                        <p className="" id="textcolor">please come and visit us.</p>
-                        <p className="black-text ">Working hours: 9 to 7</p>
-                        <div className="center">
-                            <i className="material-icons small" id="locicon">location_on</i>
-                            <p id="textcolor">#195/6/2,#3rd Floor, Ward No. 192, Bhartena Agrahara,Above MG Showroom, Hosur Main Road, Electronic City, Bengaluru-560100</p>
-                        </div>
-                      </div>
+      
+              <footer className="page-footer" id="addresss">
+              <div className="center align">
+                <div className="row ">
+                  <div className="col l6 s12 m6 ">
+                    <h5 className="black-text">Come and visit our office</h5>
+                    <p className="" id="textcolor">To get in touch with us, and to know more about us and our service,</p>
+                    <p className="" id="textcolor">please come and visit us.</p>
+                    <p className="black-text ">Working hours: 9 to 7</p>
+                    <div className="center">
+                        <i className="material-icons small" id="locicon">location_on</i>
+                        <p id="textcolor">#195/6/2,#3rd Floor, Ward No. 192, Bhartena Agrahara,Above MG Showroom, Hosur Main Road, Electronic City, Bengaluru-560100</p>
                     </div>
                   </div>
-                  <div className="footer-copyright center" id="footer">
-                    <div className="text-center">
-                    Copyright @2020 All rights reserved | This tamplate is made with STSK
-                    <a className="grey-text text-lighten-4 right" href="#!"></a>
-                    </div>
                 </div>
+              </div>
+              <div className="footer-copyright center" id="footer">
+                <div className="text-center">
+                Copyright @2020 All rights reserved | This tamplate is made with STSK
+                <a className="grey-text text-lighten-4 right" href="#!"></a>
+                </div>
+            </div>
 
-                </footer>
-            
-        </div>
-        </div>
+            </footer>
+    </div>
+    </div>
+
         )
     }
 }

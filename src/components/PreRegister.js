@@ -25,7 +25,6 @@ export class Register extends Component {
                 id: ''
             }
         }
-    
     componentDidMount(){
         this._isMounted = true;
         axios.get('/stskFmsApi/userRoles/getAllUserRoles',{headers:header})

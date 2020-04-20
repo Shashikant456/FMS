@@ -17,7 +17,6 @@ import {FaBookOpen} from 'react-icons/fa'
 import {MdCall} from 'react-icons/md'
 import {AiOutlineLogout} from 'react-icons/ai'
 
-
 const header={
      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
  }
@@ -591,7 +590,7 @@ class Dashboard extends Component {
                                 <p><i className="material-icons small" id="dashicn">email</i>{this.state.details.email}</p>
                                 <p><img className="center" id="dashicn" src={call} width="20" height="20"></img>{this.state.details.mob}</p>
                                 <p><img className="center" id="dashicn" src={experiance} width="20" height="20"></img>{this.state.details.experience}</p>
-                                <p><img className="center" id="dashicn" src={book} width="20" height="20"></img>{this.state.details.eduQual}</p>
+                                <p><img className="center" id="dashicn" src={book} width="23" height="23"></img>{this.state.details.eduQual}</p>
                                 
                             </div> 
                             

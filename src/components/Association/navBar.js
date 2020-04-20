@@ -7,12 +7,16 @@ import dashboard from '../Images/dashboard.png'
 import { withRouter,Link,NavLink } from 'react-router-dom'
 
 
+const header={
+    'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
+}
+
 class Navbar extends Component {
     state={
         Block:true
     }
     componentDidMount(){
-        axios.get('/stskFmsApi/blocks/getAllBlocks')
+        axios.get('/stskFmsApi/blocks/getAllBlocks',{headers:header})
         .then(res =>{
             console.log(res)
             console.log(res.data)
@@ -53,8 +57,8 @@ class Navbar extends Component {
               <div id="MianBlock" className="col s5 m2 l2 z-depth-1 grey container" onClick={this.handleVendor} >
               <br></br>
                <div id="block" onClick={()=>this.setState({Block:false})} className="button center-align white">
-               <i class="material-icons left">keyboard_arrow_right</i><i class="material-icons right">edit</i>Block A</div>
-              <h6 className="center white-text cursor-pointer"><i class="material-icons">add</i>Add flat</h6>
+               <i className="material-icons left">keyboard_arrow_right</i><i className="material-icons right">edit</i>Block A</div>
+              <h6 className="center white-text cursor-pointer"><i className="material-icons">add</i>Add flat</h6>
               </div>
           </div>
           </div>
@@ -69,7 +73,7 @@ class Navbar extends Component {
                 <div id="MianBlock" className="col s5 m2 l2 z-depth-1 teal accent-4 container" onClick={this.handleVendor} >
                 <br></br>
                 <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
-                <i class="material-icons left">keyboard_arrow_down</i><i class="material-icons right">edit</i>Block A</div>
+                <i className="material-icons left">keyboard_arrow_down</i><i className="material-icons right">edit</i>Block A</div>
                 <br></br>
                 </div>
             </div>
@@ -81,7 +85,7 @@ class Navbar extends Component {
                 <div id="MianBlock" className="col s4 m2 l2 z-depth-1 grey container" onClick={this.handleVendor} >
                 <br></br>
                 <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
-                <i class="material-icons left">keyboard_arrow_right</i><i class="material-icons right">edit</i>Ground Flore</div>
+                <i className="material-icons left">keyboard_arrow_right</i><i className="material-icons right">edit</i>Ground Flore</div>
                 <h6 className="center white-text"><i class="material-icons">add</i>Add a room</h6>
                 </div>
             </div>
