@@ -199,18 +199,18 @@ class Dashboard extends Component {
                     
                         <div className="card-content" id="cardContent">
                         
-                        <div className="col s5 m6 l3 offset-s1">
+                        <div className="col s6 m6 l3">
                              <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
                           </div>
-                        <div className="col s5 m6 l3 offset-s1">
+                        <div className="col s6 m6 l3">
                               <p id="dashtext">Experience-<span className="grey-text">{post.jobType}</span></p>
                           </div>
-                        <div className="col s5 m6 l3 offset-s1">
+                        <div className="col s6 m6 l3">
                               <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>      
                           <Popup
                            trigger={
-                            <div className="col s6 m6 l2 offset-s3 right-align">
+                            <div className="col s6 m6 l2 right-align">
                             <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
                             </div>} modal>
                             {close => (
@@ -305,18 +305,18 @@ class Dashboard extends Component {
                     <div className="row card"  key={search.id}>
                         <div className="card-content" id="cardContent">
                         
-                        <div className="col s5 m6 l3 offset-s1">
+                        <div className="col s6 m6 l3">
                              <p id="dashtext">Job position-<span className="grey-text">{search.jobType}</span></p>
                           </div>
-                        <div className="col s5 m6 l3 offset-s1">
+                        <div className="col s6 m6 l3">
                               <p id="dashtext">Experience-<span className="grey-text">{search.serviceArea}</span></p>
                           </div>
-                        <div className="col s5 m6 l3 offset-s1">
+                        <div className="col s6 m6 l3">
                               <p  id="dashtext">Location-<span className="grey-text">{search.serviceArea}</span></p>
                           </div>
                           <div>
                          
-                          <Popup trigger={ <div className="col s6 m6 l2 offset-s3 right-align">
+                          <Popup trigger={ <div className="col s6 m6 l2 right-align">
                           <h6 id="viewdetails" className="right-align" value={search.id}> <u>ViewDetails</u></h6>
                           </div> } modal> 
                           {close => (
@@ -397,17 +397,17 @@ class Dashboard extends Component {
                     <div className="row card"  key={applied.id}>
                     <div className="card-content" id="cardContent">
                     
-                    <div className="col s5 m6 l3 offset-s1">
+                    <div className="col s6 m6 l3">
                     <p id="dashtext">Job position-<span className="grey-text">{applied.jobType}</span></p>
                       </div>
-                    <div className="col s5 m6 l3 offset-s1">
+                    <div className="col s6 m6 l3">
                         <p id="dashtext">Experience-<span className="grey-text">{applied.serviceArea}</span></p>
                     </div>
-                    <div className="col s5 m6 l3 offset-s1">
+                    <div className="col s6 m6 l3">
                     <p  id="dashtext">Location-<span className="grey-text">{applied.serviceArea}</span></p>
                     </div>                
                     <Popup trigger={ 
-                    <div className="col s6 m6 l2 offset-s3 right-align">
+                    <div className="col s6 m6 l2 right-align">
                     <h6 id="viewdetails"  onClick={()=>this.setState({model_open2:true})} className="right-align" value={applied.id}> <u>ViewDetails</u></h6>
                     </div> } modal > 
                     {close => (
