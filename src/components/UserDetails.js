@@ -190,6 +190,7 @@ class UserDetails extends Component {
   //           jobs : res.data.data
   //       })  
   //   })
+
     axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
     .then(res=>{
       console.log(res.data)
@@ -198,6 +199,7 @@ class UserDetails extends Component {
             email:res.data.data.email
         })
     })
+
     // jobtypes new code
 
 

@@ -13,6 +13,7 @@ import location from './Images/location.png'
 import experiance from './Images/experiance.png'
 import book from './Images/book.png'
 import edit from './Images/edit.png'
+import mail from './Images/mail.png'
 
 const header={
      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -584,7 +585,7 @@ class Dashboard extends Component {
                             <strong className="center-align">{this.state.details.name}</strong>
                             <div className="left-align">
                                 <p><img className="center" id="dashicn" src={location} width="23" height="23"></img>{this.state.details.currentLocation}</p>
-                                <p><i className="material-icons small" id="dashicn">email</i>{this.state.details.email}</p>
+                                <p><img className="center" id="dashicn" src={mail} width="20" height="20"></img>{this.state.details.email}</p>
                                 <p><img className="center" id="dashicn" src={call} width="20" height="20"></img>{this.state.details.mob}</p>
                                 <p><img className="center" id="dashicn" src={experiance} width="20" height="20"></img>{this.state.details.experience}</p>
                                 <p><img className="center" id="dashicn" src={book} width="23" height="23"></img>{this.state.details.eduQual}</p>
