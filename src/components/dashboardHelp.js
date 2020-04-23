@@ -21,6 +21,7 @@ export class dashboardHelp extends Component {
     this.setState({
       mobileNumber:this.props.location.state.mobileNumber.mobileNumber
     })
+    
   }
   handleVendor=(e)=>{
     this.props.history.push({

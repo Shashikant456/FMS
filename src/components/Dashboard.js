@@ -204,7 +204,7 @@ class Dashboard extends Component {
                              <p id="dashtext">Job position-<span className="grey-text">{post.jobType}</span></p>
                           </div>
                         <div className="col s6 m6 l3">
-                              <p id="dashtext">Experience-<span className="grey-text">{post.jobType}</span></p>
+                              <p id="dashtext">Experience-<span className="grey-text">{post.id}</span></p>
                           </div>
                         <div className="col s6 m6 l3">
                               <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
