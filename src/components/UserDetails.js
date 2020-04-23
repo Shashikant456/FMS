@@ -137,75 +137,75 @@ class UserDetails extends Component {
     this.handleSubmit=this.handleSubmit.bind(this)
   }
 
-//   componentWillMount(){
-//     this.setState({
-//      mob:this.props.location.state.mobileNumber.mobileNumber,
-//      mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+  componentWillMount(){
+    this.setState({
+     mob:this.props.location.state.mobileNumber.mobileNumber,
+     mobileNumber:this.props.location.state.mobileNumber.mobileNumber
      
-//   })  
-//   fetch('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes',{headers:header}) 
+  })  
+  fetch('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes',{headers:header}) 
     
 
-//   .then(response => response.json()) 
+  .then(response => response.json()) 
   
   
-//   .then(data => { 
-//   // console.log(data)
-//   let TypesFromApi = data.data.map(Type => {
-//       return { id: Type.id, name: Type.name };
-//     });
-//     this.setState({
-//       Types: [
-//         {
-//           id: "",
-//           name:
-//             "(Select your favourite team)"
-//         }
-//       ].concat(TypesFromApi)
-//     });
-//   })
-//   .catch(error => {
-//       console.log(error);
-//     });  
-//   }
-//   componentDidMount(){
-//     const config = {     
-//       headers: { 'content-type': 'multipart/form-data',
-//       'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
-//     }
-//       let formData = new FormData();  
-//       formData.append('file',this.state.resume);   
-//       // console.log(formData)
-//       axios.post('stskFmsApi/jobseekerdoc/createDoc/608',formData,config)
-//               .then(res => {
-//                 console.log(res);
-//               })
-//               .catch(err => console.log(err))
+  .then(data => { 
+  // console.log(data)
+  let TypesFromApi = data.data.map(Type => {
+      return { id: Type.id, name: Type.name };
+    });
+    this.setState({
+      Types: [
+        {
+          id: "",
+          name:
+            "(Select your favourite team)"
+        }
+      ].concat(TypesFromApi)
+    });
+  })
+  .catch(error => {
+      console.log(error);
+    });  
+  }
+  componentDidMount(){
+    const config = {     
+      headers: { 'content-type': 'multipart/form-data',
+      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
+    }
+      let formData = new FormData();  
+      formData.append('file',this.state.resume);   
+      // console.log(formData)
+      axios.post('stskFmsApi/jobseekerdoc/createDoc/608',formData,config)
+              .then(res => {
+                console.log(res);
+              })
+              .catch(err => console.log(err))
 
-//   // axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
-//   //   .then(res=>{
-//   //     console.log(res.data)
-//   //     console.log(res.data.data)
-//   //       this.setState({
-//   //           jobs : res.data.data
-//   //       })  
-//   //   })
+  // axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
+  //   .then(res=>{
+  //     console.log(res.data)
+  //     console.log(res.data.data)
+  //       this.setState({
+  //           jobs : res.data.data
+  //       })  
+  //   })
 
-//     axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
-//     .then(res=>{
-//       console.log(res.data)
-//        this.setState({
-//             userId:res.data.data.id,
-//             email:res.data.data.email
-//         })
-//     })
+    axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+    .then(res=>{
+      console.log(res.data)
+       this.setState({
+            userId:res.data.data.id,
+            email:res.data.data.email
+        })
+    })
 
-//     // jobtypes new code
+    // jobtypes new code
 
 
 
  
-//  }
+ }
  handleRadio=(e)=>{
   console.log(e.target.value)
  
