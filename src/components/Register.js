@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter} from 'react-router-dom'
 import "./css/register1.css";
 import logo from './Images/Mainlogo.png'
+import camara from './Images/camerapic.png'
 import axios from 'axios'
 import $ from 'jquery'
 import jQuery from 'jquery'
@@ -26,16 +27,16 @@ class Register extends Component {
       }
   
       
-  componentDidMount(){
-    this.setState({
-       mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
-       mob:this.props.location.state.mobileNumber.mobileNumber,
-        userRoles:{
-        id:this.props.match.params.id,
-        name:this.props.match.params.name
-      }
-    })
-  }
+  // componentDidMount(){
+  //   this.setState({
+  //      mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
+  //      mob:this.props.location.state.mobileNumber.mobileNumber,
+  //       userRoles:{
+  //       id:this.props.match.params.id,
+  //       name:this.props.match.params.name
+  //     }
+  //   })
+  // }
 
 
   handleSubmit = (e) => {
@@ -157,13 +158,15 @@ handleChange10(){
         <i className="material-icons small">camera</i> */}
         {/* <span class="select-wrapper"> */}
         <input   type="file"
-     name="image" class="image_src" 
+     name="image" class="image_sr" 
+
      accept="images.jpeg"  onChange={this.handleImageChange} />
        {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
     {/* <button onclick={() => this.fileInput.click()} id="filebutton">pic file</button>
     <button onClick={this.fileUploadHandler}>Upload</button> */}
     {/* <i className="material-icons small" id="pic">camera</i>  */}
   {/* </span> */}
+
         </div>
         </div>
      
