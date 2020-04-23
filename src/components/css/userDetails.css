@@ -260,7 +260,7 @@
       font-size: 16px;
       font-weight: 700;
       font-family: Lato;
-      margin-left: 190px;
+      margin-left: 281px;
       margin-top: 121px;
 }
   .createAccount1{
@@ -457,12 +457,6 @@
 
 #checkboxes label:hover {
   background-color: #1e90ff;
-}
-
-.file{
-  /* background-image: url("../Images/file.png");  */
-  background-image: url("../Images/camerapic.png"); 
-  background-repeat: no-repeat;
 }
 .field input[type="file"]{
 

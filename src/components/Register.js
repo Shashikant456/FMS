@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter} from 'react-router-dom'
 import "./css/register1.css";
 import logo from './Images/Mainlogo.png'
-import camara from './Images/camerapic.png'
 import axios from 'axios'
 import $ from 'jquery'
 import jQuery from 'jquery'
@@ -27,16 +26,16 @@ class Register extends Component {
       }
   
       
-  // componentDidMount(){
-  //   this.setState({
-  //      mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
-  //      mob:this.props.location.state.mobileNumber.mobileNumber,
-  //       userRoles:{
-  //       id:this.props.match.params.id,
-  //       name:this.props.match.params.name
-  //     }
-  //   })
-  // }
+  componentDidMount(){
+    this.setState({
+      // mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
+      // mob:this.props.location.state.mobileNumber.mobileNumber,
+        userRoles:{
+        id:this.props.match.params.id,
+        name:this.props.match.params.name
+      }
+    })
+  }
 
 
   handleSubmit = (e) => {
@@ -138,40 +137,10 @@ handleChange10(){
       <div id="body">
       <div className="row" id="main1">      
        <center id="center">
+       <i id="registerleftarrow" className="material-icons" onClick={()=>this.props.history.push('/preregister')}>arrow_back</i>
          <h3 className="center-align" id="Registertext">{this.props.match.params.name}</h3>
-         {/* <div class="person">
-         <i className="material-icons grey-text large">account_circle</i>
-         <div class="cameraa">
-              <input   type="file"
-     name="image" class="image_src" 
-     accept="images.jpeg"  onChange={this.handleImageChange} />
-              </div>
-         </div> */}
-         <div className="image_wrapper">
-         <div className="userimages">
-        <i className="material-icons large">person</i>
-        
-            </div>
-            <div className="cameraa">
-         
-            {/* <input type="file" />
-        <i className="material-icons small">camera</i> */}
-        {/* <span class="select-wrapper"> */}
-        <input   type="file"
-     name="image" class="image_sr" 
-
-     accept="images.jpeg"  onChange={this.handleImageChange} />
-       {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
-    {/* <button onclick={() => this.fileInput.click()} id="filebutton">pic file</button>
-    <button onClick={this.fileUploadHandler}>Upload</button> */}
-    {/* <i className="material-icons small" id="pic">camera</i>  */}
-  {/* </span> */}
-
-        </div>
-        </div>
-     
        
-       <form id="frm" onSubmit={this.handleSubmit}>
+        <form id="frm" style={{marginTop:"24px"}} onSubmit={this.handleSubmit}>
        {/* <input type="password" id="pwd" class="form-control" placeholder="Password" name="pass"/>
                               <span class="input-group-btn">
                                  <button class="btn btn-default btn-md" id="showhide" data-val='1'>
@@ -189,8 +158,9 @@ handleChange10(){
           </div>
           <div className="input-field">
           <i id="iconn" className="material-icons prefix">lock</i>
-              <input id="icon_prefixs" type={(isPasswordShown) ? "password" : "text"} size="30"
-               placeholder="password" required name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+              <input id="icon_prefixs" style={{width:'242px'}}
+              type={(isPasswordShown) ? "password" : "text"} size="30"
+               placeholder="Password" required name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                title="Must contain at least one number
                and one uppercase and lowercase letter,
                 and at least 6 or more characters" onChange={this.handleChange2}/>
@@ -199,8 +169,9 @@ handleChange10(){
           </div>
           <div className="input-field">
           <i id="iconn" className="material-icons prefix">lock</i>
-              <input id="icon_prefixs" type={(isPasswordShown) ? "password" : "text"} size="30"
-               placeholder="password" required name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+              <input id="icon_prefixs" style={{width:'242px'}}
+              type={(isPasswordShown) ? "password" : "text"} size="30"
+               placeholder="Password" required name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                title="Must contain at least one number
                and one uppercase and lowercase letter,
                 and at least 6 or more characters" onChange={this.handleChange3}/>

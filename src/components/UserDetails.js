@@ -14,7 +14,6 @@ import $  from 'jquery'
 import { Multiselect } from "multiselect-react-dropdown";
 
 import Bootstrap from "react-bootstrap";
-//import file from './Images/file.png'
 import camara from './Images/camerapic.png'
 
 
@@ -44,7 +43,7 @@ class UserDetails extends Component {
     
     // oplist:[],
     // multiSelect: [],
-    // image: null,
+     image: null,
     //  selectedFile:null,
     //   dropdown:'',
     //   displayValue:'',
@@ -92,6 +91,7 @@ class UserDetails extends Component {
       jobs:[],
       
       Updates:["Send Mail","SMS","Both","None"],
+      YOP:["1","2","3","4","5","6","7","8","9","10"],
       formErrors: {
         name: "",
         email: "",
@@ -138,9 +138,25 @@ class UserDetails extends Component {
   }
 
   componentWillMount(){
+    let formData = new FormData();  
+
+    formData.append('file',this.state.image);   
+    
+    console.log(formData)
+    const config = {     
+        headers: { 'content-type': 'multipart/form-data',
+        'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
+    }
+    
+       
+        axios.post('stskFmsApi/jobseekerdoc/createDoc/608',formData,config)
+            .then(res => {
+              console.log(res);
+            })
+            .catch(err => console.log(err))
     this.setState({
-     mob:this.props.location.state.mobileNumber.mobileNumber,
-     mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+    //  mob:this.props.location.state.mobileNumber.mobileNumber,
+    //  mobileNumber:this.props.location.state.mobileNumber.mobileNumber
      
   })  
   fetch('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes',{headers:header}) 
@@ -159,7 +175,7 @@ class UserDetails extends Component {
         {
           id: "",
           name:
-            "(Select your favourite team)"
+            "(Select your desire job)"
         }
       ].concat(TypesFromApi)
     });
@@ -169,28 +185,16 @@ class UserDetails extends Component {
     });  
   }
   componentDidMount(){
-    const config = {     
-      headers: { 'content-type': 'multipart/form-data',
-      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
-    }
-      let formData = new FormData();  
-      formData.append('file',this.state.resume);   
-      // console.log(formData)
-      axios.post('stskFmsApi/jobseekerdoc/createDoc/608',formData,config)
-              .then(res => {
-                console.log(res);
-              })
-              .catch(err => console.log(err))
+   
 
-  // axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
-  //   .then(res=>{
-  //     console.log(res.data)
-  //     console.log(res.data.data)
-  //       this.setState({
-  //           jobs : res.data.data
-  //       })  
-  //   })
-
+  axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
+    .then(res=>{
+      console.log(res.data)
+      console.log(res.data.data)
+        this.setState({
+            jobs : res.data.data
+        })  
+    })
     axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
     .then(res=>{
       console.log(res.data)
@@ -198,13 +202,7 @@ class UserDetails extends Component {
             userId:res.data.data.id,
             email:res.data.data.email
         })
-    })
-
-    // jobtypes new code
-
-
-
- 
+    }) 
  }
  handleRadio=(e)=>{
   console.log(e.target.value)
@@ -286,6 +284,7 @@ handleSubmit = e => {
  
   e.preventDefault();
   console.log(this.state)
+ 
   // let formData = new FormData();  
 
   // formData.append('file',this.state.image,this.state.image.name);   
@@ -296,11 +295,11 @@ handleSubmit = e => {
   // }
   
      
-  //     axios.post('stskFmsApi/imageDoc/createDoc/'+this.state.userId,formData,config)
-  //         .then(res => {
-  //           console.log(res);
-  //         })
-  //         .catch(err => console.log(err))
+      // axios.post('stskFmsApi/imageDoc/createDoc/'+this.state.userId,formData,config)
+      //     .then(res => {
+      //       console.log(res);
+      //     })
+      //     .catch(err => console.log(err))
 
 
     // if(this.state.check===true){
@@ -423,7 +422,7 @@ handleSubmit = e => {
    
   handleChange1Arg = (selectedvalue) =>{
   
-   console.log(this.state.selectedValue);
+   console.log(selectedvalue)
     console.log(`Option selected:`, selectedvalue);
     this.setState({ selectedvalue})
     this.setState({jobTypes:selectedvalue})}
@@ -454,10 +453,16 @@ handleSubmit = e => {
   })
 };
 handleResumeChange = (e) => {
-  console.log( e.target.files[0])
-  this.setState({
-    resume: e.target.files[0]
-})
+  e.preventDefault();
+  console.log(e)
+      console.log( e.target.files[0])
+      console.log( e.target.files[0].name)
+      
+    this.setState({
+        image: e.target.files[0]
+    })
+  
+   
 
 
    
@@ -491,34 +496,33 @@ handleResumeChange = (e) => {
   } 
 
 
-  Jobs() {  
-    return (this.state.jobs.map(job => ({ label: job.name, value: job.id })))  
-}  
+ 
   render() {
+   
     console.log(this.state.jobTypes)
-  // console.log(job.id)
-//  const oplist = this.state.jobs.map(function(job){return (job)})
-//  console.log(oplist)
+ 
   console.log(this.state)
-  //console.log(this.state.working)
-//  console.log(this.state)
+
  console.log(this.state.jobUpdate)
  const { selectedValue } = this.state;
     return (
    
       <div className="wrapper5 col m4 offset-l1">
-        <div className="form-wrapper4 row " style={{width:'800px',height:'600px'}}>
-        <div className="userimage" style={{marginLeft:'329px',marginRight:'332px'}}>
+        <div className="form-wrapper4 row " style={{width:'1000px',height:'650px'}}>
+          {/* <h3 className="center-align" id="Registertext">{this.props.match.params.name}</h3> */}
+        <h3 className="center-align" id="usertext">JobSeeker</h3>
+        <div className="userimage" style={{marginLeft:'407px',marginRight:'499px'}}>
+        
         <i className="material-icons large">person</i>
         
             </div>
-            <div className="camera" style={{marginLeft:'385px'}}>
+            <div className="camera" style={{marginLeft:'463px'}}>
          
             {/* <input type="file" />
         <i className="material-icons small">camera</i> */}
         {/* <span class="select-wrapper"> */}
         <input   type="file"
-     name="image" class="image_sr" 
+     name="image" class="image_sc" 
      accept="images.jpeg"  onChange={this.handleImageChange} />
        {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
     {/* <button onclick={() => this.fileInput.click()} id="filebutton">pic file</button>
@@ -526,7 +530,6 @@ handleResumeChange = (e) => {
     {/* <i className="material-icons small" id="pic">camera</i>  */}
   {/* </span> */}
   <img className="center-align" id="cmmr" src={camara} width="50" height="50"></img>
-
         </div>
           <div className="text-center">
         
@@ -538,31 +541,32 @@ handleResumeChange = (e) => {
           {/* <Multiselect options={data} onSelectOptions={this.result} /> */}
        
          
-          <form onSubmit={this.handleSubmit} class="form-row">
+          <form onSubmit={this.handleSubmit} class="form-row" style={{}}>
           
           {/* <Dropdown placeholder='Applied For'  fluid multiple selection options={options} /> */}
           
    
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-3" style={{paddingRight:'40px',paddingLeft: '30px'}}>
          {/* <div className="fullName" style={{width:'35%',marginLeft:'10%'}}> */}
                 <input
                 className=""
-                placeholder="Full Name"
+                placeholder="Enter full name"
                 type="text"
                 name="name"
                 required
                 onChange={this.handleChange}
                 id="input"
-                
+                pattern='[A-Za-z\\s]*'
+                title="only alphabetical values are allowed"
               />
              
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3" style={{paddingRight:'40px',paddingLeft: '30px'}}>
             {/* <div className="mobileNumber" style={{width:'35%',marginLeft:'10%'}}> */}
               
               <input
                 className="" 
-                placeholder="Mobile Number"
+                placeholder="Phone number"
                 type="tel"
                 name="mob"
                 required
@@ -573,12 +577,12 @@ handleResumeChange = (e) => {
               />
             
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3" style={{paddingRight:'40px',paddingLeft: '30px'}}>
             {/* <div className="Email"  style={{width:'35%',marginLeft:'10%'}}> */}
              
               <input
                 className=""
-                placeholder="Email"
+                placeholder="Enter email address"
                 type="email"
                 name="email"
                 required
@@ -588,13 +592,13 @@ handleResumeChange = (e) => {
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>
-            <div class="form-row">
-            <div class="col-md-4 mb-3" style={{width:'400px'}}>
+            <div class="form-row" style={{marginLeft: '0px'}}>
+            <div class="col-md-4 mb-3" style={{width:'475px',paddingRight:'40px',paddingLeft: '30px'}}>
          
               
               <input
                 className=""
-                placeholder="Pan Number"
+                placeholder="PAN number"
                 type="text"
                 name="panNum"
                 
@@ -606,12 +610,12 @@ handleResumeChange = (e) => {
               />
              
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3" style={{paddingRight:'40px',paddingLeft: '30px'}}>
            
               
               <input
                 className=""
-                placeholder="AadharCard Number"
+                placeholder="Aadhar card number"
                 type="text"
                 name="aadharNum"
                 required
@@ -624,12 +628,12 @@ handleResumeChange = (e) => {
             </div>
           
         
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" style={{paddingRight:'40px',paddingLeft: '30px'}}>
             {/* <div className="education  "  style={{width:'35%',marginLeft:'10%'}} > */}
              
               <input
                 className=""
-                placeholder="Education Qualification"
+                placeholder="Education qualification"
                 type="text"
                 name="eduQual"
                 required
@@ -637,25 +641,26 @@ handleResumeChange = (e) => {
                 id="input"
               />
 
-{/* <ReactMultiSelectCheckboxes options={this.Updates} /> */}
+
                
             </div>
        </div>
        <div class="form-row">
-       <div class="col-md-4 mb-3" style={{width:'500px'}}>
+       <div class="col-md-4 mb-3" style={{width:'500px',paddingRight:'35px',paddingLeft: '35px',marginTop:'5px'}}>
            
-          <Popup trigger={<input type="select"  placeholder="select" id="popup"/>} position=" center">
-           
+          <Popup trigger={<input type="select" value={this.selectedvalue}  placeholder="Applied for" id="popup"/>} position=" center"
+           style={{width:'250px'}}>
+         
                <Multiselect options={this.state.Types}
                  value={selectedValue} displayValue="name"
-                 onSelect={this.handleChange1Arg} id="demo"/>   
+                 onSelect={this.handleChange1Arg} id="demo" />   
   </Popup>
        
 </div> 
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4 mb-3"  style={{width:'500px',paddingRight:'40px',paddingLeft: '34px'}}>
        
     <Form.Control as="select" onChange={this.handleChange2} id="update" >
-    <option value='1'>Please Select</option>
+    <option value='1'>Get job opening updates</option>
     {this.state.Updates.map(jobUpdate =>(
           <option key={jobUpdate} value={jobUpdate}>
              {jobUpdate}
@@ -664,19 +669,19 @@ handleResumeChange = (e) => {
  </Form.Control> 
   
             </div>
-            <div class="col-md-4 mb-3" style={{marginTop:'15px',marginLeft:'-19px'}}>
+            <div class="col-md-4 mb-3" style={{marginTop:'20px',marginLeft:'-19px',paddingRight:'40px',paddingLeft: '36px'}}>
             {/* <div className="address"  style={{width:'35%',marginLeft:'9%'}}> */}
              
-             <textarea id="address"  placeholder="Address" onChange={this.handleChange5}>
+             <textarea id="address"  placeholder="Address" onChange={this.handleChange5} style={{width:'236px'}}>
  
              </textarea>
   </div>
             </div>
-            <div class="form-row" style={{marginTop:'-35px'}}>
-            <div class="col-md-6 mb-3" style={{display:'contents'}} >
+            <div class="form-row" style={{marginTop:'-35px',marginLeft: '28px'}} >
+            <div class="col-md-6 mb-3" style={{display:'contents',paddingRight:'40px',paddingLeft: '30px'}} >
  
  {/* <div className="choose" style={{width:'35%',marginLeft:'10%'}} > */}
- <p id="label">Are you a fresher?</p>
+ <p id="label">Are you fresher?</p>
 
    <p>
    <label >
@@ -692,7 +697,7 @@ handleResumeChange = (e) => {
  </p>
  </div>
  {/* <div class="col-md-6 mb-3" style={{marginLeft: '31px',
-    marginTop: '-16px'}} >
+    marginTop: '-16px',paddingRight:'40px',paddingLeft: '30px'}} >
  <input type="file" 
                 onChange={this.handleResumeChange}
                 class="inputfile" id="embedpollfileinput" />
@@ -705,8 +710,8 @@ handleResumeChange = (e) => {
 
   </div> */}
   </div>
-  <div class="form-row" id="efgh" style={{marginTop:'0px',marginLeft:'-233px',display:'none'}}>
-            <div class="col-md-6 mb-3"  style={{display:'contents'}} >
+  <div class="form-row" id="efgh" style={{marginTop:'0px',marginLeft:'25px',display:'none'}}>
+            <div class="col-md-4 mb-3"  style={{display:'contents'}} >
   {/* <div className="fresher" id="efgh" style={{display:'none',width:'35%',marginLeft:'10%'}} > */}
               <p id="label">Currently working?</p>
   
@@ -724,10 +729,11 @@ handleResumeChange = (e) => {
             </p>
             </div>
             </div>
-            <div class="form-row" className="a" id="abcd" style={{marginTop:'0px',marginLeft:'0px',display:'none'}}>
+            <div  className="a" id="abcd" style={{marginTop:'0px',marginLeft:'30px',display:'none'}}>
           {/* <div id="abcd" style={{display:'none'}} className="a" > */}
-          <div class="col-md-4 mb-3 years">
-           {/* <div className="years"  style={{width:'155%',marginLeft:"-158%"}} > */}
+          <div class="form-row">
+          <div class="col-md-4 mb-3 years" style={{paddingRight:'42px',paddingLeft: '24px'}}>
+          
               
                 <input
                 className=""
@@ -741,8 +747,17 @@ handleResumeChange = (e) => {
                 id="input"
                 maxLength="2"
               /> 
+               {/* <Form.Control as="select" onChange={this.handleChange2} id="YOP" >
+    <option value='1'>Years of experience</option>
+    {this.state.YOP.map(YOPS =>(
+          <option key={YOPS} value={YOPS}>
+             {YOPS}
+          </option>
+      ))}
+ </Form.Control>  */}
               </div>
-              <div class="col-md-4 mb-3 company">
+              <div class="col-md-4 mb-3 company" 
+              style={{marginRight:'-21px',marginLeft: '26px',marginTop:'-21px',paddingRight: '45px'}}>
               {/* <div className="company" > */}
               <input
                 className=""
@@ -756,7 +771,7 @@ handleResumeChange = (e) => {
                
               /> 
               </div>
-              <div class="col-md-4 mb-3 place">
+              <div class="col-md-4 mb-3 place" style={{paddingRight:'-42px',paddingLeft: '94px'}}>
               {/* <div className="place"  > */}
               <input
                 className=""
@@ -765,42 +780,45 @@ handleResumeChange = (e) => {
                 name="jobLocation"
                 onChange={this.handleChange}
                 id="input"
-                
+                style={{width:'242px'}}
+                pattern='[A-Za-z\\s]*'
+                title="only alphabetical values are allowed"
               /> 
                </div>
               
-               {/* <div class="form-row"> */}
-               <div class="col-md-4 mb-3 designation">
+         
+          </div>
+               <div class="form-row">
+               <div class="col-md-4 mb-3 designation" style={{paddingRight:'44px',paddingLeft: '23px',marginTop:'-2px'}}>
                {/* <div className="designation"  style={{width:'35%'}}> */}
               <input
                 className=""
                 placeholder="Designation"
                 type="text"
                 name="designation"
-               
-                
                 onChange={this.handleChange}
                 id="input"
-                
+                pattern='[A-Za-z\\s]*'
+                title="only alphabetical values are allowed"
               /> 
               </div>
-              <div className="col-md-4 mb-3 currentLocation" style={{marginLeft: '229px',marginTop: '-48px'}}>
+              <div className="col-md-4 mb-3 currentLocation" 
+              style={{marginLeft: '0px',marginTop: '-2px',paddingRight:'20px',paddingLeft: '30px'}}>
               <input
                 className=""
                 placeholder="Current Location"
                 type="text"
                 name="currentLocation"
-                
-                
                 onChange={this.handleChange}
                 id="input"
-                
+                pattern='[A-Za-z\\s]*'
+                title="only alphabetical values are allowed"
               /> 
               </div>
               
-              <div class="col-md-4 mb-3 notice_period" style={{marginLeft:'60%'}}>
+              <div class="col-md-4 mb-3 notice_period" style={{marginLeft:'67%',paddingRight:'40px',paddingLeft: '30px'}}>
               {/* <div className="notice_period" > */}
-            <p id="label">notice period?</p>
+            <p id="label" style={{marginTop:'-17px'}}>Are you serving notice period?</p>
   
               <p>
               <label >
@@ -816,11 +834,11 @@ handleResumeChange = (e) => {
             </p>
             </div>
               </div>
-              {/* </div> */}
+              </div>
               {/* abcd */}
               <div class="form-row" id="pqrs" style={{display:'none'}}>
-              <div class="col-md-4 mb-3 years"  style={{width: '695px',
-    marginTop: '-69px'}}>
+              <div class="col-md-4 mb-3 years"  style={{paddingRight: '30px',
+    marginTop: '-69px',paddingLeft:'35px'}}>
               {/* <div id="pqrs" style={{display:'none'}} className="c"> */}
            {/* <div className="years"  > */}
               
@@ -837,35 +855,34 @@ handleResumeChange = (e) => {
                 maxLength="2"
               /> 
               </div>
-               <div class="col-md-4 mb-3 company"  style={{marginLeft:'35%',
+               <div class="col-md-4 mb-3 company"  style={{marginLeft:'37%',paddingRight:'61px',
     marginTop: '-46px'}}>
               
               <input
                 className=""
-                placeholder="Enter previous Company Name"
+                placeholder="Previous Company Name"
                 type="text"
                 name="prevcompanyName"
-               
-                
                 onChange={this.handleChange}
                 id="input"
                
               /> 
               </div>
-              <div class="col-md-4 mb-3 place"  style={{marginLeft: '71%',
-    marginTop: '-48px'}}>
+              <div class="col-md-4 mb-3 place"  style={{marginLeft: '70%',
+    marginTop: '-48px',paddingRight:'60px'}}>
               
               <input
                 className=""
-                placeholder=" previous Job Location"
+                placeholder="Previous Job Location"
                 type="text"
                 name="prevjobLocation"
                 onChange={this.handleChange}
                 id="input"
-                
+                pattern='[A-Za-z\\s]*'
+                title="only alphabetical values are allowed"
               /> 
                </div>
-               <div class="col-md-4 mb-3 designation"  style={{marginLeft:'0px'}}>
+               <div class="col-md-4 mb-3 designation"  style={{marginLeft:'32px',paddingRight:'62px'}}>
                
               <input
                 className=""
@@ -874,20 +891,21 @@ handleResumeChange = (e) => {
                 name="prevdesignation"
                 onChange={this.handleChange}
                 id="input"
-                
+                pattern='[A-Za-z\\s]*'
+                title="only alphabetical values are allowed"
               /> 
               </div>
-              <div className="col-md-4 mb-3 currentLocation" style={{marginLeft: '243px',marginTop: '-48px'}}>
+              <div className="col-md-4 mb-3 currentLocation" style={{marginLeft: '340px',
+              marginTop: '-48px',paddingRight:'59px'}}>
               <input
                 className=""
                 placeholder="Current Location"
                 type="text"
                 name="currentLocation"
-                
-                
                 onChange={this.handleChange}
                 id="input"
-                
+                pattern='[A-Za-z\\s]*'
+                title="only alphabetical values are allowed"
               /> 
               </div>
               
@@ -914,12 +932,12 @@ handleResumeChange = (e) => {
             {/* <div id="mnop" style={{display:'none'}} className="b"> */}
             {/* <div className="days" > */}
             <div class="col-md-4 mb-3 days" style={{marginTop: '-31px',
-    marginLeft: '10px',
-    width: '730px'}}>
+    marginLeft: '30px',paddingRight:'70px'
+   }}>
               <input
                 
-                placeholder="days"
-                type="text"
+                placeholder="Days"
+                type="number"
                 name="noOfDays"
                 
                 
@@ -930,9 +948,9 @@ handleResumeChange = (e) => {
               </div>
               <div class="col-md-4 mb-3 negotiable" style={{display: 'flex',
     marginTop:'-34px',
-    marginLeft: '268px'}}>
-               {/* <div className="negotiable" > */}
-            <p id="label">negotiable</p>
+    marginLeft: '344px'}}>
+            
+            <p id="label">Is it negotiable?</p>
   
               <p>
               <label >
@@ -947,12 +965,12 @@ handleResumeChange = (e) => {
               </label>
             </p>
             </div>
-              <div class="col-md-4 mb-3 salary" style={{marginLeft: '69%',
-    marginTop: '-78px'}}>
-              {/* <div className="salary" > */}
-              <input
+              <div class="col-md-4 mb-3 salary" style={{marginLeft: '70%',
+    marginTop: '-79px'}}>
+             
+              <input style={{width: '243px'}}
                 
-                placeholder="upTo"
+                placeholder="UpTo"
                 type="text"
                 name="upTo"
                 
@@ -965,8 +983,8 @@ handleResumeChange = (e) => {
               
             
             </div>
-            {/* </div> */}
-            {/* <div class="col-md-4 mb-3" style={{marginTop:'159px'}}>
+          
+            <div class="col-md-4 mb-3" style={{marginLeft:'40%'}}>
           
 
 <label>
@@ -974,7 +992,7 @@ handleResumeChange = (e) => {
   <span id="label">Terms and Conditions</span>
 </label>
 <p className="center red-text">{this.state.checkBoxerror}</p>
-</div>  */}
+</div> 
   
             <div className="createAccount1">
               <button type="submit" id="submit1">Submit</button>
@@ -1017,6 +1035,12 @@ handleResumeChange = (e) => {
              </div> */}
              {/* </div> */}
 
+ 
+
+            
+          
+        
+               
           </form>
         </div>
        </div>
@@ -1024,11 +1048,6 @@ handleResumeChange = (e) => {
   }
 }
 
-// jQuery(document).ready(function() {
-//   jQuery('#demo').multiselect({
-//     includeSelectAllOption: true,
-//  });
-// });
 
 
 
