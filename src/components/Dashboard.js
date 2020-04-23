@@ -554,8 +554,8 @@ class Dashboard extends Component {
                             
                             
                                 <label >Email</label>
+                                
                                 <input id="inputBorder" name="email" defaultValue={this.state.editProfile.email} onChange={this.handlepopup}  type="text"></input>
-                            
                                 <label>Education Qualificatin</label>
                                 <input id="inputBorder" name="eduQual" defaultValue={this.state.editProfile.eduQual} onChange={this.handlepopup}  type="text"></input>
                                 <label>Get job opening updates</label>
@@ -607,7 +607,7 @@ class Dashboard extends Component {
                                     </div>
                                 ):(
                                     <div>
-                                        <h5>Job recomended for you</h5>
+                                        <h4 className="grey-text">Job recomended for you</h4>
                                         {postList}
                                     </div>
                                 )
@@ -617,7 +617,7 @@ class Dashboard extends Component {
                     </div>
                 <div className="col s12 l8 m8 offset-m1 offset-l1 z-depth-1" id="container2">
                     <div className="">
-                        <h5 className="center-align">Status of applied jobs</h5>
+                        <h4 className="grey-text">Status of applied jobs</h4>
                         {appliedJobsList}
                      </div>
                 </div>

@@ -74,18 +74,18 @@ export class Register extends Component {
                         <h3 className="center" id="texttt">Choose Category</h3>  
                         
                         <div className='row'>
-                            <div className="col m6 l6" id="jobseeeker">
+                            <div className="col m6 l6" id="jobseeeker" onClick={this.handleChange}>
                                 <img className="left align"  src={job} width="60" height="60"></img>{postList[0]}
                             </div>
-                            <div className="col m6 l6" id="associationn">
+                            <div className="col m6 l6" id="associationn" onClick={this.handleChange}>
                                 <img className="left align"  src={association} width="60" height="60"></img>{postList[1]}
                             </div>
                         </div>
                         <div className='row'>
-                            <div className="col m6 l6" id="vendorr">
+                            <div className="col m6 l6" id="vendorr" onClick={this.handleChange}>
                                 <img className="left align"  src={vendor} width="60" height="60"></img>{postList[2]}
                             </div>
-                            <div className="col m6 l6" id="residentt">
+                            <div className="col m6 l6" id="residentt" onClick={this.handleChange}>
                                 <img className="left align"  src={resident} width="60" height="60"></img>{postList[3]}
                             </div>
                         </div>

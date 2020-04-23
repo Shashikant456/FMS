@@ -15,7 +15,7 @@ class Verify extends Component{
     
     state = {  
                 countryCode:'91',
-                mobileNumber:'',
+                mobileNumber:'111111111',
                 otp_input:'',
                 error:'',
                 userId:'',
@@ -26,7 +26,7 @@ class Verify extends Component{
                 this.setState({
                    mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
                    countryCode: this.props.location.state.countryCode.countryCode
-                 })
+                 })                
              }
                         
                     
@@ -160,9 +160,6 @@ class Verify extends Component{
             </center>
             </div> 
         </div>
-
-
-
     )}
 }
 export default withRouter(Verify)
