@@ -22,6 +22,7 @@ const header={
 toast.configure();
 class Dashboard extends Component {
     constructor(props) {
+        
         super(props);
         this.state = {
         posts :[],
@@ -585,7 +586,7 @@ class Dashboard extends Component {
                             <strong className="center-align">{this.state.details.name}</strong>
                             <div className="left-align">
                                 <p><img className="center" id="dashicn" src={location} width="23" height="23"></img>{this.state.details.currentLocation}</p>
-                                <p><img className="center" id="dashicn" src={mail} width="20" height="20"></img>{this.state.details.email}</p>
+                                <p><img className="center" id="dashicn" src={mail} width="18" height="18"></img>{this.state.details.email}</p>
                                 <p><img className="center" id="dashicn" src={call} width="20" height="20"></img>{this.state.details.mob}</p>
                                 <p><img className="center" id="dashicn" src={experiance} width="20" height="20"></img>{this.state.details.experience}</p>
                                 <p><img className="center" id="dashicn" src={book} width="23" height="23"></img>{this.state.details.eduQual}</p>

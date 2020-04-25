@@ -47,6 +47,8 @@ class Navbar extends Component {
           <div className="row">                                                                                                                     
           <div className="">
                <img className="center" id="dashboard" src={dashboard} ></img>
+                <div className="center-align"><h6 id="textimg">Your property details</h6></div>
+
                </div>
           </div>
 
