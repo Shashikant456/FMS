@@ -14,8 +14,11 @@ import Dropdown from './components/Dropdown'
 import axios from 'axios'
 import Vendor from './components/Help/Vendor'
 import Resident from './components/Help/Resident'
+
 import Association from './components/Help/Association'
-import Navbar from './components/Association/navBar'
+import propertyDetails from './components/Association/propertyDetails'
+import AssoVendor from './components/Association/AssoVendor'
+import ResidentDetails from './components/Association/ResidentDetails'
 import Help from './components/Association/Help'
 import AssJsHelp from './components/Association/AssJSHelp'
 import AssVendorHelp from './components/Association/AssVendorHelp'
@@ -48,7 +51,9 @@ axios.defaults.baseURL ="http://stskfacilities.com:8081"
               <Route exact path="/associationHelp" component={ Association } />
               <Route exact path="/residentHelp" component={ Resident } />
 
-              <Route exact path="/nav" component={ Navbar } />
+              <Route exact path="/nav" component={ propertyDetails } />
+              <Route exact path="/vendor" component={ AssoVendor } />
+              <Route exact path="/ResidentDetails" component={ ResidentDetails } />
               <Route path="/associationPageHelp" component={ Help } />
               <Route path="/assoJSHelp" component={ AssJsHelp } />
               <Route path="/assoVendorHelp" component={ AssVendorHelp } />

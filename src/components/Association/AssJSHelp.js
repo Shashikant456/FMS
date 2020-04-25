@@ -57,10 +57,10 @@ class AssJsHelp extends Component {
                     <img className="center" src={mainLogo} width="50" height="50"></img>
                 </a>
                     <ul id="nav-mobile" className="right">
-                        <li><Link id="home" to="/nav">Property Details</Link></li>
-                        <li><Link id="home" to="/">Vendor</Link></li>
-                        <li><Link id="home" to="/">Resident Details</Link></li>
-                        <li><Link id="home" to="/">Payment</Link></li>
+                    <li><Link id="home" to="/nav">Property Details</Link></li>
+                    <li><Link id="home" to="/vendor">Vendor</Link></li>
+                    <li><Link id="home" to="/ResidentDetails">Resident Details</Link></li>
+                    <li><Link id="home" to="/">Payment</Link></li>
                         <li><Link id="home" className="waves-effect waves-light btn-small white-text" to="/associationPageHelp">Help</Link></li>
                         <li><i className="material-icons grey-text large" id="profileicn">account_circle</i></li>
                     </ul>

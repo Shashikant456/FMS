@@ -29,3 +29,10 @@ i.left {
     float: left;
     margin-right: -5px;
 }
+#navbtn1{
+    width: 139px;
+    text-decoration: none;
+    background: #3FB2AA;
+    color: white;
+    text-transform: initial;
+}

@@ -5,13 +5,14 @@ import  mainLogo from '../Images/Mainlogo.png'
 import dashboard from '../Images/dashboard.png'
 import { withRouter,Link,NavLink } from 'react-router-dom'
 import edit from '../Images/edit.png'
+import Vendor from '../Help/Vendor'
 
 
 const header={
     'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
 }
 
-class Navbar extends Component {
+class AssoVendor extends Component {
     state={
         Block:true,
         Block1:true
@@ -33,8 +34,8 @@ class Navbar extends Component {
                     <img className="center" src={mainLogo} width="50" height="50"></img>
                 </a>
                     <ul id="nav-mobile" className="right">
-                        <li><Link to="/nav" className="waves-effect waves-light btn-small" id="navbtn1">Property Details</Link></li>
-                        <li><Link id="home" to="/vendor">Vendor</Link></li>
+                        <li><Link id="home" to="/nav">Property Details</Link></li>
+                        <li><Link className="waves-effect waves-light btn-small" id="btnnav" to="/vendor">Vendor</Link></li>
                         <li><Link id="home" to="/ResidentDetails">Resident Details</Link></li>
                         <li><Link id="home" to="/">Payment</Link></li>
                         <li><Link id="home" to="/associationPageHelp">Help</Link></li>
@@ -47,7 +48,7 @@ class Navbar extends Component {
           <div className="row">                                                                                                                     
           <div className="">
                <img className="center" id="dashboard" src={dashboard} ></img>
-                <div className="center-align"><h6 id="textimg">Your property details</h6></div>
+                <div className="center-align"><h6 id="textimg">Your vendor details</h6></div>
 
                </div>
           </div>
@@ -56,7 +57,7 @@ class Navbar extends Component {
         <div className="row white">
           <div className="col s10 m10 l10">
           <div className="col s10 m10 l10 offset-m1 offset-l1 z-depth-1">
-          <h4 className="headingg">Block Details</h4>
+          <h4 className="headingg">Vendor Details</h4>
               <div id="MianBlock" className="col s5 m4 l2 z-depth-1 grey container" onClick={this.handleVendor} >
               <br></br>
                <div id="block" onClick={()=>this.setState({Block:false})} className="button center-align white">
@@ -113,4 +114,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar
+export default AssoVendor
