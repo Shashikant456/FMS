@@ -30,7 +30,7 @@ class Dashboard extends Component {
         editProfile:[],
         userId:'',
         LoggedIn:'true',
-        mobileNumber:'',
+        mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
         search:'',
         appliedJobs:'',
         searchedJobs:[],
@@ -46,7 +46,7 @@ class Dashboard extends Component {
             mobileNumber:this.props.location.state.mobileNumber.mobileNumber
         })
     
-        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber,{headers:header})
         .then(res =>{
           console.log(res.data)
                 this.setState({
@@ -510,7 +510,7 @@ class Dashboard extends Component {
                 <div className="">
                 
                      <img className="center" id="dashboard" src={dashboard}></img>
-                     <div className="center-align"><h6 id="textimg hide-on-small-only">Find your job here</h6></div>
+                     <div className="center-align hide-on-small-only"><h6 id="textimg">Find your job here</h6></div>
                 </div>
                 
                 <nav className="container white" id="search">
