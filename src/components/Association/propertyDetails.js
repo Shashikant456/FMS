@@ -14,7 +14,8 @@ const header={
 class Navbar extends Component {
     state={
         Block:true,
-        Block1:true
+        Block1:true,
+        Block2:true
     }
     componentDidMount(){
         axios.get('/stskFmsApi/blocks/getAllBlocks',{headers:header})
@@ -89,7 +90,7 @@ class Navbar extends Component {
                 <h4 className="headingg">Block A- Flore Details</h4>
                 <div id="MianBlock" className="col s4 m4 l2 z-depth-1 grey container" onClick={this.handleVendor} >
                 <br></br>
-                <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
+                <div id="block" onClick={()=>this.setState({Block1:true})} className="button center-align white">
                 <i className="material-icons left">keyboard_arrow_right</i>Ground Flore
                 <img className="assoEdit" src={edit} width="20" height="20"></img></div>
                 <h6 className="center white-text"><i className="material-icons">add</i>Add a room</h6>

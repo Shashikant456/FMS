@@ -97,7 +97,7 @@ export class dashboardHelp extends Component {
      
         <div className="row">
         <img className="center" id="dashboard" src={dashboard} ></img>
-        <div className="center-align"><h6 id="textimg">How can we help?</h6></div>
+        <div className="center-align"><h6 className="hide-on-small-only" id="textimg">How can we help?</h6></div>
 
 
         <nav className="container white" id="search">

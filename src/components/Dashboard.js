@@ -478,7 +478,7 @@ class Dashboard extends Component {
                 )
             })
         ) : (
-            <div className="center"><h5>You have not Applied for any Jobs</h5>
+            <div className="center" ><h5>You have not Applied for any Jobs</h5>
             
             </div>
             
@@ -510,7 +510,7 @@ class Dashboard extends Component {
                 <div className="">
                 
                      <img className="center" id="dashboard" src={dashboard}></img>
-                     <div className="center-align"><h6 id="textimg">Find your job here</h6></div>
+                     <div className="center-align"><h6 id="textimg hide-on-small-only">Find your job here</h6></div>
                 </div>
                 
                 <nav className="container white" id="search">

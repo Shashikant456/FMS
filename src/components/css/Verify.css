@@ -266,3 +266,11 @@ input.error {
 .separator::after {
   margin-left: .25em;
 }
+.numInputsss{
+  display: flex;
+  flex-direction: row;
+  width: 3em;
+    text-align: center;
+    background: bisque;
+    border: none;
+}

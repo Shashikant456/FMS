@@ -3,7 +3,7 @@ import {  withRouter } from 'react-router-dom'
 import axios from 'axios'
 import image from './Images/Background.png'
 import logo from './Images/Mainlogo.png'
-
+import OtpInput from 'react-otp-input';
 import './css/Verify.css'
 
 const header={
@@ -14,23 +14,14 @@ const header={
 class Verify extends Component{
     
     state = {  
-                countryCode:'91',
-                mobileNumber:'111111111',
+                countryCode:this.props.location.state.countryCode.countryCode,
+                mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
                 otp_input:'',
                 error:'',
                 userId:'',
                 dash:'',
                 loading:false
-             }
-             componentDidMount(){
-                this.setState({
-                   mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
-                   countryCode: this.props.location.state.countryCode.countryCode
-                 })                
-             }
-                        
-                    
-
+             }        
     handleChange = (e) => {
         this.setState({
             otp_input: e.target.value  
@@ -164,3 +155,17 @@ class Verify extends Component{
 }
 export default withRouter(Verify)
 
+// <OtpInput className="numInputs"
+// onChange={otp => console.log(otp)}
+// numInputs={6}
+// separator={<span>-</span>}
+// />
+
+// <div className="">
+// <input className="numInputsss" type="text" maxlength="1"/>
+// <input className="numInputsss" type="text" maxlength="1"/>
+// <input className="numInputsss" type="text" maxlength="1"/>
+// <input className="numInputsss" type="text" maxlength="1"/>
+// <input className="numInputsss" type="text" maxlength="1"/>
+// <input className="numInputsss" type="text" maxlength="1"/>
+// </div>
