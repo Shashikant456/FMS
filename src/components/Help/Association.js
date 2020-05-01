@@ -169,6 +169,8 @@ export class dashboardHelp extends Component {
           <div className="container z-depth-1" id="colli">
           <h5 className="center-align" id="coll">Association</h5>
               {jobseekerList}
+              <br></br>
+              <br></br>
             </div>
 
             <div id="ques">

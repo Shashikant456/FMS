@@ -14,15 +14,11 @@ import * as $ from 'jquery'
 
 export class dashboardHelp extends Component {
   state={
-    status:'job',
-    mobileNumber:''
+    mobileNumber:this.props.location.state.mobileNumber.mobileNumber
   }
-  componentDidMount(){
-    this.setState({
-      mobileNumber:this.props.location.state.mobileNumber.mobileNumber
-    })
-    
-  }
+  // componentDidMount(){
+  //   location.reload();
+  // }
   handleVendor=(e)=>{
     this.props.history.push({
       pathname : '/vendorHelp',
@@ -59,13 +55,17 @@ export class dashboardHelp extends Component {
       const jobseekerList = jobseker.length ? (
         jobseker.map(Qes => {      
                 return(
+                  <div>
                   <ul className ="collapsible container" data-collapsible ="accordion" id="collpsible" key={Qes.id}>
                   <li>
-                    <div className = "collapsible-header">
-                        <i className = "material-icons">arrow_drop_down</i>{Qes.question}</div>
-                    <div className = "collapsible-body"><p>{Qes.ans}</p></div>
+                    <div className="collapsible-header">{Qes.question}
+                    <span className="right-align"><i className="material-icons">arrow_drop_down</i></span>
+                    
+                    </div>
+                    <div className="collapsible-body"><p>{Qes.ans}</p></div>
                   </li>
                   </ul>
+                  </div>
                 )
             })
         ) : (
@@ -171,6 +171,8 @@ export class dashboardHelp extends Component {
           <div className="container z-depth-1" id="colli">
               <h5 className="center-align" id="coll">Job Seeker</h5>
               {jobseekerList}
+              <br></br>
+              <br></br>
           </div>
 
             <div id="ques">

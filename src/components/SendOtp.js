@@ -122,11 +122,10 @@ class SendOtp extends Component{
             <br></br>
      
             <div className="logo">
-            
                 <a href="" onClick={this.handleGoogle}  className="fa fa-google" ></a>
                 <i onClick={this.handleFacebook} className="fa fa-facebook"></i> 
                 <i className="fa fa-user" onClick={this.userLogin} aria-hidden="true"></i>
-        </div>
+             </div>
      </center>
     </div> 
 

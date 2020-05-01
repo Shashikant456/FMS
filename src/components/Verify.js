@@ -14,8 +14,8 @@ const header={
 class Verify extends Component{
     
     state = {  
-                countryCode:this.props.location.state.countryCode.countryCode,
-                mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
+                // countryCode:this.props.location.state.countryCode.countryCode,
+                // mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
                 otp_input:'',
                 error:'',
                 userId:'',
