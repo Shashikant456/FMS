@@ -14,17 +14,18 @@ const header={
 class Verify extends Component{
     
     state = {  
-                // countryCode:this.props.location.state.countryCode.countryCode,
-                // mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
+                countryCode:this.props.location.state.countryCode.countryCode,
+                mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
                 otp_input:'',
                 error:'',
+                otp:'',
                 userId:'',
                 dash:'',
                 loading:false
              }        
-    handleChange = (e) => {
+    handleChange = (otp) => {
         this.setState({
-            otp_input: e.target.value  
+            otp
         })
     }
     handleResend= (e)=>{
@@ -61,7 +62,7 @@ class Verify extends Component{
         axios.post('/stskFmsApi/otpServices/verifyOtpBySMS', 
         {   countryCode:91,
             mobileNumber :this.state.mobileNumber,
-            otp_input: this.state.otp_input},{headers:header})
+            otp_input: this.state.otp},{headers:header})
                 .then(Response => {
                     
                       console.log(Response)
@@ -134,10 +135,22 @@ class Verify extends Component{
                 <form id="frm" onSubmit={this.handleSubmit}>
                 <h6 id="enterHere">Enter Otp Here</h6>
                     <div className="input-field">
-                            <input id="partitioned" type="text" required minLength="6" maxLength="6" value={this.state.otp_input} 
-                            onChange={this.handleChange} />
-                            <br></br>
-                            <br></br>
+                    <OtpInput
+                    inputStyle={{  
+                       width: '3rem',  
+                       height: '3rem',  
+                       fontSize: '24px',  
+                       color: '#707070',
+                       borderRadius: 4,  
+                       margin: '4px',
+                       border: 'none',
+                      background: '#EEEAEA',
+                      
+                     }}
+                     onChange={otp => this.handleChange(otp)}
+                     value={this.state.otp}  
+                     numInputs={6}
+                   />
                             <h6 className="red-text">{this.state.error}</h6>
                     </div>
                     <h6 id="resendotp" onClick={this.handleResend} className="center-align">Resend OTP</h6>
@@ -148,6 +161,8 @@ class Verify extends Component{
                 </form>
                 <div id="hr" className="separator">or</div>
                 <button onClick={this.handleVerify} id="verifymisscall">Give missed call to verify</button>
+               
+           
             </center>
             </div> 
         </div>
