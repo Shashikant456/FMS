@@ -58,9 +58,8 @@ export class dashboardHelp extends Component {
                   <div>
                   <ul className ="collapsible container" data-collapsible ="accordion" id="collpsible" key={Qes.id}>
                   <li>
-                    <div className="collapsible-header">{Qes.question}
-                    <span className="right-align"><i className="material-icons">arrow_drop_down</i></span>
-                    
+                    <div className="collapsible-header"><i className="material-icons">arrow_drop_down</i>{Qes.question}
+                  
                     </div>
                     <div className="collapsible-body"><p>{Qes.ans}</p></div>
                   </li>
