@@ -510,7 +510,7 @@ class Dashboard extends Component {
                 <div className="">
                 
                      <img className="center" id="dashboard" src={dashboard}></img>
-                     <div className="center-align hide-on-small-only"><h6 id="textimg">Find your job here</h6></div>
+                     <div className="center-align show-on-large"><h6 id="textimg">Find your job here</h6></div>
                 </div>
                 
                 <nav className="container white" id="search">
@@ -541,7 +541,8 @@ class Dashboard extends Component {
                         <Popup modal trigger={
                         
                             <div className="right-align"><img src={edit} width="20" height="20"></img>
-                            <br></br></div>
+                                 <br></br>
+                            </div>
                         }>
                         
                         <div className="popup-content">
@@ -623,15 +624,12 @@ class Dashboard extends Component {
                      </div>
                 </div>
                 </div>
-                 <footer className="page-footer white">
-                 <div className="footer-copyright center" id="footer">
-                   <div className="text-center">
-                   <p className="center" id="footer1">Copyright @2020 All rights reserved | This tamplate is made with STSK</p>
-                   <a className="grey-text text-lighten-4 right" href="#!"></a>
-                   </div>
-               </div>
-
-               </footer>
+            
+            
+               <div className="footer-copyright" id="footer">
+               <h6 className="center"> Copyright @2020 All rights reserved | This tamplate is made with STSK
+                 </h6>
+             </div>
             </div>
         )       
     }

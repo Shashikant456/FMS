@@ -9,6 +9,16 @@ import association from './Images/AsssociationHelp.png'
 import recident from './Images/recidentHelp.png'
 import axios from 'axios'
 import * as $ from 'jquery'
+import edit from './Images/edit.png'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
+import 'react-accessible-accordion/dist/fancy-example.css';
+
 
 
 
@@ -58,8 +68,8 @@ export class dashboardHelp extends Component {
                   <div>
                   <ul className ="collapsible container" data-collapsible ="accordion" id="collpsible" key={Qes.id}>
                   <li>
-                    <div className="collapsible-header"><i className="material-icons">arrow_drop_down</i>{Qes.question}
-                  
+                    <div className="collapsible-header">
+                      <i className="material-icons right-align">arrow_drop_down</i>{Qes.question}
                     </div>
                     <div className="collapsible-body"><p>{Qes.ans}</p></div>
                   </li>
@@ -211,19 +221,17 @@ export class dashboardHelp extends Component {
                         <p className="black-text ">Working hours: 9 to 7</p>
                         <div className="center">
                             <i className="material-icons small" id="locicon">location_on</i>
-                            <p id="textcolor">#195/6/2,#3rd Floor, Ward No. 192, Bhartena Agrahara,Above MG Showroom, Hosur Main Road, Electronic City, Bengaluru-560100</p>
+                            <p id="textcolor">#195/6/2,#3rd Floor, Ward No. 192, Bhartena Agrahara,Above MGShowroom,  Hosur Main Road, Electronic City, Bengaluru-560100</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="footer-copyright center" id="footer">
-                    <div className="text-center">
-                    Copyright @2020 All rights reserved | This tamplate is made with STSK
-                    <a className="grey-text text-lighten-4 right" href="#!"></a>
-                    </div>
-                </div>
 
                 </footer>
+                <div className="footer-copyright" id="footer">
+                <h6 className="center"> Copyright @2020 All rights reserved | This tamplate is made with STSK
+                  </h6>
+              </div>
         </div>
         </div>
         )
@@ -234,3 +242,22 @@ export class dashboardHelp extends Component {
 // });
 
 export default withRouter(dashboardHelp)
+
+
+
+// <Accordion>
+// <AccordionItem>
+//     <AccordionItemHeading>
+//         <AccordionItemButton>
+//             What harsh truths do you prefer to ignore?
+//         </AccordionItemButton>
+//     </AccordionItemHeading>
+//     <AccordionItemPanel>
+//         <p>
+//             Exercitation in fugiat est ut ad ea cupidatat ut in
+//             cupidatat occaecat ut occaecat consequat est minim minim
+//             esse tempor laborum consequat esse adipisicing eu
+//             reprehenderit enim.
+//         </p>
+//     </AccordionItemPanel>
+// </AccordionItem>
