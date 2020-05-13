@@ -127,6 +127,8 @@ class Help extends Component {
           <div className="container z-depth-1" id="colli">
               <h5 className="center-align" id="coll">Association</h5>
               {jobseekerList}
+              <br></br>
+              <br></br>
           </div>
 
           <div id="ques">
@@ -171,14 +173,12 @@ class Help extends Component {
                   </div>
                 </div>
               </div>
-              <div className="footer-copyright center" id="footer">
-                <div className="text-center">
-                Copyright @2020 All rights reserved | This tamplate is made with STSK
-                <a className="grey-text text-lighten-4 right" href="#!"></a>
-                </div>
-            </div>
 
             </footer>
+            <div className="footer-copyright" id="footer">
+              <h6 className="center"> Copyright @2020 All rights reserved | This tamplate is made with STSK
+                </h6>
+            </div>
     </div>
     </div>
 

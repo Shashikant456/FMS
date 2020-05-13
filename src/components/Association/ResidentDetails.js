@@ -102,13 +102,10 @@ class ResidentDetails extends Component {
 </div>
      )}
            
-     <div className="footer-copyright center" id="footer">
-     <div className="text-center">
-     <p className="center-align" id="footer">Copyright @2020 All rights reserved | This tamplate is made with STSK</p>
-     <a className="grey-text text-lighten-4 right" href="#!"></a>
-     </div>
- </div>
-
+     <div className="footer-copyright" id="footer">
+                <h6 className="center"> Copyright @2020 All rights reserved | This tamplate is made with STSK
+                  </h6>
+              </div>
         </div>
         )
     }
