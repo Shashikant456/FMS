@@ -31,8 +31,8 @@ export class Register extends Component {
         .then(res=>{
             console.log(res.data.data)
             this.setState({
-                userRoless : res.data.data,
-                mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
+                 userRoless : res.data.data,
+                // mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
             })
            
         })
@@ -71,7 +71,9 @@ export class Register extends Component {
                     <img className="right align" id="side" src={right} width="50" height="50"></img>
                     <center id="center">
                         <img id="logo" className="center" src={logo} width="60" height="60"></img>
-                        <h3 className="center" id="texttt">Choose Category</h3>  
+                        <br></br>
+                        <br></br>
+                        <h4 className="center" id="texttt">Choose Category</h4>  
                         
                         <div className='row'>
                             <div className="col m6 l6" id="jobseeeker" onClick={this.handleChange}>

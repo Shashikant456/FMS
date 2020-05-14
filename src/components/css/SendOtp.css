@@ -8,7 +8,7 @@ html{
     font-family: 'Lato', ;
     box-sizing: border-box;
 }
-/* body{
+/* body{    
     background-image: url("../Images/Background.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -235,22 +235,11 @@ button:enabled{
     outline: none;
 }
 
-@media only screen and (max-width: 625px)
+@media only screen and (max-width: 645px)
 {
-    html{
-
-        width: 405px;
-    }
-    #main1{
-       
-        width: 374px;
-        margin-left: 2px; 
-    }
-    #center{
+   
+    #main1,#main{
         width: 374px;
     }
+   
 }
-
-/* 
-width: 374px;
-margin-left: 2px; */

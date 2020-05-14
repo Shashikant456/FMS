@@ -36,8 +36,6 @@
   #jobseeeker,#vendorr{margin-right: 14px;}
   #texttt{
       margin-bottom: 35px;
-      margin-left: 0px;
-      margin-right: 0px;
       color: #707070;
   }
   #side{
@@ -83,3 +81,11 @@
     background-size: cover;
   }
 } 
+/* @media only screen and (max-width: 625px)
+{
+
+    #main{
+        width: 374px;
+    }
+    
+} */
