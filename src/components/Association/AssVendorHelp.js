@@ -69,8 +69,12 @@ class AssVendorHelp extends Component {
             </nav>
           </div>
 
-          <div className="row">
-            <img className="center" id="dashboard" src={dashboard} ></img>
+          <div className="row">                                                                                                                     
+          <div className="">
+               <img className="center" id="dashboard" src={dashboard} ></img>
+                <div className="center-align"><h6 id="textimg">How can we help?</h6></div>
+
+               </div>
           </div>
                 
         <h4 className="center" id="headinggg">Got questions?</h4>

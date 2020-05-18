@@ -61,8 +61,8 @@ class AssoVendor extends Component {
               <div id="MianBlock" className="col s5 m4 l2 z-depth-1 grey container" onClick={this.handleVendor} >
               <br></br>
                <div id="block" onClick={()=>this.setState({Block:false})} className="button center-align white">
-               <i className="material-icons left">keyboard_arrow_right</i>
-               Block A<img className="assoEdit" id="" src={edit} width="20" height="20"></img></div>
+               <i className="material-icons left color">keyboard_arrow_right</i>
+              <span>Security guard</span><i class="material-icons">clear</i></div>
               <h6 className="center white-text cursor-pointer"><i className="material-icons">add</i>Add flat</h6>
               </div>
           </div>

@@ -23,7 +23,6 @@
 }
 .assoEdit{
     margin-top: -5px;
-    margin-left: 22px;
 }
 i.left {
     float: left;
@@ -35,4 +34,7 @@ i.left {
     background: #3FB2AA;
     color: white;
     text-transform: initial;
+}
+.color{
+    color: aqua;
 }
