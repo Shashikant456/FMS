@@ -80,6 +80,14 @@ class Dashboard extends Component {
                     // appliedJobdId:[...this.state.appliedJobdId, res.data.data.jobs]
                         })    
                     })
+
+                    axios.get('/jobseekerdoc/getByJobSeekerId/',this.state.userId,{headers:header})
+                    .then(res=>{
+                        console.log(res)
+                        console.log(res.data)
+                            })    
+                
+    
                 }, 3000);
     }
 
