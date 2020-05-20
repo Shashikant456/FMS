@@ -5,7 +5,7 @@
    
 }
 #block{
-    padding: 7px;
+    padding: 4px;
     border-radius: 9px;
     cursor: pointer;
 }
@@ -37,4 +37,10 @@ i.left {
 }
 .color{
     color: aqua;
+}
+.btntext{
+    margin-top: 8px;
+}
+#assovendor{
+    padding: 13px;
 }

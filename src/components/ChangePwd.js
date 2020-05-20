@@ -81,7 +81,10 @@ class ChangePwd extends Component {
                     <i id="iconn" className="material-icons prefix">lock</i>
                     <input id="icon_prefix" type="password" required value={this.state.confirmPassword} onChange={this.handleChange2}
                      placeholder="Confirm password" onChange={this.handleChange2}/>
-                     <p className="red-text">{this.state.error}</p>
+                     <br></br>
+                     <br></br>
+                 <h6 className="red-text center">{this.state.error}</h6>
+                    
                 </div>
                 
             <button id="input-type4">Save</button>

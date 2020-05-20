@@ -57,45 +57,58 @@ class AssoVendor extends Component {
         <div className="row white">
           <div className="col s10 m10 l10">
           <div className="col s10 m10 l10 offset-m1 offset-l1 z-depth-1">
-          <h4 className="headingg">Vendor Details</h4>
-              <div id="MianBlock" className="col s5 m4 l2 z-depth-1 grey container" onClick={this.handleVendor} >
+          <br></br>
+          <h4 className="headingg grey-text">Vendor Details</h4>
+              <div id="MianBlock" className="col s5 m4 l3 z-depth-1 grey container" onClick={this.handleVendor} >
               <br></br>
                <div id="block" onClick={()=>this.setState({Block:false})} className="button center-align white">
                <i className="material-icons left color">keyboard_arrow_right</i>
-              <span>Security guard</span><i class="material-icons">clear</i></div>
-              <h6 className="center white-text cursor-pointer"><i className="material-icons">add</i>Add flat</h6>
+              <span className="left">Security guard</span>
+              <div className="right-align"><i className="material-icons">clear</i></div></div>
+              <h6 className="white-text cursor-pointer left btntext">View companys</h6>
               </div>
           </div>
           </div>
       </div>
+      
       ):(
           <div className="row">
           <div className="col s10 m10 l10">
           <div className="col s10 m10 l10 offset-m1 offset-l1 z-depth-1">
             <div className="row white">
             <div className="col s10 m10 l10">
-                <h4 className="headingg">Block Details</h4>
-                <div id="MianBlock" className="col s5 m4 l2 z-depth-1 teal accent-4 container" onClick={this.handleVendor} >
+                <h4 className="headingg grey-text">Vendor Details</h4>
+                <div id="MianBlock" className="col s5 m4 l3 z-depth-1 teal accent-4 container" onClick={this.handleVendor} >
                 <br></br>
-                <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
-                <i className="material-icons left">keyboard_arrow_down</i>
-                Block A<img className="assoEdit" src={edit} width="20" height="20"></img></div>
-                <br></br>
-                </div>
-            </div>
-            </div>
+                    <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
+                    <i className="material-icons left color">keyboard_arrow_right</i>
+                    <span className="left">Security guard</span>
+                    <div className="right-align"><i className="material-icons">clear</i></div></div>
+                    <h6 className="white-text cursor-pointer left btntext">View companys</h6>
+                 </div>
+        </div>
+        </div>
 
             <div className="row white">
-            <div className="col s12 m10 l10">
-                <h4 className="headingg">Block A- Flore Details</h4>
-                <div id="MianBlock" className="col s4 m4 l2 z-depth-1 grey container" onClick={this.handleVendor} >
-                <br></br>
-                <div id="block" onClick={()=>this.setState({Block:true})} className="button center-align white">
-                <i className="material-icons left">keyboard_arrow_right</i>Ground Flore
-                <img className="assoEdit" src={edit} width="20" height="20"></img></div>
-                <h6 className="center white-text"><i className="material-icons">add</i>Add a room</h6>
+                <div className="col s12 m10 l10">
+                    <h4 className="headingg grey-text">Security guard-Company & Employee-details</h4>
+                    <br></br>
+                    
+                    <div className="card">
+                    
+                        <div className="card-content container" id="assovendor">
+                        
+                         <div className="col s6 m6 l6">
+                             <p id="dashtext">abc company private limited- bommanahalli</p>
+                          </div>
+                         <div className="col s6 m6 l3">
+                             <p id="dashtext">18 Employees</p>
+                          </div>
+                          <h6 id="viewdetails" className="right-align"> <u>ViewDetails</u></h6>
+                        </div>
+                    </div>
+                    
                 </div>
-            </div>
             </div>
         </div>
         </div>

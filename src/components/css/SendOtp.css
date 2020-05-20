@@ -238,7 +238,7 @@ button:enabled{
 @media only screen and (max-width: 625px)
 {
    
-    #main1,#main{
+    #main1,#main,#main2{
         width: 374px;
     }
    

@@ -45,7 +45,7 @@ class Verify extends Component{
             console.log(error)
         });
     }
-   handleVerify=(e)=>{
+   handleResend=(e)=>{
        axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
        {  countryCode:this.state.countryCode,
         mobileNumber :this.state.mobileNumber},{headers:header})
@@ -160,7 +160,7 @@ class Verify extends Component{
                       Verify</button>
                 </form>
                 <div id="hr" className="separator">or</div>
-                <button onClick={this.handleVerify} id="verifymisscall">Give missed call to verify</button>
+                <button onClick={this.handleResend} id="verifymisscall">Give missed call to verify</button>
                
            
             </center>

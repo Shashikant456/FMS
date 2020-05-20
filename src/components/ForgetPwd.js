@@ -24,11 +24,13 @@ state = {
             })
         }
         handleChange2 = (e) => {
+            console.log(e.target.value)
             this.setState({
                 input_otp : e.target.value
             })
         }
-        handleVerify=(e)=>{
+        handleResend=(e)=>{
+            console.log("resend")
             axios.post('/stskFmsApi/otpServices/resendOtpBySMS',
             {  countryCode:91,
              mobileNumber :this.state.mobileNumber},{headers:header})
@@ -60,10 +62,10 @@ state = {
         }
         handleVerify = (e) => {
             e.preventDefault();
-            axios.post('/stskFmsApi/otpServices/sendOtpBySMS',
+            axios.post('/stskFmsApi/otpServices/verifyOtpBySMS',
             {   countryCode:91,
                 mobileNumber :this.state.mobileNumber,
-                otp_input: this.state.otp_input},{headers:header})
+                otp_input: this.state.input_otp},{headers:header})
                 .then(Response => {
                    console.log(Response)
                    console.log(Response.data)
@@ -91,7 +93,7 @@ state = {
     render() {
         const countries = require("./countryphonecode.json")
         console.log(this.state.countryCode)
-        console.log(this.state.mobileNumber)
+        console.log(this.state)
 
         return (
             <div id="body">
@@ -129,10 +131,10 @@ state = {
                              title="Must contain only Numeric value"
                             />
                             <h6 className="center-align red-text">{this.state.errorOtp}</h6>
-                        <button id="FpVerify"><i class="material-icons right">arrow_forward</i>Verify</button>
+                        <button  id="FpVerify"><i class="material-icons right">arrow_forward</i>Verify</button>
                         </form>
                         <div id="hr" className="separator">or</div>
-                        <button id="verifymisscall" onClick={this.handleVerify} type="submit">Give missed call to verify</button>
+                        <button id="verifymisscall" onClick={this.handleResend} type="submit">Give missed call to verify</button>
                     </div>
                     ) : (
                         <form id="userLogin1" onSubmit={this.handleSend}>
