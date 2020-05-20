@@ -131,7 +131,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 #FpVerify{
   width: 288px;
     outline: none;
-    margin-top: 48px;
+    margin-top: 17px;
 }
 #otpleftarrow{
   margin-right: 271px;

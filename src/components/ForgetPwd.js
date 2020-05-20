@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Form,FormControl } from 'react-bootstrap';
+import OtpInput from 'react-otp-input';
+
 import {  withRouter } from 'react-router-dom'
 
 
@@ -23,10 +25,9 @@ state = {
                 mobileNumber : e.target.value
             })
         }
-        handleChange2 = (e) => {
-            console.log(e.target.value)
+        handleChange2 = (otp) => {
             this.setState({
-                input_otp : e.target.value
+                otp
             })
         }
         handleResend=(e)=>{
@@ -127,11 +128,27 @@ state = {
                         </form>
 
                         <form onSubmit={this.handleVerify}>
-                            <input id="partitioned" type="text" required maxLength="6" onChange={this.handleChange2} 
-                             title="Must contain only Numeric value"
-                            />
-                            <h6 className="center-align red-text">{this.state.errorOtp}</h6>
-                        <button  id="FpVerify"><i class="material-icons right">arrow_forward</i>Verify</button>
+                        <div>
+                        <OtpInput
+                        inputStyle={{  
+                           width: '3rem',  
+                           height: '3rem',  
+                           fontSize: '24px',  
+                           color: '#707070',
+                           borderRadius: 4,  
+                           margin: '4px',
+                           border: 'none',
+                          background: '#EEEAEA',
+                          
+                         }}
+                         onChange={otp => this.handleChange2(otp)}
+                         value={this.state.otp}  
+                         numInputs={6}
+                       />
+                       <h6 className="center-align red-text">{this.state.errorOtp}</h6>
+
+                       </div>
+                        <button  id="FpVerify"><i className="material-icons right">arrow_forward</i>Verify</button>
                         </form>
                         <div id="hr" className="separator">or</div>
                         <button id="verifymisscall" onClick={this.handleResend} type="submit">Give missed call to verify</button>
