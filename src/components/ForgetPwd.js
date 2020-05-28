@@ -140,6 +140,7 @@ state = {
                            border: 'none',
                           background: '#EEEAEA',
                           
+                          
                          }}
                          onChange={otp => this.handleChange2(otp)}
                          value={this.state.otp}  
