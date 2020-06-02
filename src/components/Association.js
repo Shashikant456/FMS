@@ -8,6 +8,7 @@ export class Association extends Component {
             </div>
         )
     }
+    
 }
 
 export default Association
