@@ -14,7 +14,8 @@ import $  from 'jquery'
 import { Multiselect } from "multiselect-react-dropdown";
 
 import Bootstrap from "react-bootstrap";
-import camara from './Images/camerapic.png'
+import file from './Images/file.png'
+//import Avatar from 'react-avatar-edit'
 
 
 
@@ -36,23 +37,18 @@ const formValid = ({ formErrors, ...rest }) => {
 
 
 class UserDetails extends Component {
+
   constructor(props) {
     super(props);
-    
+    const src = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png'
   this.state = {
-    
-    // oplist:[],
-    // multiSelect: [],
-     image: null,
-    //  selectedFile:null,
-    //   dropdown:'',
-    //   displayValue:'',
-    //   values: [],
-    //  focusedValue: -1,
-    //   isFocused: false, 
-    //   isOpen: false,
-    //   typed: '',
-    //   checkBoxerror:'',
+  
+    // preview: null,
+    // src,
+    profileimage: null,
+    profileimagedocId:'',
+    profileimagepath:'',
+  
     selectedValue:null,
     Types:[],
       resume:null,
@@ -60,7 +56,7 @@ class UserDetails extends Component {
       name: null,
       email: '',
       mob:'',
-       mobileNumber:'',
+      mobileNumber:'',
       panNum: null,
       aadharNum: null,
       
@@ -69,9 +65,7 @@ class UserDetails extends Component {
       working : '',
       jobUpdate:null,
       userId:'',
-    //  jobTypes:[
-    //     { id:''},
-    //  ],
+   
        jobTypes:'',
       fresher:'',
       Current_company:null,
@@ -93,6 +87,7 @@ class UserDetails extends Component {
       Updates:["Send Mail","SMS","Both","None"],
       YOP:["1","2","3","4","5","6","7","8","9","10"],
       formErrors: {
+        profileimage: null,
         name: "",
         email: "",
         mob:"",
@@ -103,15 +98,8 @@ class UserDetails extends Component {
           eduQual: "",
           working:"",
           jobUpdate:"",
-          userId:'3',
-         //jobss:"",
-           //update:"",
-          //  userLogin:[
-          //   { id:''}
-          // ],
-        //   jobTypes: 
-        //     [{ id:''}]
-        //  ,
+          userId:'',
+        
           jobTypes:[],
           fresher:'',
        Current_company:'',
@@ -127,36 +115,20 @@ class UserDetails extends Component {
       prevcompanyName:'',
       prevdesignation:'',
       prevjobLocation:'',
-          // address:'',
-          //
-         // password: "",
+         
           
         }
    
     };
+    
     this.handleSubmit=this.handleSubmit.bind(this)
   }
-
+  
   componentWillMount(){
-    let formData = new FormData();  
-
-    formData.append('file',this.state.image);   
-    
-    console.log(formData)
-    const config = {     
-        headers: { 'content-type': 'multipart/form-data',
-        'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
-    }
-    
-       
-        axios.post('stskFmsApi/jobseekerdoc/createDoc/608',formData,config)
-            .then(res => {
-              console.log(res);
-            })
-            .catch(err => console.log(err))
+   
     this.setState({
-    //  mob:this.props.location.state.mobileNumber.mobileNumber,
-    //  mobileNumber:this.props.location.state.mobileNumber.mobileNumber
+    mob:this.props.location.state.mobileNumber.mobileNumber,
+    mobileNumber:this.props.location.state.mobileNumber.mobileNumberx
      
   })  
   fetch('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes',{headers:header}) 
@@ -185,25 +157,15 @@ class UserDetails extends Component {
     });  
   }
   componentDidMount(){
-   
-
-  axios.get('/stskFmsApi/jobTypes/getAllJobTypes',{headers:header})
-    .then(res=>{
-      console.log(res.data)
-      console.log(res.data.data)
-        this.setState({
-            jobs : res.data.data
-        })  
-    })
-    axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
+  axios.get('/stskFmsApi/userLogin/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
     .then(res=>{
       console.log(res.data)
        this.setState({
             userId:res.data.data.id,
             email:res.data.data.email
         })
-    }) 
- }
+    })
+}
  handleRadio=(e)=>{
   console.log(e.target.value)
  
@@ -280,29 +242,16 @@ handleRadio3=(e)=>{
 }
 
 
+
 handleSubmit = e => {  
  
   e.preventDefault();
   console.log(this.state)
  
-  // let formData = new FormData();  
-
-  // formData.append('file',this.state.image,this.state.image.name);   
-  
-  // console.log(formData)
-  // const config = {     
-  //     headers: { 'content-type': 'multipart/form-data' }
-  // }
-  
-     
-      // axios.post('stskFmsApi/imageDoc/createDoc/'+this.state.userId,formData,config)
-      //     .then(res => {
-      //       console.log(res);
-      //     })
-      //     .catch(err => console.log(err))
 
 
-    // if(this.state.check===true){
+    if(this.state.check===true){
+ 
     axios.post('/stskFmsApi/jobseeker/createJS',{
     name:this.state.name,
     email: this.state.email,
@@ -348,7 +297,7 @@ handleSubmit = e => {
       console.log(response.data)
   
       this.props.history.push({
-      pathname : '/dashboard',
+      pathname : '/uploadDocument',
       state :{
       mobileNumber : this.state,
         }} );
@@ -395,16 +344,18 @@ handleSubmit = e => {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     }
 
-        //}
-          // else{
-          //   this.setState({
-          //       checkBoxerror:'Accept Terms & Conditions'
-          //   })
-          // }
+        }
+          else{
+            this.setState({
+                checkBoxerror:'Accept Terms & Conditions'
+            })
+          }
   
 
  };
+ 
   handleChange = e => {
+    
     // this.setState({update : e.target.value});
     // this.setState({value:e.target.value});
     //  const { name, value } = e.target;
@@ -421,59 +372,95 @@ handleSubmit = e => {
    };
    
   handleChange1Arg = (selectedvalue) =>{
+    var i=selectedvalue.length;
+    var jobnamearray =[];
+    for(var j=0;j<=i-1;j++){
+   var jobname=jobnamearray.push(selectedvalue[j]['name']);
+
+    }
   
-   console.log(selectedvalue)
+  console.log(selectedvalue)
     console.log(`Option selected:`, selectedvalue);
     this.setState({ selectedvalue})
-    this.setState({jobTypes:selectedvalue})}
+    this.setState({jobTypes:selectedvalue})
+   
+     document.getElementById("valsel").innerHTML=jobnamearray;
+     //var str = jobnamearray;
+      // if(str.length > 2) 
+      // {str = str.substring(0,10)};
+     // alert('str')
+  
+  }
   
   handleChange2 = e =>{
     this.setState({
       jobUpdate : e.target.value
     });
   }
-  handlefile(e){
-    let file=e.target.files[0]
-    this.setState({file:file})
-    console.log(e.target.files,"$$$$")
-    console.log(e.target.files[0],"$$$$")
-}
+  handleCheckLength=(e)=>{
+    alert('hi')
+  }
+
+//   handlefile(e){
+//     let file=e.target.files[0]
+//     this.setState({file:file})
+//     console.log(e.target.files,"$$$$")
+//     console.log(e.target.files[0],"$$$$")
+// }
   handleCheck = (e) =>{
     this.setState({
       check:true
     });
   }
   handleImageChange = (e) => {
-    console.log(e)
-    console.log( e.target.files[0])
-    console.log( e.target.files[0].name)
-    
-  this.setState({
-      image: e.target.files[0]
-  })
-};
-handleResumeChange = (e) => {
-  e.preventDefault();
-  console.log(e)
-      console.log( e.target.files[0])
-      console.log( e.target.files[0].name)
-      
-    this.setState({
-        image: e.target.files[0]
-    })
-  
-   
+
+ console.log(e)
+ console.log( e.target.files[0])
+ console.log( e.target.files[0].name)
+ this.setState({
+     profileimage: e.target.files[0]
+ })
+
+   const timer =  setTimeout(()=>{
+   let formData = new FormData();  
+
+formData.append('file',this.state.profileimage);   
+// const timer =  setTimeout(()=>{
+axios.post('/stskFmsApi/imageDoc/createDoc/'+this.state.userId,formData, {headers: 
+{ 'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
+})
+       .then(res => {
+         console.log(res);
+         console.log(res.data)
+         this.setState({
+             profileimagedocId:res.data.data
+         })
+        })
+       .catch(err => console.log(err))
+       },3000)
+        const timer1 =  setTimeout(()=>{
+        axios.get('/stskFmsApi/imageDoc/retriveWithPath/'+this.state.profileimagedocId, {headers: header})
+        .then(res => {
+          console.log(res);
+          this.setState({
+            profileimagepath:res.data.data.path
+          })
+         
+     })
+        .catch(err => console.log(err))
+    },4000)
 
 
-   
-}
  
-  onChangeCapture=(e)=>{
-    console.log(e.target.files[0]);
-    this.setState({
-      selectedFile:e.target.files[0]
-    })
-  }
+};
+
+ 
+  // onChangeCapture=(e)=>{
+  //   console.log(e.target.files[0]);
+  //   this.setState({
+  //     selectedFile:e.target.files[0]
+  //   })
+  // }
   handleChange5=(e)=>{
     console.log(e.target.value)
     this.setState({
@@ -481,55 +468,54 @@ handleResumeChange = (e) => {
     })
   }
 
-  fileUploadHandler = () =>{
-    const fd = new FormData();
-    fd.append('image_src',this.state.selectedFile)
-    console.log(fd)
-    axios.post('/stskFmsApi/imageDoc/createDoc/2',fd)
-    .then(res =>{
-      console.log(res)
-      console.log(this.state.userId)
-    })
-  }
+
   result=(e)=>{
     console.log(e.target.value)
   } 
-
-
  
-  render() {
-   
-    console.log(this.state.jobTypes)
- 
+render() {
   console.log(this.state)
-
- console.log(this.state.jobUpdate)
+  console.log(this.state.jobUpdate)
  const { selectedValue } = this.state;
     return (
    
       <div className="wrapper5 col m4 offset-l1">
         <div className="form-wrapper4 row " style={{width:'1000px',height:'650px'}}>
+          
           {/* <h3 className="center-align" id="Registertext">{this.props.match.params.name}</h3> */}
+         
         <h3 className="center-align" id="usertext">JobSeeker</h3>
-        <div className="userimage" style={{marginLeft:'407px',marginRight:'499px'}}>
-        
-        <i className="material-icons large">person</i>
-        
+        {/* <Avatar
+          width={390}
+          height={295}
+          onCrop={this.onCrop}
+          onClose={this.onClose}
+          src={this.state.src}
+        />
+        <img src={this.state.preview} alt="Preview" /> */}
+     
+      
+<div className="userimage" style={{marginLeft:'407px',marginRight:'499px'}}>
+
+<img 
+        src={this.state.profileimagepath} 
+        //src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" 
+        //onChange={this.handleNewImage}
+        placeholder={file}
+        style={{height:'100px',width:'100px',borderRadius:'50px'}}>
+       
+        </img>
+
+       
+      
+        {/* <i className="material-icons large">person</i> */}
             </div>
             <div className="camera" style={{marginLeft:'463px'}}>
-         
-            {/* <input type="file" />
-        <i className="material-icons small">camera</i> */}
-        {/* <span class="select-wrapper"> */}
-        <input   type="file"
-     name="image" class="image_sc" 
+     
+        <input   type="file" 
+     name="image" class="image_src" 
      accept="images.jpeg"  onChange={this.handleImageChange} />
-       {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
-    {/* <button onclick={() => this.fileInput.click()} id="filebutton">pic file</button>
-    <button onClick={this.fileUploadHandler}>Upload</button> */}
-    {/* <i className="material-icons small" id="pic">camera</i>  */}
-  {/* </span> */}
-  <img className="center-align" id="cmmr" src={camara} width="50" height="50"></img>
+   
         </div>
           <div className="text-center">
         
@@ -538,12 +524,12 @@ handleResumeChange = (e) => {
    
             {/* <h2>{this.props.match.params.name}</h2> */}
           </div>
-          {/* <Multiselect options={data} onSelectOptions={this.result} /> */}
+      
        
          
           <form onSubmit={this.handleSubmit} class="form-row" style={{}}>
           
-          {/* <Dropdown placeholder='Applied For'  fluid multiple selection options={options} /> */}
+        
           
    
           <div class="col-md-4 mb-3" style={{paddingRight:'40px',paddingLeft: '30px'}}>
@@ -571,6 +557,7 @@ handleResumeChange = (e) => {
                 name="mob"
                 required
                 value={this.state.mob}
+                // value="8825290842"
                 id="input"
               
                 
@@ -587,11 +574,13 @@ handleResumeChange = (e) => {
                 name="email"
                 required
                 value={this.state.email}
+                // value="alka@gmail.com"
                 id="input"
                 
               />
               {/* <div style={{color:"red"}}>{this.state.emailError}</div> */}
             </div>
+        
             <div class="form-row" style={{marginLeft: '0px'}}>
             <div class="col-md-4 mb-3" style={{width:'475px',paddingRight:'40px',paddingLeft: '30px'}}>
          
@@ -648,14 +637,29 @@ handleResumeChange = (e) => {
        <div class="form-row">
        <div class="col-md-4 mb-3" style={{width:'500px',paddingRight:'35px',paddingLeft: '35px',marginTop:'5px'}}>
            
-          <Popup trigger={<input type="select" value={this.selectedvalue}  placeholder="Applied for" id="popup"/>} position=" center"
+          {/* <Popup trigger={<input type="select" 
+         onClick={this.handleValue}
+           placeholder="Applied for"  onSelect={this.handleChange1Arg}   value={selectedValue}
+          
+           />} position=" center"
+           style={{width:'250px'}}>
+         
+               <Multiselect options={this.state.Types}
+                 value={selectedValue} displayValue="name"
+                 onSelect={this.handleChange1Arg} id="demo" />   
+  </Popup> */}
+           <Popup trigger={<div id="printjobname" onChange={this.handleCheckLength}><h5 id="valse" >select</h5></div>} position=" center"
            style={{width:'250px'}}>
          
                <Multiselect options={this.state.Types}
                  value={selectedValue} displayValue="name"
                  onSelect={this.handleChange1Arg} id="demo" />   
   </Popup>
-       
+  <h5  id="valsel"></h5>
+ 
+ 
+   
+     
 </div> 
     <div class="col-md-4 mb-3"  style={{width:'500px',paddingRight:'40px',paddingLeft: '34px'}}>
        
@@ -993,7 +997,8 @@ handleResumeChange = (e) => {
 </label>
 <p className="center red-text">{this.state.checkBoxerror}</p>
 </div> 
-  
+{/* 
+          <button type="button" onChange={this.handleImageChange}>Button Text</button> */}
             <div className="createAccount1">
               <button type="submit" id="submit1">Submit</button>
             </div> 
@@ -1013,43 +1018,10 @@ handleResumeChange = (e) => {
               /> 
               </div> */}
               {/* </div> */}
-             
-              
-           
-           
-           
-           
-              {/* <div className="Resume">
-              
-              <input
-                className=""
-                placeholder="Resume"
-                type="file"
-                name="resume"
-                noValidate
-                onChange={this.handleChange}
-                id="input"
-              />
-              <small>Select Resume</small>
-             
-             </div> */}
-             {/* </div> */}
-
- 
-
-            
-          
-        
-               
-          </form>
+              </form>
         </div>
        </div>
     );
   }
 }
-
-
-
-
 export default UserDetails;
-

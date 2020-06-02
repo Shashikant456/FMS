@@ -14,7 +14,20 @@ import experiance from './Images/experiance.png'
 import book from './Images/book.png'
 import edit from './Images/edit.png'
 import mail from './Images/mail.png'
-
+import file from './Images/file.png'
+import uploadfile from './Images/upload.png'
+import { Multiselect } from "multiselect-react-dropdown";
+import { Form,FormControl, Button, FormGroup,ControlLabel} from 'react-bootstrap';
+const formValid = ({ formErrors, ...rest }) => {
+    let valid = true;
+  
+   Object.values(rest).forEach(val => {
+      val === null && (valid = false);
+    });
+  
+    return valid;
+  };
+  
 const header={
      'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
  }
@@ -22,39 +35,96 @@ const header={
 toast.configure();
 class Dashboard extends Component {
     constructor(props) {
-        
         super(props);
         this.state = {
+        createeditprofileimage:'null',
+        
+        createeditprofileimagepath:'',
+        createeditprofileimagedocId:'',
+        editprofileimage:'',
+        editprofileimagedocId:'',
+        mobileNumberUserloginId:'',
+        wantedit:'',
+        profileimagepath:'',
+        profileimageretrievedocId:'',
+        blobData:null,
+        resume:null,
+        uploadedResume:'',
+        Types:[],
+        selectedValue:null,
         posts :[],
         details:[],
         editProfile:[],
         userId:'',
         LoggedIn:'true',
-        mobileNumber:this.props.location.state.mobileNumber.mobileNumber,
+        mobileNumber:'',
         search:'',
         appliedJobs:'',
         searchedJobs:[],
         searchLoading:false,
         searchError:'',
-        appliedJobsId:[18]
-    
+        appliedJobsId:[18],
+        Updates:["Send Mail","SMS","Both","None"],
+        //docId:'',
+        path:'',
+        fileName:''
+       
      }
 }
-    componentDidMount(){
+handlejobtypes(){
+  
+   
+}
+handleRadioEdit(e){
+    console.log(e.target.value)
+    // this.setState({
+    //     wantedit:e.target.value
+    // })
+   if(e.target.value=='false'){
+       alert('hi')
+   }
+}
+
+componentDidMount(e){
+ 
+    
+      fetch('http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes',{headers:header}) 
+    .then(response => response.json()) 
+ .then(data => { 
+  
+  let TypesFromApi = data.data.map(Type => {
+      return { id: Type.id, name: Type.name };
+    });
+    this.setState({
+      Types: [
+        {
+          id: "",
+          name:
+            "(Select your desire job)"
+        }
+      ].concat(TypesFromApi)
+    });
+  })
+  .catch(error => {
+      console.log(error);
+    });  
+  
         this._isMounted = true;
         this.setState({
             mobileNumber:this.props.location.state.mobileNumber.mobileNumber
         })
     
-        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.state.mobileNumber,{headers:header})
+        axios.get('/stskFmsApi/jobseeker/getByMob/'+this.props.location.state.mobileNumber.mobileNumber,{headers:header})
         .then(res =>{
           console.log(res.data)
                 this.setState({
                     userId:res.data.data.id,
                     details: res.data.data,
-                    editProfile:res.data.data
+                    editProfile:res.data.data,
+                    userLoginMobile:res.data.data.mob
                 })
                })
+            
               const timer = setTimeout(() => {
                 axios.get('/stskFmsApi/jobs/recommendedJobs/'+this.state.userId,{headers:header})
                 .then(res => {
@@ -80,16 +150,82 @@ class Dashboard extends Component {
                     // appliedJobdId:[...this.state.appliedJobdId, res.data.data.jobs]
                         })    
                     })
-
-                    axios.get('/jobseekerdoc/getByJobSeekerId/',this.state.userId,{headers:header})
-                    .then(res=>{
-                        console.log(res)
-                        console.log(res.data)
-                            })    
-                
-    
                 }, 3000);
+                const timer2 = setTimeout(() => {
+                    axios.get('/stskFmsApi/jobseekerdoc/getByJobSeekerId/'+this.state.userId,{headers:header})
+                    .then(res=>{
+                        console.log(res.data.data[0].docId)
+                    this.setState({
+                        docId:res.data.data[0].docId
+                        })    
+                    })
+                }, 4000);
+                const timer3 =  setTimeout(()=>{
+                    axios.get('/stskFmsApi/jobseekerdoc/retriveWithPath/'+this.state.docId, {headers: header})
+                    .then(res => {
+                      console.log(res.data.data.path);
+                      this.setState({       
+                         path:res.data.data.path,
+                         fileName:res.data.data.docName
+                     })
+                 })
+                    .catch(err => console.log(err))
+               },5000)
+                const timer4 =  setTimeout(()=>{
+                axios.get('/stskFmsApi/userLogin/getByMob/'+this.state.mobileNumber, {headers: header})
+                .then(res => {
+                console.log(res.data.data.id);
+                this.setState({
+                mobileNumberUserloginId:res.data.data.id
+            })
+         
+            })
+                .catch(err => console.log(err))
+            },6000)
+            const timer5 =  setTimeout(()=>{
+                axios.get('/stskFmsApi/imageDoc/getByLoginId/'+this.state.mobileNumberUserloginId, {headers: header})
+                .then(res => {
+                console.log(res.data.data[0].docId);
+                this.setState({
+                profileimageretrievedocId:res.data.data[0].docId
+            })
+         
+            })
+                .catch(err => console.log(err))
+            },7000)
+            const timer6 =  setTimeout(()=>{
+                axios.get('/stskFmsApi/imageDoc/retriveWithPath/'+this.state.profileimageretrievedocId, {headers: header})
+                .then(res => {
+                console.log(res);
+                this.setState({
+                profileimagepath:res.data.data.path
+            })
+         
+            })
+                .catch(err => console.log(err))
+            },8000)
+                // axios.get('/stskFmsApi/jobseekerdoc/getByJobSeekerId'+this.state.userId,{headers:header})
+                // .then(res => {
+                //     console.log(res.data.data.docId)
+                //     console.log(res)
+                //     this.setState
+                //     ({
+                //         docId:res.data.data.docId
+                //     })
+                //  })
+                // const timer2 = setTimeout(() => {
+                // axios.get('/stskFmsApi/jobseekerdoc/getByJobSeekerId/3'+this.state.userId,{headers:header})
+                // .then(res => {
+                //     console.log(res.data.data.docId)
+                //     console.log(res)
+                //     this.setState
+                //     ({
+                //         docId:res.data.data.docId
+                //     })
+                //  })
+                //  }, 4000);
     }
+  
 
     handleApply=(id)=>{
         console.log(id)
@@ -140,6 +276,7 @@ class Dashboard extends Component {
     }
    
     handlepopup=(e)=>{
+    
         const { editProfile } = { ...this.state };
         const currentState = editProfile;
         const { name, value } = e.target;
@@ -147,27 +284,165 @@ class Dashboard extends Component {
         this.setState({ editProfile: editProfile });
         
     }
-    popupsubmit=(e)=>{
+    handleResume = (e) => {
+        e.preventDefault();
+      
+        console.log(e)
+        console.log( e.target.files[0])
+        console.log( e.target.files[0].name)
+        this.setState({
+              resume: e.target.files[0]
+          })
+         
+        }
+        handleResume1Submit = (e) =>{
+          let formData = new FormData();  
+            formData.append('file',this.state.resume);   
+            axios.post('/stskFmsApi/jobseekerdoc/editDoc/'+this.state.docId,formData,
+            {headers: { 'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }}
+            )
+                   .then(res => {
+                     console.log(res);
+                    
+                   })
+                   .catch(err => console.log(err))
+        }
+        popupsubmit=(e)=>{
         e.preventDefault();
         axios.put('/stskFmsApi/jobseeker/editJS',{
-            name:this.state.editProfile.name,
-            email: this.state.editProfile.email,
-            mob: this.state.editProfile.mob,
-            experience: this.state.editProfile.experience,
-            eduQual: this.state.editProfile.eduQual,
-            jobUpdate:this.state.editProfile.jobUpdate,
-            userLogin:{
-              id:this.state.editProfile.userLogin
-            },
-            jobTypes:[{
-              id:this.state.editProfile.jobTypes.id
-            }]
+            name:this.state.name,
+            email: this.state.email,
+            mob: this.state.mob,
+            panNum:this.state.panNum,
+            aadharNum:this.state.editprofile.aadharNum,
+            eduQual: this.state.editprofile.eduQual,
+            experience: this.state.editprofile.experience,
+            working:this.state.editprofile.working,
+            jobUpdate:this.state.editprofile.jobUpdate,
+            address:this.state.editprofile.address,
+            fresher:this.state.editprofile.fresher,
+            companyName:this.state.editprofile.companyName,
+            destination:this.state.editprofile.destination,
+            noticeperiod:this.state.editprofile.noticeperiod,
+            noOfDays:this.state.editprofile.noOfDays,
+            currentLocation:this.state.editprofile.currentLocation,
+            negotiable:this.state.editprofile.negotiable,
+            upTo:this.state.editprofile.upTo,
+            jobLocation:this.state.editprofile.jobLocation,
+            userLogin:this.state.editprofile.jobLocation,
+            jobTypes:this.state.editprofile.jobTypes
         },{headers:header})
         .then(res=>{
             console.log(res.data)
         })
+        if (formValid(this.state)) {
+            console.log(`
+              --SUBMITTING--
+              Full Name: ${this.state.editprofile.name}
+              Mobile Number: ${this.state.editprofile.mob}
+              Email: ${this.state.editprofile.email}
+              panNumber: ${this.state.editprofile.panNum}
+              aadhar: ${this.state.editprofile.aadharNum}
+              years: ${this.state.editprofile.experience}
+              education: ${this.state.editprofile.eduQual}
+              jobUpdate:${this.state.editprofile.jobUpdate}
+              address:${this.state.editprofile.address},
+              working : ${this.state.editprofile.working},
+              userLogin:{
+                id:this.state.userId
+              }},
+              jobTypes:[{
+                id:this.state.jobTypes.id
+              }],
+              fresher:${this.state.editprofile.fresher},
+           
+            noticePeriod:${this.state.editprofile.noticePeriod},
+            companyName:${this.state.editprofile.companyName},
+            currentLocation:${this.state.editprofile.currentLocation},
+            jobLocation:${this.state.editprofile.jobLocation},
+            designation:${this.state.editprofile.designation},
+            negotiable:${this.state.editprofile.negotiable},
+            upTo:${this.state.editprofile.upTo},
+            noOfDays:${this.state.editprofile.noOfDays},
+            address:${this.state.editprofile.address},
+            prevcompanyName:${this.state.editprofile.prevcompanyName},
+          prevdesignation:${this.state.editprofile.prevdesignation},
+          prevjobLocation:${this.state.editprofile.prevjobLocation},
+             `);
+          } else {
+            console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+          }
     }
-   
+    handleEditImage=(e)=>{
+        console.log( e.target.files[0])
+        console.log( e.target.files[0].name)
+        this.setState({
+            editprofileimage: e.target.files[0],
+            createeditprofileimage: e.target.files[0]
+        })
+      const timer10 =  setTimeout(()=>{
+            let formData = new FormData();  
+         
+         formData.append('file',this.state.createeditprofileimage);   
+        axios.post('/stskFmsApi/imageDoc/createDoc/'+this.state.userId,formData, {headers: 
+         { 'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
+         })
+                .then(res => {
+                  console.log(res);
+                  console.log(res.data)
+                  this.setState({
+                    createeditprofileimagedocId:res.data.data
+                  })
+                 })
+                .catch(err => console.log(err))
+                },4000)
+                const timer11 =  setTimeout(()=>{
+                    axios.get('/stskFmsApi/imageDoc/retriveWithPath/'+this.state.createeditprofileimagedocId, {headers: header})
+                    .then(res => {
+                      console.log(res);
+                      this.setState({
+                        createeditprofileimagepath:res.data.data.path
+                      })
+                     
+                 })
+                    .catch(err => console.log(err))
+                },5000)
+               
+        const timer =  setTimeout(()=>{
+            let formData = new FormData();  
+         
+         formData.append('file',this.state.editprofileimage);   
+        axios.post('/stskFmsApi/imageDoc/EditDoc/'+this.state.profileimageretrievedocId,formData, {headers: 
+         { 'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' }
+         })
+                .then(res => {
+                  console.log(res,'test');
+                  console.log(res.data)
+                  this.setState({
+                      editprofileimagedocId:res.data.data
+                  })
+                 })
+                .catch(err => console.log(err))
+                },3000)
+
+        // if(editprofileimagedocId==null){
+
+
+
+
+
+
+        // }
+               
+    }
+    handleChange2Arg = (selectedvalue) =>{
+        console.log(selectedvalue)
+          console.log(`Option selected:`, selectedvalue);
+          this.setState({ selectedvalue})
+          this.setState({jobTypes:selectedvalue})
+          // var test=document.getElementsByClassName('_2OR24XnUXt8OCrysr3G0XI ')[0].innerHTML;
+          // document.getElementById("valsel").innerHTML=test;
+        }
     handleSearch=(e)=>{
         this.setState({
             search:e.target.value,  
@@ -191,9 +466,15 @@ class Dashboard extends Component {
         }, 1000);
         
     }
+  
     render() {
+    
+        console.log(this.state.uploadedResume)
+        
+        console.log(this.state.editProfile.jobTypes)
         console.log(this.state)
         const {posts} = this.state;
+        const { path } = this.state;
         const postList = posts.length ? (
             posts.map(post => {
                 // return this.state.appliedJobsId.map(item2 => {
@@ -218,7 +499,7 @@ class Dashboard extends Component {
                         <div className="col s6 m6 l3">
                               <p  id="dashtext">Location-<span className="grey-text">{post.serviceArea}</span></p>
                           </div>      
-                          <Popup
+                          <Popup 
                            trigger={
                             <div className="col s6 m6 l2 right-align">
                             <h6 id="viewdetails" className="right-align" value={post.id}> <u>ViewDetails</u></h6>
@@ -272,6 +553,23 @@ class Dashboard extends Component {
                                         <p className="grey-text">Lorem Ipsum is simply dummy text of the printing and typesetting
                                          industry. since the 1500s, when an unknown</p>
                                     </div>
+                                    <div className="col s12 m12 l12">
+                                        <h4>Before Applying Do you want to edit?</h4>
+                                    <p>
+                                    <label>
+                                    <input name="wantedit"  value="true" onClick={this.handleRadioEdit}   type="radio"  />
+                                        <span id="label">Yes</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                    <label>
+                                        <input name="wantedit" value="false" onClick={this.handleRadioEdit} type="radio"/>
+                                        <span id="label">No</span>
+                                    </label>
+                                    </p>
+                                    </div>
+    
+
                                     <div className="col s12 m6 l6">
                                         <button className="grey-text" onClick={() => {close();}} id="popcancelbtn" type="text">cancel</button>
                                         <br></br>
@@ -280,6 +578,7 @@ class Dashboard extends Component {
                                     <div className="col s12 m6 l6">
                                         <button onClick={()=>{this.handleApply(post.id)}} value={post.id} id="popsavebtn" type="text">Apply</button>
                                         <br></br>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -332,6 +631,7 @@ class Dashboard extends Component {
                           {close => (
                                 <div className="popup-content">
                                     <div className="col s12 m12 l12">
+                                  
                                         <div className="right-align">
                                             <i className="material-icons" id="dashcancelbtn" onClick={()=>{close();}}>clear</i>
                                         </div>
@@ -486,7 +786,7 @@ class Dashboard extends Component {
                 )
             })
         ) : (
-            <div className="center" ><h5>You have not Applied for any Jobs</h5>
+            <div className="center"><h5>You have not Applied for any Jobs</h5>
             
             </div>
             
@@ -518,7 +818,7 @@ class Dashboard extends Component {
                 <div className="">
                 
                      <img className="center" id="dashboard" src={dashboard}></img>
-                     <div className="center-align show-on-large"><h6 id="textimg">Find your job here</h6></div>
+                     <div className="center-align"><h6 id="textimg">Find your job here</h6></div>
                 </div>
                 
                 <nav className="container white" id="search">
@@ -549,38 +849,138 @@ class Dashboard extends Component {
                         <Popup modal trigger={
                         
                             <div className="right-align"><img src={edit} width="20" height="20"></img>
-                                 <br></br>
-                            </div>
+                            <br></br></div>
                         }>
                         
                         <div className="popup-content">
                             <h4 className="center-align" id="popTitle">Edit profile</h4>
+                            <div class="d-flex justify-content-center">
+                            <img src={this.state.profileimagepath} style={{height:'100px',width:'100px',borderRadius:'50px'}}></img>
+                                <Popup trigger={<h3>Update Images</h3>} position=" center" id="updateimage"
+                                >
+                                     <div className="popup-content1" id="newimage">
+                                        <h5 id="change">Change Pictures</h5>
+                                        <div class="imageload">
+                                        <img src={this.state.profileimagepath} style={{height:'100px',width:'100px',borderRadius:'50px'}}></img> 
+                                        </div>
+                                       
+                                        <input type="file" 
+                    class="inputfile" id="embedpollfileinput" 
+                    name="image"
+                    accept="images.jpeg"  onChange={this.handleEditImage}/>
+
+                    <label for="embedpollfileinput" 
+                   // class="ui huge Persian Green
+ //right floated button" 
+ id="hugegreen">
+                   
+                    <img src={uploadfile} id="fileimg"
+                    />
+                    <span id="docfile">Upload Image</span>
+                    </label>
+                                     </div>
+                                </Popup>
+                            
+                            {/* <img src={this.state.createeditprofileimagepath} style={{height:'100px',width:'100px',borderRadius:'50px'}}></img> */}
+                            {/* <input type="file" id="editImage" onChange={this.handleEditImage}/> */}
+                            </div>
+                            
                             <form onSubmit={this.popupsubmit}>
                             <div className="col s12 m12 l6">
                             
                                 <label >First name</label>
-                                <input id="inputBorder" name="name" required value={this.state.editProfile.name} 
+                                <input id="inputBorder" name="name" required defaultValue={this.state.editProfile.name} 
                                 onChange={this.handlepopup} type="text"></input>
                             
                             
                                 <label >Email</label>
                                 
                                 <input id="inputBorder" name="email" defaultValue={this.state.editProfile.email} onChange={this.handlepopup}  type="text"></input>
+             
+                                <label >Pan Number</label>
+                                
+                                <input id="inputBorder" name="panNum" defaultValue={this.state.editProfile.panNum} onChange={this.handlepopup}  type="text"></input>
                                 <label>Education Qualificatin</label>
                                 <input id="inputBorder" name="eduQual" defaultValue={this.state.editProfile.eduQual} onChange={this.handlepopup}  type="text"></input>
-                                <label>Get job opening updates</label>
-                                <input id="inputBorder" name="jobUpdate" defaultValue={this.state.editProfile.jobType} onChange={this.handlepopup}  type="text"></input>
-                                <div id="popcancelbtn" onClick={()=>this.setState({popup:false})} className="center-align">cancel</div>
+                                {/* <label>Get job opening updates</label> */}
+                                {/* <input id="inputBorder" name="jobUpdate" defaultValue={this.state.editProfile.jobType} onChange={this.handlepopup}  type="text"></input> */}
+                                <Form.Control as="select" onChange={this.handleChange2} id="update" defaultValue={this.state.editProfile.jobUpdate}>
+                                <option value='1'>Get job opening updates</option>
+                                {this.state.Updates.map(jobUpdate =>(
+                                    <option key={jobUpdate} value={jobUpdate}>
+                                        {jobUpdate}
+                                    </option>
+                                ))}
+                                </Form.Control> 
+                                <input id="inputBorder" name="resume" value={this.state.uploadResume} onChange={this.handleResume}  accept="images.jpeg"  type="file"></input>
+                                {/* <a href="#" onClick={this.downloadEmployeeData}>Download</a> */}
+                        
+                                {/* <p id="label">Are you fresher?</p>
+
+   <p>
+   <label >
+   <input name="fresher"  value="true" onClick={this.handleRadio} type="radio" id="ra" />
+       <span id="label">Yes</span>
+       </label>
+   </p>
+   <p>
+   <label>
+     <input name="fresher" value="false" onClick={this.handleRadio} type="radio" id="ra"/>
+     <span id="label">No</span>
+   </label>
+ </p> */}
+                                {/* <div id="popcancelbtn" onClick={()=>this.setState({popup:false})} className="center-align">cancel</div> */}
+                                <div id="popcancelbtn" onClick={this.handleResume1Submit} className="center-align">cancel</div>  
                             </div>
                             <div className="col s12 m12 l6">
                                 <label>Mobile number</label>
                                 <input id="inputBorder" name="mob" defaultValue={this.state.editProfile.mob} onChange={this.handlepopup} type="text"></input>
                                 <label>No of years experiance</label>
                                 <input id="inputBorder" name="experience" defaultValue={this.state.editProfile.experience} onChange={this.handlepopup}  type="text"></input>
-                                <label>Applied for</label>
-                                <input id="inputBorder" name="" onChange={this.handlepopup}  type="text"></input>
+                                <label>Aadhar Number</label>
+                                <input id="inputBorder" name="aadharnum" defaultValue={this.state.editProfile.aadharNum} onChange={this.handlepopup}  type="text"></input>
+              
+                                {/* <label>Applied for</label> */}
+                                {/* <input id="inputBorder" name="" onChange={this.handlepopup}  type="text">
+                               
+                                </input> */}
+                                 {/* <input id="inputB" name="aadharnum"  onChange={this.handlejobtypes}  type="text"></input> */}
+            
+                                 <Popup trigger={<div id="printjobname" onChange={this.handlejobtypes}><h5 id="valsel" >selected</h5></div>} position=" center"
+                                    style={{width:'250px'}}
+                                    defaultValue={this.state.editProfile.jobTypes}>
+                                    <Multiselect options={this.state.Types}
+                                    displayValue="name"
+                                    onSelect={this.handleChange2Arg} id="demo" /> 
+                                 </Popup>
                                 <label>Address</label>
-                                <input id="inputBorder" name="address"  onChange={this.handlepopup}  type="text"></input>
+                                <input id="inputBorder" name="address" defaultValue={this.state.editProfile.address} onChange={this.handlepopup}  type="text"></input>
+                            <a href={path}>{this.state.fileName}</a>
+                                <input type="file" 
+                    class="inputfile" id="embedpollfileinput" 
+                    name="image"
+                    accept="images.jpeg"  onChange={this.handleChange}/>
+                    <label for="embedpollfileinput" class="ui huge white right floated button" id="white">
+                   
+                    <img src={file} id="fileimg" />
+                    <span id="doc">Upload Resume</span>
+                    <span><i class="far fa-times-circle fa-2x" id="close" ></i></span>
+
+                    </label>
+                                {/* <p id="label">Currently working?</p>
+  
+  <p>
+  <label>
+  <input name="working"  value="true" onClick={this.handleRadio1} type="radio" id="ra" />
+      <span id="label">Yes</span>
+      </label>
+  </p>
+  <p>
+  <label>
+    <input name="working" value="false" onClick={this.handleRadio1} type="radio" id="ra"/>
+    <span id="label">No</span>
+  </label>
+</p> */}
                                 <button id="popsavebtn" type="text">save</button>
                             </div>
                             </form>
@@ -590,15 +990,18 @@ class Dashboard extends Component {
                     </div>
                         <div className="center" id="profile1">
                         <div className="center">
-                            <i className="material-icons large">person</i><br></br>
+                            <img src={this.state.profileimagepath} style={{height:'100px',width:'100px',borderRadius:'50px'}}></img>
+                            {/* <i className="material-icons large">person</i> */}
+                            <br></br>
                         </div>
                             <strong className="center-align">{this.state.details.name}</strong>
                             <div className="left-align">
                                 <p><img className="center" id="dashicn" src={location} width="23" height="23"></img>{this.state.details.currentLocation}</p>
-                                <p><img className="center" id="dashicn" src={mail} width="18" height="18"></img>{this.state.details.email}</p>
+                                <p><img className="center" id="dashicn" src={mail} width="20" height="20"></img>{this.state.details.email}</p>
                                 <p><img className="center" id="dashicn" src={call} width="20" height="20"></img>{this.state.details.mob}</p>
                                 <p><img className="center" id="dashicn" src={experiance} width="20" height="20"></img>{this.state.details.experience}</p>
                                 <p><img className="center" id="dashicn" src={book} width="23" height="23"></img>{this.state.details.eduQual}</p>
+                              
                                 
                             </div> 
                             
@@ -632,12 +1035,9 @@ class Dashboard extends Component {
                      </div>
                 </div>
                 </div>
-            
-            
-               <div className="footer-copyright" id="footer">
-               <h6 className="center"> Copyright @2020 All rights reserved | This tamplate is made with STSK
-                 </h6>
-             </div>
+                 <div className="footer-copyright" id="footer">
+                 <h6 className="center v-center"> Copyright @2020 All rights reserved | This tamplate is made with STSK</h6>
+               </div>
             </div>
         )       
     }

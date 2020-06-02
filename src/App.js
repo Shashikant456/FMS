@@ -23,6 +23,7 @@ import Help from './components/Association/Help'
 import AssJsHelp from './components/Association/AssJSHelp'
 import AssVendorHelp from './components/Association/AssVendorHelp'
 import AssResidentHelp from './components/Association/AssResidentHelp'
+import UploadDocument from './components/UploadDocument'
 axios.defaults.baseURL ="http://stskfacilities.com:8081"
 
 
@@ -58,6 +59,7 @@ axios.defaults.baseURL ="http://stskfacilities.com:8081"
               <Route path="/assoJSHelp" component={ AssJsHelp } />
               <Route path="/assoVendorHelp" component={ AssVendorHelp } />
               <Route path="/assoResidentHelp" component={ AssResidentHelp } />
+              <Route path="/uploadDocument" component={ UploadDocument } />
 
            </Switch>
         </div>

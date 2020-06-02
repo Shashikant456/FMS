@@ -3,6 +3,8 @@ import axios from 'axios'
 import logo from './Images/Mainlogo.png'
 import './css/userLogin.css'
 import Loader from 'react-loader-spinner'
+import $ from 'jquery'
+import jQuery from 'jquery'
 
 const header={
     'x-api-key': ' $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2' 
@@ -10,14 +12,20 @@ const header={
 
 class UserLogin extends Component {
 state = {
+            isPasswordShown:"false",
               email:'',
               email1:'',
               password:'',
               userId:'',
               error:'',
               mobileNumber:'',
-              loading:false
+              loading:false,
+             
         }
+        togglePasswordVisibility = () =>{
+            const {isPasswordShown} = this.state;
+            this.setState({isPasswordShown:!isPasswordShown});
+          }
     
         handleChange1 = (e) => {
             this.setState({
@@ -34,6 +42,26 @@ state = {
         }
         forgetPwd=(e)=>{
             this.props.history.push('/forgotPwd')
+        }
+        componentDidMount(){
+            // axios.get('/stskFmsApi/jobseekerdoc/getByJobSeekerId/3',{headers:header})
+            // .then(res => {
+            //     console.log(res.data.data.docId)
+            //     this.setState
+            //     ({
+            //         docId:res.data.data.docId
+            //     })
+                // console.log(res.data.success)
+
+                // if(res.data.success===1){
+                //     this.setState({
+                //         posts: res.data.data
+                //     });
+                // }
+                // else{
+                //     console.log("No jobs present")
+                // }
+                //}) 
         }
         handleSubmit=(e)=>{
             e.preventDefault();
@@ -124,6 +152,7 @@ state = {
     render() {
         console.log(this.state)
         const {loading}=this.state
+        const {isPasswordShown} = this.state;
         return (
         
             <div className="" id="body">
@@ -140,9 +169,13 @@ state = {
             
                     <div className="input-field">
                     <i id="iconn" className="material-icons prefix">lock</i>
-                    <input id="icon_prefix" type="password" placeholder="password" required  onChange={this.handleChange2}
-                    //pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    <input id="icon_prefix" type="password" placeholder="Password"
+                     type={(isPasswordShown) ? "password" : "text"} size="30"
+                     required  onChange={this.handleChange2}
+                    
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/>
+                     <i className="fa fa-eye" id="eyesssss" onClick={this.togglePasswordVisibility}></i>
                    <br></br>
                    <br></br>
                     <h6 className="red-text">{this.state.error}</h6>
@@ -164,4 +197,3 @@ state = {
 }
 
 export default UserLogin
-
